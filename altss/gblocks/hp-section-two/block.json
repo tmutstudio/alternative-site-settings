@@ -1,0 +1,17 @@
+{
+  	"$schema": "https://json.schemastore.org/block.json",
+	"apiVersion": 2,
+	"name": "ts-block/hp-section-two",
+	"version": "0.1.0",
+	"title": "HP Section 2",
+	"category": "tstudio",
+	"icon": "welcome-widgets-menus",
+	"description": "Example block written with ESNext standard and JSX support – build step required.",
+	"supports": {
+		"html": false
+	},
+	"textdomain": "hp-section-two",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}

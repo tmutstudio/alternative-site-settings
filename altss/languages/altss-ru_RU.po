@@ -1,0 +1,917 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ALTSITESET__VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: Tmutarakan Dev Team\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2024-02-05 10:52+0300\n"
+"PO-Revision-Date: \n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_attr__;esc_attr_e;esc_html__;esc_html_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Generator: Poedit 3.4.2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: node_modules\n"
+"X-Poedit-SearchPathExcluded-0: js\n"
+
+msgid "Activation/deactivation of custom records:"
+msgstr "Активация/деактивация кастомных записей:"
+
+msgid "activate Gutenberg for this post type"
+msgstr "активировать Gutenberg для этого типа записей"
+
+msgid "Add book"
+msgstr "Добавить книгу"
+
+msgid "Add books category"
+msgstr "Добавить категорию книг"
+
+msgid "Add document"
+msgstr "Добавить документ"
+
+msgid "Add documents category"
+msgstr "Добавить категорию документов"
+
+msgid "Add new book"
+msgstr "Добавить новую книгу"
+
+msgid "Add new document"
+msgstr "Добавить новый документ"
+
+msgid "Add new promotion"
+msgstr "Добавить новую акцию"
+
+msgid "Add new video"
+msgstr "Добавить новое видео"
+
+msgid "Add news"
+msgstr "Добавить новость"
+
+msgid "Add news category"
+msgstr "Добавить категорию новостей"
+
+msgid "Add promotion"
+msgstr "Добавить акцию"
+
+msgid "Add promotion category"
+msgstr "Добавить категорию акций"
+
+msgid "Add video"
+msgstr "Добавить видео"
+
+msgid "Add videos category"
+msgstr "Добавить категорию видео"
+
+msgid "Additional recipient email"
+msgstr "Дополнительный e-mail получателя"
+
+msgid "Additionally:"
+msgstr "Дополнительно:"
+
+msgid "Additional field for the HEADER section:"
+msgstr "Дополнительное поле для секции HEADER:"
+
+msgid "Additional settings"
+msgstr "Доп. настройки"
+
+msgid "Additional text (if necessary)"
+msgstr "Дополнительный текст (при необходимости)"
+
+msgid "Additional text for FOOTER"
+msgstr "Дополнительный текст для FOOTER"
+
+msgid "Additional text for HEADER"
+msgstr "Дополнительный текст для HEADER"
+
+msgid "Address"
+msgstr "Адрес"
+
+msgid "agreement to <a href=\"%s\" target=\"_blank\">privacy policy</a>"
+msgstr "согласие с <a href=\"%s\" target=\"_blank\">политикой конфиденциальности</a>"
+
+msgid "Album information updated"
+msgstr "Информация об альбоме обновлена"
+
+msgid "Album list"
+msgstr "Список альбомов"
+
+msgid "Album name"
+msgstr "Название альбома"
+
+msgid "Album description"
+msgstr "Описание альбома"
+
+msgid "Album short description"
+msgstr "Краткое описание альбома"
+
+msgid "All books"
+msgstr "Все книги"
+
+msgid "All books categories"
+msgstr "Все категории книг"
+
+msgid "All documents"
+msgstr "Все документы"
+
+msgid "All documents categories"
+msgstr "Все категории документов"
+
+msgid "All news"
+msgstr "Все новости"
+
+msgid "All news categories"
+msgstr "Все категории новостей"
+
+msgid "All promotions"
+msgstr "Все акции"
+
+msgid "All promotion categories"
+msgstr "Все категории акций"
+
+msgid "All reviews"
+msgstr "Все отзывы"
+
+msgid "All videos"
+msgstr "Все видео"
+
+msgid "All videos categories"
+msgstr "Все категории видео"
+
+msgid "Alternative Site Title:"
+msgstr "Альтернативное название сайта:"
+
+msgid "An error occurred!<br>Message sending failed."
+msgstr "Произошла ошибка!<br>Отправка сообщения не удалась."
+
+msgid "After connecting or disconnecting a custom post type, you must go to the page:"
+msgstr "После подключении или отключения кастомного типа записи, обязательно нужно зайти на страницу:"
+
+msgid "Article description"
+msgstr "Описание статьи"
+
+msgid "Author"
+msgstr "Аавтор"
+
+msgid "Author's city"
+msgstr "Город автора"
+
+msgid "Author's email"
+msgstr "E-mail автора"
+
+msgid "Author's IP"
+msgstr "IP автора"
+
+msgid "Author's name"
+msgstr "Имя автора"
+
+msgid "Back to album list"
+msgstr "Назад к списку альбомов"
+
+msgid "back to reviews"
+msgstr "вернуться к отзывам"
+
+msgid "Back to the list of reviews"
+msgstr "Назад к списку отзывов"
+
+msgid "Basic settings"
+msgstr "Базовые настройки"
+
+msgid "Blog Title"
+msgstr "Название блога"
+
+msgid "Book"
+msgstr "Книга"
+
+msgid "Books"
+msgstr "Книги"
+
+msgid "Books categories"
+msgstr "Категории книг"
+
+msgid "Books category"
+msgstr "Категория книг"
+
+msgid "Button name for HEADER on the home page"
+msgstr "Название кнопки для HEADER на главной странице"
+
+msgid "Categories for books"
+msgstr "Категории для книг"
+
+msgid "Categories for documents"
+msgstr "Категории для документов"
+
+msgid "Categories for news"
+msgstr "Категории для новостей"
+
+msgid "Categories for promotions"
+msgstr "Категории для акций"
+
+msgid "Categories for videos"
+msgstr "Категории для видео"
+
+msgid "Center of the map (usually coincides with the coordinates of the marker)"
+msgstr "Центр карты  ( обычно совпадает с координатами метки )"
+
+msgid "check the box to activate this post type"
+msgstr "отметьте флажок для активации этого типа записей"
+
+msgid "City"
+msgstr "Город"
+
+msgid "Clear post revisions"
+msgstr "Очистить ревизии постов"
+
+msgid "Clearing revisions in the posts table"
+msgstr "Очистка ревизий в таблице постов"
+
+msgid "Close dialog"
+msgstr "Закрыть диалог"
+
+msgid "collapse"
+msgstr "свернуть"
+
+msgid "collapse all"
+msgstr "свернуть все"
+
+msgid "Confirm your agreement with the privacy policy."
+msgstr "Подтвердите согласие с политикой конфеденциальности."
+
+msgid "Contact block title:"
+msgstr "Заголовок блока контактов:"
+
+msgid "Contact details"
+msgstr "Контактные данные"
+
+msgid "Contact forms"
+msgstr "Контактные формы"
+
+msgid "Contact Forms Settings Page"
+msgstr "Страница настроек контактных форм"
+
+msgid "Contacts"
+msgstr "Контакты"
+
+msgid "Contents of text block No. "
+msgstr "Содержание текстового блока №"
+
+msgid "Countdown timers"
+msgstr "Таймеры обратного отсчета"
+
+msgid "Coordinates"
+msgstr "Координаты"
+
+msgid "Copyright holder name"
+msgstr "Название правообладателя"
+
+msgid "Copyright in the footer"
+msgstr "Авторские права в подвале"
+
+msgid "Create a new"
+msgstr "Создание новой"
+
+msgid "Creating a new"
+msgstr "Создание нового"
+
+msgid "Custom records"
+msgstr "Кастомные записи"
+
+msgid "Data for displaying the map"
+msgstr "Данные для отображения карты"
+
+msgid "default"
+msgstr "по умолчанию"
+
+msgid "Delete"
+msgstr "Удалить"
+
+msgid "delete"
+msgstr "удалить"
+
+msgid "delete album"
+msgstr "удалить альбом"
+
+msgid "Description"
+msgstr "Описание"
+
+msgid "Description tag field"
+msgstr "Поле для тега Description"
+
+msgid "disable comments for this post type"
+msgstr "отключить комментарии для этого типа записей"
+
+msgid "display form description"
+msgstr "отображать описание формы"
+
+msgid "display form title"
+msgstr "отображать название формы"
+
+msgid "Documents"
+msgstr "Документы"
+
+msgid "Documents categories"
+msgstr "Категории документов"
+
+msgid "Edit"
+msgstr "Редактировать"
+
+msgid "Edit answer"
+msgstr "Редактировать ответ"
+
+msgid "Edit books category"
+msgstr "Редактировать категорию книг"
+
+msgid "Edit book"
+msgstr "Редактировать книгу"
+
+msgid "edit information"
+msgstr "редактировать информацию"
+
+msgid "Edit news"
+msgstr "Редактировать новость"
+
+msgid "Edit news category"
+msgstr "Редактировать категорию новостей"
+
+msgid "Edit promotion"
+msgstr "Редактировать акцию"
+
+msgid "Edit promotion category"
+msgstr "Редактировать категорию акций"
+
+msgid "Edit videos category"
+msgstr "Редактировать категорию видео"
+
+msgid "Editing"
+msgstr "Редактирование"
+
+msgid "Email address"
+msgstr "Электронный адрес"
+
+msgid "Enter your city"
+msgstr "Введите ваш город"
+
+msgid "Enter the text of your message"
+msgstr "Введите текст вашего сообщения"
+
+msgid "Enter your email address"
+msgstr "Введите ваш электронный адрес"
+
+msgid "Enter your First Name"
+msgstr "Введите ваше имя"
+
+msgid "Enter your Lasst Name"
+msgstr "Введите вашу фамилию"
+
+msgid "Enter your phone number"
+msgstr "Введите ваш номер телефона"
+
+msgid "Enter your Website URL"
+msgstr "Введите адрес вашего сайта"
+
+msgid "Entry with <strong>ID: %d</strong> has been deleted!"
+msgstr "Запись с <strong>ID: %d</strong> удалена!"
+
+msgid "expand"
+msgstr "развернуть"
+
+msgid "expand all"
+msgstr "развернуть все"
+
+msgid "expand text"
+msgstr "развернуть текст"
+
+msgid "Field"
+msgstr "Поле"
+
+msgid "Field label"
+msgstr "Название поля"
+
+msgid "First Name"
+msgstr "Имя"
+
+msgid "Form"
+msgstr "Форма"
+
+msgid "form"
+msgstr "форма"
+
+msgid "form button"
+msgstr "кнопка формы"
+
+msgid "Form description"
+msgstr "описание формы"
+
+msgid "Form fields"
+msgstr "Поля формы"
+
+msgid "Forms fields"
+msgstr "Поля для форм"
+
+msgid "Form for a button in the FOOTER of the site"
+msgstr "Форма для кнопки в подвале сайта"
+
+msgid "Form for a button in the HEADER on the home page"
+msgstr "Форма для кнопки в заголовке на главной странице"
+
+msgid "Form sets"
+msgstr "Наборы форм"
+
+msgid "Form title"
+msgstr "Название формы"
+
+msgid "from"
+msgstr "из"
+
+msgid "Go to file management"
+msgstr "Перейти к управлению файлами"
+
+msgid "Hide from visitors"
+msgstr "Скрыть от посетителей"
+
+msgid "Hide review"
+msgstr "Скрыть отзыв"
+
+msgid "Hidden"
+msgstr "Скрыто"
+
+msgid "hidden"
+msgstr "скрыто"
+
+msgid "Hide"
+msgstr "Скрыть"
+
+msgid "Home page Sectional blocks"
+msgstr "Секционные блоки главной страницы"
+
+msgid "Home page settings"
+msgstr "Настройки главной страницы"
+
+msgid "Home page text blocks"
+msgstr "Текстовые блоки главной страницы"
+
+msgid "If left blank, the phone number will be substituted for the site header."
+msgstr "Если оставить пустым, то подставится номер телефона для шапки сайта."
+
+msgid "ID of the form's popup container"
+msgstr "ID popup-контейнера формы"
+
+msgid "Image"
+msgstr "Изображение"
+
+msgid "Image management"
+msgstr "Управление изображениями"
+
+msgid "Image management is only possible after creating a record."
+msgstr "Управление изображением возможно только после создания записи."
+
+msgid "Images"
+msgstr "Изображения"
+
+msgid "Important"
+msgstr "Важно"
+
+msgid "Info for the HEADER section:"
+msgstr "Инфо для секции HEADER:"
+
+msgid "Information updated!"
+msgstr "Информация обновлена!"
+
+msgid "Last Name"
+msgstr "Фамилия"
+
+msgid "Location coordinates (Location Pin)"
+msgstr "Координаты местоположения (метка)"
+
+msgid "IP address"
+msgstr "IP - адрес"
+
+msgid "Main settings"
+msgstr "Главные настройки"
+
+msgid "Main site settings:"
+msgstr "Главные настройки сайта:"
+
+msgid "make required"
+msgstr "сделать обязательным"
+
+msgid "manage images"
+msgstr "управлять изображениями"
+
+msgid "Media files for the site"
+msgstr "Медиа-файлы для сайта"
+
+msgid "Message from the form: %s"
+msgstr "Сообщение из формы: %s"
+
+msgid "Message from the form &laquo;%1$s, ID: %2$d&raquo;"
+msgstr "Сообщение из формы &laquo;%1$s, ID: %2$d&raquo;"
+
+msgid "Messages from forms"
+msgstr "Сообщения из форм"
+
+msgid "Message text"
+msgstr "Текст сообщения"
+
+msgid "Meta & SEO"
+msgstr "Мета & SEO"
+
+msgid "Meta Tag «Description» for the home page"
+msgstr "Метатэг «Description» для главной страницы"
+
+msgid "Meta Tag «Title» for the home page"
+msgstr "Метатэг «Title» для главной страницы"
+
+msgid "name"
+msgstr "имя"
+
+msgid "New book"
+msgstr "Новая книга"
+
+msgid "New books category"
+msgstr "Новая категория книг"
+
+msgid "New document"
+msgstr "Новый документ"
+
+msgid "New documents category"
+msgstr "Новая категория документов"
+
+msgid "New news"
+msgstr "Новая новость"
+
+msgid "New news category"
+msgstr "Новая категория новостей"
+
+msgid "New promotion"
+msgstr "Новая акция"
+
+msgid "New promotion category"
+msgstr "Новая категория акций"
+
+msgid "New video"
+msgstr "Новое видео"
+
+msgid "New videos category"
+msgstr "Новая категория видео"
+
+msgid "News"
+msgstr "Новости"
+
+msgid "news"
+msgstr "Новость"
+
+msgid "News categories"
+msgstr "Категории новостей"
+
+msgid "News category"
+msgstr "Категория новостей"
+
+msgid "No messages found."
+msgstr "Сообщения не найдены."
+
+msgid "Notification of receipt of message ID: %1$d from the &laquo;%2$s&raquo; form"
+msgstr "Уведомление о получении сообщения ID: %1$d из формы &laquo;%2$s&raquo;"
+
+msgid "Object"
+msgstr "Объект"
+
+msgid "object"
+msgstr "объект"
+
+msgid "Object name"
+msgstr "Название объекта"
+
+msgid "offers"
+msgstr "предложения"
+
+msgid "Offers"
+msgstr "Предложения"
+
+msgid "Only hidden"
+msgstr "Только скрытые"
+
+msgid "Only published"
+msgstr "Только опубликованные"
+
+msgid "Optimal resolution 600x315 pixels"
+msgstr "Оптимальное разрешение 600х315 пикселей"
+
+msgid "Page"
+msgstr "Страница"
+
+msgid "page"
+msgstr "страница"
+
+msgid "Page: %s"
+msgstr "Страница: %s"
+
+msgid "Page: %1$d | Total records: %2$d"
+msgstr "Страница: %1$d | Всего записей: %2$d"
+
+msgid "Page containing the text of the privacy policy"
+msgstr "Страница, содержащая текст политики конфиденциальности"
+
+msgid "Page for the &laquo;Reviews&raquo; section"
+msgstr "Старница для раздела &laquo;Отзывы&raquo;"
+
+msgid "Parent books category"
+msgstr "Родит. категория книг"
+
+msgid "Parent documents category"
+msgstr "Родит. категория документов"
+
+msgid "Parent news category"
+msgstr "Родит. категория новостей"
+
+msgid "Parent promotion category"
+msgstr "Родит. категория акций"
+
+msgid "Parent videos category"
+msgstr "Родит. категория видео"
+
+msgid "Perhaps several separated by «;»"
+msgstr "Возможно несколько через «;»"
+
+msgid "Photo gallery"
+msgstr "Фотогалерея"
+
+msgid "Phone"
+msgstr "Телефон"
+
+msgid "Phone number"
+msgstr "Номер телефона"
+
+msgid "Phone number for contact block:"
+msgstr "Телефон для блока контактов:"
+
+msgid "Phone number in the site footer:"
+msgstr "Номер телефона в подвале сайта:"
+
+msgid "Phone number in the site header:"
+msgstr "Номер телефона в шапке сайта:"
+
+msgid "Place marker name"
+msgstr "Имя метки"
+
+msgid "<strong>Placeholder</strong>"
+msgstr "Атрибут <strong>placeholder</strong>"
+
+msgid "Plugin for managing site settings, including feedback forms, photo gallery, reviews and contacts."
+msgstr "Плагин для управления настройками сайта, вклюячая формы обратной связи, фотогалерею, отзывы и контакты."
+
+msgid "Position"
+msgstr "Позиция"
+
+msgid "Post table revisions have been cleared!"
+msgstr "Ревизии таблицы постов очищены!"
+
+msgid "Promotion"
+msgstr "Акция"
+
+msgid "Promotion categories"
+msgstr "Категории акций"
+
+msgid "Promotion category"
+msgstr "Категория акций"
+
+msgid "Promotions"
+msgstr "Акции"
+
+msgid "Publish"
+msgstr "Опубликовать"
+
+msgid "Publish a review"
+msgstr "Опубликовать отзыв"
+
+msgid "published"
+msgstr "опубликовано"
+
+msgid "RATING"
+msgstr "РЕЙТИНГ"
+
+msgid "Rating"
+msgstr "Рейтинг"
+
+msgid "Recipient's main email"
+msgstr "Основной e-mail получателя"
+
+msgid "Reply to review"
+msgstr "Ответить на отзыв"
+
+msgid "Restore"
+msgstr "Восстановить"
+
+msgid "Review date"
+msgstr "Дата отзыва"
+
+msgid "Review text"
+msgstr "Текст отзыва"
+
+msgid "Reviews"
+msgstr "Отзывы"
+
+msgid "REVIEWS"
+msgstr "ОТЗЫВЫ"
+
+msgid "Reviews per page"
+msgstr "Отзывов на страницу"
+
+msgid "Search by name"
+msgstr "Поиск по названию"
+
+msgid "Search by text"
+msgstr "Поиск по тексту"
+
+msgid "Search News Category"
+msgstr "Искать категорию новостей"
+
+msgid "Search Promotion Category"
+msgstr "Искать категорию акций"
+
+msgid "select"
+msgstr "выбрать"
+
+msgid "Select form"
+msgstr "Выберите форму"
+
+msgid "Sender"
+msgstr "Отправитель"
+
+msgid "Sender IP"
+msgstr "IP-адрес отправителя"
+
+msgid "Sending date"
+msgstr "Дата отправки"
+
+msgid "Sending time"
+msgstr "Время отправки"
+
+msgid "Sent from IP address"
+msgstr "Отправлено с IP-адреса"
+
+msgid "Set of form fields"
+msgstr "Набор полей формы"
+
+msgid "Settings"
+msgstr "Настройки"
+
+msgid "Short description"
+msgstr "Краткое описание"
+
+msgid "Show to visitors"
+msgstr "Показать посетителям"
+
+msgid "Site settings"
+msgstr "Настройки сайта"
+
+msgid "Special Settings"
+msgstr "Спец. настройки"
+
+msgid "Specialized settings and tools page"
+msgstr "Страница специализированных настроек и инструментов"
+
+msgid "Start page for site settings"
+msgstr "Стартовая страница настроек сайта"
+
+msgid "Status"
+msgstr "Статус"
+
+msgid "Submit button text"
+msgstr "Текст кнопки «Отправить»"
+
+msgid "Tags"
+msgstr "Тэги"
+
+msgid "Text blocks"
+msgstr "Текстовые блоки"
+
+msgid "Text blocks for inserting into a template via the <strong>altss_insertable_text_block( $num, $class )</strong> function:"
+msgstr "Текстовые блоки для вставки в шаблон через функцию <strong>altss_insertable_text_block( $num, $class )</strong>:"
+
+msgid "Text for the button in the footer of the site"
+msgstr "Текст для кнопки в подвале сайта"
+
+msgid "Thank you! Your review has been added and sent for review."
+msgstr "Спасибо! Ваш отзыв добавлен и отправлен на проверку."
+
+msgid "Thank you!<br>Your message has been sent."
+msgstr "Спасибо!<br>Ваше собщение отправлено."
+
+msgid "the album is not available for viewing to visitors"
+msgstr "альбом не доступен для показа посетителям"
+
+msgid "the album is visible to visitors"
+msgstr "альбом виден посетителям"
+
+msgid "the album is visible to visitors and displayed in the website photo gallery"
+msgstr "альбом виден посетителям и отображается в фотогалерее сайта"
+
+msgid "The <strong>%s</strong> field is not filled in."
+msgstr "Не заполнено поле <strong>%s</strong>."
+
+msgid "The archive will be available at the link:"
+msgstr "Архив будет доступен по ссылке:"
+
+msgid "The email address was entered incorrectly."
+msgstr "Не корректно введен адрес электронной почты."
+
+msgid "The list is empty."
+msgstr "Список пуст."
+
+msgid "There are too many characters entered in the message."
+msgstr "В сообщение введено слишком много символов."
+
+msgid "This is necessary so that the Permalinks rules are recreated and the rules of the new record type are added there."
+msgstr "Нужно это для того, чтобы правила ЧПУ были пересозданы и туда были добавлены правила нового типа записи."
+
+msgid "The phone number does not have enough digits."
+msgstr "В номере телефона не достаточное количество цифр."
+
+msgid "The request returned a null result."
+msgstr "Запрос вернул нулевой результат."
+
+msgid "This tab is intended for the site administrator!"
+msgstr "Эта вкладка предназначена для администратора сайта!"
+
+msgid "To display additional fields in the “HEADER” section of the frontend, use the <strong>altss_header_option_field( 'opt_header_text' )</strong> or <strong>altss_header_option_field( 'alt_blogname' )</strong> function."
+msgstr "Для вывода дополнительных полей в секции «HEADER» фронтенда используйте функцию <strong>altss_header_option_field( 'opt_header_text' )</strong> или <strong>altss_header_option_field( 'alt_blogname' )</strong>."
+
+msgid "Too many characters entered."
+msgstr "Введено слишеом много символов."
+
+msgid "To the trash bin"
+msgstr "В корзину"
+
+msgid "Total records"
+msgstr "Всего записей"
+
+msgid "Trash bin"
+msgstr "Корзина"
+
+msgid "Unnecessary characters have been entered in the phone number."
+msgstr "В номере телефона введены ненужные символы."
+
+msgid "Update news category"
+msgstr "Обновить категорию новостей"
+
+msgid "Update promotion category"
+msgstr "Обновить категорию акций"
+
+msgid "Video"
+msgstr "Видео"
+
+msgid "video"
+msgstr "видео"
+
+msgid "Videos"
+msgstr "Видео"
+
+msgid "Videos categories"
+msgstr "Категории видео"
+
+msgid "Videos category"
+msgstr "Категория видео"
+
+msgid "Visible"
+msgstr "Видимый"
+
+msgid "visible"
+msgstr "видимый"
+
+msgid "Visibility for visitors"
+msgstr "Видимость для посетителей"
+
+msgid "Visibility to visitors and display in the general site gallery"
+msgstr "Видимость для посетителей и отображение в общей галерее сайта"
+
+msgid "Website URL"
+msgstr "Адрес сайта"
+
+msgid "with name:"
+msgstr "с именем:"
+
+msgid "Y-m-d H:i"
+msgstr "d.m.Y в H:i"
+
+msgid "Y-m-d H:i:s"
+msgstr "d.m.Y H:i:s"
+
+msgid "M j, Y g:i a"
+msgstr "d.m.Y H:i"
+
+msgid "Year, start of activity"
+msgstr "Год начала деятельности"
+
+msgid "You are logged in under the username:"
+msgstr "Вы вошли под ником:"
+
+msgid "Your review will be left on behalf of this user. If you want to leave a review with other data (name, e-mail), you need to <a href='%s'>log out</a>"
+msgstr "Ваш отзыв будет оставлен от имени этого пользователя. Если вы хотите оставить отзыв с другими данными (имя, e-mail), вам нужно <a href='%s'>выйти из системы</a>"
+
+msgid "Zoom"
+msgstr "Масштаб"
