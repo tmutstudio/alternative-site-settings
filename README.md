@@ -37,6 +37,11 @@ are overwritten, so you can also set your own review styles unique to each theme
 #### How can a developer use this plugin in his individual project?
 > In order to start building their project, the developer simply needs to rename the plugin directory, the main plugin file and the plugin prefix (altss_). Attention! This must be done before activating the plugin.
 
+#### What's in the zip folder?
+> The zip folder contains a zip file (altss.zip) ready for installing the plugin through the admin panel.
+
+#### What's in the altss folder?
+> This is the folder of the plugin itself, identical to the one that will be installed in the WordPress CMS.
 
 
 ## Screenshots
