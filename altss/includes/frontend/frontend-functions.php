@@ -258,7 +258,7 @@ function altss_insertable_text_block( $num = 1, $class = '' ){
     $txt = wp_unslash( get_option( "s_settings_options_embedded_text_{$num}" ) );
     ?>
     <div class="<?php echo esc_attr( $class ); ?>">
-        <?php echo esc_html( $txt ); ?>
+        <?php echo wp_kses( $txt, 'post' ); ?>
     </div>
     <?php
 }
