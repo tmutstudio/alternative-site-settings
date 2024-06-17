@@ -63,6 +63,16 @@
                         <div class="site-settings-options-gr-wrap">
                             <p class="site-settings-options-gr-title"><?php esc_html_e( "Additionally:", "altss" ); ?></p>
                             <dl>
+                                <dt><p><?php esc_html_e( "Collapse the admin bar on the front end", "altss" ); ?>:</p></dt>
+                                <dd>
+                                    <div class="onoffswitch-over">
+                                        <div class="onoffswitch-left">
+                                            <input type="checkbox" id="s_settings_options_collapse_admin_bar" name="s_settings_options[collapse_admin_bar]" class="onoffswitch-checkbox" value="1"<?php checked( ( isset( $s_settings_options['collapse_admin_bar'] ) ? 1 : 0 ), 1); ?> />
+                                            <label class="onoffswitch-label" for="s_settings_options_collapse_admin_bar"></label>
+                                        </div>
+                                        <label class="onoffswitch-label-text" for="s_settings_options_collapse_admin_bar">-  <?php esc_html_e( "check the box to collapse the admin bar on the front end to the upper left corner", "altss" ); ?></label>
+                                    </div>
+                                </dd>
                                 <dt><p><?php esc_html_e( "Blog Title", "altss" ); ?>:</p></dt>
                                 <dd>
                                     <p>

@@ -213,6 +213,9 @@ else{
     if( isset( $settings_options['geo_map']['platform'] ) ){
         include_once ALTSITESET_INCLUDES_DIR.'/frontend/' . $settings_options['geo_map']['platform'] . '-functions.php';
     }
+    if( isset( $settings_options['collapse_admin_bar'] ) ){
+        include_once ALTSITESET_INCLUDES_DIR.'/frontend/classes/collapse-adminbar.php';
+    }
 	
 }
 
