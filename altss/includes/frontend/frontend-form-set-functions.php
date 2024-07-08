@@ -10,7 +10,7 @@ function altss_process_reviews_form() { //////////////// REVIEWS FORM FUNCTION
         $args = $_POST['site-reviews'];
         $user = wp_get_current_user()->data;
         $data = [];
-        $data['review_text'] = $args['content'];
+        $data['review_text'] = sanitize_textarea_field( $args['content'] );
         if( isset( $user->ID ) ){
             $user_nick = get_user_meta( $user->ID, 'nickname', true );
             $user_name = get_user_meta( $user->ID, 'first_name', true );

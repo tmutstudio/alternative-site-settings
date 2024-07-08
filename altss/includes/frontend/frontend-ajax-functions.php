@@ -67,8 +67,8 @@ function altss_cfajax_action_callback() {
         $dateTimeZone = new DateTimeZone("Europe/Moscow");
         $dateTime = new DateTime("now", $dateTimeZone);
         $timeOffset = $dateTimeZone->getOffset($dateTime);
-		$user_ip = $_SERVER['REMOTE_ADDR'];
-		$user_agent = $_SERVER['HTTP_USER_AGENT'];
+		$user_ip = sanitize_text_field( $_SERVER['REMOTE_ADDR'] );
+		$user_agent = sanitize_text_field( $_SERVER['HTTP_USER_AGENT'] );
 		$time = time() + $timeOffset;
 		$cf_title = get_option( "s_settings_cforms_options_title_{$fid}" );
 		$s_settings_options = get_option( "s_settings_options" );

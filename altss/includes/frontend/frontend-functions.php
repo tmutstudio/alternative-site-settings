@@ -421,49 +421,6 @@ function reviews_page_disable_redirect_canonical( $redirect_url ){
 	return $redirect_url;
 }
 
-/********************** ACTIONS FOR REVIEWS FORM************************/
-
-add_action('admin_post_nopriv_sending_reviews', 'process_reviews_form');
-add_action('admin_post_sending_reviews', 'process_reviews_form');
-
-function process_reviews_form() { //////////////// REVIEWS FORM FUNCTION
-	global $wpdb;
-        $prefix = $wpdb->prefix;
-        if( ! wp_verify_nonce( $_POST['_nonce'], "review_nonce" ) ) return;
-        $args = $_POST['site-reviews'];
-        $user = wp_get_current_user()->data;
-        $data = [];
-        $data['review_text'] = $args['content'];
-        if( isset( $user->ID ) ){
-            $user_nick = get_user_meta( $user->ID, 'nickname', true );
-            $user_name = get_user_meta( $user->ID, 'first_name', true );
-            $data['review_author_name'] = '' != $user_name ? $user_name : $user_nick;
-            $data['review_author_email'] = $user->user_email;
-            $data['review_user_id'] = $user->ID;
-        }
-        else{
-            $data['review_author_name'] = $args['name'];
-            $data['review_author_email'] = $args['email'];
-            $data['review_user_id'] = 0;
-        }
-        $data['review_author_location'] = $args['location'];
-        $data['review_author_ip'] = $_SERVER['REMOTE_ADDR'];
-        $data['review_author_ua'] = $_SERVER['HTTP_USER_AGENT'];
-        $data['review_create_date'] = current_time( 'mysql' );
-        $data['review_create_date_gmt'] = current_time( 'mysql', 1 );
-        $data['review_rating'] = intval( $args['rating'] );
-        
-        $reviews_session['sendtime'] = time();
-        
-        $wpdb->insert( $prefix . 'reviews', $data );
-
-        set_transient( 'reviews_session', $reviews_session);
-        $redirect_str = $args['_referer'];
-	$redirect = $redirect_str;
-	header( "Location: $redirect", true, 302 );
-	die();
-
-}/////////////********************* END OF FUNCTION *************************/
 
 
 
