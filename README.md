@@ -10,7 +10,7 @@ such as a landing page or a business card website.
 The plugin contains the following functionality:
 
 * Editing basic settings, such as the name and description of the site, the content of meta tags for the main page, og:image for the main page, copyright information, additional text fields for the header and footer.
-* Fields for the contact information section, which is usually located at the bottom of the landing page or in the footer of the site. A card with a minimum set of data is also connected to the contacts section.
+* Fields for the contact information section, which is usually located at the bottom of the landing page or in the footer of the site. The contacts section also either includes a map via a shortcode of a third-party plugin, or a static image with an office location diagram is inserted.
 * Five ready-made options for custom records - News, Promotions, Documents, Books, Videos. Each recording type is disabled by default.
 * Contact forms with a minimum set of seven fields. They satisfy the basic needs when using pop-up feedback forms.
 * The "Reviews" section allows you to organize moderated reviews from site visitors.
