@@ -1,30 +1,36 @@
 <?php
-add_action( 'admin_head', 'reviews_admin_header' );
-function reviews_admin_header() {
+if ( ! defined( 'ABSPATH' ) ) exit;
+
+add_action( 'admin_enqueue_scripts', 'altss_reviews_admin_header' );
+function altss_reviews_admin_header() {
 	$page = altss_current_page();
 	if( 'reviews_page' != $page ) return;
-	echo '<style type="text/css">';
-	echo '.wp-list-table .column-review_id { width: 5%; }';
-	echo '.wp-list-table .column-review_text { width: 40%; }';
-	echo '.wp-list-table .column-review_author_name { width: 15%; }';
-	echo '.wp-list-table .column-review_create_date { width: 15%;}';
-	echo '.wp-list-table .column-review_rating { width: 15%;}';
-	echo '.wp-list-table .column-review_status { width: 10%;}';
-	echo 'span.public span:hover { color: #059494 !important; text-decoration: underline; cursor: pointer; }';
-	echo 'span.delete span { color: darkred; }';
-	echo 'span.delete span:hover { color: red !important; text-decoration: underline; cursor: pointer; }';
-	echo 'span.trash span { color: #985137; }';
-	echo 'span.trash span:hover { color: darkred !important; text-decoration: underline; cursor: pointer; }';
-	echo 'span.restore span:hover { color: #059494 !important; text-decoration: underline; cursor: pointer; }';
-	echo 'span.respond a:hover, span.edit a:hover, span.delete a:hover { text-decoration: underline !important; }';
-	echo '</style>';
+    $styles = '
+	.wp-list-table .column-review_id { width: 5%; }
+	.wp-list-table .column-review_text { width: 40%; }
+	.wp-list-table .column-review_author_name { width: 15%; }
+	.wp-list-table .column-review_create_date { width: 15%;}
+	.wp-list-table .column-review_rating { width: 15%;}
+	.wp-list-table .column-review_status { width: 10%;}
+	span.public span:hover { color: #059494 !important; text-decoration: underline; cursor: pointer; }
+	span.delete span { color: darkred; }
+	span.delete span:hover { color: red !important; text-decoration: underline; cursor: pointer; }
+	span.trash span { color: #985137; }
+	span.trash span:hover { color: darkred !important; text-decoration: underline; cursor: pointer; }
+	span.restore span:hover { color: #059494 !important; text-decoration: underline; cursor: pointer; }
+	span.respond a:hover, span.edit a:hover, span.delete a:hover { text-decoration: underline !important; }
+	';
+    $handle = 'altss-reviews-admin-page-table';
+    wp_register_style( $handle, false );
+    wp_add_inline_style( $handle, $styles );
+    wp_enqueue_style( $handle );
 }
  
 
 if ( 'reviews_page' === altss_current_page() && !isset( $_GET['action'] ) ){
-	add_action( "current_screen", 'reviews_page_add_options' );
+	add_action( "current_screen", 'altss_reviews_page_add_options' );
 }
-function reviews_page_add_options() {
+function altss_reviews_page_add_options() {
 	$option = 'per_page';
 	$args = array(
 			'label' => esc_html__( "Reviews per page", "altss" ),
@@ -34,8 +40,10 @@ function reviews_page_add_options() {
 	add_screen_option( $option, $args );
 }
 
-function reviews_render_list_table(){
-	$reviewsListTable = New Altsitesettings_Reviews_List_Table();
+
+
+function altss_reviews_render_list_table(){
+	$reviewsListTable = New ALTSS_Reviews_List_Table();
 	$reviewsListTable->prepare_items();
     $reviewsListTable->views();
     echo '<form id="reviews-filter" method="post">';
@@ -46,10 +54,8 @@ function reviews_render_list_table(){
 
 
 
-
-
-function reviews_page_html() {
-	global $wpdb, $hookname_reviews_page;
+function altss_reviews_page_html() {
+	global $wpdb;
 	$prefix = $wpdb->prefix;
 	$action = isset( $_GET['action'] ) ? sanitize_text_field( $_GET['action'] )  : 'start';
 	$review_id = isset( $_GET['review_id'] ) ? intval( $_GET['review_id'] )  : 0;
@@ -57,7 +63,7 @@ function reviews_page_html() {
     if( isset( $_POST['provider'] ) && !isset( $_POST['sub-search'] ) ){
         $args = [];
         foreach( $_POST['provider'] as $v ){
-            $args['act'] = $_POST['action'];
+            $args['act'] = sanitize_text_field( $_POST['action'] );
             $args['id'] = intval( $v );
             if( 'show' === $args['act'] || 'hide' === $args['act']){
                 altss_review_public__ajax_callback( $args );
@@ -85,10 +91,6 @@ function reviews_page_html() {
                 case "respond":///////////////////// RESPOND ACTION
                 case "respond2":///////////////////// RESPOND ACTION
                 $thadm_admrevs_session = get_transient( 'thadm_admrevs_session' ) ?: [] ;
-                if( isset( $_GET['mess'] ) && $_GET['mess'] === 'update' ){
-                    altss_js_post_sucsess_mess( esc_html__( "Information updated!", "altss" ),
-                    admin_url( "admin.php?page=reviews_page&review_id={$review_id}&action=respond2" ) );
-                }
 
                 if( $action === 'respond' ){
                     $back_to_list_link = $thadm_admrevs_session['back_to_list_link'] = wp_get_referer();
@@ -98,7 +100,7 @@ function reviews_page_html() {
                     $back_to_list_link = $thadm_admrevs_session['back_to_list_link'];
                 }
                 
-                $review_data = $wpdb->get_row( "SELECT * FROM {$prefix}altss_reviews WHERE review_id='{$review_id}'" );
+                $review_data = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$prefix}altss_reviews WHERE review_id='%d'", $review_id ) );
                 ?>
             <a href="<?php echo esc_url( $back_to_list_link ); ?>" class="altss-icon altss-adm-icon-allproducts"><?php esc_html_e( "Back to the list of reviews", "altss" ); ?></a>
             <h1><?php esc_html_e( "Reply to review", "altss" ); ?></h1>
@@ -159,7 +161,7 @@ function reviews_page_html() {
                 wp_enqueue_script('reviews-script', ALTSITESET_URL . '/admin/js/reviews-script.js', [], ALTSITESET__VERSION, true);
                 wp_set_script_translations( 'reviews-script', 'altss', ALTSITESET_LANG_DIR . '/js' );
                 ?>
-                <?php reviews_render_list_table();?>
+                <?php altss_reviews_render_list_table();?>
                 <?php
                 break;//////// END EDIT ACTION
             endswitch;/////////////// END REVIEWS DATA SWITCH

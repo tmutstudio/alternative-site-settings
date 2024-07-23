@@ -1,6 +1,8 @@
 <?php
-add_action( 'admin_menu', 'reorder_admin_menu' );
-function reorder_admin_menu() {
+if ( ! defined( 'ABSPATH' ) ) exit;
+
+add_action( 'admin_menu', 'altss_reorder_admin_menu' );
+function altss_reorder_admin_menu() {
     global $menu;
     $tmp_menu = [];
     $new_menu = [];
@@ -25,23 +27,23 @@ function reorder_admin_menu() {
     $menu = $new_menu;
 }
 
-add_action( 'admin_menu', 's_settings_menu_page' );
-function s_settings_menu_page() {
+add_action( 'admin_menu', 'altss_settings_menu_page' );
+function altss_settings_menu_page() {
     global $WPSS_ICON_B64;
     add_menu_page(
             esc_html__( "Site settings", "altss" ),
             'Alt Site Settings',
             'manage_options',
             'sitesetadmmenu',
-            's_settings_start_page_html',
+            'altss_settings_start_page_html',
             'data:image/svg+xml;base64, ' . $WPSS_ICON_B64,
             14
             );
 }
 
 
-add_action( 'admin_menu', 's_settings_submenu_page' );
-function s_settings_submenu_page(){
+add_action( 'admin_menu', 'altss_settings_submenu_page' );
+function altss_settings_submenu_page(){
 
         $user_admin = current_user_can( 'manage_options' ) ? true : false;
             
@@ -52,7 +54,7 @@ function s_settings_submenu_page(){
                             esc_html__( "Site settings", "altss" ),
                             'edit_private_posts',
                             'sitesetadmmenu',
-                            's_settings_start_page_html',
+                            'altss_settings_start_page_html',
                             1
                             );
     
@@ -61,8 +63,8 @@ function s_settings_submenu_page(){
                             esc_html__( "Contact forms", "altss" ),
                             esc_html__( "Contact forms", "altss" ),
                             'edit_private_posts',
-                            'cforms_settings_page',
-                            'cforms_settings_page_html',
+                            'cform_settings_page',
+                            'altss_cform_settings_page_html',
                             2
                             );
             add_submenu_page(
@@ -71,7 +73,7 @@ function s_settings_submenu_page(){
                             esc_html__( "Reviews", "altss" ),
                             'edit_private_posts',
                             'reviews_page',
-                            'reviews_page_html',
+                            'altss_reviews_page_html',
                             3
                             );
 
@@ -81,7 +83,7 @@ function s_settings_submenu_page(){
                             esc_html__( "Special Settings", "altss" ),
                             'manage_options',
                             'special_settings_page',
-                            'special_settings_page_html',
+                            'altss_special_settings_page_html',
                             4
                             );
     

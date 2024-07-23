@@ -1,5 +1,4 @@
 <?php
-//add_action( 'customize_register', 'altss_remove_site_icon_setting', 20, 1 );
 
 function altss_remove_site_icon_setting( $wp_customize ){
     $wp_customize->remove_setting( 'custom_logo' );

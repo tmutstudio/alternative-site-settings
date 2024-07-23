@@ -505,6 +505,9 @@ msgstr "Главные настройки сайта:"
 msgid "make required"
 msgstr "сделать обязательным"
 
+msgid "Map display type"
+msgstr "Тип отображения карты"
+
 msgid "manage images"
 msgstr "управлять изображениями"
 
@@ -606,6 +609,9 @@ msgstr "Только опубликованные"
 
 msgid "Optimal resolution 600x315 pixels"
 msgstr "Оптимальное разрешение 600х315 пикселей"
+
+msgid "Optimal resolution 800x600 pixels"
+msgstr "Оптимальное разрешение 800x600 пикселей"
 
 msgid "Page"
 msgstr "Страница"
@@ -766,6 +772,9 @@ msgstr "Набор полей формы"
 msgid "Settings"
 msgstr "Настройки"
 
+msgid "Shortcode from the map plugin ( e.g. Very Simple Google Maps )"
+msgstr "Shortcode из плагина карты ( например Very Simple Google Maps )"
+
 msgid "Short description"
 msgstr "Краткое описание"
 
@@ -783,6 +792,9 @@ msgstr "Страница специализированных настроек �
 
 msgid "Start page for site settings"
 msgstr "Стартовая страница настроек сайта"
+
+msgid "Static image"
+msgstr "Статическое изображение"
 
 msgid "Status"
 msgstr "Статус"
@@ -843,6 +855,9 @@ msgstr "Запрос вернул нулевой результат."
 
 msgid "This tab is intended for the site administrator!"
 msgstr "Эта вкладка предназначена для администратора сайта!"
+
+msgid "Title attribute for the link"
+msgstr "Атрибут Title для ссылки"
 
 msgid "To display additional fields in the “HEADER” section of the frontend, use the <strong>altss_header_option_field( 'opt_header_text' )</strong> or <strong>altss_header_option_field( 'alt_blogname' )</strong> function."
 msgstr "Для вывода дополнительных полей в секции «HEADER» фронтенда используйте функцию <strong>altss_header_option_field( 'opt_header_text' )</strong> или <strong>altss_header_option_field( 'alt_blogname' )</strong>."

@@ -1,4 +1,5 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
  * Collapse ADMIN-BAR (Toolbar) into left-top corner.
@@ -11,8 +12,7 @@ final class Altss_Collapse_Toolbar {
 
 	public static function hooks(){
 		remove_action( 'wp_head', '_admin_bar_bump_cb' );
-
-		add_action( 'wp_head', [ __CLASS__, 'collapse_styles' ] );
+        SELF::collapse_styles();
 	}
 
 	public static function collapse_styles(){
@@ -20,9 +20,7 @@ final class Altss_Collapse_Toolbar {
 			return;
 		}
 
-		ob_start();
-		?>
-		<style id="altss_collapse_admin_bar">
+		$styles = "
 			#wpadminbar{ background:none; float:left; width:auto; height:auto; bottom:0; min-width:0 !important; }
 			#wpadminbar > *{ float:left !important; clear:both !important; }
 			#wpadminbar .ab-top-menu li{ float:none !important; }
@@ -35,7 +33,7 @@ final class Altss_Collapse_Toolbar {
 			#wpadminbar{ overflow:hidden; width:33px; height:30px; }
 			#wpadminbar:hover{ overflow:visible; width:auto; height:auto; background:rgba(102,102,102,.7); }
 
-			#wp-admin-bar-<?php echo is_multisite() ? 'my-sites' : 'site-name' ?> .ab-item:before{ color:#797c7d; }
+			#wp-admin-bar-" . ( is_multisite() ? 'my-sites' : 'site-name' ) . " .ab-item:before{ color:#797c7d; }
 
 			#wp-admin-bar-wp-logo{ display:none; }
 
@@ -49,12 +47,12 @@ final class Altss_Collapse_Toolbar {
 
 			#wpwrap .edit-post-header{ top:0; }
 			#wpwrap .edit-post-sidebar{ top:56px; }
-		</style>
-		<?php
-		$styles = ob_get_clean();
+            ";
 
-		echo preg_replace( '/[\n\t]/', '', $styles ) ."\n";
-	}
+        $handle = 'admin-bar';
+
+        wp_add_inline_style( $handle, $styles );
+    }
 }
 
 Altss_Collapse_Toolbar::init();

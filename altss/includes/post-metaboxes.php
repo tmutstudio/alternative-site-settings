@@ -1,4 +1,5 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 add_action('add_meta_boxes', 'altss_extra_desc_metabox', 1);
 
@@ -37,18 +38,19 @@ add_action( 'save_post', 'altss_extra_desc_metabox_update', 0 );
 
 function altss_extra_desc_metabox_update( $post_id ){
 	if (
-		! wp_verify_nonce( @$_POST['meta_description_nonce'], __FILE__ )
+		! wp_verify_nonce( sanitize_text_field( wp_unslash( @$_POST['meta_description_nonce'] ) ), __FILE__ )
 		|| wp_is_post_autosave( $post_id )
 		|| wp_is_post_revision( $post_id )
 	)
 		return false;
 
-	$_POST['meta_description'] = sanitize_textarea_field ( $_POST['meta_description'] );
-	if( empty( $_POST['meta_description'] ) ){
+	$meta_description = sanitize_textarea_field ( $_POST['meta_description'] );
+	
+    if( empty( $meta_description ) ){
 			delete_post_meta( $post_id, 'meta_description' ); 
 		}
 
-	update_post_meta( $post_id, 'meta_description', $_POST['meta_description'] );
+	update_post_meta( $post_id, 'meta_description', $meta_description );
 
 	return $post_id;
 }
@@ -58,8 +60,8 @@ add_filter( 'document_title', 'altss_modify_document_title' );
 
 function altss_modify_document_title( $title ) {
 	if (is_front_page()) {
-		$s_settings_options = get_option("s_settings_options");
-		return '' != @$s_settings_options['home_title'] ? @$s_settings_options['home_title'] : $title;
+		$altss_settings_options = get_option("altss_settings_options");
+		return '' != @$altss_settings_options['home_title'] ? @$altss_settings_options['home_title'] : $title;
 	}
 	else{
 		return $title;
@@ -67,15 +69,15 @@ function altss_modify_document_title( $title ) {
 }
 
 
-add_action("wp_head", "add_wp_head_meta_tags", 1);
+add_action("wp_head", "altss_add_wp_head_meta_tags", 1);
  
-function add_wp_head_meta_tags() {
+function altss_add_wp_head_meta_tags() {
 	global $post;
-    $s_settings_options = get_option( "s_settings_options" );
+    $altss_settings_options = get_option( "altss_settings_options" );
 	$ogtitle = wp_get_document_title();
 	$ogurl = get_self_link();
 	$ogtype = 'article';
-	$ogimg = @$s_settings_options['meta_ogimage'];
+	$ogimg = @$altss_settings_options['meta_ogimage'];
     
 	if( is_singular() && !is_front_page() ) {
         if(has_post_thumbnail($post->ID)) {
@@ -89,7 +91,7 @@ function add_wp_head_meta_tags() {
         $desc_value = $ogdesc = esc_attr( wp_strip_all_tags( get_the_archive_title()  . ' | ' . term_description() ) );
     }
     else{
-        $desc_value = $ogdesc = esc_attr( @$s_settings_options['home_desc'] );
+        $desc_value = $ogdesc = esc_attr( @$altss_settings_options['home_desc'] );
 		$ogtype = 'website';
     }
 

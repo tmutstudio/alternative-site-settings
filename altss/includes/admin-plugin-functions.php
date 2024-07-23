@@ -1,4 +1,6 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 function altss_add_editior_field( $textarea_name, $content='', $rows=20, $mode='full', $body_class='' ){
     $editor_id = preg_replace( "/[\[\]]/", "_", $textarea_name );
     if( 'full' === $mode ){
@@ -237,10 +239,10 @@ function altss_cyrtolat_slug( $slug ) {
 
 
 
-function my_theme_add_editor_styles() {
+function altss_theme_add_editor_styles() {
 	add_editor_style( 'editor-styles.css' );
 }
-add_action( 'current_screen', 'my_theme_add_editor_styles' );
+add_action( 'current_screen', 'altss_theme_add_editor_styles' );
 
 
 
@@ -252,12 +254,12 @@ function altss_view_cfs_record() {
     $t_2 = $wpdb->prefix . 'altss_cform_sendings_fields';
     $verify_nonce = false;
 
-    if( wp_verify_nonce( $_POST['_wpnonce'], 'cfs_record_view') ) {
+    if( wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_wpnonce'] ) ), 'cfs_record_view') ) {
         $id = intval( $_POST['id'] );
         $p = intval( $_POST['p'] );
 
-        $cfs_row = $wpdb->get_row( "SELECT * FROM {$t_1} WHERE id='{$id}'" );
-        $cfs_fields = $wpdb->get_results( "SELECT * FROM {$t_2} WHERE sending_id='{$id}' ORDER BY position" );
+        $cfs_row = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$t_1} WHERE id='%d'", $id ) );
+        $cfs_fields = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$t_2} WHERE sending_id='%d' ORDER BY position", $id ) );
 
         $verify_nonce = true;
     }
@@ -284,7 +286,7 @@ function altss_view_cfs_record() {
                 </tr>
                 <?php 
                 foreach( $cfs_fields as $fld ) {
-                    $f_title = get_option( "s_settings_cforms_options_field_{$fld->field}" );
+                    $f_title = get_option( "altss_settings_cforms_options_field_{$fld->field}" );
                     $f_title = @$f_title['label'];
                             ?>
                 <tr>
@@ -329,7 +331,7 @@ function altss_cfs_record_remove() {
     $p = 1;
 
 
-    if( wp_verify_nonce( $_POST['_wpnonce'], 'cfs_record_remove') ) {
+    if( wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_wpnonce'] ) ), 'cfs_record_remove') ) {
         $id = intval( $_POST['id'] );
         $p = intval( $_POST['p'] );
 
@@ -342,25 +344,12 @@ function altss_cfs_record_remove() {
         set_transient( 'cfs_record_remove_error', "nonce failed", 12 );        
     }
 
-    $redirect = admin_url( "admin.php?page=cforms_settings_page" . ( 1 < $p ? "&p={$p}" : "" ) );
+    $redirect = admin_url( "admin.php?page=cform_settings_page" . ( 1 < $p ? "&p={$p}" : "" ) );
     header( "Location: $redirect", true, 302 );
 
     die();
 }
 
-
-
-function add_the_table_button( $buttons ) {
-    array_push( $buttons, 'separator', 'table' );
-    return $buttons;
-}
-add_filter( 'mce_buttons', 'add_the_table_button' );
-
-function add_the_table_plugin( $plugins ) {
-      $plugins['table'] = ALTSITESET_URL . '/admin/js/tinymce_table/plugin.min.js';
-      return $plugins;
-}
-add_filter( 'mce_external_plugins', 'add_the_table_plugin' );
 
 
 
@@ -373,41 +362,30 @@ function altss_review_public__ajax_callback( $args = NULL ){ //////// ***** FUNC
         global $wpdb;
         $t = "{$wpdb->prefix}altss_reviews";
         if( NULL == $args ){
-            if( wp_verify_nonce( $_POST['_wpnonce'], "review_public" ) ) $args = $_POST;
+            $args = [];
+            if( wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_wpnonce'] ) ), "review_public" ) ){
+                if( !isset( $_POST['act'] ) ) die( 'Error!' );
+                $args['id'] = intval( $_POST['id'] );
+                $args['act'] = sanitize_title( $_POST['act'] );
+            }
+            else die( 'Error!' );
             $ajaxmode = true;
         }
         else{
             $ajaxmode = false;
         }
         
-        if( !isset( $args['act'] ) ) die('Error!');
 
-        $id = intval( $args['id'] );
+        $id = $args['id'];
         $status_vars = [ 'hide' => 0, 'show' => 1 ];
         $status = intval( $status_vars[$args['act']] );
         
-        $sql = "UPDATE {$t} SET review_status='{$status}' WHERE review_id='{$id}'";
+        $sql = $wpdb->prepare( "UPDATE {$t} SET review_status=%d WHERE review_id=%d", $status, $id );
         $wpdb->query( $sql );
         if( $ajaxmode ) die();
 }/////////////********************* END OF FUNCTION *************************/
 
 
-/********************** ACTION FOR GET FULL REVIEW ************************
-add_action( 'wp_ajax_get-review-text', 'altss_get_review_text__ajax_callback' );
-
-function altss_get_review_text__ajax_callback(){ //////// ***** FUNCTION FOR GET FULL REVIEW TEXT *****
-        global $wpdb;
-        $t = "{$wpdb->prefix}altss_reviews";
-        $args = $_POST;
-        
-        if( !isset( $args['id'] ) ) die('Error!');
-
-        $id = intval( $args['id'] );
-        $sql = "SELECT review_text FROM {$t} WHERE review_id='{$id}'";
-        $res = $wpdb->get_var( $sql );
-        echo $res;
-        die();
-}/////////////********************* END OF FUNCTION *************************/
 
 /********************** ACTION FOR TRASH RESTORE REVIEW ************************/
 add_action( 'admin_post_review_trash_restore', 'altss_review_trash_restore' );
@@ -416,7 +394,14 @@ function altss_review_trash_restore( $args = NULL ){ //////// ***** FUNCTION FOR
         global $wpdb;
         $t = "{$wpdb->prefix}altss_reviews";
         if( NULL == $args ){
-            if( wp_verify_nonce( $_POST['_wpnonce'], "review_trash" ) ) $args = $_POST;
+            $args = [];
+            if( wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_wpnonce'] ) ), "review_trash" ) ){
+                if( !isset( $args['id'] ) ) die( 'Error!' );
+                $args['id'] = intval( $_POST['id'] );
+                $args['act'] = sanitize_title( $_POST['act'] );
+                $args['url'] = sanitize_url( $_POST['url'] );
+            }
+            else die( 'Error!' );
             $m = true;
         }
         else{
@@ -426,9 +411,8 @@ function altss_review_trash_restore( $args = NULL ){ //////// ***** FUNCTION FOR
           'trash' => 2,
           'restore' => 0
         ];
-        if( !isset( $args['id'] ) ) die( 'Error!' );
-        $id = intval( $args['id'] );
-        $data['review_status'] = $stm[$args['act']];
+        $id = $args['id'];
+        $data['review_status'] = $stm[ $args['act'] ];
 
         if( 'delete' != $args['act'] ){
             $wpdb->update( $t, $data, ['review_id' => $id] );
@@ -446,25 +430,14 @@ function altss_review_trash_restore( $args = NULL ){ //////// ***** FUNCTION FOR
         }
 }/////////////********************* END OF FUNCTION *************************/
 
-function altss_js_post_sucsess_mess( $mess, $url ){
-    ?>
-<script src="<?php echo esc_url( plugin_dir_url( __FILE__ ) . '../admin/js/post-message-window.js?v='.time() ); ?>"></script>
-<script>
-    messWindow('<?php echo esc_html( $mess ); ?>');
-    jQuery("#altss-mess-window").delay(1000).hide("slow", function(){
-                        closeMessWin();
-                        document.location = '<?php echo esc_url( $url ); ?>';
-    });
-</script> 
-<?php
-}
+
 
 function altss_get_current_url(){
     return ( is_ssl() ? 'https' : 'http' ) . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 }
 
 function altss_current_page(){
-    $page = ( isset($_GET['page'] ) ) ? esc_attr( $_GET['page'] ) : NULL;
+    $page = ( isset( $_GET['page'] ) ) ? sanitize_text_field( $_GET['page'] ) : NULL;
     return $page;
 }
 

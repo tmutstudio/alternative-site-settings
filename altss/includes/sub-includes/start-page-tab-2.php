@@ -1,5 +1,8 @@
 <?php
-                        settings_fields( 's_settings_options_txt' ); 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
+
+settings_fields( 'altss_settings_options_txt' ); 
                         ?>
                         <div class="site-settings-tab-header-div"><?php echo wp_kses(
                             __( 'Text blocks for inserting into a template via the <strong>altss_insertable_text_block( $num, $class )</strong> function:', 'altss' ),
@@ -12,7 +15,7 @@
                                 <?php for( $i = 1; $i < 6; $i++ ){?>
                                 <dt><p class="site-settings-item-title"><?php esc_html_e( "Contents of text block No. ", "altss" ) . $i; ?></p></dt>
                                 <dd>
-                                    <?php altss_add_editior_field("s_settings_options_embedded_text_{$i}", wp_unslash(get_option("s_settings_options_embedded_text_{$i}")), 3); ?>
+                                    <?php altss_add_editior_field("altss_settings_options_embedded_text_{$i}", wp_unslash(get_option("altss_settings_options_embedded_text_{$i}")), 3); ?>
                                 </dd>
                                 <?php } ?>
                             </dl>

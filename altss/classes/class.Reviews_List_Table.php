@@ -8,7 +8,7 @@ if( ! class_exists( 'WP_List_Table' ) ) {
 	require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
 }
 
-class Altsitesettings_Reviews_List_Table extends WP_List_Table {
+class ALTSS_Reviews_List_Table extends WP_List_Table {
 
     private $_wpdb;
 		
@@ -32,7 +32,7 @@ class Altsitesettings_Reviews_List_Table extends WP_List_Table {
 
                 
     function verify_nonce(){
-        if( isset( $_POST['_wpnonce'] ) ) return wp_verify_nonce( esc_attr( $_POST['_wpnonce'] ), 'bulk-' . $this->_args['plural'] );
+        if( isset( $_POST['_wpnonce'] ) ) return wp_verify_nonce( esc_attr( sanitize_text_field( wp_unslash( $_POST['_wpnonce'] ) ) ), 'bulk-' . $this->_args['plural'] );
         return false;
     }
 
@@ -53,8 +53,8 @@ class Altsitesettings_Reviews_List_Table extends WP_List_Table {
 
         if( isset( $_POST['_wpnonce'] ) && ! $this->verify_nonce() ) return;
 
-        $where_part = ( isset( $_POST['s'] ) ? " AND `review_text` LIKE '%".sanitize_text_field( $_POST['s'] )."%'" : "" ). 
-                        ( 'all' !== $view_status ? " AND review_status='{$view_status}'" : " AND review_status!='2'" );
+        $where_part = ( isset( $_POST['s'] ) ? $this->_wpdb->prepare( " AND `review_text` LIKE '%s'", '%' . sanitize_text_field( $_POST['s'] ) . '%' ) : "" ). 
+                        ( 'all' !== $view_status ? $this->_wpdb->prepare( " AND review_status='%d'", $view_status ) : " AND review_status!='2'" );
         $total_items = count( $this->_wpdb->get_results( "SELECT review_id FROM {$wp_pref}altss_reviews
                 WHERE 1". $where_part ) );
         $per_page = $this->get_items_per_page('reviews_per_page', 5);
@@ -68,7 +68,7 @@ class Altsitesettings_Reviews_List_Table extends WP_List_Table {
         $order = ( isset( $_REQUEST['order'] ) ? sanitize_text_field( $_REQUEST['order'] ) : 'DESC' );
         $from = ( isset( $_REQUEST['paged'] ) ? ( intval( $_REQUEST['paged'] ) - 1 ) * $per_page : 0 );
         
-        $sql = "SELECT review_id, review_text, review_response_text, review_author_name, review_create_date, review_rating, review_status FROM {$wp_pref}altss_reviews WHERE 1{$where_part} ORDER BY {$orderby} {$order} LIMIT {$from}, {$per_page}";
+        $sql = $this->_wpdb->prepare( "SELECT review_id, review_text, review_response_text, review_author_name, review_create_date, review_rating, review_status FROM {$wp_pref}altss_reviews WHERE 1{$where_part} ORDER BY %s %s LIMIT %d, %d", $orderby, $order, $from, $per_page );
         
         $this->items = $this->_wpdb->get_results( $sql );
     }
@@ -142,16 +142,16 @@ class Altsitesettings_Reviews_List_Table extends WP_List_Table {
             $input_id = $input_id . '-search-input';
 
             if ( ! empty( $_REQUEST['orderby'] ) ) {
-                    echo '<input type="hidden" name="orderby" value="' . esc_attr( $_REQUEST['orderby'] ) . '" />';
+                    echo '<input type="hidden" name="orderby" value="' . esc_attr( sanitize_text_field( $_REQUEST['orderby'] ) ) . '" />';
             }
             if ( ! empty( $_REQUEST['order'] ) ) {
-                    echo '<input type="hidden" name="order" value="' . esc_attr( $_REQUEST['order'] ) . '" />';
+                    echo '<input type="hidden" name="order" value="' . esc_attr( sanitize_text_field( $_REQUEST['order'] ) ) . '" />';
             }
             if ( ! empty( $_REQUEST['post_mime_type'] ) ) {
-                    echo '<input type="hidden" name="post_mime_type" value="' . esc_attr( $_REQUEST['post_mime_type'] ) . '" />';
+                    echo '<input type="hidden" name="post_mime_type" value="' . esc_attr( sanitize_text_field( $_REQUEST['post_mime_type'] ) ) . '" />';
             }
             if ( ! empty( $_REQUEST['detached'] ) ) {
-                    echo '<input type="hidden" name="detached" value="' . esc_attr( $_REQUEST['detached'] ) . '" />';
+                    echo '<input type="hidden" name="detached" value="' . esc_attr( sanitize_text_field( $_REQUEST['detached'] ) ) . '" />';
             }
             ?>
         <p class="search-box">

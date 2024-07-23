@@ -1,9 +1,11 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 add_action( 'init', 'altss_custom_type_register' );
 
 function altss_custom_type_register() {
-    $custom_recs_data = get_option( "s_settings_options_custom_recs" );
-    $custom_recs_settings = get_option( "s_settings_options_custom_recs_settings" );
+    $custom_recs_data = get_option( "altss_settings_options_custom_recs" );
+    $custom_recs_settings = get_option( "altss_settings_options_custom_recs_settings" );
     if( is_array( $custom_recs_data ) ){
         include ALTSITESET_INCLUDES_DIR.'/data-vars/custom-type-vars.php';
         $pos = 20;

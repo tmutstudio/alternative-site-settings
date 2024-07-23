@@ -37,9 +37,9 @@ jQuery(document).ready(function($) {
         selectedCheckBoxes.each(function(i, item){
             $(ulId).append(
                     '<li class="form-area-field" data-key="' + item.value + '">' + 
-                    '<input type="hidden" name="s_settings_cforms_options_fields_' + area + '[]" value="' + item.value + '"/>' + 
+                    '<input type="hidden" name="altss_settings_cforms_options_fields_' + area + '[]" value="' + item.value + '"/>' + 
                     '<div><label>' + cformFields[item.value] + '</label>' +
-                    '<input type="checkbox" id="f' + area + '_cb_' + item.value + '" name="s_settings_cforms_options_reqfields_' + area + '[' + item.value + ']" value="1" title="' + wp.i18n.__('make required', 'altss') + '"' + item.attributes.data.value + ' /></div></li>'
+                    '<input type="checkbox" id="f' + area + '_cb_' + item.value + '" name="altss_settings_cforms_options_reqfields_' + area + '[' + item.value + ']" value="1" title="' + wp.i18n.__('make required', 'altss') + '"' + item.attributes.data.value + ' /></div></li>'
             );
             console.dir(item);
             console.log(item.attributes.data.value);

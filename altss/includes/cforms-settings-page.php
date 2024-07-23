@@ -1,28 +1,29 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit;
 
-add_action( 'admin_init', 's_settings_template_options_init' );
-function s_settings_template_options_init() {
+add_action( 'admin_init', 'altss_settings_template_options_init' );
+function altss_settings_template_options_init() {
     include_once ALTSITESET_INCLUDES_DIR . '/data-vars/cform-field-keys.php';
     
-    register_setting( 's_settings_cforms_options_1', 's_settings_cforms_container_id' );
-    register_setting( 's_settings_cforms_options_1', 's_settings_cforms_privacy_policy_page' );
+    register_setting( 'altss_settings_cforms_options_1', 'altss_settings_cforms_container_id' );
+    register_setting( 'altss_settings_cforms_options_1', 'altss_settings_cforms_privacy_policy_page' );
 
     for( $f = 1; $f < ( ALTSITESET_CFORMS_AMOUNT + 1 ); $f++ ){
         
-        register_setting( 's_settings_cforms_options_1', 's_settings_cforms_options_title_' . $f );
-        register_setting( 's_settings_cforms_options_1', 's_settings_cforms_options_titleshow_' . $f );
-        register_setting( 's_settings_cforms_options_1', 's_settings_cforms_options_desc_' . $f );
-        register_setting( 's_settings_cforms_options_1', 's_settings_cforms_options_descshow_' . $f );
-        register_setting( 's_settings_cforms_options_1', 's_settings_cforms_options_fields_' . $f );
-        register_setting( 's_settings_cforms_options_1', 's_settings_cforms_options_reqfields_' . $f );
-        register_setting( 's_settings_cforms_options_1', 's_settings_cforms_options_firstemail_' . $f );
-        register_setting( 's_settings_cforms_options_1', 's_settings_cforms_options_secondemail_' . $f );
-        register_setting( 's_settings_cforms_options_1', 's_settings_cforms_options_submitbtntext_' . $f );
+        register_setting( 'altss_settings_cforms_options_1', 'altss_settings_cforms_options_title_' . $f );
+        register_setting( 'altss_settings_cforms_options_1', 'altss_settings_cforms_options_titleshow_' . $f );
+        register_setting( 'altss_settings_cforms_options_1', 'altss_settings_cforms_options_desc_' . $f );
+        register_setting( 'altss_settings_cforms_options_1', 'altss_settings_cforms_options_descshow_' . $f );
+        register_setting( 'altss_settings_cforms_options_1', 'altss_settings_cforms_options_fields_' . $f );
+        register_setting( 'altss_settings_cforms_options_1', 'altss_settings_cforms_options_reqfields_' . $f );
+        register_setting( 'altss_settings_cforms_options_1', 'altss_settings_cforms_options_firstemail_' . $f );
+        register_setting( 'altss_settings_cforms_options_1', 'altss_settings_cforms_options_secondemail_' . $f );
+        register_setting( 'altss_settings_cforms_options_1', 'altss_settings_cforms_options_submitbtntext_' . $f );
         
     }
 
     foreach( $FORM_FIELD_KEYS as $val ){
-        register_setting( 's_settings_cforms_options_2', 's_settings_cforms_options_field_' . $val );
+        register_setting( 'altss_settings_cforms_options_2', 'altss_settings_cforms_options_field_' . $val );
     }
 
     
@@ -33,14 +34,14 @@ function s_settings_template_options_init() {
 
 
 
-function cforms_settings_page_html(){
+function altss_cform_settings_page_html(){
     global $wpdb, $FORM_FIELDS;
 
     include_once ALTSITESET_INCLUDES_DIR . '/data-vars/cform-fields.php';
     wp_enqueue_script( 'jquery-ui-sortable' );
-    wp_enqueue_script( 'fields-sortable-script', ALTSITESET_URL . '/admin/js/fields-sortable-script.js', [], ALTSITESET__VERSION, true );
-    wp_enqueue_script( 'cforms-script', ALTSITESET_URL . '/admin/js/cforms.js', [], ALTSITESET__VERSION, true );
-    wp_set_script_translations( 'cforms-script', 'altss', ALTSITESET_LANG_DIR . '/js' );
+    wp_enqueue_script( 'altss-fields-sortable-script', ALTSITESET_URL . '/admin/js/fields-sortable-script.js', [], ALTSITESET__VERSION, true );
+    wp_enqueue_script( 'altss-cforms-script', ALTSITESET_URL . '/admin/js/cforms.js', [], ALTSITESET__VERSION, true );
+    wp_set_script_translations( 'altss-cforms-script', 'altss', ALTSITESET_LANG_DIR . '/js' );
         
     $tab = isset( $_GET['tab'] ) ? intval( $_GET['tab'] )  : 0;
 

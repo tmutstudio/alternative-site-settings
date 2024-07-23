@@ -1,5 +1,7 @@
 <?php
-                        settings_fields( 's_settings_cforms_options_' . $tab );     
+if ( ! defined( 'ABSPATH' ) ) exit;
+
+settings_fields( 'altss_settings_cforms_options_' . $tab );     
 
                         ?>
                     <div class="cfitms-top-btn-over">
@@ -11,15 +13,15 @@
                     <?php
                     
     for ($i = 1; $i < ( ALTSITESET_CFORMS_AMOUNT + 1 ); $i++) {
-        $formTitle = "s_settings_cforms_options_title_{$i}";
-        $formTitleShow = "s_settings_cforms_options_titleshow_{$i}";
-        $formDesc = "s_settings_cforms_options_desc_{$i}";
-        $formDescShow = "s_settings_cforms_options_descshow_{$i}";
-        $formFields = "s_settings_cforms_options_fields_{$i}";
-        $formReqFields = "s_settings_cforms_options_reqfields_{$i}";
-        $formFirstEmail = "s_settings_cforms_options_firstemail_{$i}";
-        $formSecondEmail = "s_settings_cforms_options_secondemail_{$i}";
-        $formSubmitBtnText = "s_settings_cforms_options_submitbtntext_{$i}";
+        $formTitle = "altss_settings_cforms_options_title_{$i}";
+        $formTitleShow = "altss_settings_cforms_options_titleshow_{$i}";
+        $formDesc = "altss_settings_cforms_options_desc_{$i}";
+        $formDescShow = "altss_settings_cforms_options_descshow_{$i}";
+        $formFields = "altss_settings_cforms_options_fields_{$i}";
+        $formReqFields = "altss_settings_cforms_options_reqfields_{$i}";
+        $formFirstEmail = "altss_settings_cforms_options_firstemail_{$i}";
+        $formSecondEmail = "altss_settings_cforms_options_secondemail_{$i}";
+        $formSubmitBtnText = "altss_settings_cforms_options_submitbtntext_{$i}";
     
         $$formTitle = get_option($formTitle);
         $$formTitleShow = get_option($formTitleShow);
@@ -53,11 +55,11 @@
                                        foreach ($$formFields as $key) {
                                            ?>
                                         <li class="form-area-field" data-key="<?php echo esc_attr( $key );?>">
-                                            <input type="hidden" name="s_settings_cforms_options_fields_<?php echo esc_attr( $i );?>[]" value="<?php echo esc_attr( $key );?>"/>
+                                            <input type="hidden" name="altss_settings_cforms_options_fields_<?php echo esc_attr( $i );?>[]" value="<?php echo esc_attr( $key );?>"/>
                                             <div> 
                                                 <label><?php echo esc_html( $FORM_FIELDS[$key]['label'] );?></label>
                                                 <input type="checkbox" id="f<?php echo esc_attr( $i );?>_cb_<?php echo esc_attr( $key );?>"
-                                                name="s_settings_cforms_options_reqfields_<?php echo esc_attr( $i );?>[<?php echo esc_attr( $key );?>]" value="1" title="<?php esc_attr_e( "make required", "altss" );?>"
+                                                name="altss_settings_cforms_options_reqfields_<?php echo esc_attr( $i );?>[<?php echo esc_attr( $key );?>]" value="1" title="<?php esc_attr_e( "make required", "altss" );?>"
                                                 <?php echo(isset($$formReqFields[$key]) ? " checked" : ""); ?> />
                                             </div>
                                         </li>
@@ -90,16 +92,6 @@
                                 - <?php esc_html_e( "display form description", "altss" );?>
                                 </label>
                             </div>
-    <script>
-        
-    <?php
-    echo '  var cformFields = {';
-            foreach ($FORM_FIELDS as $key => $val) {
-                echo "      " . esc_js( $key ) . ": '" . esc_js( $val['label'] ) . "',";
-            }
-            echo '  }';
-            ?>   
-    </script>
             <?php
                             submit_button();
             ?>   
@@ -119,7 +111,7 @@
                     <div class="site-settings-cform-set-item-title"><?php esc_html_e( "ID of the form's popup container", "altss" );?></div>
                     <div class="site-settings-cform-setfield">
                         <label><?php esc_html_e( "default", "altss" );?>: <strong>popup-container-form-wrapper</strong></label>
-                        <input type="text" value="<?php echo esc_attr( get_option( 's_settings_cforms_container_id' ) );?>" name="s_settings_cforms_container_id" />
+                        <input type="text" value="<?php echo esc_attr( get_option( 'altss_settings_cforms_container_id' ) );?>" name="altss_settings_cforms_container_id" />
                     </div>
                 </div>
                 <div class="site-settings-cform-set-wrapp">
@@ -132,11 +124,11 @@
 		esc_html__( "Page: %s", "altss"  ),
 		wp_dropdown_pages(
 			array(
-				'name'              => 's_settings_cforms_privacy_policy_page',
+				'name'              => 'altss_settings_cforms_privacy_policy_page',
 				'echo'              => 0,
 				'show_option_none'  => __( '&mdash; Select &mdash;' ),
 				'option_none_value' => '0',
-				'selected'          => get_option( 's_settings_cforms_privacy_policy_page' ),
+				'selected'          => get_option( 'altss_settings_cforms_privacy_policy_page' ),
 			)
 		)
 	);
@@ -144,6 +136,11 @@
 </label>
                     </div>
                 </div>
-                <?php
-                            submit_button();
-            ?>   
+<?php
+            submit_button();
+            $cformFields_jsvar = '  var cformFields = {';
+                foreach ($FORM_FIELDS as $key => $val) {
+                    $cformFields_jsvar .= "      " . esc_js( $key ) . ": '" . esc_js( $val['label'] ) . "',";
+                }
+            $cformFields_jsvar .= '  }';
+            wp_add_inline_script( 'altss-cforms-script', $cformFields_jsvar, 'before' );

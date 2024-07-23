@@ -1,30 +1,31 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit;
 
-add_action( 'admin_init', 's_settings_options_init' );
-function s_settings_options_init() {
+add_action( 'admin_init', 'altss_settings_options_init' );
+function altss_settings_options_init() {
     
-    register_setting( 's_settings_options', 'blogname' );
-    register_setting( 's_settings_options', 'blogdescription' );
-    register_setting( 's_settings_options', 's_settings_options' );
-    register_setting( 's_settings_options', 'copyright_info' );
+    register_setting( 'altss_settings_options', 'blogname' );
+    register_setting( 'altss_settings_options', 'blogdescription' );
+    register_setting( 'altss_settings_options', 'altss_settings_options' );
+    register_setting( 'altss_settings_options', 'copyright_info' );
 
-    register_setting( 's_settings_options_1', 's_settings_options_custom_recs' );
-    register_setting( 's_settings_options_1', 's_settings_options_custom_recs_settings' );
+    register_setting( 'altss_settings_options_1', 'altss_settings_options_custom_recs' );
+    register_setting( 'altss_settings_options_1', 'altss_settings_options_custom_recs_settings' );
 
     for( $i = 1; $i < 6; $i++ ) {
-        register_setting( 's_settings_options_txt', 's_settings_options_embedded_text_' . $i );
+        register_setting( 'altss_settings_options_txt', 'altss_settings_options_embedded_text_' . $i );
     }
 }
 
 
-function s_settings_start_page_html(){
+function altss_settings_start_page_html(){
 	$action = isset( $_GET['action'] ) ? sanitize_text_field( $_GET['action'] )  : 'start';
 	$tab = isset( $_GET['tab'] ) ? intval( $_GET['tab'] )  : 0;
 
 
     $form_title_ar = [];
     for ($i = 1; $i < ALTSITESET_CFORMS_AMOUNT; $i++) {
-        $form_title_ar[$i] = get_option( "s_settings_cforms_options_title_{$i}" );
+        $form_title_ar[$i] = get_option( "altss_settings_cforms_options_title_{$i}" );
     }
     
     wp_enqueue_style( 'custom_controls_css', ALTSITESET_URL . '/admin/css/custom_controls.css', [], ALTSITESET__VERSION);

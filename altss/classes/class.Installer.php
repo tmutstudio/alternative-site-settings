@@ -4,7 +4,7 @@
  * 
  * */
 
-class Altsitesettings_Installer {
+class ALTSS_Installer {
 	private $wpdb;
     private $charset;
     private $collate;

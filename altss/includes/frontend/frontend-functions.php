@@ -1,16 +1,18 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 function altss_cform_generator( $id, $button_selector = '#popup-open-button', $sc_container_selector = null ){
     include ALTSITESET_INCLUDES_DIR.'/data-vars/cform-fields.php';
     $id = intval( $id );
-    $formTitle = "s_settings_cforms_options_title_{$id}";
-    $formTitleShow = "s_settings_cforms_options_titleshow_{$id}";
-    $formDesc = "s_settings_cforms_options_desc_{$id}";
-    $formDescShow = "s_settings_cforms_options_descshow_{$id}";
-    $formFields = "s_settings_cforms_options_fields_{$id}";
-    $formReqFields = "s_settings_cforms_options_reqfields_{$id}";
-    $formFirstEmail = "s_settings_cforms_options_firstemail_{$id}";
-    $formSecondEmail = "s_settings_cforms_options_secondemail_{$id}";
-    $formSubmitBtnText = "s_settings_cforms_options_submitbtntext_{$id}";
+    $formTitle = "altss_settings_cforms_options_title_{$id}";
+    $formTitleShow = "altss_settings_cforms_options_titleshow_{$id}";
+    $formDesc = "altss_settings_cforms_options_desc_{$id}";
+    $formDescShow = "altss_settings_cforms_options_descshow_{$id}";
+    $formFields = "altss_settings_cforms_options_fields_{$id}";
+    $formReqFields = "altss_settings_cforms_options_reqfields_{$id}";
+    $formFirstEmail = "altss_settings_cforms_options_firstemail_{$id}";
+    $formSecondEmail = "altss_settings_cforms_options_secondemail_{$id}";
+    $formSubmitBtnText = "altss_settings_cforms_options_submitbtntext_{$id}";
 
     $$formTitle = get_option($formTitle);
     $$formTitleShow = get_option($formTitleShow);
@@ -29,8 +31,8 @@ function altss_cform_generator( $id, $button_selector = '#popup-open-button', $s
         ),
      ); 
     /* translators: %s: search url */
-    $form_accept_text = sprintf( wp_kses( __( "agreement to <a href=\"%s\" target=\"_blank\">privacy policy</a>", "altss" ), $allowed_link_html ), esc_url( get_page_link( get_option( 's_settings_cforms_privacy_policy_page' ) ) ) );
-    $popup_container_form_wrapper = get_option( 's_settings_cforms_container_id' );
+    $form_accept_text = sprintf( wp_kses( __( "agreement to <a href=\"%s\" target=\"_blank\">privacy policy</a>", "altss" ), $allowed_link_html ), esc_url( get_page_link( get_option( 'altss_settings_cforms_privacy_policy_page' ) ) ) );
+    $popup_container_form_wrapper = get_option( 'altss_settings_cforms_container_id' );
     $container_selector = $popup_container_form_wrapper ? '#' . $popup_container_form_wrapper : '#popup-container-form-wrapper';
 
     $js_content = "
@@ -44,7 +46,7 @@ function altss_cform_generator( $id, $button_selector = '#popup-open-button', $s
     if( is_array( $$formFields ) ){
         foreach ( $$formFields as $val ) {
             $fld_ds = $FORM_FIELDS[$val];
-            $fieldsSettings = get_option("s_settings_cforms_options_field_{$val}");
+            $fieldsSettings = get_option("altss_settings_cforms_options_field_{$val}");
             if( 'textarea' != $fld_ds['type'] ){
                 $itype = "type=\"{$fld_ds['type']}\"";
                 $js_fields_list[] = "cfLt + 'p' + cfGt + cfLt + cfInp + '{$itype}' + ' name=\"cfdata[{$val}]\" placeholder=\"{$fld_ds['placeholder']}\"' + cfGt + cfLt + '/p' + cfGt +\n";
@@ -195,20 +197,11 @@ if( is_dir( get_theme_root() . "/" . get_stylesheet() . "/assets" ) ){
             );
             wp_set_script_translations( 'reviews-form-script', 'altss', ALTSITESET_LANG_DIR . '/js' );
         }
-        if( is_file( $js_theme_dir . "owl-carousel-min.js" ) ){
-            wp_enqueue_script(
-                'owl-carousel-script',
-                $js_theme_dir_uri . 'owl-carousel-min.js',
-                array( 'jquery' ),
-                $__Version,
-                true
-            );
-        }
 
     } );
 
     add_action( 'wp_footer', function() {
-        $popup_container_form_wrapper = get_option( 's_settings_cforms_container_id' );
+        $popup_container_form_wrapper = get_option( 'altss_settings_cforms_container_id' );
         ?>
 <div class="popup-show-bg" id="popup_show_bg">
     <div class="popup-container">
@@ -255,7 +248,7 @@ function altss_cfajax_data(){
 
 function altss_insertable_text_block( $num = 1, $class = '' ){
     $num = intval( $num );
-    $txt = wp_unslash( get_option( "s_settings_options_embedded_text_{$num}" ) );
+    $txt = wp_unslash( get_option( "altss_settings_options_embedded_text_{$num}" ) );
     ?>
     <div class="<?php echo esc_attr( $class ); ?>">
         <?php echo wp_kses( $txt, 'post' ); ?>
@@ -265,39 +258,10 @@ function altss_insertable_text_block( $num = 1, $class = '' ){
 
 
 
-## Yandex Metrika code in the head hook 
-add_action( 'wp_head','yametrika_javascript' );
-function yametrika_javascript() {
-    global $settings_options;
-    if( isset( $settings_options['counters_data']['yametrika'] ) ){
-        if( 0 != $settings_options['counters_data']['yametrika'] && "" != $settings_options['counters_data']['yametrika']){
-            ?>
 
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript" >
-(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-m[i].l=1*new Date();
-for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+add_shortcode( 'reviews_page', 'altss_reviews_page_shortcode' );
 
-ym(<?php echo esc_attr( $settings_options['counters_data']['yametrika'] ); ?>, "init", {
-    clickmap:true,
-    trackLinks:true,
-    accurateTrackBounce:true
-});
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/<?php echo esc_url( $settings_options['counters_data']['yametrika'] ); ?>" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
-
-        <?php }
-    }
-}
-
-
-add_shortcode( 'reviews_page', 'reviews_page_shortcode' );
-
-function reviews_page_shortcode( $atts ){
+function altss_reviews_page_shortcode( $atts ){
     global $wpdb;
     $page = (int) get_query_var( 'paged' );
     $p = 0 != $page ? $page : 1;
@@ -344,7 +308,7 @@ function reviews_page_shortcode( $atts ){
         $return .=  $pagination_links;
         $limit = (int) $reviews_per_page;
         $p = ( 1 != $p ) ? ( ( $p - 1 ) * ( $limit ) ) : 0;
-        $reviews = $wpdb->get_results( $wpdb->prepare("SELECT * FROM {$wpdb->prefix}altss_reviews WHERE review_status='1' ORDER BY review_create_date DESC LIMIT %d, %d", $p, $limit ) );
+        $reviews = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}altss_reviews WHERE review_status='1' ORDER BY review_create_date DESC LIMIT %d, %d", $p, $limit ) );
         $timezone = wp_timezone_string();
         foreach($reviews as $v) {
             $stars = '<span class="mh-review-stars-over">';
@@ -412,8 +376,8 @@ function reviews_page_shortcode( $atts ){
     return $return;
 }
 
-add_filter('redirect_canonical', 'reviews_page_disable_redirect_canonical');
-function reviews_page_disable_redirect_canonical( $redirect_url ){
+add_filter('redirect_canonical', 'altss_reviews_page_disable_redirect_canonical');
+function altss_reviews_page_disable_redirect_canonical( $redirect_url ){
 	if( is_paged() ) {
         $redirect_url = false;
     }
@@ -490,14 +454,35 @@ function altss_rewiew_rating_stars( $n=0, $e = true ){
 
 
 function altss_header_option_field( $slug ){
-    $settings_options = get_option( "s_settings_options" );
-    if( isset( $settings_options[$slug] ) ){
-        if( ! empty( $settings_options[$slug] ) ){
-            echo esc_html( $settings_options[$slug] );
+    $altss_settings_options = get_option( "altss_settings_options" );
+    if( isset( $altss_settings_options[$slug] ) ){
+        if( ! empty( $altss_settings_options[$slug] ) ){
+            echo esc_html( $altss_settings_options[$slug] );
         }
     }
 }
 
-
+function altss_the_contact_section_map(){
+    $altss_settings_options = get_option( "altss_settings_options" );
+    if( isset( $altss_settings_options['map_display_type'] ) ){
+        if( 'shortcode' === $altss_settings_options['map_display_type'] ){
+            echo apply_shortcodes( wp_kses( $altss_settings_options['map_shortcode'], 'post' ) );
+        }
+        elseif( 'static_image' === $altss_settings_options['map_display_type'] ){
+            if( '' != $altss_settings_options['map_static_image_link'] ){
+            ?>
+        <a href="<?php echo esc_url( $altss_settings_options['map_static_image_link'] ); ?>" target="_blank" title="<?php echo esc_attr( $altss_settings_options['map_static_image_link_title'] ); ?>">
+            <img src="<?php echo esc_url( $altss_settings_options['map_static_image'] ); ?>" alt="<?php echo esc_attr( $altss_settings_options['contacts']['contacts_location'] ); ?>" />
+        </a>
+            <?php
+            }
+            else{
+            ?>
+            <img src="<?php echo esc_url( $altss_settings_options['map_static_image'] ); ?>" alt="<?php echo esc_attr( $altss_settings_options['contacts']['contacts_location'] ); ?>" title="<?php echo esc_attr( $altss_settings_options['contacts']['contacts_location'] ); ?>" />
+            <?php
+            }
+        }
+    }
+}
 
 

@@ -1,12 +1,14 @@
 
 
 jQuery(document).ready(function($) {
-    $( 'input[name="s_settings_options[geo_map][platform]"]' ).click(function(){
-        if( 'googlemaps' === $(this).val() ){
-            $( '.placemark-name' ).hide();
+    $( 'input[name="altss_settings_options[map_display_type]"]' ).click(function(){
+        if( 'shortcode' === $(this).val() ){
+            $( '.map-shortcode-field' ).show();
+            $( '.map-static-image' ).hide();
         }
         else {
-            $( '.placemark-name' ).show();
+            $( '.map-shortcode-field' ).hide();
+            $( '.map-static-image' ).show();
         }
     });
 });

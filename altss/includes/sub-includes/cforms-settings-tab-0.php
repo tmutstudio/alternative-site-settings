@@ -1,22 +1,24 @@
 <?php
-            $t_1 = $wpdb->prefix . 'altss_cform_sendings';
-	        $t_2 = $wpdb->prefix . 'altss_cform_sendings_fields';
+if ( ! defined( 'ABSPATH' ) ) exit;
 
-            $page = isset( $_GET['p'] ) ? intval( $_GET['p'] ) : 1;
+$t_1 = $wpdb->prefix . 'altss_cform_sendings';
+$t_2 = $wpdb->prefix . 'altss_cform_sendings_fields';
 
-            $to = 10;
-            $from = ( 1 < $page ) ? ( $to * ( $page -1 ) ) : 0;
+$page = isset( $_GET['p'] ) ? intval( $_GET['p'] ) : 1;
 
-            $fs_count = count( $wpdb->get_results( "SELECT id FROM {$t_1} " ) );
+$to = 10;
+$from = ( 1 < $page ) ? ( $to * ( $page -1 ) ) : 0;
 
-            $all_p = ceil( $fs_count / $to );
-	
-            $cfs_res = $wpdb->get_results( "SELECT * FROM {$t_1} ORDER BY create_time DESC LIMIT {$from}, {$to}" );
-            $cfs_res_count = count( $cfs_res );
-            $pdata = 1 < $cfs_res_count ? $page : $page - 1;
+$fs_count = count( $wpdb->get_results( "SELECT id FROM {$t_1} " ) );
 
-            $record_removed_id = get_transient( 'cfs_record_removed_id' );
-            $record_remove_error = get_transient( 'cfs_record_remove_error' );
+$all_p = ceil( $fs_count / $to );
+
+$cfs_res = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$t_1} ORDER BY create_time DESC LIMIT %d, %d", $from, $to ) );
+$cfs_res_count = count( $cfs_res );
+$pdata = 1 < $cfs_res_count ? $page : $page - 1;
+
+$record_removed_id = get_transient( 'cfs_record_removed_id' );
+$record_remove_error = get_transient( 'cfs_record_remove_error' );
             ?>
             <?php if( false !== $record_removed_id ){?>
                 <div class="notice notice-warning is-dismissible" style="margin: 50px 0;">
@@ -50,7 +52,7 @@
                 </tr>
                 <?php
             foreach( $cfs_res as $val ) {
-                $fields_res = $wpdb->get_results( "SELECT * FROM {$t_2} WHERE sending_id='{$val->id}'" );
+                $fields_res = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$t_2} WHERE sending_id='%d'", $val->id ) );
                 $c_name = '--';
                 $c_email = '--';
                 $c_phone = '--';

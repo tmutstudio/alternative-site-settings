@@ -1,6 +1,6 @@
 <?php
 
-function special_settings_page_html(){
+function altss_special_settings_page_html(){
     ?>
 <div class="site-settings-page-wrapper">
     <h2 class="site-settings-admin-page-head"><?php esc_html_e( "Specialized settings and tools page", "altss" ); ?></h2> 
@@ -12,7 +12,7 @@ function special_settings_page_html(){
         <dd>
 <?php 
     if( isset( $_POST['revisions_clear'] )){
-        if( wp_verify_nonce( $_POST['nonce'], 'rrr55rds') && "kfujr674urf7" === $_POST['revisions_clear'] && altss_post_revisions_clear() ){
+        if( wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'rrr55rds' ) && "kfujr674urf7" === $_POST['revisions_clear'] && altss_post_revisions_clear() ){
             echo "<p style='color: green;'>" . esc_html__( "Post table revisions have been cleared!", "altss" ) . "</p>";
         }
         else{

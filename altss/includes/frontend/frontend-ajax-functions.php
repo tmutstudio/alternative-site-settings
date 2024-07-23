@@ -1,4 +1,5 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 add_action( 'wp_ajax_cform_action', 'altss_cfajax_action_callback' );
 add_action( 'wp_ajax_nopriv_cform_action', 'altss_cfajax_action_callback' );
@@ -11,7 +12,7 @@ function altss_cfajax_action_callback() {
 
 	$err_message = array();
 
-	if ( ! wp_verify_nonce( @$_POST['nonce'], 'cform-nonce' ) ) {
+	if ( ! wp_verify_nonce( sanitize_text_field( wp_unslash( @$_POST['nonce'] ) ), 'cform-nonce' ) ) {
 		wp_die( 'n Error' );
 	}
 
@@ -19,15 +20,15 @@ function altss_cfajax_action_callback() {
 	
 	$fid = intval( $_POST['cform'] );
 
-	$fields = get_option( "s_settings_cforms_options_fields_{$fid}" );
-	$req_fields = get_option( "s_settings_cforms_options_reqfields_{$fid}" );
+	$fields = get_option( "altss_settings_cforms_options_fields_{$fid}" );
+	$req_fields = get_option( "altss_settings_cforms_options_reqfields_{$fid}" );
     $allowed_strong_html = array(
         'strong' => array()
      );
 
 	foreach( $cfdata as $key => $val ){
 		$req = isset( $req_fields[ $key ] ) ? true : false;
-		$fieldSettings = get_option( "s_settings_cforms_options_field_{$key}" );
+		$fieldSettings = get_option( "altss_settings_cforms_options_field_{$key}" );
 		if ( empty( $val ) && $req && 'accept' !== $key ) {
             /* translators: %s: search label */
 			$err_message[$key] = sprintf( wp_kses( __( "The <strong>%s</strong> field is not filled in.", "altss" ), $allowed_strong_html ), $fieldSettings['label'] );
@@ -52,7 +53,7 @@ function altss_cfajax_action_callback() {
 				$err_message[$key] = esc_html__( "There are too many characters entered in the message.", "altss" );
 			}
 			else{
-				$cfdata[$key] = sanitize_text_field( $val );
+				$cfdata[$key] = 'textarea' === $key ? sanitize_textarea_field( $val ) : sanitize_text_field( $val );
 			}
 		}
 	
@@ -70,8 +71,8 @@ function altss_cfajax_action_callback() {
 		$user_ip = sanitize_text_field( $_SERVER['REMOTE_ADDR'] );
 		$user_agent = sanitize_text_field( $_SERVER['HTTP_USER_AGENT'] );
 		$time = time() + $timeOffset;
-		$cf_title = get_option( "s_settings_cforms_options_title_{$fid}" );
-		$s_settings_options = get_option( "s_settings_options" );
+		$cf_title = get_option( "altss_settings_cforms_options_title_{$fid}" );
+		$altss_settings_options = get_option( "altss_settings_options" );
 
 		$fields_value_html = "<table>\n";
 
@@ -97,7 +98,7 @@ function altss_cfajax_action_callback() {
 				'position' => $pos,
 				] );
 
-			$f_title = get_option( "s_settings_cforms_options_field_{$key}" );
+			$f_title = get_option( "altss_settings_cforms_options_field_{$key}" );
 			$f_title = @$f_title['label'];
 			$fields_value_html .= "<tr><td style='width: 50%'>{$f_title}:</td><td>{$val}</td></tr>\n";
 			$pos++;
@@ -105,7 +106,7 @@ function altss_cfajax_action_callback() {
 
 		$fields_value_html .= "</table>";
 
-		$res = $wpdb->get_row( "SELECT * FROM {$t1} WHERE id={$insert_id}" );
+		$res = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$t1} WHERE id=%d", $insert_id ) );
 
         $success = false;
 
@@ -128,8 +129,8 @@ function altss_cfajax_action_callback() {
 				'content-type: text/html',
 			);
 			$multiple_to_recipients = array(
-				get_option( "s_settings_cforms_options_firstemail_{$res->form_id}" ),
-				get_option( "s_settings_cforms_options_secondemail_{$res->form_id}" ),
+				get_option( "altss_settings_cforms_options_firstemail_{$res->form_id}" ),
+				get_option( "altss_settings_cforms_options_secondemail_{$res->form_id}" ),
 				get_option( 'admin_email' )
 			);
             

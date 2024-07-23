@@ -1,4 +1,6 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 /********************** ACTIONS FOR REVIEWS FORM************************/
 
 add_action('admin_post_nopriv_altss_reviews', 'altss_process_reviews_form');
