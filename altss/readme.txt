@@ -7,6 +7,8 @@ Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
+Plugin for managing site settings, including feedback forms, photo gallery, reviews and contacts.
+
 == Description ==
 
 The Alternative Site Settings plugin was originally intended as a starting set of functions for the further development of an individual project. As a result, it was optimized and can be used for small standard projects,
