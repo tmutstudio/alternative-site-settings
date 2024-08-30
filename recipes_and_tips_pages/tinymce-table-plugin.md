@@ -6,7 +6,8 @@
 <br>
 
 -------------
-<br>
+[Back to Start Recipes page](recipes_and_tips.md)
+<br><br>
 First, let's create a directory for the TinyMCE plugins, like this:<br>
 <b>admin/js/tinymce-plugins/</b>  
 <br><br>
