@@ -8,8 +8,8 @@
 -------------
 <br>
 First, let's create a directory for the TinyMCE plugins, like this:<br>
-**admin/js/tinymce-plugins/**
-
+__admin/js/tinymce-plugins/__
+<br><br>
 Then we add the folder directly with the plugin itself (in our case, this is a table):<br>
 **admin/js/tinymce-plugins/table/plugin.min.js**
 
