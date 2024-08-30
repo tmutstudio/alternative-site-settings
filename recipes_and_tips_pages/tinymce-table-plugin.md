@@ -3,14 +3,14 @@
 # How to connect table plugin to classic TinyMCE editor
 
 
-
+<br>
 
 -------------
+<br>
+First, let's create a directory for the TinyMCE plugins, like this:<br>
+**admin/js/tinymce-plugins/**
 
-First, let's create a directory for the TinyMCE plugins, like this:
-admin/js/tinymce-plugins/
-
-Then we add the folder directly with the plugin itself (in our case, this is a table):
-admin/js/tinymce-plugins/table/plugin.min.js
+Then we add the folder directly with the plugin itself (in our case, this is a table):<br>
+**admin/js/tinymce-plugins/table/plugin.min.js**
 
 
