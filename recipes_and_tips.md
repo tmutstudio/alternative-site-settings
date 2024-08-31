@@ -6,7 +6,7 @@
 
 <br><br><br><br><br><br><br><br>
 ----------------
-<br><br><br>
-## Table of contents
+<br>
+## Table of contents:
 
 [How to connect table plugin to classic TinyMCE editor](https://github.com/tmutstudio/alternative-site-settings/blob/master/recipes_and_tips_pages/tinymce-table-plugin.md)
