@@ -25,7 +25,7 @@ function add_the_table_button( $buttons ) {
 add_filter( 'mce_buttons', 'add_the_table_button' );
 
 function add_the_table_plugin( $plugins ) {
-      $plugins['table'] = ALTSITESET_URL . '/admin/js/tinymce_table/plugin.min.js';
+      $plugins['table'] = ALTSITESET_URL . '/admin/js/tinymce-plugins/table/plugin.min.js';
       return $plugins;
 }
 add_filter( 'mce_external_plugins', 'add_the_table_plugin' );
