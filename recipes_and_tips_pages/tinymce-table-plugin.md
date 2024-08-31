@@ -14,6 +14,8 @@ First, let's create a directory for the TinyMCE plugins, like this:<br>
 Then we add the folder directly with the plugin itself (in our case, this is a table):<br>
 <b>`admin/js/tinymce-plugins/table/plugin.min.js`</b>
 
+Now it's time to add functions and filters to connect the plugin and add the button itself. I prefer to do this in the `includes/admin-plugin-functions.php` file, but you can do it in any other place convenient for you.
+And here is the code itself:
 
 ```
 function add_the_table_button( $buttons ) {
