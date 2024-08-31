@@ -33,4 +33,5 @@ add_filter( 'mce_external_plugins', 'add_the_table_plugin' );
 <br><br>
 
 In this way you can connect any missing plugin. Well, and the plugin files themselves you will find on the website TinyMCE.
+
 [Plugins for TinyMCE](https://www.tiny.cloud/docs/tinymce/latest/plugins/)
