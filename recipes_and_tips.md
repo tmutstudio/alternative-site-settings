@@ -4,9 +4,8 @@
 
 ### The structure of the recipe collection is built on the principle of an index file (this page) and separate page files for each recipe.
 
-<br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br>
 ----------------
-<br>
 
 ## Table of contents:
 
