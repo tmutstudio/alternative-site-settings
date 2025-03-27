@@ -75,6 +75,16 @@ $altss_settings_options = get_option( "altss_settings_options" );
                                         <label class="onoffswitch-label-text" for="altss_settings_options_collapse_admin_bar">-  <?php esc_html_e( "check the box to collapse the admin bar on the front end to the upper left corner", "altss" ); ?></label>
                                     </div>
                                 </dd>
+                                <dt><p><?php esc_html_e( "Disable absolutely all comments on the site", "altss" ); ?>:</p></dt>
+                                <dd>
+                                    <div class="onoffswitch-over">
+                                        <div class="onoffswitch-left">
+                                            <input type="checkbox" id="altss_settings_options_disable_all_comments" name="altss_settings_options[disable_all_comments]" class="onoffswitch-checkbox" value="1"<?php checked( ( isset( $altss_settings_options['disable_all_comments'] ) ? 1 : 0 ), 1); ?> />
+                                            <label class="onoffswitch-label" for="altss_settings_options_disable_all_comments"></label>
+                                        </div>
+                                        <label class="onoffswitch-label-text" for="altss_settings_options_disable_all_comments">-  <?php esc_html_e( "check the box to disable absolutely all comments on the site", "altss" ); ?></label>
+                                    </div>
+                                </dd>
                                 <dt><p><?php esc_html_e( "Blog Title", "altss" ); ?>:</p></dt>
                                 <dd>
                                     <p>

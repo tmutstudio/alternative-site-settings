@@ -81,13 +81,13 @@ settings_fields( 'altss_settings_cforms_options_' . $tab );
                                 <input type="text" value="<?php echo esc_attr( ( '' != $$formSubmitBtnText ? $$formSubmitBtnText : esc_attr__( "Submit" ) ) );?>" name="<?php echo esc_attr( $formSubmitBtnText );?>" />
                             </div>
                             <div class="site-settings-cform-setfield">
-                                <label for=" name="<?php echo esc_attr( $formTitleShow );?>"">
+                                <label for="<?php echo esc_attr( $formTitleShow );?>">
                                 <input type="checkbox" value="1" id="<?php echo esc_attr( $formTitleShow );?>" name="<?php echo esc_attr( $formTitleShow );?>"<?php checked($$formTitleShow, 1);?> />
                                 - <?php esc_html_e( "display form title", "altss" );?>
                                 </label>
                             </div>
                             <div class="site-settings-cform-setfield">
-                                <label for=" name="<?php echo esc_attr( $formDescShow );?>"">
+                                <label for="<?php echo esc_attr( $formDescShow );?>">
                                 <input type="checkbox" value="1" id="<?php echo esc_attr( $formDescShow );?>" name="<?php echo esc_attr( $formDescShow );?>"<?php checked($$formDescShow, 1);?> />
                                 - <?php esc_html_e( "display form description", "altss" );?>
                                 </label>

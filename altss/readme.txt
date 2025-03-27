@@ -1,8 +1,8 @@
 === Alternative Site Settings ===
 Tags: settings, custom records, reviews, contact forms
 Requires at least: 5.9
-Tested up to: 6.5.3
-Stable tag: 1.0.1
+Tested up to: 6.7.2
+Stable tag: 1.1.0
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -21,13 +21,20 @@ The plugin contains the following functionality:
 * Five ready-made options for custom records - News, Promotions, Documents, Books, Videos. Each recording type is disabled by default.
 * Contact forms with a minimum set of seven fields. They satisfy the basic needs when using pop-up feedback forms.
 * The "Reviews" section allows you to organize moderated reviews from site visitors.
+* It is possible to collapse the top admin panel on the frontend to the upper left corner.
+* Version 1.1.0 adds the ability to completely disable comments on the site.
 
 Attention! The plugin is focused on working with classic themes.
 
 == Changelog ==
 
+= 1.1.0 =
+* Added a PHP class, which allows you to disable all the comments on the site. The class is activated if the corresponding Chekbox is checked in the Admin panel.
+* Minor changes have been made to the altss_add_editior_field() function, allowing for more flexible control over the connection of the classic editor.
+* Fixed errors in HTML code on the Form Sets page in the admin panel.
+
 = 1.0.1 =
-Initial release.
+* Initial release.
 
 == Frequently Asked Questions ==
 

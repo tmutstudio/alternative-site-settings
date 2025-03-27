@@ -1,5 +1,5 @@
 <?php
-/* WP Site Settings Plugin
+/* Alternative Site Settings Plugin
  * Reviews Table class
  * 
  * */

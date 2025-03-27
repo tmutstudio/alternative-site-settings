@@ -14,8 +14,21 @@ The plugin contains the following functionality:
 * Five ready-made options for custom records - News, Promotions, Documents, Books, Videos. Each recording type is disabled by default.
 * Contact forms with a minimum set of seven fields. They satisfy the basic needs when using pop-up feedback forms.
 * The "Reviews" section allows you to organize moderated reviews from site visitors.
+* It is possible to collapse the top admin panel on the frontend to the upper left corner.
+* Version 1.1.0 adds the ability to completely disable comments on the site.
 
 Attention! The plugin is focused on working with classic themes.
+
+## Changelog
+
+### 1.1.0
+* Added a PHP class, which allows you to disable all the comments on the site. The class is activated if the corresponding Chekbox is checked in the Admin panel.
+* Minor changes have been made to the altss_add_editior_field() function, allowing for more flexible control over the connection of the classic editor.
+* Fixed errors in HTML code on the Form Sets page in the admin panel.
+
+### 1.0.1
+* Initial release.
+
 
 ## Frequently Asked Questions
 
@@ -40,8 +53,8 @@ are overwritten, so you can also set your own review styles unique to each theme
 > Also, additional tips and recipes for embedding code into the theme, changing functionality, etc. will be published on the page:
 > https://github.com/tmutstudio/alternative-site-settings/blob/master/recipes_and_tips.md
 
-#### What's in the zip folder?
-> The zip folder contains a zip file (altss.zip) ready for installing the plugin through the admin panel.
+#### What's in the versions folder?
+> The versions folder contains zip files with the version number in the name (altss_vX-X-X.zip), ready for installing the plugin through the admin panel.
 
 #### What's in the altss folder?
 > This is the folder of the plugin itself, identical to the one that will be installed in the WordPress CMS.

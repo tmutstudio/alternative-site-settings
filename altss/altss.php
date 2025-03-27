@@ -3,7 +3,7 @@
  * Plugin Name: Alternative Site Settings
  * Plugin URI:  https://github.com/tmutstudio/alternative-site-settings
  * Description: Plugin for managing site settings, including feedback forms, photo gallery, reviews and contacts.
- * Version:     1.0.1
+ * Version:     1.1.0
  * Author:      tmutarakan-dev
  * Author URI:  https://github.com/tmutstudio
  * License:     GPLv2 or later
@@ -24,7 +24,7 @@ define( 'ALTSITESET_ADMIN_DIR' , ALTSITESET_DIR . "/admin" );
 define( 'ALTSITESET_CLASSES_DIR' , ALTSITESET_DIR . "/classes" );
 define( 'ALTSITESET_LANG_DIR' , ALTSITESET_DIR . "/languages" );
 
-define( 'ALTSITESET__VERSION', '1.0.1' );
+define( 'ALTSITESET__VERSION', '1.1.0' );
 
 define( 'ALTSITESET_CFORMS_AMOUNT', 10 );
 
@@ -149,6 +149,9 @@ foreach( $altss_settings_per_page_options_list as $v ){
 global $altss_settings_options;
 $altss_settings_options = get_option( "altss_settings_options" );
 
+if( isset( $altss_settings_options['disable_all_comments'] ) ){
+    $disable_all_comments = new ALTSS_Disable_ALL_Comments();
+}
 
 
 include_once ALTSITESET_INCLUDES_DIR.'/post-metaboxes.php';

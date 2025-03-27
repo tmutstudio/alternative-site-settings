@@ -1,10 +1,10 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-function altss_add_editior_field( $textarea_name, $content='', $rows=20, $mode='full', $body_class='' ){
+function altss_add_editior_field( $textarea_name, $content='', $rows=20, $mode='full', $body_class='', $media_buttons = 1 ){
     $editor_id = preg_replace( "/[\[\]]/", "_", $textarea_name );
     if( 'full' === $mode ){
-        $mce_plugins = 'fullscreen image link media charmap hr lists colorpicker compat3x directionality paste tabfocus textcolor wordpress wpautoresize wpdialogs wpeditimage wpemoji wpgallery wplink  wptextpattern wpview table';
+        $mce_plugins = 'fullscreen image link media charmap hr lists colorpicker compat3x directionality paste tabfocus textcolor wordpress wpautoresize wpdialogs wpeditimage wpemoji wpgallery wplink  wptextpattern wpview';
 
         $mce_buttons = [
                         'bold,italic', 'strikethrough', 'bullist', 'numlist', 'blockquote', 'hr', 'alignleft', 'aligncenter',
@@ -16,10 +16,10 @@ function altss_add_editior_field( $textarea_name, $content='', $rows=20, $mode='
         ];
 
         $mce_buttons_3 = [
-                        'image', 'table'
+                        'image'
         ];
         
-        $media_buttons = 1;
+        
         $quicktags = 1;
     }
     else if( 'minimal' === $mode  ){

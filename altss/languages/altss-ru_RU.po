@@ -223,6 +223,9 @@ msgstr "отметьте флажок для активации этого ти�
 msgid "check the box to collapse the admin bar on the front end to the upper left corner"
 msgstr "установите флажок, чтобы свернуть панель администратора на фронтэнде в левый верхний угол"
 
+msgid "check the box to disable absolutely all comments on the site"
+msgstr "установите флажок, чтобы отключить абсолютно все комментарии на сайте"
+
 msgid "City"
 msgstr "Город"
 
@@ -306,6 +309,9 @@ msgstr "Описание"
 
 msgid "Description tag field"
 msgstr "Поле для тега Description"
+
+msgid "Disable absolutely all comments on the site"
+msgstr "Отключить абсолютно все комментарии на сайте"
 
 msgid "disable comments for this post type"
 msgstr "отключить комментарии для этого типа записей"
