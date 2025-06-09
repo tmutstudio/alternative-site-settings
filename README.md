@@ -21,6 +21,9 @@ Attention! The plugin is focused on working with classic themes.
 
 ## Changelog
 
+### 1.1.1
+Minor inaccuracies in the code have been fixed
+
 ### 1.1.0
 * Added a PHP class, which allows you to disable all the comments on the site. The class is activated if the corresponding Chekbox is checked in the Admin panel.
 * Minor changes have been made to the altss_add_editior_field() function, allowing for more flexible control over the connection of the classic editor.

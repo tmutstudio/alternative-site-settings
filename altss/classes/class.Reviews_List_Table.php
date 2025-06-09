@@ -54,7 +54,7 @@ class ALTSS_Reviews_List_Table extends WP_List_Table {
         if( isset( $_POST['_wpnonce'] ) && ! $this->verify_nonce() ) return;
 
         $where_part = ( isset( $_POST['s'] ) ? $this->_wpdb->prepare( " AND `review_text` LIKE '%s'", '%' . sanitize_text_field( $_POST['s'] ) . '%' ) : "" ). 
-                        ( 'all' !== $view_status ? $this->_wpdb->prepare( " AND review_status='%d'", $view_status ) : " AND review_status!='2'" );
+                        ( 'all' !== $view_status ? $this->_wpdb->prepare( " AND review_status=%d", $view_status ) : " AND review_status!='2'" );
         $total_items = count( $this->_wpdb->get_results( "SELECT review_id FROM {$wp_pref}altss_reviews
                 WHERE 1". $where_part ) );
         $per_page = $this->get_items_per_page('reviews_per_page', 5);

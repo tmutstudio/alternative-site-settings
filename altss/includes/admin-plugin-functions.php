@@ -164,7 +164,7 @@ function altss_isPunycodeDomain( $domain ){
 
 
 function altss_siteDomain2latinUpperSlug(){
-    $domain = $_SERVER['HTTP_HOST'];
+    $domain = isset( $_SERVER['HTTP_HOST'] ) ? sanitize_url( $_SERVER['HTTP_HOST'] ) : '';
     if( altss_isPunycodeDomain( $domain ) ){
         $domain = altss_cyrtolat_slug( idn_to_utf8( $domain ) );
     }
@@ -258,8 +258,8 @@ function altss_view_cfs_record() {
         $id = intval( $_POST['id'] );
         $p = intval( $_POST['p'] );
 
-        $cfs_row = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$t_1} WHERE id='%d'", $id ) );
-        $cfs_fields = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$t_2} WHERE sending_id='%d' ORDER BY position", $id ) );
+        $cfs_row = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$t_1} WHERE id=%d", $id ) );
+        $cfs_fields = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$t_2} WHERE sending_id=%d ORDER BY position", $id ) );
 
         $verify_nonce = true;
     }
@@ -307,7 +307,7 @@ function altss_view_cfs_record() {
             </table>
         </div>
         <?php if ( current_user_can( 'manage_options' ) ) {?>
-        <div class="view-cfs-record-actions"><span id="view-cfs-record-actions-delite-span" data-id="<?php echo esc_attr( $id ); ?>" data-p="<?php echo esc_attr( $p ); ?>" data-nonce="<?php echo wp_create_nonce( "cfs_record_remove" ); ?>"><?php esc_html_e( "delete", "altss" ); ?></span></div>
+        <div class="view-cfs-record-actions"><span id="view-cfs-record-actions-delite-span" data-id="<?php echo esc_attr( $id ); ?>" data-p="<?php echo esc_attr( $p ); ?>" data-nonce="<?php echo esc_attr( wp_create_nonce( "cfs_record_remove" ) ); ?>"><?php esc_html_e( "delete", "altss" ); ?></span></div>
         <?php }
         }
         else {
@@ -380,8 +380,7 @@ function altss_review_public__ajax_callback( $args = NULL ){ //////// ***** FUNC
         $status_vars = [ 'hide' => 0, 'show' => 1 ];
         $status = intval( $status_vars[$args['act']] );
         
-        $sql = $wpdb->prepare( "UPDATE {$t} SET review_status=%d WHERE review_id=%d", $status, $id );
-        $wpdb->query( $sql );
+        $wpdb->query( $wpdb->prepare( "UPDATE {$t} SET review_status=%d WHERE review_id=%d", $status, $id ) );
         if( $ajaxmode ) die();
 }/////////////********************* END OF FUNCTION *************************/
 

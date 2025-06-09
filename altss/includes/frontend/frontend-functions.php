@@ -96,7 +96,6 @@ document.addEventListener('DOMContentLoaded', function(){
         ?>
 <script id="s_cform_script_<?php echo esc_attr( $id ); ?>">
     <?php echo  $js_content; ?>
-
 </script>
         <?php
         } );

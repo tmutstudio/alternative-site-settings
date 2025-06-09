@@ -22,23 +22,26 @@ $record_remove_error = get_transient( 'cfs_record_remove_error' );
             ?>
             <?php if( false !== $record_removed_id ){?>
                 <div class="notice notice-warning is-dismissible" style="margin: 50px 0;">
-                <?php /* translators: %d: search id */ ?>
                     <p><?php echo sprintf( 
-                        wp_kses( __( 'Entry with <strong>ID: %d</strong> has been deleted!' , "altss" ), [ 'strong' => [] ] ),
+                        wp_kses( 
+                            /* translators: %d: search id */
+                            __( 'Entry with <strong>ID: %d</strong> has been deleted!', "altss" ),
+                            [ 'strong' => [] ]
+                        ),
                         esc_attr( $record_removed_id ) ); ?>
                     </p>
                 </div>
             <?php }
             elseif( false !== $record_remove_error ){?>
                 <div class="notice notice-error is-dismissible" style="margin: 50px 0;">
-                    <p><?php esc_html_e( 'WP nonce faled' , "altss" ); ?></p>
+                    <p><?php esc_html_e( 'WP nonce faled', "altss" ); ?></p>
                 </div>
             <?php }
             delete_transient( 'cfs_record_removed_id' );
 
             if( $cfs_res ){
                 /* translators: %1$d: search page, %2$d: search Total records count */?>
-                <p><?php echo sprintf( esc_html__( 'Page: %1$d | Total records: %2$d' , "altss" ), esc_attr( $page ), esc_attr( $fs_count ) ); ?></p>
+                <p><?php echo sprintf( esc_html__( 'Page: %1$d | Total records: %2$d', "altss" ), esc_attr( $page ), esc_attr( $fs_count ) ); ?></p>
                 <table class="sendings-table">
                 <tr>
                     <th style="width: 5%">ID</th>
@@ -52,7 +55,7 @@ $record_remove_error = get_transient( 'cfs_record_remove_error' );
                 </tr>
                 <?php
             foreach( $cfs_res as $val ) {
-                $fields_res = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$t_2} WHERE sending_id='%d'", $val->id ) );
+                $fields_res = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$t_2} WHERE sending_id=%d", $val->id ) );
                 $c_name = '--';
                 $c_email = '--';
                 $c_phone = '--';
@@ -77,7 +80,7 @@ $record_remove_error = get_transient( 'cfs_record_remove_error' );
                     <tr class="tr-color-<?php echo esc_attr( $val->form_id ); ?>">
                         <td><span class="fs-link" data-id="<?php echo esc_attr( $val->id ); ?>"><?php echo esc_html( $val->id ); ?></span></td>
                         <td><?php echo esc_html( Date( __( "Y-m-d H:i", "altss" ), $val->create_time ) ); ?></td>
-                        <td><span class="fs-link" data-id="<?php echo esc_attr( $val->id ); ?>" data-p="<?php echo esc_attr( $pdata ); ?>" data-nonce="<?php echo wp_create_nonce( "cfs_record_view" ); ?>"><?php echo esc_html( $val->form_title ); ?></span></td>
+                        <td><span class="fs-link" data-id="<?php echo esc_attr( $val->id ); ?>" data-p="<?php echo esc_attr( $pdata ); ?>" data-nonce="<?php echo esc_attr( wp_create_nonce( "cfs_record_view" ) ); ?>"><?php echo esc_html( $val->form_title ); ?></span></td>
                         <td><?php echo esc_html( $c_name ); ?></td>
                         <td><?php echo esc_html( $c_email ); ?></td>
                         <td><?php echo esc_html( $c_phone ); ?></td>

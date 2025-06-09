@@ -100,7 +100,7 @@ function altss_reviews_page_html() {
                     $back_to_list_link = $thadm_admrevs_session['back_to_list_link'];
                 }
                 
-                $review_data = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$prefix}altss_reviews WHERE review_id='%d'", $review_id ) );
+                $review_data = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$prefix}altss_reviews WHERE review_id=%d", $review_id ) );
                 ?>
             <a href="<?php echo esc_url( $back_to_list_link ); ?>" class="altss-icon altss-adm-icon-allproducts"><?php esc_html_e( "Back to the list of reviews", "altss" ); ?></a>
             <h1><?php esc_html_e( "Reply to review", "altss" ); ?></h1>
