@@ -24,7 +24,7 @@ define( 'ALTSITESET_ADMIN_DIR' , ALTSITESET_DIR . "/admin" );
 define( 'ALTSITESET_CLASSES_DIR' , ALTSITESET_DIR . "/classes" );
 define( 'ALTSITESET_LANG_DIR' , ALTSITESET_DIR . "/languages" );
 
-define( 'ALTSITESET__VERSION', '1.1.1' );
+define( 'ALTSITESET__VERSION', '1.1.2' );
 
 define( 'ALTSITESET_CFORMS_AMOUNT', 10 );
 

@@ -21,8 +21,11 @@ Attention! The plugin is focused on working with classic themes.
 
 ## Changelog
 
+### 1.1.2
+Some other minor inaccuracies in the code have been fixed.
+
 ### 1.1.1
-Minor inaccuracies in the code have been fixed
+Minor inaccuracies in the code have been fixed.
 
 ### 1.1.0
 * Added a PHP class, which allows you to disable all the comments on the site. The class is activated if the corresponding Chekbox is checked in the Admin panel.

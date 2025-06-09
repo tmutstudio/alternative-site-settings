@@ -1,8 +1,8 @@
 === Alternative Site Settings ===
 Tags: settings, custom records, reviews, contact forms
 Requires at least: 5.9
-Tested up to: 6.7.2
-Stable tag: 1.1.0
+Tested up to: 6.8.1
+Stable tag: 1.1.2
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -27,6 +27,12 @@ The plugin contains the following functionality:
 Attention! The plugin is focused on working with classic themes.
 
 == Changelog ==
+
+= 1.1.2 =
+Some other minor inaccuracies in the code have been fixed.
+
+= 1.1.1 =
+Minor inaccuracies in the code have been fixed.
 
 = 1.1.0 =
 * Added a PHP class, which allows you to disable all the comments on the site. The class is activated if the corresponding Chekbox is checked in the Admin panel.
