@@ -4,16 +4,16 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 add_action( 'admin_init', 'altss_settings_options_init' );
 function altss_settings_options_init() {
     
-    register_setting( 'altss_settings_options', 'blogname' );
-    register_setting( 'altss_settings_options', 'blogdescription' );
-    register_setting( 'altss_settings_options', 'altss_settings_options' );
-    register_setting( 'altss_settings_options', 'copyright_info' );
+    register_setting( 'altss_settings_options', 'blogname', 'altss_clean' );
+    register_setting( 'altss_settings_options', 'blogdescription', 'altss_clean' );
+    register_setting( 'altss_settings_options', 'altss_settings_options', 'altss_clean' );
+    register_setting( 'altss_settings_options', 'copyright_info', 'altss_clean' );
 
-    register_setting( 'altss_settings_options_1', 'altss_settings_options_custom_recs' );
-    register_setting( 'altss_settings_options_1', 'altss_settings_options_custom_recs_settings' );
+    register_setting( 'altss_settings_options_1', 'altss_settings_options_custom_recs', 'altss_clean' );
+    register_setting( 'altss_settings_options_1', 'altss_settings_options_custom_recs_settings', 'altss_clean' );
 
     for( $i = 1; $i < 6; $i++ ) {
-        register_setting( 'altss_settings_options_txt', 'altss_settings_options_embedded_text_' . $i );
+        register_setting( 'altss_settings_options_txt', 'altss_settings_options_embedded_text_' . $i, 'altss_clean' );
     }
 }
 

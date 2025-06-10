@@ -21,6 +21,9 @@ Attention! The plugin is focused on working with classic themes.
 
 ## Changelog
 
+### 1.1.3
+Minor inaccuracies in the code have been fixed.
+
 ### 1.1.2
 Some other minor inaccuracies in the code have been fixed.
 

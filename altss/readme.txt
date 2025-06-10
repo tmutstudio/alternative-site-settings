@@ -2,7 +2,7 @@
 Tags: settings, custom records, reviews, contact forms
 Requires at least: 5.9
 Tested up to: 6.8.1
-Stable tag: 1.1.2
+Stable tag: 1.1.3
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -27,6 +27,9 @@ The plugin contains the following functionality:
 Attention! The plugin is focused on working with classic themes.
 
 == Changelog ==
+
+= 1.1.3 =
+Minor inaccuracies in the code have been fixed.
 
 = 1.1.2 =
 Some other minor inaccuracies in the code have been fixed.
