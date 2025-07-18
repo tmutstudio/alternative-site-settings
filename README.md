@@ -21,6 +21,9 @@ Attention! The plugin is focused on working with classic themes.
 
 ## Changelog
 
+### 1.1.4
+Fixed a bug with displaying custom placeholder values for each field.
+
 ### 1.1.3
 Minor inaccuracies in the code have been fixed.
 

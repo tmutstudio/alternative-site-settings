@@ -47,12 +47,13 @@ function altss_cform_generator( $id, $button_selector = '#popup-open-button', $s
         foreach ( $$formFields as $val ) {
             $fld_ds = $FORM_FIELDS[$val];
             $fieldsSettings = get_option("altss_settings_cforms_options_field_{$val}");
+            $placeholder = isset( $fieldsSettings['placeholder'] ) && ! empty( $fieldsSettings['placeholder'] ) ? esc_attr( $fieldsSettings['placeholder'] )  : $fld_ds['placeholder'];
             if( 'textarea' != $fld_ds['type'] ){
                 $itype = "type=\"{$fld_ds['type']}\"";
-                $js_fields_list[] = "cfLt + 'p' + cfGt + cfLt + cfInp + '{$itype}' + ' name=\"cfdata[{$val}]\" placeholder=\"{$fld_ds['placeholder']}\"' + cfGt + cfLt + '/p' + cfGt +\n";
+                $js_fields_list[] = "cfLt + 'p' + cfGt + cfLt + cfInp + '{$itype}' + ' name=\"cfdata[{$val}]\" placeholder=\"{$placeholder}\"' + cfGt + cfLt + '/p' + cfGt +\n";
             }
             else{
-                $js_fields_list[] = "cfLt + 'p' + cfGt + cfLt + 'textarea' + ' name=\"cfdata[{$val}]\" placeholder=\"{$fld_ds['placeholder']}\"' + cfGt + cfLt + '/textarea' + cfGt + cfLt + '/p' + cfGt +\n";
+                $js_fields_list[] = "cfLt + 'p' + cfGt + cfLt + 'textarea' + ' name=\"cfdata[{$val}]\" placeholder=\"{$placeholder}\"' + cfGt + cfLt + '/textarea' + cfGt + cfLt + '/p' + cfGt +\n";
             }
             
         }
