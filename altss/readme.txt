@@ -2,7 +2,7 @@
 Tags: settings, custom records, reviews, contact forms, disable all comments
 Requires at least: 5.9
 Tested up to: 6.8.2
-Stable tag: 1.1.4
+Stable tag: 1.1.5
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -27,6 +27,9 @@ The plugin contains the following functionality:
 Attention! The plugin is focused on working with classic themes.
 
 == Changelog ==
+
+= 1.1.5 =
+For the altss_cform_generator() function, a 7th optional parameter, $height, has been added. It allows you to set the initial height of the editor field. Minimum values: 50 for the newvisual mode and 100 for other modes.
 
 = 1.1.4 =
 Fixed a bug with displaying custom placeholder values for each field.

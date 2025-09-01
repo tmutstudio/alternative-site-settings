@@ -3,7 +3,7 @@
  * Plugin Name: Alternative Site Settings
  * Plugin URI:  https://github.com/tmutstudio/alternative-site-settings
  * Description: Plugin for managing site settings, including feedback forms, photo gallery, reviews and contacts.
- * Version:     1.1.4
+ * Version:     1.1.5
  * Author:      tmutarakan-dev
  * Author URI:  https://github.com/tmutstudio
  * License:     GPLv2 or later
@@ -24,7 +24,7 @@ define( 'ALTSITESET_ADMIN_DIR' , ALTSITESET_DIR . "/admin" );
 define( 'ALTSITESET_CLASSES_DIR' , ALTSITESET_DIR . "/classes" );
 define( 'ALTSITESET_LANG_DIR' , ALTSITESET_DIR . "/languages" );
 
-define( 'ALTSITESET__VERSION', '1.1.3' );
+define( 'ALTSITESET__VERSION', '1.1.5' );
 
 define( 'ALTSITESET_CFORMS_AMOUNT', 10 );
 

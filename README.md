@@ -21,6 +21,9 @@ Attention! The plugin is focused on working with classic themes.
 
 ## Changelog
 
+### 1.1.5
+For the altss_cform_generator() function, a 7th optional parameter, $height, has been added. It allows you to set the initial height of the editor field. Minimum values: 50 for the newvisual mode and 100 for other modes.
+
 ### 1.1.4
 Fixed a bug with displaying custom placeholder values for each field.
 

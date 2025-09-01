@@ -1,7 +1,18 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-function altss_add_editior_field( $textarea_name, $content='', $rows=20, $mode='full', $body_class='', $media_buttons = 1 ){
+/**
+ * Renders an editor field.
+ * @param string $textarea_name TEXTAREA name attribute value for the textarea_name and editor_id.
+ *                          May contain square brackets.
+ * @param string $content   Initial content for the editor.
+ * @param int  $rows  Number of rows in 'novisual' mode.
+ * @param string  $mode Editor mode: full/minimal/novisual.  
+ * @param string  $body_class  Editor area body class.
+ * @param int  $media_buttons   Media Buttons.  
+ * @param int  $height   Height for Editor field. 
+ */
+function altss_add_editior_field( $textarea_name, $content='', $rows=20, $mode='full', $body_class='', $media_buttons = 1, $height = 0 ){
     $editor_id = preg_replace( "/[\[\]]/", "_", $textarea_name );
     if( 'full' === $mode ){
         $mce_plugins = 'fullscreen image link media charmap hr lists colorpicker compat3x directionality paste tabfocus textcolor wordpress wpautoresize wpdialogs wpeditimage wpemoji wpgallery wplink  wptextpattern wpview';
@@ -56,7 +67,8 @@ function altss_add_editior_field( $textarea_name, $content='', $rows=20, $mode='
             'toolbar1' => implode( ',', $mce_buttons ),
             'toolbar2' => implode( ',', $mce_buttons_2 ),
             'toolbar3' => implode( ',', $mce_buttons_3 ),
-            'body_class' => @$body_class
+            'body_class' => @$body_class,
+            'height' => $height,
             );
     }
 
