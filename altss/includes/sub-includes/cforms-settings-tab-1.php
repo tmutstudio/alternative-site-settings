@@ -114,28 +114,6 @@ settings_fields( 'altss_settings_cforms_options_' . $tab );
                         <input type="text" value="<?php echo esc_attr( get_option( 'altss_settings_cforms_container_id' ) );?>" name="altss_settings_cforms_container_id" />
                     </div>
                 </div>
-                <div class="site-settings-cform-set-wrapp">
-                    <div class="site-settings-cform-set-item-title"><?php esc_html_e( "Page containing the text of the privacy policy", "altss" );?></div>
-                    <div class="site-settings-cform-setfield">
-                    <label for="page_for_posts">
-	<?php
-	printf(
-		/* translators: %s: Select field to choose the page for posts. */
-		esc_html__( "Page: %s", "altss"  ),
-		wp_dropdown_pages(
-			array(
-				'name'              => 'altss_settings_cforms_privacy_policy_page',
-				'echo'              => 0,
-				'show_option_none'  => __( '&mdash; Select &mdash;' ),
-				'option_none_value' => '0',
-				'selected'          => get_option( 'altss_settings_cforms_privacy_policy_page' ),
-			)
-		)
-	);
-	?>
-</label>
-                    </div>
-                </div>
 <?php
             submit_button();
             $cformFields_jsvar = '  var cformFields = {';

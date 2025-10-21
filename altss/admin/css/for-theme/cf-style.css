@@ -282,10 +282,10 @@
 .popup-close-button {
 	width: 44px;
     height: 44px;
-    padding: 6px;
+    padding: 6px !important;
     font-size: 0;
     border: none;
-    background-color: transparent;
+    background-color: transparent !important;
     cursor: pointer;
 }
 .popup-container {

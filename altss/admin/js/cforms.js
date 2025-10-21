@@ -145,6 +145,13 @@ jQuery(document).ready(function($) {
         });
     });
 
+    $('.cf-field-onoff-item dd input[type="checkbox"]').change(function(){
+        var el = $(this);
+        if( el.is(':checked') && ! confirm( wp.i18n.__("Are you sure?", "altss") )  ){
+            el.prop('checked', false);
+        }    
+    });
+
 
 });
  

@@ -1,7 +1,63 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+/**
+ * Checking if a bot from the allowed list has visited the site.
+ *
+ * @return bool
+ */
+function altss_is_allowed_bot() {
+    $bot_list = include ALTSITESET_INCLUDES_DIR . '/data-vars/whitelist-of-bots.php';
+
+    $user_agent = strtolower( $_SERVER['HTTP_USER_AGENT'] ); 
+
+    foreach ( $bot_list as $bot ) {
+        if ( strpos($user_agent, $bot) !== false ) {
+            return true;
+        }
+    }
+    return false;
+}
+
+add_action('init', 'altss_global_vars', 1);
+function altss_global_vars(){
+	global $ALTSS_GLOBAL_VARS;
+
+    $ALTSS_GLOBAL_VARS['altss_settings_options'] = get_option( 'altss_settings_options' );
+    $ALTSS_GLOBAL_VARS['cookie_banner_settings'] = get_option( 'altss_settings_options_cookie_banner_settings' );
+    $ALTSS_GLOBAL_VARS['cookie_banner_data'] = include ALTSITESET_INCLUDES_DIR . '/data-vars/cookie-banner-data.php';
+    $ALTSS_GLOBAL_VARS['is_allowed_bot'] = altss_is_allowed_bot();
+}
+
+
+/**
+ * Get one setting from altss_settings_options.
+ * 
+ * @param string $set            Option string key.
+ * @return value or empty string
+ */
+function altss_get_settings_set( $set ){
+    global $ALTSS_GLOBAL_VARS;
+    $settings =  $ALTSS_GLOBAL_VARS['altss_settings_options'];
+    return $settings[$set] ?? '';
+}
+
+
+/**
+ * Check if cookies are accepted.
+ *
+ * @return bool
+ */
+function altss_cookies_accepted() {
+    return isset( $_COOKIE['cookie_consent_choice'] ) && str_contains( $_COOKIE['cookie_consent_choice'], 'tech|' );
+}
+
+
+
+altss_is_allowed_bot();
+
 function altss_cform_generator( $id, $button_selector = '#popup-open-button', $sc_container_selector = null ){
+    global $ALTSS_GLOBAL_VARS;
     include ALTSITESET_INCLUDES_DIR.'/data-vars/cform-fields.php';
     $id = intval( $id );
     $formTitle = "altss_settings_cforms_options_title_{$id}";
@@ -24,20 +80,22 @@ function altss_cform_generator( $id, $button_selector = '#popup-open-button', $s
     $$formSecondEmail = get_option($formSecondEmail);
     $$formSubmitBtnText = get_option($formSubmitBtnText);
 
+    $altss_settings_options = $ALTSS_GLOBAL_VARS['altss_settings_options'];
+
     $allowed_link_html = array(
         'a' => array(
             'href'  => true,
-            'blank' => true,
+            'target' => true,
         ),
-     ); 
+     );
+    $privacy_policy_page_id = $altss_settings_options['privacy_policy_page'] ?? ( get_option( 'altss_settings_cforms_privacy_policy_page' ) ?? 0 ); //For compatibility
     /* translators: %s: search url */
-    $form_accept_text = sprintf( wp_kses( __( "agreement to <a href=\"%s\" target=\"_blank\">privacy policy</a>", "altss" ), $allowed_link_html ), esc_url( get_page_link( get_option( 'altss_settings_cforms_privacy_policy_page' ) ) ) );
+    $form_accept_text = sprintf( wp_kses( __( "I consent to the processing of my personal data in accordance with the <a href=\"%s\" target=\"_blank\">privacy policy</a> of this website.", "altss" ), $allowed_link_html ), esc_url( get_page_link( $privacy_policy_page_id ) ) );
     $popup_container_form_wrapper = get_option( 'altss_settings_cforms_container_id' );
     $container_selector = $popup_container_form_wrapper ? '#' . $popup_container_form_wrapper : '#popup-container-form-wrapper';
 
     $js_content = "
     ";
-
 
     $js_fields_list =[];
 
@@ -155,16 +213,44 @@ function altss_cform_shortcode( $atts ){
     return "<div class=\"scode-form-container\" id=\"{$atts['id']}\"></div>";
 }
 
+add_shortcode( 'ass_cookie_consent', 'altss_cookie_consent_button' );
+function altss_cookie_consent_button( $atts ){
+    $atts = shortcode_atts( array(
+		'title' => __( 'Change cookie consent', 'altss' ),
+	), $atts );
+    return '<div class="cookie-banner-buttons" style="justify-content: flex-start;">
+        <button class="cookie-banner-decline-button" data-set="show-banner">' . esc_html( $atts['title'] ) . '</button>
+    </div>';
+
+}
 
 
+
+add_shortcode( 'ass_footer_section', 'altss_footer_section_insert' );
+function altss_footer_section_insert( $atts ){
+    global $ALTSS_GLOBAL_VARS;
+    $settings_options = $ALTSS_GLOBAL_VARS['altss_settings_options'];
+    altss_cforms_generate([
+        [ $settings_options['footer_form_id'], "#footer-form-button" ]
+    ]);
+    ob_start();
+    altss_the_footer_section();
+    $return = ob_get_contents();
+    ob_end_clean();
+    return $return;
+}
 
 if( is_dir( get_theme_root() . "/" . get_stylesheet() . "/assets" ) ){
     add_action( 'wp_enqueue_scripts', function(){
+        global $ALTSS_GLOBAL_VARS;
+        $settings_options = $ALTSS_GLOBAL_VARS['altss_settings_options'];
+
         $css_theme_dir = get_theme_root() . "/" . get_stylesheet()  . '/assets/css/';
         $js_theme_dir = get_theme_root() . "/" . get_stylesheet()  . '/assets/js/';
         $css_theme_dir_uri = get_template_directory_uri() . '/assets/css/';
         $js_theme_dir_uri = get_template_directory_uri() . '/assets/js/';
         $__Version = wp_get_theme()->get( 'Version' );
+
         if( is_file( $css_theme_dir . "cf-style.css" ) ){
             wp_enqueue_style( 'cform-style', $css_theme_dir_uri . 'cf-style.css', array(), $__Version );
         }
@@ -173,6 +259,33 @@ if( is_dir( get_theme_root() . "/" . get_stylesheet() . "/assets" ) ){
         }
         if( is_file( $css_theme_dir . "owl-carousel-style.css" ) ){
             wp_enqueue_style( 'owl-carousel-style', $css_theme_dir_uri . 'owl-carousel-style.css', array(), $__Version );
+        }
+        if( is_file( $css_theme_dir . "footer-section.css" ) && isset( $settings_options['enable_footer_section'] ) ){
+            wp_enqueue_style( 'footer-section-style', $css_theme_dir_uri . 'footer-section.css', array(), $__Version );
+            if( ! empty( $settings_options['footer_section_styles'] ) ) {
+                wp_add_inline_style( 'footer-section-style', '
+        .footer-section { ' .
+                    ( $settings_options['footer_section_styles']['color'] ? 'color: ' . $settings_options['footer_section_styles']['color'] . '; ' : '' ) . 
+                    ( $settings_options['footer_section_styles']['bgcolor'] ? 'background-color: ' . $settings_options['footer_section_styles']['bgcolor'] . '; ' : '' ) . 
+                ' }
+        .footer-section a:visited,
+        .footer-section a:focus-visible,
+        .footer-section a:focus,
+        .footer-section a:active,
+        .footer-section a { ' .
+                    ( $settings_options['footer_section_styles']['link_color'] ? 'color: ' . $settings_options['footer_section_styles']['link_color'] . '; ' : '' ) . 
+                ' }
+        @media(hover: hover) and (pointer: fine) {
+            .footer-section a:hover { ' .
+                    ( $settings_options['footer_section_styles']['link_hov_color'] ? 'color: ' . $settings_options['footer_section_styles']['link_hov_color'] . '; ' : '' ) . 
+                ' }
+        }'
+            
+            );
+            }
+        }
+        if( is_file( $css_theme_dir . "cookie-banner.css" ) ){
+            wp_enqueue_style( 'cookie-banner-style', $css_theme_dir_uri . 'cookie-banner.css', array(), $__Version );
         }
 
         wp_enqueue_script( 'jquery-form' );
@@ -196,6 +309,16 @@ if( is_dir( get_theme_root() . "/" . get_stylesheet() . "/assets" ) ){
                 true
             );
             wp_set_script_translations( 'reviews-form-script', 'altss', ALTSITESET_LANG_DIR . '/js' );
+        }
+        if( is_file( $js_theme_dir . "cookie-banner.js" ) ){
+            wp_enqueue_script(
+                'cookie-banner-script',
+                $js_theme_dir_uri . 'cookie-banner.js',
+                array( 'jquery' ),
+                $__Version,
+                true
+            );
+            wp_set_script_translations( 'cookie-banner-script', 'altss', ALTSITESET_LANG_DIR . '/js' );
         }
 
     } );
@@ -234,13 +357,41 @@ if( is_dir( get_theme_root() . "/" . get_stylesheet() . "/assets" ) ){
 
 
 
-add_action( 'wp_enqueue_scripts', 'altss_cfajax_data' );
-function altss_cfajax_data(){
+add_action( 'wp_enqueue_scripts', 'altss_localize_scripts' );
+function altss_localize_scripts(){
+    global $ALTSS_GLOBAL_VARS;
+    $site_domain = preg_replace( '#^\w+://#', '', site_url() );
 
 	wp_localize_script( 'cform-script', 'cfajax',
 		array(
 			'url' => admin_url('admin-ajax.php'),
 			'nonce' => wp_create_nonce( 'cform-nonce' )
+		)
+	);
+
+    $cb_settings = $ALTSS_GLOBAL_VARS['cookie_banner_settings'];
+    $cb_dev_values = $ALTSS_GLOBAL_VARS['cookie_banner_data']['default_values'];
+
+    $banner_position = ! empty( $cb_settings['banner_position'] ) ? $cb_settings['banner_position'] : $cb_dev_values['banner_position'];
+    $banner_border_radius = ! empty( $cb_settings['banner_border_radius'] ) ? $cb_settings['banner_border_radius'] : $cb_dev_values['banner_border_radius'];
+    $banner_delay_time = ! empty( $cb_settings['banner_delay_time'] ) ? $cb_settings['banner_delay_time'] : $cb_dev_values['banner_delay_time'];
+    $cookie_consent_days = ! empty( $cb_settings['cookie_consent_days'] ) ? $cb_settings['cookie_consent_days'] : $cb_dev_values['cookie_consent_days'];
+
+    $wordpress_cookie_prefs = $ALTSS_GLOBAL_VARS['cookie_banner_data']['wordpress_cookie_prefs'];
+
+    $yandex_metrika_id = $ALTSS_GLOBAL_VARS['altss_settings_options']['yandex_metrika_id'] ?? '';
+
+	wp_localize_script( 'cookie-banner-script', 'cbsData',
+		array(
+			'siteDomain' => $site_domain,
+			'ajaxUrl' => admin_url('admin-ajax.php'),
+			'nonce' => wp_create_nonce( 'cform-nonce' ),
+			'bannerPosition' => esc_attr( $banner_position ),
+			'bannerBorderRadius' => esc_attr( $banner_border_radius ),
+			'bannerDelayTime' => intval( $banner_delay_time ) * 1000,
+			'cookieConsentDays' => esc_attr($cookie_consent_days ),
+			'wpCookiePrefs' => array_map( 'esc_attr', $wordpress_cookie_prefs ),
+			'yaMetrikaID' => intval( $yandex_metrika_id ),
 		)
 	);
 
@@ -454,7 +605,8 @@ function altss_rewiew_rating_stars( $n=0, $e = true ){
 
 
 function altss_header_option_field( $slug ){
-    $altss_settings_options = get_option( "altss_settings_options" );
+    global $ALTSS_GLOBAL_VARS;
+    $altss_settings_options = $ALTSS_GLOBAL_VARS['altss_settings_options'];
     if( isset( $altss_settings_options[$slug] ) ){
         if( ! empty( $altss_settings_options[$slug] ) ){
             echo esc_html( $altss_settings_options[$slug] );
@@ -463,7 +615,8 @@ function altss_header_option_field( $slug ){
 }
 
 function altss_the_contact_section_map(){
-    $altss_settings_options = get_option( "altss_settings_options" );
+    global $ALTSS_GLOBAL_VARS;
+    $altss_settings_options = $ALTSS_GLOBAL_VARS['altss_settings_options'];
     if( isset( $altss_settings_options['map_display_type'] ) ){
         if( 'shortcode' === $altss_settings_options['map_display_type'] ){
             echo apply_shortcodes( wp_kses( $altss_settings_options['map_shortcode'], 'post' ) );
@@ -485,4 +638,28 @@ function altss_the_contact_section_map(){
     }
 }
 
+function altss_sanitize_text( $text ){
+    $text = sanitize_text_field( $text );
+    $text = preg_replace( "/\[br\]/", "<br>", $text );
+    return $text;
+}
 
+
+function altss_sanitize_textarea( $text ){
+    $text = wp_kses( $text, "post" );
+    $text = wpautop( $text );
+    return $text;
+}
+
+
+add_filter( 'pre_handle_404', function( $template ) {
+    global $wp_query, $ALTSS_GLOBAL_VARS;
+    $settings_options = $ALTSS_GLOBAL_VARS['altss_settings_options'];
+	if( is_page( 'reviews' ) && isset( $settings_options['disable_reviews'] ) ){
+		$wp_query->set_404();
+		status_header( 404 );
+		nocache_headers();
+		return 'stop';
+	}
+	return false;
+}, 10, 2 );

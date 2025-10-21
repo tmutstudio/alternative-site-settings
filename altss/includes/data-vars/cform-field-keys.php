@@ -1,4 +1,6 @@
 <?php
+defined( 'ABSPATH' ) || exit;
+
 $FORM_FIELD_KEYS = [
     'email',
     'phone',

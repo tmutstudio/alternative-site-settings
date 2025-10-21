@@ -1,4 +1,7 @@
 <?php
+defined( 'ABSPATH' ) || exit;
+
+
 $CUSTOM_TYPES = [
     'news' => [
         'label'             => esc_html__( 'News' , "altss" ),

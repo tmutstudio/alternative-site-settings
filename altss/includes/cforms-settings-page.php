@@ -5,26 +5,28 @@ add_action( 'admin_init', 'altss_settings_template_options_init' );
 function altss_settings_template_options_init() {
     include_once ALTSITESET_INCLUDES_DIR . '/data-vars/cform-field-keys.php';
     
-    register_setting( 'altss_settings_cforms_options_1', 'altss_settings_cforms_container_id', 'altss_clean' );
-    register_setting( 'altss_settings_cforms_options_1', 'altss_settings_cforms_privacy_policy_page', 'altss_clean' );
+    register_setting( 'altss_settings_cforms_options_1', 'altss_settings_cforms_container_id', 'altss_text_field_clean' );
+    register_setting( 'altss_settings_cforms_options_1', 'altss_settings_cforms_privacy_policy_page', 'altss_text_field_clean' );
 
     for( $f = 1; $f < ( ALTSITESET_CFORMS_AMOUNT + 1 ); $f++ ){
         
-        register_setting( 'altss_settings_cforms_options_1', 'altss_settings_cforms_options_title_' . $f, 'altss_clean' );
-        register_setting( 'altss_settings_cforms_options_1', 'altss_settings_cforms_options_titleshow_' . $f, 'altss_clean' );
-        register_setting( 'altss_settings_cforms_options_1', 'altss_settings_cforms_options_desc_' . $f, 'altss_clean' );
-        register_setting( 'altss_settings_cforms_options_1', 'altss_settings_cforms_options_descshow_' . $f, 'altss_clean' );
-        register_setting( 'altss_settings_cforms_options_1', 'altss_settings_cforms_options_fields_' . $f, 'altss_clean' );
-        register_setting( 'altss_settings_cforms_options_1', 'altss_settings_cforms_options_reqfields_' . $f, 'altss_clean' );
-        register_setting( 'altss_settings_cforms_options_1', 'altss_settings_cforms_options_firstemail_' . $f, 'altss_clean' );
-        register_setting( 'altss_settings_cforms_options_1', 'altss_settings_cforms_options_secondemail_' . $f, 'altss_clean' );
-        register_setting( 'altss_settings_cforms_options_1', 'altss_settings_cforms_options_submitbtntext_' . $f, 'altss_clean' );
+        register_setting( 'altss_settings_cforms_options_1', 'altss_settings_cforms_options_title_' . $f, 'altss_text_field_clean' );
+        register_setting( 'altss_settings_cforms_options_1', 'altss_settings_cforms_options_titleshow_' . $f, 'altss_text_field_clean' );
+        register_setting( 'altss_settings_cforms_options_1', 'altss_settings_cforms_options_desc_' . $f, 'wp_kses_post' );
+        register_setting( 'altss_settings_cforms_options_1', 'altss_settings_cforms_options_descshow_' . $f, 'altss_text_field_clean' );
+        register_setting( 'altss_settings_cforms_options_1', 'altss_settings_cforms_options_fields_' . $f, 'altss_text_field_clean' );
+        register_setting( 'altss_settings_cforms_options_1', 'altss_settings_cforms_options_reqfields_' . $f, 'altss_text_field_clean' );
+        register_setting( 'altss_settings_cforms_options_1', 'altss_settings_cforms_options_firstemail_' . $f, 'altss_text_field_clean' );
+        register_setting( 'altss_settings_cforms_options_1', 'altss_settings_cforms_options_secondemail_' . $f, 'altss_text_field_clean' );
+        register_setting( 'altss_settings_cforms_options_1', 'altss_settings_cforms_options_submitbtntext_' . $f, 'altss_text_field_clean' );
         
     }
 
     foreach( $FORM_FIELD_KEYS as $val ){
-        register_setting( 'altss_settings_cforms_options_2', 'altss_settings_cforms_options_field_' . $val, 'altss_clean' );
+        register_setting( 'altss_settings_cforms_options_2', 'altss_settings_cforms_options_field_' . $val, 'altss_text_field_clean' );
     }
+
+    register_setting( 'altss_settings_cforms_options_3', 'altss_settings_cforms_additional_settings', 'altss_text_field_clean' );
 
     
 }
@@ -38,6 +40,7 @@ function altss_cform_settings_page_html(){
     global $wpdb, $FORM_FIELDS;
 
     include_once ALTSITESET_INCLUDES_DIR . '/data-vars/cform-fields.php';
+    wp_enqueue_style( 'custom_controls_css', ALTSITESET_URL . '/admin/css/custom_controls.css', [], ALTSITESET__VERSION);
     wp_enqueue_script( 'jquery-ui-sortable' );
     wp_enqueue_script( 'altss-fields-sortable-script', ALTSITESET_URL . '/admin/js/fields-sortable-script.js', [], ALTSITESET__VERSION, true );
     wp_enqueue_script( 'altss-cforms-script', ALTSITESET_URL . '/admin/js/cforms.js', [], ALTSITESET__VERSION, true );
@@ -57,7 +60,8 @@ function altss_cform_settings_page_html(){
             $tab_title = [
                 0 => esc_html__( "Messages from forms", "altss" ),
                 1 => esc_html__( "Form sets", "altss" ),
-                2 => esc_html__( "Forms fields", "altss" )
+                2 => esc_html__( "Forms fields", "altss" ),
+                3 => esc_html__( "Additional settings", "altss" )
             ];
             altss_navtabs( $tab_title, $tab ); 
             ?>
@@ -76,6 +80,9 @@ function altss_cform_settings_page_html(){
 		break;
 	case 2://////////////////////////////////// TAB 2 SECTION
         include_once ALTSITESET_INCLUDES_DIR.'/sub-includes/cforms-settings-tab-2.php';
+		break;
+	case 3://////////////////////////////////// TAB 2 SECTION
+        include_once ALTSITESET_INCLUDES_DIR.'/sub-includes/cforms-settings-tab-3.php';
 		break;
         endswitch;/////////////// END TABS SWITCH
 

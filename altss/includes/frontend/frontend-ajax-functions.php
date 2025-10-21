@@ -22,6 +22,7 @@ function altss_cfajax_action_callback() {
 
 	$fields = get_option( "altss_settings_cforms_options_fields_{$fid}" );
 	$req_fields = get_option( "altss_settings_cforms_options_reqfields_{$fid}" );
+    $additional_settings = get_option( 'altss_settings_cforms_additional_settings' );
     $allowed_strong_html = array(
         'strong' => array()
      );
@@ -74,7 +75,7 @@ function altss_cfajax_action_callback() {
 		$cf_title = get_option( "altss_settings_cforms_options_title_{$fid}" );
 		$altss_settings_options = get_option( "altss_settings_options" );
 
-		$fields_value_html = "<table>\n";
+		$fields_value_html = "<table style='border: 0; border-spacing: 0;'>\n";
 
 		$wpdb->insert( $t1, [ 
 			'form_id' => $fid,
@@ -94,13 +95,19 @@ function altss_cfajax_action_callback() {
 			$wpdb->insert( $t2, [ 
 				'sending_id' => $insert_id,
 				'field' => $key,
-				'value' => $val,
+				'value' => empty( $additional_settings['allowed_fields'][$key] ) ? esc_html__( 'saving not allowed', 'altss' ) : $val,
 				'position' => $pos,
 				] );
 
-			$f_title = get_option( "altss_settings_cforms_options_field_{$key}" );
-			$f_title = @$f_title['label'];
-			$fields_value_html .= "<tr><td style='width: 50%'>{$f_title}:</td><td>{$val}</td></tr>\n";
+			$f_title_data = get_option( "altss_settings_cforms_options_field_{$key}" );
+            if( empty( $f_title_data ) ) {
+                $f_title = $FORM_FIELDS[$key]['label'];
+            }
+            else {
+                $f_title = $f_title_data['label'];
+            }
+			$val = 'phone' === $key ? '<a href="tel:' . preg_replace( "/[^\d\+]/", "", $val ) . '">' . $val . '</a>' : $val;
+			$fields_value_html .= "<tr><td style='width: 50%; text-align: right; padding: 10px 10px 0 0; border-bottom: 2px solid #ddd;'>{$f_title}:</td><td style='padding-top: 10px;; border-bottom: 2px solid #ddd;'>{$val}</td></tr>\n";
 			$pos++;
 		}
 

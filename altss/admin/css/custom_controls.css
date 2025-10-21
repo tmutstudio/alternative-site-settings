@@ -5,6 +5,10 @@
 	line-height: 28px;
 }
 
+.onoffswitch-label-text{
+	display: inline-block;
+    width: calc(100% - 52px);
+}
 .onoffswitch_label{
 	display: inline-block;
     vertical-align: top;
@@ -16,6 +20,7 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+    flex-wrap: wrap;
     margin: 0 0 10px 0;
 }
 
@@ -75,14 +80,25 @@
 .onoffswitch-checkbox:checked + .onoffswitch-label {
 	background-color: #78a2c5;
 }
+.onoffswitch-checkbox:checked + .onoffswitch-label.darkred-oos {
+	background-color: darkred !important;
+}
 
 .onoffswitch-checkbox:checked + .onoffswitch-label,
 .onoffswitch-checkbox:checked + .onoffswitch-label:before {
 	border-color: #6c86a1;
 }
+.onoffswitch-checkbox:checked + .onoffswitch-label.darkred-oos,
+.onoffswitch-checkbox:checked + .onoffswitch-label.darkred-oos:before {
+	border-color: darkred !important;
+}
 
 .onoffswitch-checkbox:checked + .onoffswitch-label:before {
 	right: 0;
+}
+
+.onoffswitch-label-text.darkred-oos {
+	color: darkred !important;
 }
 
 
@@ -117,6 +133,12 @@
     border-color: #3c7784;
     background-size: 100% 100%;
 }
+.customize-control-radio .darkred-radio:checked {
+    border-color: darkred !important;
+    background: 
+       radial-gradient(farthest-side,darkred 64%,#0000) 
+       50%/0 0 no-repeat content-box;
+}
 .customize-control-radio input[type=radio]:checked::before {
     content: none;
 }
@@ -131,6 +153,9 @@
 .customize-control-radio input[type=radio]:checked + span {
     color: #3c7784;
     font-weight: 600;
+}
+.customize-control-radio .darkred-radio:checked + span {
+    color: darkred !important;
 }
 
 @media print {

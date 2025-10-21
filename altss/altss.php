@@ -1,9 +1,10 @@
 <?php
 /**
  * Plugin Name: Alternative Site Settings
+ * Network: false
  * Plugin URI:  https://github.com/tmutstudio/alternative-site-settings
  * Description: Plugin for managing site settings, including feedback forms, photo gallery, reviews and contacts.
- * Version:     1.1.5
+ * Version:     1.2.0
  * Author:      tmutarakan-dev
  * Author URI:  https://github.com/tmutstudio
  * License:     GPLv2 or later
@@ -24,7 +25,7 @@ define( 'ALTSITESET_ADMIN_DIR' , ALTSITESET_DIR . "/admin" );
 define( 'ALTSITESET_CLASSES_DIR' , ALTSITESET_DIR . "/classes" );
 define( 'ALTSITESET_LANG_DIR' , ALTSITESET_DIR . "/languages" );
 
-define( 'ALTSITESET__VERSION', '1.1.5' );
+define( 'ALTSITESET__VERSION', '1.2.0' );
 
 define( 'ALTSITESET_CFORMS_AMOUNT', 10 );
 
@@ -67,6 +68,7 @@ function altss_settings_copy_for_theme(){
         $WP_Filesystem_Direct->mkdir( $assets_theme_dir, 0755 );
         $WP_Filesystem_Direct->mkdir( $css_theme_dir, 0755 );
         $WP_Filesystem_Direct->mkdir( $js_theme_dir, 0755 );
+        $WP_Filesystem_Direct->mkdir( $img_theme_dir, 0755 );
     }
     else{
         if( ! is_dir( $css_theme_dir ) ){
@@ -75,19 +77,25 @@ function altss_settings_copy_for_theme(){
         if( ! is_dir( $js_theme_dir ) ){
             $WP_Filesystem_Direct->mkdir( $js_theme_dir, 0755 );
         }
+        if( ! is_dir( $img_theme_dir ) ){
+            $WP_Filesystem_Direct->mkdir( $img_theme_dir, 0755 );
+        }
     }
 	if( is_dir( $css_theme_dir ) ){
-		if( ! is_file( $css_theme_dir . '/cf-style.css' ) ) $WP_Filesystem_Direct->copy( ALTSITESET_DIR . '/admin/css/for-theme/cf-style.css', $css_theme_dir . '/cf-style.css' );
-		if( ! is_file( $css_theme_dir . '/reviews-style.css' ) ) $WP_Filesystem_Direct->copy( ALTSITESET_DIR . '/admin/css/for-theme/reviews-style.css', $css_theme_dir . '/reviews-style.css' );
+		$WP_Filesystem_Direct->copy( ALTSITESET_DIR . '/admin/css/for-theme/cf-style.css', $css_theme_dir . '/cf-style.css' );
+		$WP_Filesystem_Direct->copy( ALTSITESET_DIR . '/admin/css/for-theme/reviews-style.css', $css_theme_dir . '/reviews-style.css' );
+		$WP_Filesystem_Direct->copy( ALTSITESET_DIR . '/admin/css/for-theme/footer-section.css', $css_theme_dir . '/footer-section.css' );
+		$WP_Filesystem_Direct->copy( ALTSITESET_DIR . '/admin/css/for-theme/cookie-banner.css', $css_theme_dir . '/cookie-banner.css', true );
 	}
 	if( is_dir( $js_theme_dir ) ){
-		if( ! is_file( $js_theme_dir . '/cf-script.js' ) ) $WP_Filesystem_Direct->copy( ALTSITESET_DIR . '/admin/js/for-theme/cf-script.js', $js_theme_dir . '/cf-script.js' );
-		if( ! is_file( $js_theme_dir . '/reviews-form.js' ) ) $WP_Filesystem_Direct->copy( ALTSITESET_DIR . '/admin/js/for-theme/reviews-form.js', $js_theme_dir . '/reviews-form.js' );
+		$WP_Filesystem_Direct->copy( ALTSITESET_DIR . '/admin/js/for-theme/cf-script.js', $js_theme_dir . '/cf-script.js', true );
+		$WP_Filesystem_Direct->copy( ALTSITESET_DIR . '/admin/js/for-theme/reviews-form.js', $js_theme_dir . '/reviews-form.js', true );
+		$WP_Filesystem_Direct->copy( ALTSITESET_DIR . '/admin/js/for-theme/cookie-banner.js', $js_theme_dir . '/cookie-banner.js', true );
 	}
 	if( is_dir( $img_theme_dir ) ){
-		if( ! is_file( $img_theme_dir . '/star-empty.svg' ) ) $WP_Filesystem_Direct->copy( ALTSITESET_DIR . '/admin/images/for-theme/star-empty.svg', $img_theme_dir . '/star-empty.svg' );
-		if( ! is_file( $img_theme_dir . '/star-error.svg' ) ) $WP_Filesystem_Direct->copy( ALTSITESET_DIR . '/admin/images/for-theme/star-error.svg', $img_theme_dir . '/star-error.svg' );
-		if( ! is_file( $img_theme_dir . '/star-full.svg' ) ) $WP_Filesystem_Direct->copy( ALTSITESET_DIR . '/admin/images/for-theme/star-full.svg', $img_theme_dir . '/star-full.svg' );
+		$WP_Filesystem_Direct->copy( ALTSITESET_DIR . '/admin/images/for-theme/star-empty.svg', $img_theme_dir . '/star-empty.svg' );
+		$WP_Filesystem_Direct->copy( ALTSITESET_DIR . '/admin/images/for-theme/star-error.svg', $img_theme_dir . '/star-error.svg' );
+		$WP_Filesystem_Direct->copy( ALTSITESET_DIR . '/admin/images/for-theme/star-full.svg', $img_theme_dir . '/star-full.svg' );
 	}
 	
 }
@@ -145,8 +153,8 @@ foreach( $altss_settings_per_page_options_list as $v ){
 }
 
 
-
 global $altss_settings_options;
+
 $altss_settings_options = get_option( "altss_settings_options" );
 
 if( isset( $altss_settings_options['disable_all_comments'] ) ){
@@ -169,7 +177,9 @@ if( is_admin() ){
     include_once ALTSITESET_INCLUDES_DIR.'/reviews-page.php';
     include_once ALTSITESET_INCLUDES_DIR.'/altss-svg-icon-to-base64.php';
 
-
+    if( isset( $altss_settings_options['duplicate_post_enable'] ) ) {
+        ALTSS_Post_Duplicator::init();
+    }
 
     add_action('admin_head','altss_js_head_add');
                     function altss_js_head_add(){
@@ -185,9 +195,15 @@ if( is_admin() ){
 }
 else{
 	include_once ALTSITESET_INCLUDES_DIR.'/frontend/frontend-functions.php';
+	include_once ALTSITESET_INCLUDES_DIR.'/frontend/frontend-head-functions.php';
+	include_once ALTSITESET_INCLUDES_DIR.'/frontend/frontend-tag-functions.php';
     if( isset( $altss_settings_options['collapse_admin_bar'] ) ){
-        include_once ALTSITESET_INCLUDES_DIR.'/frontend/classes/collapse-adminbar.php';
+        include_once ALTSITESET_INCLUDES_DIR.'/frontend/classes/class-collapse-adminbar.php';
     }
+    if( isset( $altss_settings_options['cookie_banner_on'] ) ){
+        include_once ALTSITESET_INCLUDES_DIR.'/frontend/classes/class-cookie-banner.php';
+    }
+	include_once ALTSITESET_INCLUDES_DIR.'/frontend/frontend-analytics-scripts.php';
 	
 }
 

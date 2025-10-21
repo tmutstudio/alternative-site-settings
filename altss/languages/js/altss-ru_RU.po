@@ -28,6 +28,10 @@ msgstr "Еще раз"
 msgid "Apply"
 msgstr "Применить"
 
+#: admin/js/cforms.js
+msgid "Are you sure?"
+msgstr "Вы уверены?"
+
 #: admin/js/img-uploader.js
 msgid "Are you sure?"
 msgstr "Вы уверены?"

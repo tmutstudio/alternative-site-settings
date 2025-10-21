@@ -19,11 +19,53 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: node_modules\n"
 "X-Poedit-SearchPathExcluded-0: js\n"
 
+msgid "( Copy )"
+msgstr "( Копия )"
+
+msgid "<strong>Placeholder</strong>"
+msgstr "Атрибут <strong>placeholder</strong>"
+
+msgid "Accept"
+msgstr "Принять"
+
+msgid "Accept All"
+msgstr "Принять все"
+
+msgid "Accept Selected"
+msgstr "Принять выбранные"
+
+msgid "Accept button background color"
+msgstr "Цвет фона кнопки согласия"
+
+msgid "Accept button background color on hover"
+msgstr "Цвет фона кнопки согласия при наведении"
+
+msgid "Accept button border color"
+msgstr "Цвет границы кнопки согласия"
+
+msgid "Accept button border color on hover"
+msgstr "Цвет границы кнопки согласия при наведении"
+
+msgid "Accept button text color"
+msgstr "Цвет текста кнопки согласия"
+
+msgid "Accept button text color on hover"
+msgstr "Цвет текста кнопки согласия при наведении"
+
+msgid "Activate Cookie Banner"
+msgstr "Активировать Cookie-Баннер"
+
+msgid "Activate cookie item"
+msgstr "Активировать элемент cookie"
+
 msgid "Activation/deactivation of custom records:"
 msgstr "Активация/деактивация кастомных записей:"
 
-msgid "activate Gutenberg for this post type"
-msgstr "активировать Gutenberg для этого типа записей"
+msgid "Active switch border color"
+msgstr "Активный цвет окантовки выключателя"
+
+msgid "Active switch color"
+msgstr "Активный цвет выключателя"
 
 msgid "Add book"
 msgstr "Добавить книгу"
@@ -67,14 +109,11 @@ msgstr "Добавить видео"
 msgid "Add videos category"
 msgstr "Добавить категорию видео"
 
-msgid "Additional recipient email"
-msgstr "Дополнительный e-mail получателя"
-
-msgid "Additionally:"
-msgstr "Дополнительно:"
-
 msgid "Additional field for the HEADER section:"
 msgstr "Дополнительное поле для секции HEADER:"
+
+msgid "Additional recipient email"
+msgstr "Дополнительный e-mail получателя"
 
 msgid "Additional settings"
 msgstr "Доп. настройки"
@@ -88,11 +127,20 @@ msgstr "Дополнительный текст для FOOTER"
 msgid "Additional text for HEADER"
 msgstr "Дополнительный текст для HEADER"
 
+msgid "Additionally:"
+msgstr "Дополнительно:"
+
 msgid "Address"
 msgstr "Адрес"
 
-msgid "agreement to <a href=\"%s\" target=\"_blank\">privacy policy</a>"
-msgstr "согласие с <a href=\"%s\" target=\"_blank\">политикой конфиденциальности</a>"
+msgid "Advertising cookies"
+msgstr "Рекламные файлы cookie"
+
+msgid "After connecting or disconnecting a custom post type, you must go to the page:"
+msgstr "После подключении или отключения кастомного типа записи, обязательно нужно зайти на страницу:"
+
+msgid "Album description"
+msgstr "Описание альбома"
 
 msgid "Album information updated"
 msgstr "Информация об альбоме обновлена"
@@ -102,9 +150,6 @@ msgstr "Список альбомов"
 
 msgid "Album name"
 msgstr "Название альбома"
-
-msgid "Album description"
-msgstr "Описание альбома"
 
 msgid "Album short description"
 msgstr "Краткое описание альбома"
@@ -127,11 +172,11 @@ msgstr "Все новости"
 msgid "All news categories"
 msgstr "Все категории новостей"
 
-msgid "All promotions"
-msgstr "Все акции"
-
 msgid "All promotion categories"
 msgstr "Все категории акций"
+
+msgid "All promotions"
+msgstr "Все акции"
 
 msgid "All reviews"
 msgstr "Все отзывы"
@@ -148,14 +193,35 @@ msgstr "Альтернативное название сайта:"
 msgid "An error occurred!<br>Message sending failed."
 msgstr "Произошла ошибка!<br>Отправка сообщения не удалась."
 
-msgid "After connecting or disconnecting a custom post type, you must go to the page:"
-msgstr "После подключении или отключения кастомного типа записи, обязательно нужно зайти на страницу:"
+msgid "Analytical cookies"
+msgstr "Аналитические файлы cookie"
+
+msgid "Analytics"
+msgstr "Аналитика"
+
+msgid "Are you sure you want to duplicate this page?"
+msgstr "Вы уверены, что хотите продублировать эту страницу?"
+
+msgid "Are you sure you want to duplicate this post?"
+msgstr "Вы уверены, что хотите продублировать эту запись?"
+
+msgid "Are you sure you want to reset color settings to default values?"
+msgstr "Вы уверены, что хотите сбросить цветовые настройки к значениям по умолчанию?"
 
 msgid "Article description"
 msgstr "Описание статьи"
 
+msgid "At the moment, cookie banner is not active!"
+msgstr "На данный момент Cookie-баннер не активен!"
+
+msgid "At the moment, the review page is deactivated!"
+msgstr "В данный момент страница отзывов деактивирована!"
+
 msgid "Author"
 msgstr "Аавтор"
+
+msgid "Author's IP"
+msgstr "IP автора"
 
 msgid "Author's city"
 msgstr "Город автора"
@@ -163,20 +229,56 @@ msgstr "Город автора"
 msgid "Author's email"
 msgstr "E-mail автора"
 
-msgid "Author's IP"
-msgstr "IP автора"
-
 msgid "Author's name"
 msgstr "Имя автора"
+
+msgid "Back"
+msgstr "Назад"
+
+msgid "Back button background color"
+msgstr "Цвет фона кнопки «Назад»"
+
+msgid "Back button background color on hover"
+msgstr "Цвет фона кнопки «Назад» при наведении"
+
+msgid "Back button border color"
+msgstr "Цвет границы кнопки «Назад»"
+
+msgid "Back button border color on hover"
+msgstr "Цвет границы кнопки «Назад» при наведении"
+
+msgid "Back button text color"
+msgstr "Цвет текста кнопки «Назад»"
+
+msgid "Back button text color on hover"
+msgstr "Цвет текста кнопки «Назад» при наведении"
 
 msgid "Back to album list"
 msgstr "Назад к списку альбомов"
 
-msgid "back to reviews"
-msgstr "вернуться к отзывам"
-
 msgid "Back to the list of reviews"
 msgstr "Назад к списку отзывов"
+
+msgid "Banner Title Text"
+msgstr "Текст заголовка баннера"
+
+msgid "Banner background color"
+msgstr "Цвет фона баннера"
+
+msgid "Banner border radius in px"
+msgstr "Радиус скругления баннера (px)"
+
+msgid "Banner position"
+msgstr "Позиция баннера"
+
+msgid "Banner text color"
+msgstr "Цвет текста описания баннера"
+
+msgid "Banner title color"
+msgstr "Цвет заголовка баннера"
+
+msgid "Banner width in px"
+msgstr "Ширина баннера (px)"
 
 msgid "Basic settings"
 msgstr "Базовые настройки"
@@ -199,6 +301,15 @@ msgstr "Категория книг"
 msgid "Button name for HEADER on the home page"
 msgstr "Название кнопки для HEADER на главной странице"
 
+msgid "Buttons border radius in px"
+msgstr "Радиус скругления кнопок (px)"
+
+msgid "Buttons border width in px"
+msgstr "Ширина границы кнопок (px)"
+
+msgid "By checking the box, you assume responsibility for the safety and confidentiality of the data in this field!"
+msgstr "Устанавливая флажок вы берёте на себя ответственность за сохранность и конфиденциальность данных из этого поля!"
+
 msgid "Categories for books"
 msgstr "Категории для книг"
 
@@ -217,14 +328,8 @@ msgstr "Категории для видео"
 msgid "Center of the map (usually coincides with the coordinates of the marker)"
 msgstr "Центр карты  ( обычно совпадает с координатами метки )"
 
-msgid "check the box to activate this post type"
-msgstr "отметьте флажок для активации этого типа записей"
-
-msgid "check the box to collapse the admin bar on the front end to the upper left corner"
-msgstr "установите флажок, чтобы свернуть панель администратора на фронтэнде в левый верхний угол"
-
-msgid "check the box to disable absolutely all comments on the site"
-msgstr "установите флажок, чтобы отключить абсолютно все комментарии на сайте"
+msgid "Change cookie consent"
+msgstr "Изменить согласие на использование файлов cookie"
 
 msgid "City"
 msgstr "Город"
@@ -238,17 +343,17 @@ msgstr "Очистка ревизий в таблице постов"
 msgid "Close dialog"
 msgstr "Закрыть диалог"
 
-msgid "collapse"
-msgstr "свернуть"
-
-msgid "collapse all"
-msgstr "свернуть все"
-
 msgid "Collapse the admin bar on the front end"
 msgstr "Свернуть панель администратора на фронтэнде"
 
+msgid "Color of the text block in the Customize dialog box"
+msgstr "Цвет текстового блока диалогового окна «Настройка»"
+
 msgid "Confirm your agreement with the privacy policy."
 msgstr "Подтвердите согласие с политикой конфеденциальности."
+
+msgid "Contact Forms Settings Page"
+msgstr "Страница настроек контактных форм"
 
 msgid "Contact block title:"
 msgstr "Заголовок блока контактов:"
@@ -259,17 +364,32 @@ msgstr "Контактные данные"
 msgid "Contact forms"
 msgstr "Контактные формы"
 
-msgid "Contact Forms Settings Page"
-msgstr "Страница настроек контактных форм"
-
 msgid "Contacts"
 msgstr "Контакты"
 
 msgid "Contents of text block No. "
 msgstr "Содержание текстового блока №"
 
-msgid "Countdown timers"
-msgstr "Таймеры обратного отсчета"
+msgid "Contents of the note text"
+msgstr "Содержимое текста примечания"
+
+msgid "Contents of the text block in the settings dialog box"
+msgstr "Содержимое текстового блока в диалоговом окне настроек"
+
+msgid "Contents of the text block on the banner"
+msgstr "Содержание текстового блока на баннере"
+
+msgid "Cookie Banner"
+msgstr "Cookie-баннер"
+
+msgid "Cookie Banner Settings"
+msgstr "Настройки cookie-баннера"
+
+msgid "Cookie customize"
+msgstr "Настройка файлов cookie"
+
+msgid "Cookies Consent"
+msgstr "Согласие cookies (куки)"
 
 msgid "Coordinates"
 msgstr "Координаты"
@@ -280,6 +400,9 @@ msgstr "Название правообладателя"
 msgid "Copyright in the footer"
 msgstr "Авторские права в подвале"
 
+msgid "Countdown timers"
+msgstr "Таймеры обратного отсчета"
+
 msgid "Create a new"
 msgstr "Создание новой"
 
@@ -289,20 +412,95 @@ msgstr "Создание нового"
 msgid "Custom records"
 msgstr "Кастомные записи"
 
+msgid "Customize"
+msgstr "Настроить"
+
+msgid "Customize button background color"
+msgstr "Цвет фона кнопки настройки"
+
+msgid "Customize button background color on hover"
+msgstr "Цвет фона кнопки настройки при наведении"
+
+msgid "Customize button border color"
+msgstr "Цвет границы кнопки настройки"
+
+msgid "Customize button border color on hover"
+msgstr "Цвет границы кнопки настройки при наведении"
+
+msgid "Customize button text color"
+msgstr "Цвет текста кнопки настройки"
+
+msgid "Customize button text color on hover"
+msgstr "Цвет текста кнопки настройки при наведении"
+
+msgid "Customize dialog box title color"
+msgstr "Цвет заголовка диалогового окна «Настройка»"
+
+msgid "Customize your cookies as you wish! Select the ones you want, except for technical (required) cookies: without them, the site won&#039;t work. We&#039;ll remember your choice and ask you to update it later."
+msgstr "Настройте файлы cookie по своему усмотрению! Отметьте нужные, кроме технических (обязательных): без них сайт не будет работать. Мы запомним Ваш выбор и, через какое то время попросим обновить его."
+
+msgid "Data for SEO promotion"
+msgstr "Данные для СЕО-продвижения"
+
 msgid "Data for displaying the map"
 msgstr "Данные для отображения карты"
 
-msgid "default"
-msgstr "по умолчанию"
+msgid "Decline"
+msgstr "Отклонить"
+
+msgid "Decline button background color"
+msgstr "Цвет фона кнопки отказа"
+
+msgid "Decline button background color on hover"
+msgstr "Цвет фона кнопки отказа при наведении"
+
+msgid "Decline button border color"
+msgstr "Цвет границы кнопки отказа"
+
+msgid "Decline button border color on hover"
+msgstr "Цвет границы кнопки отказа при наведении"
+
+msgid "Decline button text color"
+msgstr "Цвет текста кнопки отказа"
+
+msgid "Decline button text color on hover"
+msgstr "Цвет текста кнопки отказа при наведении"
+
+msgid "Default text"
+msgstr "Текст по умолчанию"
+
+msgid "Default value"
+msgstr "Значение по умолчанию"
+
+msgid "Delay time before displaying the banner in seconds"
+msgstr "Время задержки перед показом баннера в секундах"
 
 msgid "Delete"
 msgstr "Удалить"
 
-msgid "delete"
-msgstr "удалить"
+msgid "Delete all Cookie Banner settings"
+msgstr "Удалить все настройки cookie-баннера"
 
-msgid "delete album"
-msgstr "удалить альбом"
+msgid "Delete all Custom type posts settings"
+msgstr "Удалить все настройки записей произвольного типа"
+
+msgid "Delete all Main settings"
+msgstr "Удалить все основные настройки"
+
+msgid "Delete all contact form data and settings"
+msgstr "Удалить все настройки и данные контактных форм"
+
+msgid "Delete all custom posts of type"
+msgstr "Удалить все кастомные записи типа"
+
+msgid "Delete all data"
+msgstr "Удалить все данные"
+
+msgid "Delete all data containing reviews left"
+msgstr "Удалить все данные с оставленными отзывами"
+
+msgid "Delete all text block data"
+msgstr "Удалить все данные текстовых блоков"
 
 msgid "Description"
 msgstr "Описание"
@@ -310,17 +508,11 @@ msgstr "Описание"
 msgid "Description tag field"
 msgstr "Поле для тега Description"
 
+msgid "Disable Reviews on the site"
+msgstr "Отключить отзывы на сайте"
+
 msgid "Disable absolutely all comments on the site"
 msgstr "Отключить абсолютно все комментарии на сайте"
-
-msgid "disable comments for this post type"
-msgstr "отключить комментарии для этого типа записей"
-
-msgid "display form description"
-msgstr "отображать описание формы"
-
-msgid "display form title"
-msgstr "отображать название формы"
 
 msgid "Documents"
 msgstr "Документы"
@@ -328,20 +520,44 @@ msgstr "Документы"
 msgid "Documents categories"
 msgstr "Категории документов"
 
+msgid "Doesn&#039;t work in full width mode"
+msgstr "Не работает в режиме «на всю ширину»"
+
+msgid "Due to strict personal data laws in many countries, contact information fields from submitted forms are NOT saved in the website database by default!"
+msgstr "В связи со строгими законами о персональных данных, действующими во многих странах, поля контактной информации из отправленных форм НЕ сохраняются в базе данных сайта по умолчанию!"
+
+msgid "Duplicate"
+msgstr "Дублировать"
+
+msgid "Duplicate page"
+msgstr "Дублировать страницу"
+
+msgid "Duplicate post"
+msgstr "Дублировать запись"
+
+msgid "Duplicate service"
+msgstr "Дублировать услугу"
+
+msgid "Duplicate this page"
+msgstr "Дублировать эту страницу"
+
+msgid "Duplicate this post"
+msgstr "Дублировать эту запись"
+
+msgid "Duplicate this service"
+msgstr "Дублировать эту услугу"
+
 msgid "Edit"
 msgstr "Редактировать"
 
 msgid "Edit answer"
 msgstr "Редактировать ответ"
 
-msgid "Edit books category"
-msgstr "Редактировать категорию книг"
-
 msgid "Edit book"
 msgstr "Редактировать книгу"
 
-msgid "edit information"
-msgstr "редактировать информацию"
+msgid "Edit books category"
+msgstr "Редактировать категорию книг"
 
 msgid "Edit news"
 msgstr "Редактировать новость"
@@ -364,14 +580,11 @@ msgstr "Редактирование"
 msgid "Email address"
 msgstr "Электронный адрес"
 
-msgid "Enter your city"
-msgstr "Введите ваш город"
+msgid "Enable cookie category"
+msgstr "Включить категорию cookie"
 
 msgid "Enter the text of your message"
 msgstr "Введите текст вашего сообщения"
-
-msgid "Enter your email address"
-msgstr "Введите ваш электронный адрес"
 
 msgid "Enter your First Name"
 msgstr "Введите ваше имя"
@@ -379,23 +592,20 @@ msgstr "Введите ваше имя"
 msgid "Enter your Lasst Name"
 msgstr "Введите вашу фамилию"
 
-msgid "Enter your phone number"
-msgstr "Введите ваш номер телефона"
-
 msgid "Enter your Website URL"
 msgstr "Введите адрес вашего сайта"
 
+msgid "Enter your city"
+msgstr "Введите ваш город"
+
+msgid "Enter your email address"
+msgstr "Введите ваш электронный адрес"
+
+msgid "Enter your phone number"
+msgstr "Введите ваш номер телефона"
+
 msgid "Entry with <strong>ID: %d</strong> has been deleted!"
 msgstr "Запись с <strong>ID: %d</strong> удалена!"
-
-msgid "expand"
-msgstr "развернуть"
-
-msgid "expand all"
-msgstr "развернуть все"
-
-msgid "expand text"
-msgstr "развернуть текст"
 
 msgid "Field"
 msgstr "Поле"
@@ -406,23 +616,23 @@ msgstr "Название поля"
 msgid "First Name"
 msgstr "Имя"
 
+msgid "Footer section background color"
+msgstr "Цвет фона футер-секции"
+
+msgid "Footer section text color"
+msgstr "Цвет текста футер-секции"
+
+msgid "For desktop display version only"
+msgstr "Только для десктоп-версии отображения"
+
 msgid "Form"
 msgstr "Форма"
-
-msgid "form"
-msgstr "форма"
-
-msgid "form button"
-msgstr "кнопка формы"
 
 msgid "Form description"
 msgstr "описание формы"
 
 msgid "Form fields"
 msgstr "Поля формы"
-
-msgid "Forms fields"
-msgstr "Поля для форм"
 
 msgid "Form for a button in the FOOTER of the site"
 msgstr "Форма для кнопки в подвале сайта"
@@ -436,26 +646,26 @@ msgstr "Наборы форм"
 msgid "Form title"
 msgstr "Название формы"
 
-msgid "from"
-msgstr "из"
+msgid "Forms fields"
+msgstr "Поля для форм"
+
+msgid "Functional cookies"
+msgstr "Функциональные файлы cookie"
 
 msgid "Go to file management"
 msgstr "Перейти к управлению файлами"
+
+msgid "Hidden"
+msgstr "Скрыто"
+
+msgid "Hide"
+msgstr "Скрыть"
 
 msgid "Hide from visitors"
 msgstr "Скрыть от посетителей"
 
 msgid "Hide review"
 msgstr "Скрыть отзыв"
-
-msgid "Hidden"
-msgstr "Скрыто"
-
-msgid "hidden"
-msgstr "скрыто"
-
-msgid "Hide"
-msgstr "Скрыть"
 
 msgid "Home page Sectional blocks"
 msgstr "Секционные блоки главной страницы"
@@ -466,11 +676,23 @@ msgstr "Настройки главной страницы"
 msgid "Home page text blocks"
 msgstr "Текстовые блоки главной страницы"
 
-msgid "If left blank, the phone number will be substituted for the site header."
-msgstr "Если оставить пустым, то подставится номер телефона для шапки сайта."
+msgid "I consent to the processing of my personal data in accordance with the <a href=\"%s\" target=\"_blank\">privacy policy</a> of this website."
+msgstr "Я даю согласие на обработку моих персональных данных в соответствии с <a href=\"%s\" target=\"_blank\">политикой конфиденциальности</a> данного сайта."
 
 msgid "ID of the form's popup container"
 msgstr "ID popup-контейнера формы"
+
+msgid "IP address"
+msgstr "IP - адрес"
+
+msgid "If left blank, the phone number will be substituted for the site header."
+msgstr "Если оставить пустым, то подставится номер телефона для шапки сайта."
+
+msgid "If left blank, the script will not load."
+msgstr "Если оставить пустым, то скрипт не загрузится."
+
+msgid "If you do not select any fields, then only the form name, submission date, IP and User Agent of the sender and, of course, the unique ID will be written to the database."
+msgstr "Если не выбрать ни одного поля, то в базу данных будут записаны только имя формы, дата отправки, IP-адрес и User Agent отправителя и, конечно же, уникальный идентификатор."
 
 msgid "Image"
 msgstr "Изображение"
@@ -493,14 +715,20 @@ msgstr "Инфо для секции HEADER:"
 msgid "Information updated!"
 msgstr "Информация обновлена!"
 
+msgid "Inner horizontal padding from banner borders in px"
+msgstr "Внутренний горизонтальный отступ от границ баннера (px)"
+
+msgid "Inner vertical padding from banner borders in px"
+msgstr "Внутренний вертикальный отступ от границ баннера (px)"
+
 msgid "Last Name"
 msgstr "Фамилия"
 
 msgid "Location coordinates (Location Pin)"
 msgstr "Координаты местоположения (метка)"
 
-msgid "IP address"
-msgstr "IP - адрес"
+msgid "M j, Y g:i a"
+msgstr "d.m.Y H:i"
 
 msgid "Main settings"
 msgstr "Главные настройки"
@@ -508,29 +736,32 @@ msgstr "Главные настройки"
 msgid "Main site settings:"
 msgstr "Главные настройки сайта:"
 
-msgid "make required"
-msgstr "сделать обязательным"
+msgid "Manage my choices"
+msgstr "Управлять моим выбором"
 
 msgid "Map display type"
 msgstr "Тип отображения карты"
 
-msgid "manage images"
-msgstr "управлять изображениями"
+msgid "Marketing cookies"
+msgstr "Маркетинговые файлы cookie"
 
 msgid "Media files for the site"
 msgstr "Медиа-файлы для сайта"
 
-msgid "Message from the form: %s"
-msgstr "Сообщение из формы: %s"
+msgid "Menu ID (for block theme)"
+msgstr "ID меню (для блочной темы)"
 
 msgid "Message from the form &laquo;%1$s, ID: %2$d&raquo;"
 msgstr "Сообщение из формы &laquo;%1$s, ID: %2$d&raquo;"
 
-msgid "Messages from forms"
-msgstr "Сообщения из форм"
+msgid "Message from the form: %s"
+msgstr "Сообщение из формы: %s"
 
 msgid "Message text"
 msgstr "Текст сообщения"
+
+msgid "Messages from forms"
+msgstr "Сообщения из форм"
 
 msgid "Meta & SEO"
 msgstr "Мета & SEO"
@@ -541,8 +772,8 @@ msgstr "Метатэг «Description» для главной страницы"
 msgid "Meta Tag «Title» for the home page"
 msgstr "Метатэг «Title» для главной страницы"
 
-msgid "name"
-msgstr "имя"
+msgid "Method of blocking a script"
+msgstr "Способ блокировки скрипта"
 
 msgid "New book"
 msgstr "Новая книга"
@@ -577,9 +808,6 @@ msgstr "Новая категория видео"
 msgid "News"
 msgstr "Новости"
 
-msgid "news"
-msgstr "Новость"
-
 msgid "News categories"
 msgstr "Категории новостей"
 
@@ -592,17 +820,14 @@ msgstr "Сообщения не найдены."
 msgid "Notification of receipt of message ID: %1$d from the &laquo;%2$s&raquo; form"
 msgstr "Уведомление о получении сообщения ID: %1$d из формы &laquo;%2$s&raquo;"
 
+msgid "Number of days to store the cookie banner state"
+msgstr "Количество дней хранения состояния cookie-баннера"
+
 msgid "Object"
 msgstr "Объект"
 
-msgid "object"
-msgstr "объект"
-
 msgid "Object name"
 msgstr "Название объекта"
-
-msgid "offers"
-msgstr "предложения"
 
 msgid "Offers"
 msgstr "Предложения"
@@ -619,23 +844,29 @@ msgstr "Оптимальное разрешение 600х315 пикселей"
 msgid "Optimal resolution 800x600 pixels"
 msgstr "Оптимальное разрешение 800x600 пикселей"
 
+msgid "Other cookies"
+msgstr "Прочие файлы cookie"
+
 msgid "Page"
 msgstr "Страница"
 
-msgid "page"
-msgstr "страница"
-
-msgid "Page: %s"
-msgstr "Страница: %s"
-
-msgid "Page: %1$d | Total records: %2$d"
-msgstr "Страница: %1$d | Всего записей: %2$d"
+msgid "Page containing the text of the Cookie Policy"
+msgstr "Страница с текстом Политики использования файлов cookie"
 
 msgid "Page containing the text of the privacy policy"
 msgstr "Страница, содержащая текст политики конфиденциальности"
 
 msgid "Page for the &laquo;Reviews&raquo; section"
 msgstr "Старница для раздела &laquo;Отзывы&raquo;"
+
+msgid "Page title text"
+msgstr "Текст заголовка страницы"
+
+msgid "Page: %1$d | Total records: %2$d"
+msgstr "Страница: %1$d | Всего записей: %2$d"
+
+msgid "Page: %s"
+msgstr "Страница: %s"
 
 msgid "Parent books category"
 msgstr "Родит. категория книг"
@@ -655,9 +886,6 @@ msgstr "Родит. категория видео"
 msgid "Perhaps several separated by «;»"
 msgstr "Возможно несколько через «;»"
 
-msgid "Photo gallery"
-msgstr "Фотогалерея"
-
 msgid "Phone"
 msgstr "Телефон"
 
@@ -673,11 +901,11 @@ msgstr "Номер телефона в подвале сайта:"
 msgid "Phone number in the site header:"
 msgstr "Номер телефона в шапке сайта:"
 
+msgid "Photo gallery"
+msgstr "Фотогалерея"
+
 msgid "Place marker name"
 msgstr "Имя метки"
-
-msgid "<strong>Placeholder</strong>"
-msgstr "Атрибут <strong>placeholder</strong>"
 
 msgid "Plugin for managing site settings, including feedback forms, photo gallery, reviews and contacts."
 msgstr "Плагин для управления настройками сайта, вклюячая формы обратной связи, фотогалерею, отзывы и контакты."
@@ -685,8 +913,17 @@ msgstr "Плагин для управления настройками сайт
 msgid "Position"
 msgstr "Позиция"
 
+msgid "Post duplication functionality"
+msgstr "Функционал дублирования постов"
+
 msgid "Post table revisions have been cleared!"
 msgstr "Ревизии таблицы постов очищены!"
+
+msgid "Post title text"
+msgstr "Текст заголовка записи"
+
+msgid "Privacy Policy"
+msgstr "Политика конфиденциальности"
 
 msgid "Promotion"
 msgstr "Акция"
@@ -706,11 +943,11 @@ msgstr "Опубликовать"
 msgid "Publish a review"
 msgstr "Опубликовать отзыв"
 
-msgid "published"
-msgstr "опубликовано"
-
 msgid "RATING"
 msgstr "РЕЙТИНГ"
+
+msgid "REVIEWS"
+msgstr "ОТЗЫВЫ"
 
 msgid "Rating"
 msgstr "Рейтинг"
@@ -718,8 +955,17 @@ msgstr "Рейтинг"
 msgid "Recipient's main email"
 msgstr "Основной e-mail получателя"
 
+msgid "Reject All"
+msgstr "Отклонить все"
+
+msgid "Removing the plugin"
+msgstr "Удаление плагина"
+
 msgid "Reply to review"
 msgstr "Ответить на отзыв"
+
+msgid "Required cookies"
+msgstr "Необходимые файлы cookie"
 
 msgid "Restore"
 msgstr "Восстановить"
@@ -733,17 +979,11 @@ msgstr "Текст отзыва"
 msgid "Reviews"
 msgstr "Отзывы"
 
-msgid "REVIEWS"
-msgstr "ОТЗЫВЫ"
-
 msgid "Reviews per page"
 msgstr "Отзывов на страницу"
 
-msgid "Search by name"
-msgstr "Поиск по названию"
-
-msgid "Search by text"
-msgstr "Поиск по тексту"
+msgid "Save all data"
+msgstr "Сохранить все данные"
 
 msgid "Search News Category"
 msgstr "Искать категорию новостей"
@@ -751,11 +991,23 @@ msgstr "Искать категорию новостей"
 msgid "Search Promotion Category"
 msgstr "Искать категорию акций"
 
-msgid "select"
-msgstr "выбрать"
+msgid "Search by name"
+msgstr "Поиск по названию"
+
+msgid "Search by text"
+msgstr "Поиск по тексту"
 
 msgid "Select form"
 msgstr "Выберите форму"
+
+msgid "Select position"
+msgstr "Выберите позицию"
+
+msgid "Selecting fields for storing messages in the site database"
+msgstr "Выбор полей для хранения сообщений в базе данных сайта"
+
+msgid "Selective data deletion"
+msgstr "Выборочное удаление данных"
 
 msgid "Sender"
 msgstr "Отправитель"
@@ -772,17 +1024,29 @@ msgstr "Время отправки"
 msgid "Sent from IP address"
 msgstr "Отправлено с IP-адреса"
 
+msgid "Set default text"
+msgstr "Установить текст по умолчанию"
+
+msgid "Set default value"
+msgstr "Установить значение по умолчанию"
+
 msgid "Set of form fields"
 msgstr "Набор полей формы"
+
+msgid "Setting cookie categories"
+msgstr "Настройка категорий файлов cookie"
 
 msgid "Settings"
 msgstr "Настройки"
 
-msgid "Shortcode from the map plugin ( e.g. Very Simple Google Maps )"
-msgstr "Shortcode из плагина карты ( например Very Simple Google Maps )"
+msgid "Settings dialog box title text"
+msgstr "Текст заголовка диалогового окна настроек"
 
 msgid "Short description"
 msgstr "Краткое описание"
+
+msgid "Shortcode from the map plugin ( e.g. Very Simple Google Maps )"
+msgstr "Shortcode из плагина карты ( например Very Simple Google Maps )"
 
 msgid "Show to visitors"
 msgstr "Показать посетителям"
@@ -805,11 +1069,17 @@ msgstr "Статическое изображение"
 msgid "Status"
 msgstr "Статус"
 
+msgid "Style settings"
+msgstr "Настройки стилей"
+
 msgid "Submit button text"
 msgstr "Текст кнопки «Отправить»"
 
 msgid "Tags"
 msgstr "Тэги"
+
+msgid "Technical (essential) cookies"
+msgstr "Технические (обязательные) файлы cookie"
 
 msgid "Text blocks"
 msgstr "Текстовые блоки"
@@ -820,20 +1090,29 @@ msgstr "Текстовые блоки для вставки в шаблон че
 msgid "Text for the button in the footer of the site"
 msgstr "Текст для кнопки в подвале сайта"
 
+msgid "Text information"
+msgstr "Текстовая информация"
+
+msgid "Text on the Accept Selected Button"
+msgstr "Текст на кнопке «Принять выбранные»"
+
+msgid "Text on the Accept button"
+msgstr "Текст на кнопке согласия"
+
+msgid "Text on the Back Button"
+msgstr "Текст на кнопке «Назад»"
+
+msgid "Text on the Customize button"
+msgstr "Текст на кнопке «Настроить»"
+
+msgid "Text on the Decline Button"
+msgstr "Текст на кнопке отказа"
+
 msgid "Thank you! Your review has been added and sent for review."
 msgstr "Спасибо! Ваш отзыв добавлен и отправлен на проверку."
 
 msgid "Thank you!<br>Your message has been sent."
 msgstr "Спасибо!<br>Ваше собщение отправлено."
-
-msgid "the album is not available for viewing to visitors"
-msgstr "альбом не доступен для показа посетителям"
-
-msgid "the album is visible to visitors"
-msgstr "альбом виден посетителям"
-
-msgid "the album is visible to visitors and displayed in the website photo gallery"
-msgstr "альбом виден посетителям и отображается в фотогалерее сайта"
 
 msgid "The <strong>%s</strong> field is not filled in."
 msgstr "Не заполнено поле <strong>%s</strong>."
@@ -847,17 +1126,38 @@ msgstr "Не корректно введен адрес электронной �
 msgid "The list is empty."
 msgstr "Список пуст."
 
-msgid "There are too many characters entered in the message."
-msgstr "В сообщение введено слишком много символов."
-
-msgid "This is necessary so that the Permalinks rules are recreated and the rules of the new record type are added there."
-msgstr "Нужно это для того, чтобы правила ЧПУ были пересозданы и туда были добавлены правила нового типа записи."
-
 msgid "The phone number does not have enough digits."
 msgstr "В номере телефона не достаточное количество цифр."
 
 msgid "The request returned a null result."
 msgstr "Запрос вернул нулевой результат."
+
+msgid "The script doesn&#039;t load at all."
+msgstr "Скрипт не загружается совсем."
+
+msgid "The script is controlled by JavaScript methods."
+msgstr "Скрипт управляется методами JavaScript."
+
+msgid "There are too many characters entered in the message."
+msgstr "В сообщение введено слишком много символов."
+
+msgid "These cookies are essential for our website to function properly. They enable basic functionality, site authorization, navigation, and access to secure areas."
+msgstr "Эти cookies необходимы для правильной работы нашего сайта. Они обеспечивают базовую функциональность, авторизацию на сайте, навигацию и доступ к защищённым областям."
+
+msgid "These cookies are used to track visitors across the site in order to display relevant and engaging advertising."
+msgstr "Эти cookies используются для отслеживания посетителей на сайте с целью отображения релевантной и привлекательной рекламы."
+
+msgid "These cookies collect statistics needed to understand which services, products, and sections you like most. This helps make the website more user-friendly and functional."
+msgstr "Эти cookies собирают статистику, необходимую для понимания, какие услуги, товары и разделы вам нравятся больше всего. Это помогает сделать сайт удобнее и функциональнее."
+
+msgid "These cookies enhance security and remember your website settings. They are not stored on our servers or shared with third parties."
+msgstr "Эти cookies повышают безопасность и запоминают ваши настройки на сайте. Они не хранятся на наших серверах и не передаются третьим лицам."
+
+msgid "This is necessary so that the Permalinks rules are recreated and the rules of the new record type are added there."
+msgstr "Нужно это для того, чтобы правила ЧПУ были пересозданы и туда были добавлены правила нового типа записи."
+
+msgid "This site uses cookies to ensure proper operation and analytics. You can refuse or accept cookies. Your choice does not affect cookies required for site operation and authorization. You can read all the rules for processing cookies and other personal data by clicking on the links below."
+msgstr "Данный сайт использует cookie (куки) для обеспечения корректной работы и аналитики. Вы можете отказаться от использования cookie (куки) или принять их. Ваш выбор не влияет на файлы cookie (куки), необходимые для работы сайта и авторизации. Ознакомиться со всеми правилами обработки куки и других персональных данных, Вы можете перейдя по ссылкам ниже."
 
 msgid "This tab is intended for the site administrator!"
 msgstr "Эта вкладка предназначена для администратора сайта!"
@@ -868,11 +1168,11 @@ msgstr "Атрибут Title для ссылки"
 msgid "To display additional fields in the “HEADER” section of the frontend, use the <strong>altss_header_option_field( 'opt_header_text' )</strong> or <strong>altss_header_option_field( 'alt_blogname' )</strong> function."
 msgstr "Для вывода дополнительных полей в секции «HEADER» фронтенда используйте функцию <strong>altss_header_option_field( 'opt_header_text' )</strong> или <strong>altss_header_option_field( 'alt_blogname' )</strong>."
 
-msgid "Too many characters entered."
-msgstr "Введено слишеом много символов."
-
 msgid "To the trash bin"
 msgstr "В корзину"
+
+msgid "Too many characters entered."
+msgstr "Введено слишеом много символов."
 
 msgid "Total records"
 msgstr "Всего записей"
@@ -892,9 +1192,6 @@ msgstr "Обновить категорию акций"
 msgid "Video"
 msgstr "Видео"
 
-msgid "video"
-msgstr "видео"
-
 msgid "Videos"
 msgstr "Видео"
 
@@ -904,23 +1201,20 @@ msgstr "Категории видео"
 msgid "Videos category"
 msgstr "Категория видео"
 
-msgid "Visible"
-msgstr "Видимый"
-
-msgid "visible"
-msgstr "видимый"
-
 msgid "Visibility for visitors"
 msgstr "Видимость для посетителей"
 
 msgid "Visibility to visitors and display in the general site gallery"
 msgstr "Видимость для посетителей и отображение в общей галерее сайта"
 
+msgid "Visible"
+msgstr "Видимый"
+
 msgid "Website URL"
 msgstr "Адрес сайта"
 
-msgid "with name:"
-msgstr "с именем:"
+msgid "When you remove this plugin, what do you want to do with the settings, data, and custom posts you create using this plugin?"
+msgstr "Когда вы удалите этот плагин, что вы хотите сделать с настройками, данными и кастомными записями, которые вы создадите с помощью данного плагина?"
 
 msgid "Y-m-d H:i"
 msgstr "d.m.Y в H:i"
@@ -928,8 +1222,8 @@ msgstr "d.m.Y в H:i"
 msgid "Y-m-d H:i:s"
 msgstr "d.m.Y H:i:s"
 
-msgid "M j, Y g:i a"
-msgstr "d.m.Y H:i"
+msgid "Yandex.Metrica webvisor is enabled"
+msgstr "webvisor Яндекс.Метрики включен"
 
 msgid "Year, start of activity"
 msgstr "Год начала деятельности"
@@ -937,8 +1231,198 @@ msgstr "Год начала деятельности"
 msgid "You are logged in under the username:"
 msgstr "Вы вошли под ником:"
 
+msgid "You can select the required fields yourself, but remember that the website owner is fully responsible for the processing and security of personal data!"
+msgstr "Вы можете выбрать необходимые поля самостоятельно, но помните, что владелец сайта несёт полную ответственность за обработку и безопасность персональных данных!"
+
 msgid "Your review will be left on behalf of this user. If you want to leave a review with other data (name, e-mail), you need to <a href='%s'>log out</a>"
 msgstr "Ваш отзыв будет оставлен от имени этого пользователя. Если вы хотите оставить отзыв с другими данными (имя, e-mail), вам нужно <a href='%s'>выйти из системы</a>"
 
 msgid "Zoom"
 msgstr "Масштаб"
+
+msgid "activate Gutenberg for this post type"
+msgstr "активировать Gutenberg для этого типа записей"
+
+msgid "back to reviews"
+msgstr "вернуться к отзывам"
+
+msgid "bottom center"
+msgstr "низ центр"
+
+msgid "bottom full-width"
+msgstr "низ на всю ширину"
+
+msgid "bottom left"
+msgstr "низ слева"
+
+msgid "bottom right"
+msgstr "низ справа"
+
+msgid "by name"
+msgstr "по имени"
+
+msgid "center"
+msgstr "центр"
+
+msgid "check the box to activate the work of the cookie banner"
+msgstr "установите флажок, чтобы активировать работу Cookie-Баннера"
+
+msgid "check the box to activate this post type"
+msgstr "отметьте флажок для активации этого типа записей"
+
+msgid "check the box to anable display a footer section"
+msgstr "установите флажок, чтобы активировать отображение футер-секции"
+
+msgid "check the box to collapse the admin bar on the front end to the upper left corner"
+msgstr "установите флажок, чтобы свернуть панель администратора на фронтэнде в левый верхний угол"
+
+msgid "check the box to disable Reviews page"
+msgstr "установите флажок, чтобы отключить страницу отзывов"
+
+msgid "check the box to disable absolutely all comments on the site"
+msgstr "установите флажок, чтобы отключить абсолютно все комментарии на сайте"
+
+msgid "check the box to enable Google tag"
+msgstr "установите флажок, чтобы включить Google tag"
+
+msgid "check the box to enable META &amp; SEO functionality"
+msgstr "Установите флажок, чтобы включить функционал META &amp; SEO."
+
+msgid "check the box to enable Yandex.Metrika"
+msgstr "установите флажок, чтобы включить Яндекс.Метрику"
+
+msgid "check the box to enable the duplicate post functionality"
+msgstr "установите флажок, чтобы активировать функционал дублирования постов"
+
+msgid "collapse"
+msgstr "свернуть"
+
+msgid "collapse all"
+msgstr "свернуть все"
+
+msgid "coockie policy"
+msgstr "политика использования файлов cookie"
+
+msgid "default"
+msgstr "по умолчанию"
+
+msgid "delete"
+msgstr "удалить"
+
+msgid "delete album"
+msgstr "удалить альбом"
+
+msgid "disable comments for this post type"
+msgstr "отключить комментарии для этого типа записей"
+
+msgid "display form description"
+msgstr "отображать описание формы"
+
+msgid "display form title"
+msgstr "отображать название формы"
+
+msgid "edit information"
+msgstr "редактировать информацию"
+
+msgid "expand"
+msgstr "развернуть"
+
+msgid "expand all"
+msgstr "развернуть все"
+
+msgid "expand text"
+msgstr "развернуть текст"
+
+msgid "form"
+msgstr "форма"
+
+msgid "form button"
+msgstr "кнопка формы"
+
+msgid "from"
+msgstr "из"
+
+msgid "hidden"
+msgstr "скрыто"
+
+msgid "inset default text into Editor field"
+msgstr "вставить текст по умолчанию в поле редактора"
+
+msgid "make required"
+msgstr "сделать обязательным"
+
+msgid "manage images"
+msgstr "управлять изображениями"
+
+msgid "middle left"
+msgstr "мидл слева"
+
+msgid "middle right"
+msgstr "мидл справа"
+
+msgid "name"
+msgstr "имя"
+
+msgid "news"
+msgstr "Новость"
+
+msgid "object"
+msgstr "объект"
+
+msgid "offers"
+msgstr "предложения"
+
+msgid "page"
+msgstr "страница"
+
+msgid "privacy policy"
+msgstr "политика конфиденциальности"
+
+msgid "published"
+msgstr "опубликовано"
+
+msgid "restore button colors to default"
+msgstr "восстановить цвета кнопок по умолчанию"
+
+msgid "restore default colors"
+msgstr "восстановить цвета по умолчанию"
+
+msgid "restore to default"
+msgstr "восстановить умолчания"
+
+msgid "saving not allowed"
+msgstr "не разрешено сохранение"
+
+msgid "select"
+msgstr "выбрать"
+
+msgid "the album is not available for viewing to visitors"
+msgstr "альбом не доступен для показа посетителям"
+
+msgid "the album is visible to visitors"
+msgstr "альбом виден посетителям"
+
+msgid "the album is visible to visitors and displayed in the website photo gallery"
+msgstr "альбом виден посетителям и отображается в фотогалерее сайта"
+
+msgid "top center"
+msgstr "верх центр"
+
+msgid "top full-width"
+msgstr "верх на всю ширину"
+
+msgid "top left"
+msgstr "верх слева"
+
+msgid "top right"
+msgstr "верх справа"
+
+msgid "video"
+msgstr "видео"
+
+msgid "visible"
+msgstr "видимый"
+
+msgid "with name:"
+msgstr "с именем:"
+

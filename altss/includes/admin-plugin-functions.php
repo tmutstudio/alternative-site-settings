@@ -14,6 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  */
 function altss_add_editior_field( $textarea_name, $content='', $rows=20, $mode='full', $body_class='', $media_buttons = 1, $height = 0 ){
     $editor_id = preg_replace( "/[\[\]]/", "_", $textarea_name );
+    if ( str_ends_with( $editor_id, '_' ) ) $editor_id = substr( $editor_id, 0, -1 );
     if( 'full' === $mode ){
         $mce_plugins = 'fullscreen image link media charmap hr lists colorpicker compat3x directionality paste tabfocus textcolor wordpress wpautoresize wpdialogs wpeditimage wpemoji wpgallery wplink  wptextpattern wpview';
 
@@ -91,6 +92,34 @@ function altss_add_editior_field( $textarea_name, $content='', $rows=20, $mode='
 
 
 
+/**
+ * Reending Chekbox, stylized for on-off switch.
+ * @param string $name CHECKBOX name attribute.
+ *                          May contain square brackets.
+ * @param string $value   CHECKBOX value attribute.
+ * @param string $saved_value   saved value from options.
+ * @param string $label_text   Text for display in the label.
+ * @param string $data_item   A string key that may be needed for identification in JavaScript.
+ */
+function altss_add_onoff_switch( $name, $value, $saved_value, $label_text, $data_item = '', $oos_label_add_class = '' ) {
+    $switch_id = preg_replace( "/[\[\]]/", "_", $name );
+    if ( str_ends_with( $switch_id, '_' ) ) $switch_id = substr( $switch_id, 0, -1 );
+    ?>
+    
+    <div class="onoffswitch-over">
+        <div class="onoffswitch-left">
+            <input type="checkbox" id="<?php echo esc_attr( $switch_id ); ?>" name="<?php echo esc_attr( $name ); ?>" class="onoffswitch-checkbox" data-item="<?php echo esc_attr( $data_item ); ?>" value="<?php echo esc_attr( $value ); ?>"<?php checked( $saved_value, $value); ?> />
+            <label class="onoffswitch-label<?php echo esc_attr( ! empty( $oos_label_add_class ) ? ' ' . $oos_label_add_class : '' ); ?>" for="<?php echo esc_attr( $switch_id ); ?>"></label>
+        </div>
+        <label class="onoffswitch-label-text" for="<?php echo esc_attr( $switch_id ); ?>">-  <?php echo esc_html( $label_text ); ?></label>
+    </div>
+    <?php
+
+
+}/////////////********************* END OF FUNCTION *************************/
+
+
+
 
 function altss_trim_words( $text, $num_words = 55 ) {
 
@@ -119,7 +148,7 @@ function altss_trim_words( $text, $num_words = 55 ) {
         
 
 	return array( $text, $more );
-}
+}/////////////********************* END OF FUNCTION *************************/
 
 
 
@@ -275,6 +304,7 @@ function altss_view_cfs_record() {
 
         $verify_nonce = true;
     }
+    include_once ALTSITESET_INCLUDES_DIR . '/data-vars/cform-fields.php';
 
     ?>
     <div class="view-cfs-record-wrap">
@@ -298,8 +328,13 @@ function altss_view_cfs_record() {
                 </tr>
                 <?php 
                 foreach( $cfs_fields as $fld ) {
-                    $f_title = get_option( "altss_settings_cforms_options_field_{$fld->field}" );
-                    $f_title = @$f_title['label'];
+                    $f_title_data = get_option( "altss_settings_cforms_options_field_{$fld->field}" );
+                    if( empty( $f_title_data ) ) {
+                        $f_title = $FORM_FIELDS[$fld->field]['label'];
+                    }
+                    else {
+                        $f_title = $f_title_data['label'];
+                    }
                             ?>
                 <tr>
                     <td class="cfs-record-td-left"><?php echo esc_html( $f_title ); ?>:</td>
@@ -454,11 +489,20 @@ function altss_current_page(){
 
 
 
-function altss_clean( $var ) {
+function altss_text_field_clean( $var ) {
 	if ( is_array( $var ) ) {
-		return array_map( 'altss_clean', $var );
+		return array_map( 'altss_text_field_clean', $var );
 	} else {
 		return is_scalar( $var ) ? sanitize_text_field( $var ) : null;
+	}
+}
+
+
+function altss_kses_post_clean( $var ) {
+	if ( is_array( $var ) ) {
+		return array_map( 'altss_kses_post_clean', $var );
+	} else {
+		return is_scalar( $var ) ? wp_kses_post( $var ) : null;
 	}
 }
 

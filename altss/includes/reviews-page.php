@@ -55,7 +55,7 @@ function altss_reviews_render_list_table(){
 
 
 function altss_reviews_page_html() {
-	global $wpdb;
+	global $wpdb, $altss_settings_options;
 	$prefix = $wpdb->prefix;
 	$action = isset( $_GET['action'] ) ? sanitize_text_field( $_GET['action'] )  : 'start';
 	$review_id = isset( $_GET['review_id'] ) ? intval( $_GET['review_id'] )  : 0;
@@ -78,7 +78,17 @@ function altss_reviews_page_html() {
     ?>
     <div class="altss-setting-page-wrapper">
 	<h2 class="altss-admin-page-head"><?php esc_html_e( "REVIEWS", "altss" ); ?></h2>
-	
+	<?php
+    if( isset( $altss_settings_options['disable_reviews'] ) ) {
+        wp_admin_notice(
+                esc_html__( 'At the moment, the review page is deactivated!', 'altss' ),
+                [
+                    'type'               => 'warning',
+                    'id'                 => 'reviews-disabled',
+                ]
+            );
+    }
+        ?>
     <br><br>
  	<div id="welcome-panel" class="altss-welcome-panel">
 		<div class="">

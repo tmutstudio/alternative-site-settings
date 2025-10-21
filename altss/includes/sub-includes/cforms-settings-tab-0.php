@@ -47,43 +47,17 @@ $record_remove_error = get_transient( 'cfs_record_remove_error' );
                     <th style="width: 5%">ID</th>
                     <th style="width: 15%"><?php esc_html_e( "Sending date", "altss" ); ?></th>
                     <th style="width: 20%"><?php esc_html_e( "Form title", "altss" ); ?></th>
-                    <th style="width: 20%"><?php esc_html_e( "Sender", "altss" ); ?></th>
-                    <th style="width: 10%"><?php esc_html_e( "e-mail", "altss" ); ?></th>
-                    <th style="width: 20%"><?php esc_html_e( "Phone", "altss" ); ?></th>
                     <th style="width: 20%"><?php esc_html_e( "IP address", "altss" ); ?></th>
                     <th style="width: 10%"><?php esc_html_e( "Status", "altss" ); ?></th>
                 </tr>
                 <?php
             foreach( $cfs_res as $val ) {
                 $fields_res = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$t_2} WHERE sending_id=%d", $val->id ) );
-                $c_name = '--';
-                $c_email = '--';
-                $c_phone = '--';
-                $f_name = '';
-                $s_name = '';
-                foreach ($fields_res as $value) {
-                    if( 'fname' === $value->field ){
-                        $f_name = $value->value;
-                    }
-                    else if( 'sname' === $value->field ){
-                        $s_name = $value->value;
-                    }
-                    else if( 'email' === $value->field ){
-                        $c_email = $value->value;
-                    }
-                    else if( 'phone' === $value->field ){
-                        $c_phone = $value->value;
-                    }
-                }
-                if( '' != $f_name ) $c_name = "{$f_name} {$s_name}";
                     ?>
                     <tr class="tr-color-<?php echo esc_attr( $val->form_id ); ?>">
                         <td><span class="fs-link" data-id="<?php echo esc_attr( $val->id ); ?>"><?php echo esc_html( $val->id ); ?></span></td>
                         <td><?php echo esc_html( Date( __( "Y-m-d H:i", "altss" ), $val->create_time ) ); ?></td>
                         <td><span class="fs-link" data-id="<?php echo esc_attr( $val->id ); ?>" data-p="<?php echo esc_attr( $pdata ); ?>" data-nonce="<?php echo esc_attr( wp_create_nonce( "cfs_record_view" ) ); ?>"><?php echo esc_html( $val->form_title ); ?></span></td>
-                        <td><?php echo esc_html( $c_name ); ?></td>
-                        <td><?php echo esc_html( $c_email ); ?></td>
-                        <td><?php echo esc_html( $c_phone ); ?></td>
                         <td><?php echo esc_html( $val->ip ); ?></td>
                         <td><?php echo esc_html( $val->status ); ?></td>
                     </tr>

@@ -13,7 +13,7 @@ settings_fields( 'altss_settings_options_txt' );
                         <div class="site-settings-template-item-wrapp">
                             <dl>
                                 <?php for( $i = 1; $i < 6; $i++ ){?>
-                                <dt><p class="site-settings-item-title"><?php esc_html_e( "Contents of text block No. ", "altss" ) . $i; ?></p></dt>
+                                <dt><p class="site-settings-item-title"><?php echo esc_html__( "Contents of text block No. ", "altss" ) . ' ' . $i; ?></p></dt>
                                 <dd>
                                     <?php altss_add_editior_field("altss_settings_options_embedded_text_{$i}", wp_unslash(get_option("altss_settings_options_embedded_text_{$i}")), 3); ?>
                                 </dd>

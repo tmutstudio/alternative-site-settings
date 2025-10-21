@@ -1,4 +1,6 @@
 <?php
+defined( 'ABSPATH' ) || exit;
+
 $FORM_FIELDS = [
     'email' => [
         'type' => 'email',
