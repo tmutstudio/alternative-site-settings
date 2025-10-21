@@ -22,7 +22,8 @@ The plugin includes the following features:
 * Post duplication functionality.
 * Cookie banner with the ability to customize the design and text.
 * Connecting Google Tag and Yandex.Metrica analytics scripts based on user selection via the cookie banner.
-* Fields for the contact information section, which is typically located at the bottom of the landing page or in the footer. The contact section can also include a map via a third-party plugin shortcode or embed a static image with an office location map. * Five pre-defined user post types: "News," "Promotions," "Documents," "Books," and "Videos." Each post type is disabled by default.
+* Fields for the contact information section, which is typically located at the bottom of the landing page or in the footer. The contact section can also include a map via a third-party plugin shortcode or embed a static image with an office location map.
+* Five pre-defined user post types: "News," "Promotions," "Documents," "Books," and "Videos." Each post type is disabled by default.
 * Contact forms with a minimum set of seven fields. They meet the basic needs of pop-up feedback forms.
 * The "Reviews" section allows you to organize moderated reviews from site visitors.
 * Loadable footer section of the website.
