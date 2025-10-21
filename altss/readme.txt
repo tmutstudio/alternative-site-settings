@@ -1,5 +1,5 @@
 === Alternative Site Settings ===
-Tags: settings, custom records, duplicate post, cookie banner, analytics scripts, seo meta fields, reviews, contact forms, disable all comments
+Tags: settings, custom records, duplicate post, cookie banner, contact forms
 Requires at least: 5.9
 Tested up to: 6.8.3
 Stable tag: 1.2.0
@@ -7,9 +7,11 @@ Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A plugin for managing website settings, including feedback forms, post duplicator, cookie banners, personalized SEO fields for pages and posts, reviews, and contacts.
+This plugin is designed to provide an alternative way to manage website settings.
 
 == Description ==
+
+A plugin for managing website settings, including feedback forms, post duplicator, cookie banners, personalized SEO fields for pages and posts, reviews, and contacts.
 
 The "Alternative Site Settings" plugin was originally conceived as a starter feature set for further development of a single project. As a result, it has been optimized and can be used for small, standard projects, such as landing pages or business cards. Since version 1.2.0, the plugin includes cookie banner functionality.
 
@@ -136,7 +138,7 @@ https://github.com/tmutstudio/alternative-site-settings/blob/master/recipes_and_
 2. Admin Panel -> ASS Plugin site settings start page -> tab "Main settings" - full page screenshot.
 3. Admin Panel -> ASS Plugin site settings start page -> tab "Custom records".
 4. Admin Panel -> ASS Plugin site settings start page -> tab "Text blocks".
-5. Admin Panel -> ASS Plugin site settings start page -> tab "Cookie Banner".
+5. Admin Panel -> ASS Plugin site settings start page -> tab "Cookie Banner" - full page screenshot.
 6. Admin Panel -> ASS Plugin Contact Forms Settings Page -> tab "Messages from forms".
 7. Admin Panel -> ASS Plugin Contact Forms Settings Page -> tab "Messages from forms" -> Modal window for viewing message details.
 8. Admin Panel -> ASS Plugin Contact Forms Settings Page -> tab "Form sets" - All forms are collapsed.
@@ -147,6 +149,6 @@ https://github.com/tmutstudio/alternative-site-settings/blob/master/recipes_and_
 13. Admin Panel -> ASS Plugin REVIES Page.
 14. Admin Panel -> ASS Plugin REVIES Page -> Reply to review.
 15. Frontend -> REVIES Page (TAMA WP Theme).
-16. Admin Panel -> ASS Plugin Specialized settings and tools page.
+16. ASS Plugin Contact Forms Settings Page -> tab "Additional settings".
 17. Admin Panel -> ASS Plugin site settings start page -> tab "Main settings" -> Setting for Loadable footer section.
 18. Output Loadable footer section in the footer of the Twenty Seventeen block theme.
