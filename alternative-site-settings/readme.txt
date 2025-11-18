@@ -2,7 +2,7 @@
 Tags: settings, custom records, duplicate post, cookie banner, contact forms
 Requires at least: 5.9
 Tested up to: 6.8.3
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -32,6 +32,11 @@ The plugin includes the following features:
 Attention! The plugin is focused on working with classic themes.
 
 == Changelog ==
+
+= 1.2.1 =
+Fixed a bug with an empty title meta tag.
+The captions for the color fields in the cookie banner settings in the admin panel have been corrected.
+Added missing Russian translation strings.
 
 = 1.2.0 =
 Version 1.2.0 adds a lot of interesting features:
@@ -71,7 +76,7 @@ Minor inaccuracies in the code have been fixed.
 
 = How contact forms are displayed in a theme? =
 
-During plugin activation, the cf-style.tss and cf-script.js files are copied to the “css” and “js” directories located in the “assets” directory of the active theme, respectively. The files do not
+During plugin activation, the cf-style.css and cf-script.js files are copied to the “css” and “js” directories located in the “assets” directory of the active theme, respectively. The files do not
 overwrite existing files - this is done so that you can set individual styles for forms, unique to each theme. When activating a new theme, the plugin will also have to be activated again.
 The display of buttons and forms is carried out either using a shortcode, or by directly registering the buttons in the header file of the theme itself.
 

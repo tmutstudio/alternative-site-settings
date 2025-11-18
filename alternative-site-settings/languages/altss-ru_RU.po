@@ -154,6 +154,9 @@ msgstr "Название альбома"
 msgid "Album short description"
 msgstr "Краткое описание альбома"
 
+msgid "All News categories"
+msgstr "Все категории новостей"
+
 msgid "All books"
 msgstr "Все книги"
 
@@ -259,6 +262,12 @@ msgstr "Назад к списку альбомов"
 msgid "Back to the list of reviews"
 msgstr "Назад к списку отзывов"
 
+msgid "Background color of the Accept Selected button"
+msgstr "Цвет фона кнопки «Принять выбранное»"
+
+msgid "Background color of the Accept Selected button on hover"
+msgstr "Цвет фона кнопки «Принять выбранные» при наведении курсора"
+
 msgid "Banner Title Text"
 msgstr "Текст заголовка баннера"
 
@@ -298,6 +307,12 @@ msgstr "Категории книг"
 msgid "Books category"
 msgstr "Категория книг"
 
+msgid "Border color of the Accept Selected button"
+msgstr "Цвет границы кнопки «Принять выбранные»"
+
+msgid "Border color of the Accept Selected button on hover"
+msgstr "Цвет границы кнопки «Принять выбранные» при наведении"
+
 msgid "Button name for HEADER on the home page"
 msgstr "Название кнопки для HEADER на главной странице"
 
@@ -321,6 +336,9 @@ msgstr "Категории для новостей"
 
 msgid "Categories for promotions"
 msgstr "Категории для акций"
+
+msgid "Categories for vdeos"
+msgstr "Категории для видео"
 
 msgid "Categories for videos"
 msgstr "Категории для видео"
@@ -520,6 +538,9 @@ msgstr "Документы"
 msgid "Documents categories"
 msgstr "Категории документов"
 
+msgid "Documents category"
+msgstr "Категория документов"
+
 msgid "Doesn&#039;t work in full width mode"
 msgstr "Не работает в режиме «на всю ширину»"
 
@@ -559,6 +580,12 @@ msgstr "Редактировать книгу"
 msgid "Edit books category"
 msgstr "Редактировать категорию книг"
 
+msgid "Edit document"
+msgstr "Редактировать документ"
+
+msgid "Edit documents category"
+msgstr "Редактировать категорию документов"
+
 msgid "Edit news"
 msgstr "Редактировать новость"
 
@@ -570,6 +597,9 @@ msgstr "Редактировать акцию"
 
 msgid "Edit promotion category"
 msgstr "Редактировать категорию акций"
+
+msgid "Edit video"
+msgstr "Редактировать запись видео"
 
 msgid "Edit videos category"
 msgstr "Редактировать категорию видео"
@@ -590,6 +620,9 @@ msgid "Enter your First Name"
 msgstr "Введите ваше имя"
 
 msgid "Enter your Lasst Name"
+msgstr "Введите вашу фамилию"
+
+msgid "Enter your Last Name"
 msgstr "Введите вашу фамилию"
 
 msgid "Enter your Website URL"
@@ -618,6 +651,12 @@ msgstr "Имя"
 
 msgid "Footer section background color"
 msgstr "Цвет фона футер-секции"
+
+msgid "Footer section link color"
+msgstr "Цвет ссылок футер-секции"
+
+msgid "Footer section link hover color"
+msgstr "Цвет ссылок футер-секции при наведении"
 
 msgid "Footer section text color"
 msgstr "Цвет текста футер-секции"
@@ -723,6 +762,9 @@ msgstr "Внутренний вертикальный отступ от гран
 
 msgid "Last Name"
 msgstr "Фамилия"
+
+msgid "Link for Image"
+msgstr "Ссылка на изображение"
 
 msgid "Location coordinates (Location Pin)"
 msgstr "Координаты местоположения (метка)"
@@ -967,6 +1009,9 @@ msgstr "Ответить на отзыв"
 msgid "Required cookies"
 msgstr "Необходимые файлы cookie"
 
+msgid "Reset fields"
+msgstr "Сбросить поля"
+
 msgid "Restore"
 msgstr "Восстановить"
 
@@ -991,11 +1036,20 @@ msgstr "Искать категорию новостей"
 msgid "Search Promotion Category"
 msgstr "Искать категорию акций"
 
+msgid "Search books category"
+msgstr "Поиск по категории книг"
+
 msgid "Search by name"
 msgstr "Поиск по названию"
 
 msgid "Search by text"
 msgstr "Поиск по тексту"
+
+msgid "Search documents category"
+msgstr "Поиск категории документов"
+
+msgid "Search videos category"
+msgstr "Поиск видео категории"
 
 msgid "Select form"
 msgstr "Выберите форму"
@@ -1087,6 +1141,12 @@ msgstr "Текстовые блоки"
 msgid "Text blocks for inserting into a template via the <strong>altss_insertable_text_block( $num, $class )</strong> function:"
 msgstr "Текстовые блоки для вставки в шаблон через функцию <strong>altss_insertable_text_block( $num, $class )</strong>:"
 
+msgid "Text color of the Accept Selected button"
+msgstr "Цвет текста кнопки «Принять выбранные»"
+
+msgid "Text color of the Accept Selected button on hover"
+msgstr "Цвет текста кнопки «Принять выбранные» при наведении"
+
 msgid "Text for the button in the footer of the site"
 msgstr "Текст для кнопки в подвале сайта"
 
@@ -1096,10 +1156,16 @@ msgstr "Текстовая информация"
 msgid "Text on the Accept Selected Button"
 msgstr "Текст на кнопке «Принять выбранные»"
 
+msgid "Text on the Accept Selected button"
+msgstr "Текст на кнопке «Принять выбранные»"
+
 msgid "Text on the Accept button"
 msgstr "Текст на кнопке согласия"
 
 msgid "Text on the Back Button"
+msgstr "Текст на кнопке «Назад»"
+
+msgid "Text on the Back button"
 msgstr "Текст на кнопке «Назад»"
 
 msgid "Text on the Customize button"
@@ -1107,6 +1173,9 @@ msgstr "Текст на кнопке «Настроить»"
 
 msgid "Text on the Decline Button"
 msgstr "Текст на кнопке отказа"
+
+msgid "Text on the Decline button"
+msgstr "Текст на кнопке «Отклонить все»"
 
 msgid "Thank you! Your review has been added and sent for review."
 msgstr "Спасибо! Ваш отзыв добавлен и отправлен на проверку."
@@ -1183,11 +1252,20 @@ msgstr "Корзина"
 msgid "Unnecessary characters have been entered in the phone number."
 msgstr "В номере телефона введены ненужные символы."
 
+msgid "Update books category"
+msgstr "Обновить категорию книг"
+
+msgid "Update documents category"
+msgstr "Обновление категории документов"
+
 msgid "Update news category"
 msgstr "Обновить категорию новостей"
 
 msgid "Update promotion category"
 msgstr "Обновить категорию акций"
+
+msgid "Update videos category"
+msgstr "Обновить категорию видео"
 
 msgid "Video"
 msgstr "Видео"
@@ -1210,6 +1288,9 @@ msgstr "Видимость для посетителей и отображени
 msgid "Visible"
 msgstr "Видимый"
 
+msgid "WP nonce faled"
+msgstr "WP nonce не прошла проверку"
+
 msgid "Website URL"
 msgstr "Адрес сайта"
 
@@ -1224,6 +1305,12 @@ msgstr "d.m.Y H:i:s"
 
 msgid "Yandex.Metrica webvisor is enabled"
 msgstr "webvisor Яндекс.Метрики включен"
+
+msgid "Yandex.Metrika"
+msgstr "Яндекс Метрика"
+
+msgid "Yandex.Metrika ID"
+msgstr "ID Яндекс Метрики"
 
 msgid "Year, start of activity"
 msgstr "Год начала деятельности"
@@ -1289,7 +1376,7 @@ msgid "check the box to enable META &amp; SEO functionality"
 msgstr "Установите флажок, чтобы включить функционал META &amp; SEO."
 
 msgid "check the box to enable Yandex.Metrika"
-msgstr "установите флажок, чтобы включить Яндекс.Метрику"
+msgstr "установите флажок, чтобы включить Яндекс Метрику"
 
 msgid "check the box to enable the duplicate post functionality"
 msgstr "установите флажок, чтобы активировать функционал дублирования постов"

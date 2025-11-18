@@ -56,12 +56,12 @@ return array(
         ],
         'accept_selected_btn' => [
             'text'              => __( 'Text on the Accept Selected button', 'altss' ),
-            'bgcolor'           => __( 'Accept button background color', 'altss' ),
-            'hov_bgcolor'       => __( 'Accept button background color on hover', 'altss' ),
-            'txt_color'         => __( 'Accept button text color', 'altss' ),
-            'hov_txt_color'     => __( 'Accept button text color on hover', 'altss' ),
-            'border_color'      => __( 'Accept button border color', 'altss' ),
-            'hov_border_color'  => __( 'Accept button border color on hover', 'altss' ),
+            'bgcolor'           => __( 'Background color of the Accept Selected button', 'altss' ),
+            'hov_bgcolor'       => __( 'Background color of the Accept Selected button on hover', 'altss' ),
+            'txt_color'         => __( 'Text color of the Accept Selected button', 'altss' ),
+            'hov_txt_color'     => __( 'Text color of the Accept Selected button on hover', 'altss' ),
+            'border_color'      => __( 'Border color of the Accept Selected button', 'altss' ),
+            'hov_border_color'  => __( 'Border color of the Accept Selected button on hover', 'altss' ),
         ],
         'customize_btn' => [
             'text'              => __( 'Text on the Customize button', 'altss' ),

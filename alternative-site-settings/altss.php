@@ -4,7 +4,7 @@
  * Network: false
  * Plugin URI:  https://github.com/tmutstudio/alternative-site-settings
  * Description: Plugin for managing site settings, including feedback forms, photo gallery, reviews and contacts.
- * Version:     1.2.0
+ * Version:     1.2.1
  * Author:      tmutarakan-dev
  * Author URI:  https://github.com/tmutstudio
  * License:     GPLv2 or later

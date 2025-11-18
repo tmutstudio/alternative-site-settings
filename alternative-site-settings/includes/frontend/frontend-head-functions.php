@@ -5,7 +5,7 @@ add_filter( 'document_title', 'altss_modify_document_title' );
 
 function altss_modify_document_title( $title ) {
     if( empty( altss_get_settings_set( 'seo_meta_enabled' ) ) ) {
-        return '';
+        return $title;
     }
 
 	if ( is_front_page() ) {

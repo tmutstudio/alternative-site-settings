@@ -27,6 +27,11 @@ Attention! The plugin is focused on working with classic themes.
 
 ## Changelog
 
+### 1.2.1
+Fixed a bug with an empty title meta tag.
+The captions for the color fields in the cookie banner settings in the admin panel have been corrected.
+Added missing Russian translation strings.
+
 ### 1.2.0 
 Version 1.2.0 adds a lot of interesting features:
 * 1. A fully functional cookie banner with style customization and text editing options has been added. The admin panel also allows you to enable or disable categories of cookies used on the site.
