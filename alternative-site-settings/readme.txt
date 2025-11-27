@@ -2,7 +2,7 @@
 Tags: settings, custom records, duplicate post, cookie banner, contact forms
 Requires at least: 5.9
 Tested up to: 6.8.3
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -33,9 +33,13 @@ Attention! The plugin is focused on working with classic themes.
 
 == Changelog ==
 
+= 1.2.2 =
+Fixed an issue with the display of the "Data for SEO promotion" metabox depending on the position of the "check the box to enable META & SEO functionality" checkbox.
+The "Data for SEO promotion" meta box has been moved to the sidebar in the Gutenberg editor. This meta box remains unchanged in the Classic Editor.
+
 = 1.2.1 =
 Fixed a bug with an empty title meta tag.
-The captions for the color fields in the cookie banner settings in the admin panel have been corrected.
+The captions for the button color fields in the cookie banner settings in the admin panel have been corrected.
 Added missing Russian translation strings.
 
 = 1.2.0 =
@@ -76,8 +80,8 @@ Minor inaccuracies in the code have been fixed.
 
 = How contact forms are displayed in a theme? =
 
-During plugin activation, the cf-style.css and cf-script.js files are copied to the “css” and “js” directories located in the “assets” directory of the active theme, respectively. The files do not
-overwrite existing files - this is done so that you can set individual styles for forms, unique to each theme. When activating a new theme, the plugin will also have to be activated again.
+During plugin activation, the cf-style.css and cf-script.js files are copied to the “css” and “js” directories located in the “assets” directory of the active theme, respectively. The cf-style.css file do not
+overwrite existing file - this is done so that you can set individual styles for forms, unique to each theme. When activating a new theme, the plugin will also have to be activated again.
 The display of buttons and forms is carried out either using a shortcode, or by directly registering the buttons in the header file of the theme itself.
 
 Shortcodes:

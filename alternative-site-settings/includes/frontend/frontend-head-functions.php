@@ -4,6 +4,7 @@
 add_filter( 'document_title', 'altss_modify_document_title' );
 
 function altss_modify_document_title( $title ) {
+
     if( empty( altss_get_settings_set( 'seo_meta_enabled' ) ) ) {
         return $title;
     }
@@ -14,8 +15,13 @@ function altss_modify_document_title( $title ) {
 	}
 	else if ( is_singular() ) {
         $post = get_queried_object();
-		$meta_title = get_post_meta( $post->ID, 'seo_meta_title', true );
-		return '' != $meta_title ? $meta_title : $title;
+
+        $title_value = get_post_meta( $post->ID, '_seo_meta_title', true );
+        $title_value_depr = get_post_meta( $post->ID, 'seo_meta_title', true );
+
+        $meta_title = empty( $title_value_depr ) ? $title_value ?? '' : $title_value_depr;
+
+		return ! empty( $meta_title ) ? $meta_title : $title;
 	}
 	else if ( is_category() || is_tax() ) {
         $term_meta = get_term_meta( get_queried_object_id() ); 
@@ -45,9 +51,16 @@ function altss_add_wp_head_meta_tags() {
 	$ogimg = altss_get_settings_set( 'meta_ogimage' );
     
 	if( is_singular() && !is_front_page() ) {
-        $meta_ogimage = get_post_meta( $post->ID, 'seo_meta_og_image', true );
-        if( $meta_ogimage || has_post_thumbnail($post->ID) ) {
-            if( $meta_ogimage ) {
+        $description_value = get_post_meta( $post->ID, '_seo_meta_description', true );
+        $description_value_depr = get_post_meta( $post->ID, 'seo_meta_description', true );
+        $og_image_value = get_post_meta( $post->ID, '_seo_meta_og_image', true );
+        $og_image_value_depr = get_post_meta( $post->ID, 'seo_meta_og_image', true );
+
+        $meta_description = empty( $description_value_depr ) ? $description_value ?? '' : $description_value_depr;
+        $meta_ogimage = empty( $og_image_value_depr ) ? $og_image_value ?? '' : $og_image_value_depr;
+
+        if( ! empty( $meta_ogimage ) || has_post_thumbnail($post->ID) ) {
+            if( ! empty( $meta_ogimage ) ) {
                 $ogimg = $meta_ogimage;
             }
             else if( has_post_thumbnail($post->ID) ) {
@@ -55,9 +68,8 @@ function altss_add_wp_head_meta_tags() {
             }
             
         }
-		$meta_description = get_post_meta( $post->ID, 'seo_meta_description', true );
 		$post_excerpt = wp_strip_all_tags( apply_filters( 'get_the_excerpt', $post->post_excerpt, $post ), true );
-		$desc_value = $ogdesc = esc_attr( $meta_description ?: wp_strip_all_tags( $post_excerpt ) );
+		$desc_value = $ogdesc = esc_attr( ! empty( $meta_description ) ? $meta_description : wp_strip_all_tags( $post_excerpt ) );
 	}
     elseif( is_archive() ){
         if( is_category() || is_tax() ){

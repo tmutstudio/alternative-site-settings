@@ -27,6 +27,10 @@ Attention! The plugin is focused on working with classic themes.
 
 ## Changelog
 
+### 1.2.2
+Fixed an issue with the display of the "Data for SEO promotion" metabox depending on the position of the "check the box to enable META & SEO functionality" checkbox.
+The "Data for SEO promotion" meta box has been moved to the sidebar in the Gutenberg editor. This meta box remains unchanged in the Classic Editor.
+
 ### 1.2.1
 Fixed a bug with an empty title meta tag.
 The captions for the color fields in the cookie banner settings in the admin panel have been corrected.
@@ -70,8 +74,8 @@ Minor inaccuracies in the code have been fixed.
 ## Frequently Asked Questions
 
 #### How contact forms are displayed in a theme?
-> During plugin activation, the cf-style.tss and cf-script.js files are copied to the “css” and “js” directories located in the “assets” directory of the active theme, respectively. The files do not
-overwrite existing files - this is done so that you can set individual styles for forms, unique to each theme. When activating a new theme, the plugin will also have to be activated again.
+> During plugin activation, the cf-style.css and cf-script.js files are copied to the “css” and “js” directories located in the “assets” directory of the active theme, respectively. The cf-style.css file do not
+overwrite existing file - this is done so that you can set individual styles for forms, unique to each theme. When activating a new theme, the plugin will also have to be activated again.
 The display of buttons and forms is carried out either using a shortcode, or by directly registering the buttons in the header file of the theme itself.
 > 
 > Shortcodes:

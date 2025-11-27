@@ -230,6 +230,11 @@ dd.map-static-image img {
 .options-seo-and-meta-over div img {
     max-width: 600px;
 }
+
+.ge-seo-meta-panel {
+    background-color: #f9f9f9;
+}
+
 .options-analytics dl dd input[type=checkbox]:checked::before {
     width: 1.5rem;
 }
