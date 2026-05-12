@@ -911,7 +911,191 @@ dd.map-static-image img {
     -o-transform: translateY(-50%);
     transform: translateY(-50%);
 }
+.span-buttons-over {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
 /***** end ******   popup section *****/  
+
+/***** start ******   tag-bulk-action section *****/
+
+.tag-bulk-action-fields-over {
+    display: none;
+}
+.cat-bulk-action-fields-over {
+    display: none;
+}
+.cat-bulk-action-area {
+    background-color: #fff;
+    min-height: 60px;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #999;
+}
+.cat-bulk-action-extra-area {
+    display: none;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #999;
+}
+.bulk-action-extra-area,
+.tag-cat-bulk-action-extra-area {
+    display: none;
+    position: absolute;
+    margin: 0;
+    width: 260px;
+    background-color: #fff;
+    padding: 36px 10px 30px 10px;
+    border-radius: 12px;
+    box-shadow: 0 0 11px 1px #444;
+    z-index: 9998;
+}
+.bulk-extra-area-over .square-arrow-near,
+.tag-cat-area-over .square-arrow-near,
+.bulk-extra-area-over .square-arrow-far,
+.tag-cat-area-over .square-arrow-far {
+    position: absolute;
+    top: 2px;
+    left: 100px;
+    border: 0;
+    border-radius: 2px;
+    background-color: #ffffff;
+    transform: rotate(45deg);
+    width: 28px;
+    height: 28px;
+}
+.bulk-extra-area-over .square-arrow-near,
+.tag-cat-area-over .square-arrow-near {
+    z-index: 9999;
+}
+.bulk-extra-area-over .square-arrow-far,
+.tag-cat-area-over .square-arrow-far {
+    z-index: 9997;
+    box-shadow: 0 0 11px 1px #444;
+}
+.tag-cat-bulk-action-extra-area p {
+    margin: 0;
+}
+.tag-cat-bulk-action-extra-area textarea {
+    width: 100%;
+}
+.tag-bulk-action-title {
+    padding-bottom: 10px;
+    color: #777;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.popup-mess {
+    margin: 30px auto 0 auto;
+    max-width: 400px;
+    padding: 20px;
+}
+.popup-mess p {
+    font-size: 14pt;
+    text-align: center;
+}
+.cat-item-del-btn {
+    display: inline-block;
+    margin-left: 6px;
+    width: 14px;
+    height: 14px;
+    border: 1px solid #777;
+    border-radius: 4px;
+    color: #777;
+    line-height: .7;
+    transition: color 0.3s ease, border-color 0.3s ease;
+    cursor: pointer;
+}
+
+.cat-item-del-btn span {
+    font-size: 14px !important;
+    width: auto !important;
+    height: auto !important;
+}
+.cat-item-del-btn:hover {
+    color: red;
+    border-color: red;
+}
+.cat-bulk-action-btn-over {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 10px;
+}
+.fields-settings-modal-content {
+    width: 100%;
+    margin: 10px 0;
+    padding: 0 20px;
+    box-sizing: border-box;
+    max-height: 600px;
+    overflow: auto;
+}
+.categories-modal-content {
+    width: 100%;
+    margin: 10px 0;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+.fields-settings-modal-content-area {
+    border: 2px solid #bebebe;
+    margin: 0;
+    margin-bottom: 10px;
+    padding: 10px;
+    gap: 10px;
+    column-count: 2;
+}
+.categories-modal-content-area {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border: 2px solid #bebebe;
+    border-radius: 12px;
+    height: 400px;
+    max-height: calc(100vh - 200px);
+    margin: 0;
+    margin-bottom: 10px;
+    padding: 10px;
+    gap: 10px;
+    overflow: auto;
+}
+.categories-modal-content-area ul {
+    font-size: 12px;
+    font-weight: normal;
+    padding-inline-start: 0;
+}
+.categories-modal-content-area ul.root {
+    display: block;
+    column-gap: 20px;
+    column-count: 2;
+}
+.categories-modal-content-area ul li {
+    padding-left: 20px;
+}
+.categories-modal-content-area ul li.root-cat {
+    padding: 10px;
+    /* border: 1px solid #999;
+    border-radius: 6px; */
+    height: fit-content;
+    break-inside: avoid;
+    font-size: 14px;
+    font-weight: bold;
+}
+.categories-modal-content-area input[type="checkbox"] {
+    width: 14px;
+    min-width: 14px;
+    height: 14px;
+    font-size: 10px;
+    border-radius: 2px;
+}
+.fields-settings-modal-content-title {
+    font-size: 14pt;
+    font-weight: 600;
+    margin: 5px 0 20px 0;
+    color: #747474;
+}
+/***** end ******   tag-bulk-action section *****/  
 
 /***** start ******   cookie-banner section *****/
 

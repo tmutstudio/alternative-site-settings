@@ -23,15 +23,15 @@ final class ALTSS_Post_Duplicator {
             return;
         }
         if( 'page' === $post->post_type ) {
-            $link_title = __( 'Duplicate page', 'altss' );
+            $link_title = __( 'Duplicate page', 'alternative-site-settings' );
         }
         else {
-            $link_title = __( 'Duplicate post', 'altss' );
+            $link_title = __( 'Duplicate post', 'alternative-site-settings' );
         }
         if (current_user_can('edit_posts')) {
             echo '<div class="misc-pub-section">
                     <span class="dashicons dashicons-admin-page"></span>
-                    <a href="' . wp_nonce_url('admin.php?action=post_as_draft&post=' . $post->ID, basename(__FILE__), 'duplicate_post_nonce' ) . '"  rel="permalink" class="duplicate-post-link">' . esc_html( $link_title ) . '</a>
+                    <a href="' . esc_url( wp_nonce_url('admin.php?action=post_as_draft&post=' . $post->ID, basename(__FILE__), 'duplicate_post_nonce' ) ) . '"  rel="permalink" class="duplicate-post-link">' . esc_html( $link_title ) . '</a>
                 </div>';
         }
     }
@@ -39,13 +39,13 @@ final class ALTSS_Post_Duplicator {
     
     public static function duplicate_post_link( $actions, $post ) {
         if( 'page' === $post->post_type ) {
-            $link_title = __( 'Duplicate this page', 'altss' );
+            $link_title = __( 'Duplicate this page', 'alternative-site-settings' );
         }
         else {
-            $link_title = __( 'Duplicate this post', 'altss' );
+            $link_title = __( 'Duplicate this post', 'alternative-site-settings' );
         }
         if (current_user_can('edit_posts')) {
-            $actions['duplicate'] = '<a href="' . wp_nonce_url('admin.php?action=post_as_draft&post=' . $post->ID, basename(__FILE__), 'duplicate_post_nonce' ) . '" title="' . esc_html( $link_title ) . '" rel="permalink" class="duplicate-post-link">' . esc_html__( 'Duplicate', 'altss' ) . '</a>';
+            $actions['duplicate'] = '<a href="' . wp_nonce_url('admin.php?action=post_as_draft&post=' . $post->ID, basename(__FILE__), 'duplicate_post_nonce' ) . '" title="' . esc_html( $link_title ) . '" rel="permalink" class="duplicate-post-link">' . esc_html__( 'Duplicate', 'alternative-site-settings' ) . '</a>';
         }
         return $actions;
     }
@@ -78,7 +78,7 @@ final class ALTSS_Post_Duplicator {
                 'post_parent'    => $post->post_parent,
                 'post_password'  => $post->post_password,
                 'post_status'    => 'draft',
-                'post_title'     => $post->post_title . ' ' .  __( '( Copy )', 'altss' ),
+                'post_title'     => $post->post_title . ' ' .  __( '( Copy )', 'alternative-site-settings' ),
                 'post_type'      => $post->post_type,
                 'to_ping'        => $post->to_ping,
                 'menu_order'     => $post->menu_order
@@ -95,13 +95,14 @@ final class ALTSS_Post_Duplicator {
             $post_meta_infos = $wpdb->get_results("SELECT meta_key, meta_value FROM $wpdb->postmeta WHERE post_id=$post_id");
             if ( count( $post_meta_infos ) != 0 ) {
                 $sql_query = "INSERT INTO $wpdb->postmeta (post_id, meta_key, meta_value) ";
+                $sql_query_sel = [];
                 foreach ( $post_meta_infos as $meta_info ) {
                     $meta_key = $meta_info->meta_key;
                     if( $meta_key == '_wp_old_slug' ) continue;
                     $meta_value = addslashes($meta_info->meta_value);
                     $sql_query_sel[]= "SELECT $new_post_id, '$meta_key', '$meta_value'";
                 }
-                $sql_query.= implode(" UNION ALL ", $sql_query_sel);
+                $sql_query.= implode( " UNION ALL ", $sql_query_sel );
                 $wpdb->query($sql_query);
             }
     
@@ -110,7 +111,7 @@ final class ALTSS_Post_Duplicator {
             exit;
         } 
         else {
-            wp_die( 'Post creation failed, could not find original post: ' . $post_id );
+            wp_die( 'Post creation failed, could not find original post: ' . esc_attr( $post_id ) );
         }
     }
 
@@ -123,10 +124,10 @@ final class ALTSS_Post_Duplicator {
             return;
         }
         $dpData = array(
-                'duplicatePageLabel' => __( "Duplicate page", "altss" ),
-                'duplicatePostLabel' => __( "Duplicate post", "altss" ),
-                'duplicateConfirmTextPage' => __( "Are you sure you want to duplicate this page?", "altss" ),
-                'duplicateConfirmTextPost' => __( "Are you sure you want to duplicate this post?", "altss" ),
+                'duplicatePageLabel' => __( "Duplicate page", "alternative-site-settings" ),
+                'duplicatePostLabel' => __( "Duplicate post", "alternative-site-settings" ),
+                'duplicateConfirmTextPage' => __( "Are you sure you want to duplicate this page?", "alternative-site-settings" ),
+                'duplicateConfirmTextPost' => __( "Are you sure you want to duplicate this post?", "alternative-site-settings" ),
         );
         if( $screen->base !== 'edit' ) {
             $is_page = false;

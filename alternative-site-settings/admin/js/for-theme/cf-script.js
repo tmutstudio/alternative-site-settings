@@ -29,7 +29,7 @@ jQuery( document ).ready(function($){
         
         var data = s_cform.serialize();
 
-        submit_btn.val( wp.i18n.__('Sending...', 'altss') ).addClass('btn-color');
+        submit_btn.val( wp.i18n.__('Sending...', 'alternative-site-settings') ).addClass('btn-color');
 
         $.post( cfajax.url, data, function( response ) {
             if( response.success){
@@ -50,7 +50,7 @@ jQuery( document ).ready(function($){
                         s_cform.find('[name="cfdata[' + key + ']"]').addClass('cf-field-error');
                         s_cform.find('[name="cfdata[' + key + ']"]').closest('p').before('<p class="cf-field-error-txt">' + val + '</p>');
                     });
-                    submit_btn.val( wp.i18n.__('Again', 'altss') ).removeClass('btn-color');
+                    submit_btn.val( wp.i18n.__('Again', 'alternative-site-settings') ).removeClass('btn-color');
                 }
             }
 

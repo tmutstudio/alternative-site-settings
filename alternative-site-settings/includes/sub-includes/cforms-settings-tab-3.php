@@ -7,24 +7,24 @@ $additional_settings = get_option( 'altss_settings_cforms_additional_settings' )
 
                     <div class="site-settings-template-wrapp">
                         <div class="site-settings-options-gr-wrap">
-                            <p class="site-settings-options-gr-title"><?php esc_html_e( "Selecting fields for storing messages in the site database", "altss" ); ?>:</p>
+                            <p class="site-settings-options-gr-title"><?php esc_html_e( "Selecting fields for storing messages in the site database", "alternative-site-settings" ); ?>:</p>
                             <p style="color: red;">
-                                <?php esc_html_e( "Due to strict personal data laws in many countries, contact information fields from submitted forms are NOT saved in the website database by default!", "altss" ); ?>
+                                <?php esc_html_e( "Due to strict personal data laws in many countries, contact information fields from submitted forms are NOT saved in the website database by default!", "alternative-site-settings" ); ?>
                             </p>
                             <p style="color: red;">
-                                <?php esc_html_e( "You can select the required fields yourself, but remember that the website owner is fully responsible for the processing and security of personal data!", "altss" ); ?>
+                                <?php esc_html_e( "You can select the required fields yourself, but remember that the website owner is fully responsible for the processing and security of personal data!", "alternative-site-settings" ); ?>
                             </p>
                             <p>
-                                <?php esc_html_e( "If you do not select any fields, then only the form name, submission date, IP and User Agent of the sender and, of course, the unique ID will be written to the database.", "altss" ); ?>
+                                <?php esc_html_e( "If you do not select any fields, then only the form name, submission date, IP and User Agent of the sender and, of course, the unique ID will be written to the database.", "alternative-site-settings" ); ?>
                             </p>
                             <div class="cf-field-onoff-items-over">
                                 <?php foreach ($FORM_FIELDS as $key => $val) { 
                                     $fieldsSettings = get_option("altss_settings_cforms_options_field_{$key}");
                                     ?>
                                 <dl class="cf-field-onoff-item">
-                                    <dt><?php esc_html_e( "Field", "altss" ); ?>: <strong><?php echo esc_attr( ! empty( $fieldsSettings['label'] ) ? $fieldsSettings['label'] : $val['label']);?></strong></dt>
+                                    <dt><?php esc_html_e( "Field", "alternative-site-settings" ); ?>: <strong><?php echo esc_attr( ! empty( $fieldsSettings['label'] ) ? $fieldsSettings['label'] : $val['label']);?></strong></dt>
                                     <dd>
-                                        <?php altss_add_onoff_switch( 'altss_settings_cforms_additional_settings[allowed_fields][' . $key . ']', 1, $additional_settings['allowed_fields'][$key] ?? '', __( "By checking the box, you assume responsibility for the safety and confidentiality of the data in this field!", "altss" ) ); ?>
+                                        <?php altss_add_onoff_switch( 'altss_settings_cforms_additional_settings[allowed_fields][' . $key . ']', 1, $additional_settings['allowed_fields'][$key] ?? '', __( "By checking the box, you assume responsibility for the safety and confidentiality of the data in this field!", "alternative-site-settings" ) ); ?>
                                     </dd>    
                                 </dl>
                                 <?php } ?>

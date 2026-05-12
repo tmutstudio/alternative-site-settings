@@ -1,4 +1,6 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 /* Alternative Site Settings Plugin
  * Reviews Table class
  * 
@@ -79,7 +81,7 @@ class ALTSS_Reviews_List_Table extends WP_List_Table {
 		 * @since 3.1.0
 		 */
 		public function no_items() {
-			esc_html_e( "The list is empty.", "altss" );
+			esc_html_e( "The list is empty.", "alternative-site-settings" );
 		}
 				
 
@@ -97,22 +99,22 @@ class ALTSS_Reviews_List_Table extends WP_List_Table {
             //All link
             $class = ($current == 'all' ? ' class="current"' :'');
             $all_url = remove_query_arg('view');
-            $views['all'] = "<a href='{$all_url }' {$class} >" . esc_html__( "All reviews", "altss" ) ."</a> (" . ( $s_n + $h_n ) . ")";
+            $views['all'] = "<a href='{$all_url }' {$class} >" . esc_html__( "All reviews", "alternative-site-settings" ) ."</a> (" . ( $s_n + $h_n ) . ")";
 
             //Show link
             $show_url = add_query_arg('view','show');
             $class = ($current == 'show' ? ' class="current"' :'');
-            $views['show'] = "<a href='{$show_url}' {$class} >" . esc_html__( "Only published", "altss" ) ."</a> ({$s_n})";
+            $views['show'] = "<a href='{$show_url}' {$class} >" . esc_html__( "Only published", "alternative-site-settings" ) ."</a> ({$s_n})";
 
             //Hide link
             $hide_url = add_query_arg('view','hide');
             $class = ($current == 'hide' ? ' class="current"' :'');
-            $views['hide'] = "<a href='{$hide_url}' {$class} >" . esc_html__( "Only hidden", "altss" ) ."</a> ({$h_n})";
+            $views['hide'] = "<a href='{$hide_url}' {$class} >" . esc_html__( "Only hidden", "alternative-site-settings" ) ."</a> ({$h_n})";
 
             //Trash bin link
             $trash_bin_url = add_query_arg('view','trash_bin');
             $class = ($current == 'trash_bin' ? ' class="current"' :'');
-            $views['trash_bin'] = "<a href='{$trash_bin_url}' {$class} >" . esc_html__( "Trash bin", "altss" ) ."</a> ({$t_n})";
+            $views['trash_bin'] = "<a href='{$trash_bin_url}' {$class} >" . esc_html__( "Trash bin", "alternative-site-settings" ) ."</a> ({$t_n})";
 
             return $views;
         }                
@@ -120,14 +122,14 @@ class ALTSS_Reviews_List_Table extends WP_List_Table {
         function get_bulk_actions() {
             if( 'trash_bin' === @$_REQUEST['view'] ){
                 $actions = array(
-                    'restore'    => esc_html__( "Restore", "altss" ),
+                    'restore'    => esc_html__( "Restore", "alternative-site-settings" ),
                 );
             }
             else{
                 $actions = array(
-                    'show'    => esc_html__( "Publish", "altss" ),
-                    'hide'    => esc_html__( "Hide", "altss" ),
-                    'trash'    => esc_html__( "To the trash bin", "altss" )
+                    'show'    => esc_html__( "Publish", "alternative-site-settings" ),
+                    'hide'    => esc_html__( "Hide", "alternative-site-settings" ),
+                    'trash'    => esc_html__( "To the trash bin", "alternative-site-settings" )
                 );
             }
             return $actions;
@@ -173,11 +175,11 @@ class ALTSS_Reviews_List_Table extends WP_List_Table {
 		$c = array(
 			'cb'                             => '<input type="checkbox" />',
 			'review_id'                      => 'ID',
-			'review_text'                    => esc_html__( "Review text", "altss" ),
-            'review_author_name'             => esc_html__( "Author", "altss" ),
-            'review_create_date'             => esc_html__( "Review date", "altss" ),
-			'review_rating'                  => esc_html__( "Rating", "altss" ),
-			'review_status'                  => esc_html__( "Status", "altss" ),
+			'review_text'                    => esc_html__( "Review text", "alternative-site-settings" ),
+            'review_author_name'             => esc_html__( "Author", "alternative-site-settings" ),
+            'review_create_date'             => esc_html__( "Review date", "alternative-site-settings" ),
+			'review_rating'                  => esc_html__( "Rating", "alternative-site-settings" ),
+			'review_status'                  => esc_html__( "Status", "alternative-site-settings" ),
 		);
 
 		return $c;
@@ -216,28 +218,28 @@ class ALTSS_Reviews_List_Table extends WP_List_Table {
 	}
         function hideshow_review( $item ){
             if( $item->review_status != 1 ){
-                return '<span class="color-green" data-act="show" data-id="' . $item->review_id . '" data-nonce="' . wp_create_nonce( "review_public" ) . '">' . esc_html__( "Publish a review", "altss" ) . '</span>';
+                return '<span class="color-green" data-act="show" data-id="' . $item->review_id . '" data-nonce="' . wp_create_nonce( "review_public" ) . '">' . esc_html__( "Publish a review", "alternative-site-settings" ) . '</span>';
             }
             else{
-                 return '<span class="color-brown" data-act="hide" data-id="' . $item->review_id . '" data-nonce="' . wp_create_nonce( "review_public" ) . '">' . esc_html__( "Hide review", "altss" ) . '</span>';
+                 return '<span class="color-brown" data-act="hide" data-id="' . $item->review_id . '" data-nonce="' . wp_create_nonce( "review_public" ) . '">' . esc_html__( "Hide review", "alternative-site-settings" ) . '</span>';
            }
         }
         function column_review_text( $item ) {
             $txttrim = altss_trim_words( $item->review_text, 20 );
-            $morespan = $txttrim[1] ? '</span> (<span class="morespan" data-more="1"> . . . ' . esc_html__( "expand text", "altss" ) . '</span>)' : '';
+            $morespan = $txttrim[1] ? '</span> (<span class="morespan" data-more="1"> . . . ' . esc_html__( "expand text", "alternative-site-settings" ) . '</span>)' : '';
             $shorttext = $txttrim[0];
             $fulltext = esc_html( $item->review_text );
             if( 2 != $item->review_status ){
                 $actions = array(
-                    'respond'  => sprintf( '<a href="?page=%s&action=%s&review_id=%s">' . ( '' !== $item->review_response_text ? esc_html__( "Edit answer", "altss" ) : esc_html__( "Reply to review", "altss" ) ) . '</a>', $_REQUEST['page'], 'respond', $item->review_id ),
+                    'respond'  => sprintf( '<a href="?page=%s&action=%s&review_id=%s">' . ( '' !== $item->review_response_text ? esc_html__( "Edit answer", "alternative-site-settings" ) : esc_html__( "Reply to review", "alternative-site-settings" ) ) . '</a>', $_REQUEST['page'], 'respond', $item->review_id ),
                     'public'   => $this->hideshow_review( $item ),
-                    'trash'    => '<span class="color-brown" data-act="trash" data-id="' . $item->review_id . '" data-nonce="' . wp_create_nonce( "review_trash" ) . '">' . esc_html__( "To the trash bin", "altss" ) . '</span>',
+                    'trash'    => '<span class="color-brown" data-act="trash" data-id="' . $item->review_id . '" data-nonce="' . wp_create_nonce( "review_trash" ) . '">' . esc_html__( "To the trash bin", "alternative-site-settings" ) . '</span>',
                 );
             }
             else{
                 $actions = array(
-                    'restore'  => '<span class="color-brown" data-act="restore" data-id="' . $item->review_id . '" data-nonce="' . wp_create_nonce( "review_trash" ) . '">' . esc_html__( "Restore", "altss" ) . '</span>',
-                    'delete'   => '<span class="color-brown" data-act="delete" data-id="' . $item->review_id . '" data-nonce="' . wp_create_nonce( "review_trash" ) . '">' . esc_html__( "Delete", "altss" ) . '</span>',
+                    'restore'  => '<span class="color-brown" data-act="restore" data-id="' . $item->review_id . '" data-nonce="' . wp_create_nonce( "review_trash" ) . '">' . esc_html__( "Restore", "alternative-site-settings" ) . '</span>',
+                    'delete'   => '<span class="color-brown" data-act="delete" data-id="' . $item->review_id . '" data-nonce="' . wp_create_nonce( "review_trash" ) . '">' . esc_html__( "Delete", "alternative-site-settings" ) . '</span>',
                 );
             }
 		
@@ -247,7 +249,7 @@ class ALTSS_Reviews_List_Table extends WP_List_Table {
 	
 
 	function column_review_status( $item ) {
-		return ( $item->review_status == 1 ? '<span  class="color-green" id="review-status-' . $item->review_id . '">' . esc_html__( "published", "altss" ) . '</span>' : '<span class="color-brown" id="review-status-' . $item->review_id . '">' . esc_html__( "hidden", "altss" ) . '</span>' );
+		return ( $item->review_status == 1 ? '<span  class="color-green" id="review-status-' . $item->review_id . '">' . esc_html__( "published", "alternative-site-settings" ) . '</span>' : '<span class="color-brown" id="review-status-' . $item->review_id . '">' . esc_html__( "hidden", "alternative-site-settings" ) . '</span>' );
 	}
 	
 	function column_review_rating( $item ) {

@@ -1,8 +1,8 @@
 === Alternative Site Settings ===
 Tags: settings, custom records, duplicate post, cookie banner, contact forms
-Requires at least: 5.9
-Tested up to: 6.8.3
-Stable tag: 1.2.2
+Requires at least: 6.0
+Tested up to: 6.9.4
+Stable tag: 1.3.0
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -20,6 +20,8 @@ The plugin includes the following features:
 * Editing basic settings, such as the site name and description, meta tags (title and description) for the homepage, og:image for the homepage, copyright information, and additional text fields for the header and footer.
 * Editing meta tags (title and description) for pages and posts, and og:image for pages and posts.
 * Post duplication functionality.
+* Expanded bulk action functionality for standard and custom posts.
+* Admin Tags.
 * Cookie banner with the ability to customize the design and text.
 * Connecting Google Tag and Yandex.Metrica analytics scripts based on user selection via the cookie banner.
 * Fields for the contact information section, which is typically located at the bottom of the landing page or in the footer. The contact section can also include a map via a third-party plugin shortcode or embed a static image with an office location map.
@@ -29,9 +31,14 @@ The plugin includes the following features:
 * Loadable footer section of the website.
 * The top admin panel on the frontend can be collapsed to the upper left corner. * Version 1.1.0 adds the ability to completely disable comments on the site.
 
-Attention! The plugin is focused on working with classic themes.
+Attention! Please note: Some plugin features are designed to work exclusively with classic themes.
 
 == Changelog ==
+
+= 1.3.0 =
+New functionality has been added for bulk post actions: adding/detaching tags, adding to and deleting from categories. You can also now bulk mark posts as drafts or for approval.
+The text domain has also been changed from "altss" to "alternative-site-settings", which meets the requirements.
+Minor inaccuracies in the code have been fixed.
 
 = 1.2.2 =
 Fixed an issue with the display of the "Data for SEO promotion" metabox depending on the position of the "check the box to enable META & SEO functionality" checkbox.
@@ -124,6 +131,12 @@ Do not forget to check on the checkbox on the first settings tab!
 
 
 
+= Why might Admin Tags be needed? =
+
+Admin tags can be very useful when managing a blog with a large number of posts or when building a catalog with multiple pages for service notes.
+However, their usefulness is only evident when it's possible to apply a tag to multiple posts at once, i.e., through "bulk actions," so this functionality was introduced along with admin tags.
+
+
 = Does the plugin use its own hooks? =
 
 Yes, the plugin uses its own hooks.
@@ -144,21 +157,24 @@ https://github.com/tmutstudio/alternative-site-settings/blob/master/recipes_and_
 
 
 == Screenshots ==
-1. Admin Panel -> ASS Plugin site settings start page -> tab "Main settings".
-2. Admin Panel -> ASS Plugin site settings start page -> tab "Main settings" - full page screenshot.
-3. Admin Panel -> ASS Plugin site settings start page -> tab "Custom records".
-4. Admin Panel -> ASS Plugin site settings start page -> tab "Text blocks".
-5. Admin Panel -> ASS Plugin site settings start page -> tab "Cookie Banner" - full page screenshot.
-6. Admin Panel -> ASS Plugin Contact Forms Settings Page -> tab "Messages from forms".
-7. Admin Panel -> ASS Plugin Contact Forms Settings Page -> tab "Messages from forms" -> Modal window for viewing message details.
-8. Admin Panel -> ASS Plugin Contact Forms Settings Page -> tab "Form sets" - All forms are collapsed.
-9. Admin Panel -> ASS Plugin Contact Forms Settings Page -> tab "Form sets" - One of the forms is expanded.
-10. Admin Panel -> ASS Plugin Contact Forms Settings Page -> tab "Form sets" -> Modal window with a set of form fields.
-11. Admin Panel -> ASS Plugin Contact Forms Settings Page -> tab "Forms fields".
-12. Admin Panel -> ASS Plugin Contact Forms Settings Page -> tab "Additional settings".
-13. Admin Panel -> ASS Plugin REVIES Page.
-14. Admin Panel -> ASS Plugin REVIES Page -> Reply to review.
+1. Admin Panel -> ALTSS Plugin site settings start page -> tab "Main settings".
+2. Admin Panel -> ALTSS Plugin site settings start page -> tab "Main settings" - full page screenshot.
+3. Admin Panel -> ALTSS Plugin site settings start page -> tab "Custom records".
+4. Admin Panel -> ALTSS Plugin site settings start page -> tab "Text blocks".
+5. Admin Panel -> ALTSS Plugin site settings start page -> tab "Cookie Banner" - full page screenshot.
+6. Admin Panel -> ALTSS Plugin Contact Forms Settings Page -> tab "Messages from forms".
+7. Admin Panel -> ALTSS Plugin Contact Forms Settings Page -> tab "Messages from forms" -> Modal window for viewing message details.
+8. Admin Panel -> ALTSS Plugin Contact Forms Settings Page -> tab "Form sets" - All forms are collapsed.
+9. Admin Panel -> ALTSS Plugin Contact Forms Settings Page -> tab "Form sets" - One of the forms is expanded.
+10. Admin Panel -> ALTSS Plugin Contact Forms Settings Page -> tab "Form sets" -> Modal window with a set of form fields.
+11. Admin Panel -> ALTSS Plugin Contact Forms Settings Page -> tab "Forms fields".
+12. Admin Panel -> ALTSS Plugin Contact Forms Settings Page -> tab "Additional settings".
+13. Admin Panel -> ALTSS Plugin REVIES Page.
+14. Admin Panel -> ALTSS Plugin REVIES Page -> Reply to review.
 15. Frontend -> REVIES Page (TAMA WP Theme).
-16. ASS Plugin Contact Forms Settings Page -> tab "Additional settings".
-17. Admin Panel -> ASS Plugin site settings start page -> tab "Main settings" -> Setting for Loadable footer section.
+16. ALTSS Plugin Contact Forms Settings Page -> tab "Additional settings".
+17. Admin Panel -> ALTSS Plugin site settings start page -> tab "Main settings" -> Setting for Loadable footer section.
 18. Output Loadable footer section in the footer of the Twenty Seventeen block theme.
+19. Admin Panel -> Posts with Admin Tags.
+20. Admin Panel -> Adding/detaching tags boxes.
+21. Admin Panel -> Adding to and deleting from categories boxes.

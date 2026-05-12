@@ -1,4 +1,5 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 
 add_filter( 'document_title', 'altss_modify_document_title' );

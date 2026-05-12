@@ -31,7 +31,7 @@ add_action( 'admin_menu', 'altss_settings_menu_page' );
 function altss_settings_menu_page() {
     global $WPSS_ICON_B64;
     add_menu_page(
-            esc_html__( "Site settings", "altss" ),
+            esc_html__( "Site settings", "alternative-site-settings" ),
             'Alt Site Settings',
             'manage_options',
             'sitesetadmmenu',
@@ -50,8 +50,8 @@ function altss_settings_submenu_page(){
 
             add_submenu_page(
                             'sitesetadmmenu',
-                            esc_html__( "Site settings", "altss" ),
-                            esc_html__( "Site settings", "altss" ),
+                            esc_html__( "Site settings", "alternative-site-settings" ),
+                            esc_html__( "Site settings", "alternative-site-settings" ),
                             'edit_private_posts',
                             'sitesetadmmenu',
                             'altss_settings_start_page_html',
@@ -60,8 +60,8 @@ function altss_settings_submenu_page(){
     
             add_submenu_page(
                             'sitesetadmmenu',
-                            esc_html__( "Contact forms", "altss" ),
-                            esc_html__( "Contact forms", "altss" ),
+                            esc_html__( "Contact forms", "alternative-site-settings" ),
+                            esc_html__( "Contact forms", "alternative-site-settings" ),
                             'edit_private_posts',
                             'cform_settings_page',
                             'altss_cform_settings_page_html',
@@ -69,8 +69,8 @@ function altss_settings_submenu_page(){
                             );
             add_submenu_page(
                             'sitesetadmmenu',
-                            esc_html__( "Reviews", "altss" ),
-                            esc_html__( "Reviews", "altss" ),
+                            esc_html__( "Reviews", "alternative-site-settings" ),
+                            esc_html__( "Reviews", "alternative-site-settings" ),
                             'edit_private_posts',
                             'reviews_page',
                             'altss_reviews_page_html',
@@ -79,8 +79,8 @@ function altss_settings_submenu_page(){
 
             add_submenu_page(
                             'sitesetadmmenu',
-                            esc_html__( "Special Settings", "altss" ),
-                            esc_html__( "Special Settings", "altss" ),
+                            esc_html__( "Special Settings", "alternative-site-settings" ),
+                            esc_html__( "Special Settings", "alternative-site-settings" ),
                             'manage_options',
                             'special_settings_page',
                             'altss_special_settings_page_html',

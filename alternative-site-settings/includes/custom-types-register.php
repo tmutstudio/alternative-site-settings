@@ -41,7 +41,7 @@ function altss_custom_type_register() {
             register_taxonomy( $c_type['tag_slug'], $key,
                     array(
                             'hierarchical' => false,
-                            'label' => esc_html__( 'Tags' , "altss" ),
+                            'label' => esc_html__( 'Tags' , "alternative-site-settings" ),
                             'query_var' => $c_type['tag_slug'],
                             'rewrite' => array('slug' => $c_type['tag_slug'], 'paged'=>true ),
                             'show_ui' => true,

@@ -70,12 +70,12 @@ final class Altss_Cookie_Banner {
                     <div class="cookie-banner-policy-link">
                         <p style="margin: 4px 0;">
                             <a href="<?php echo esc_url( get_page_link( $privacy_policy_page_id ) ); ?>" target="_blank">
-                            <?php echo esc_html_e( 'privacy policy', 'altss' ); ?>
+                            <?php echo esc_html_e( 'privacy policy', 'alternative-site-settings' ); ?>
                             </a>
                         </p>
                         <p style="margin: 4px 0;">
                             <a href="<?php echo esc_url( get_page_link( $cookie_policy_page_id ) ); ?>" target="_blank">
-                            <?php echo esc_html_e( 'coockie policy', 'altss' ); ?>
+                            <?php echo esc_html_e( 'coockie policy', 'alternative-site-settings' ); ?>
                             </a>
                         </p>
                     </div>

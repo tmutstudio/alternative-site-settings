@@ -4,7 +4,7 @@ jQuery(document).ready(function($) {
         if( cformFields ){
             $(".popup-container").css( 'width', '500px');
             $('#popup-form-wrapper').append(
-                    '<div class="popup-cform-fields-form-wrap"><div>' + wp.i18n.__("Select the required fields for the form", "altss") + '</div><form></form></div>'
+                    '<div class="popup-cform-fields-form-wrap"><div>' + wp.i18n.__("Select the required fields for the form", "alternative-site-settings") + '</div><form></form></div>'
             );
             for( let key in cformFields ) {
                 let chkd = '';
@@ -18,7 +18,7 @@ jQuery(document).ready(function($) {
                 );
             }
             $('#popup-form-wrapper form').append(
-                '<div class="popup-cform-field-wrap"><input type="button" id="fset-btn" data-area="' + fArea + '" value="' + wp.i18n.__("Apply", "altss") + '" /></div>'
+                '<div class="popup-cform-field-wrap"><input type="button" id="fset-btn" data-area="' + fArea + '" value="' + wp.i18n.__("Apply", "alternative-site-settings") + '" /></div>'
         );
         }
         else{
@@ -39,7 +39,7 @@ jQuery(document).ready(function($) {
                     '<li class="form-area-field" data-key="' + item.value + '">' + 
                     '<input type="hidden" name="altss_settings_cforms_options_fields_' + area + '[]" value="' + item.value + '"/>' + 
                     '<div><label>' + cformFields[item.value] + '</label>' +
-                    '<input type="checkbox" id="f' + area + '_cb_' + item.value + '" name="altss_settings_cforms_options_reqfields_' + area + '[' + item.value + ']" value="1" title="' + wp.i18n.__('make required', 'altss') + '"' + item.attributes.data.value + ' /></div></li>'
+                    '<input type="checkbox" id="f' + area + '_cb_' + item.value + '" name="altss_settings_cforms_options_reqfields_' + area + '[' + item.value + ']" value="1" title="' + wp.i18n.__('make required', 'alternative-site-settings') + '"' + item.attributes.data.value + ' /></div></li>'
             );
             console.dir(item);
             console.log(item.attributes.data.value);
@@ -83,7 +83,7 @@ jQuery(document).ready(function($) {
 
         var url = '/wp-admin/admin-post.php';
 
-        if( confirm( wp.i18n.__("Are you sure you want to delete this entry?", "altss") ) ){
+        if( confirm( wp.i18n.__("Are you sure you want to delete this entry?", "alternative-site-settings") ) ){
             let form = document.createElement('form');
             let actionid = 'cfs_record_remove';
             form.action = url;
@@ -120,12 +120,12 @@ jQuery(document).ready(function($) {
         .slideToggle('slow', function(){
             if( $(this).is(":hidden") ) {
                 fitmst.removeClass('fitmst-active');
-                fitmst.attr({'title': wp.i18n.__('expand', 'altss')});
+                fitmst.attr({'title': wp.i18n.__('expand', 'alternative-site-settings')});
                 tbtn.removeClass("dashicons-remove").addClass("dashicons-insert");
             }
             else {
                 fitmst.addClass('fitmst-active');
-                fitmst.attr({'title': wp.i18n.__('collapse', 'altss')});
+                fitmst.attr({'title': wp.i18n.__('collapse', 'alternative-site-settings')});
                 tbtn.removeClass("dashicons-insert").addClass("dashicons-remove");
             }
         });
@@ -133,21 +133,21 @@ jQuery(document).ready(function($) {
     $(".cfitms-sliddown-button").click(function(){
         $('.site-settings-cform-all-items-over .site-settings-cform-item-wrapp').slideDown("slow", function(){
             $('.site-settings-cform-all-items-over .cfitms-toggle').removeClass("dashicons-insert").addClass("dashicons-remove");
-            $('.site-settings-cform-all-items-over .site-settings-cform-item-title').attr({'title':wp.i18n.__('collapse', 'altss')});
+            $('.site-settings-cform-all-items-over .site-settings-cform-item-title').attr({'title':wp.i18n.__('collapse', 'alternative-site-settings')});
             $('.site-settings-cform-all-items-over .site-settings-cform-item-title').addClass('fitmst-active');
         });
     });
     $(".cfitms-slidup-button").click(function(){
         $('.site-settings-cform-all-items-over .site-settings-cform-item-wrapp').slideUp("slow", function(){
             $('.site-settings-cform-all-items-over .cfitms-toggle').removeClass("dashicons-remove").addClass("dashicons-insert");
-            $('.site-settings-cform-all-items-over .site-settings-cform-item-title').attr({'title':wp.i18n.__('expand', 'altss')});
+            $('.site-settings-cform-all-items-over .site-settings-cform-item-title').attr({'title':wp.i18n.__('expand', 'alternative-site-settings')});
             $('.site-settings-cform-all-items-over .site-settings-cform-item-title').removeClass('fitmst-active');
         });
     });
 
     $('.cf-field-onoff-item dd input[type="checkbox"]').change(function(){
         var el = $(this);
-        if( el.is(':checked') && ! confirm( wp.i18n.__("Are you sure?", "altss") )  ){
+        if( el.is(':checked') && ! confirm( wp.i18n.__("Are you sure?", "alternative-site-settings") )  ){
             el.prop('checked', false);
         }    
     });

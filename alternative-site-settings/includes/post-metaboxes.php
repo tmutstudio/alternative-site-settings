@@ -36,10 +36,10 @@ function altss_extra_seo_metabox() {
     $type = $post->post_type;
     switch ( $type ) {
         case 'page':
-            $meta_title = __( "Page title text", "altss" );
+            $meta_title = __( "Page title text", "alternative-site-settings" );
             break;
         case 'post':
-            $meta_title = __( "Post title text", "altss" );
+            $meta_title = __( "Post title text", "alternative-site-settings" );
             break;
     }
     if( empty( $altss_settings_options['seo_meta_enabled'] ) ) {
@@ -62,14 +62,14 @@ function altss_extra_seo_metabox() {
         );
         wp_localize_script( 'altss-ge-metaboxes', 'geScriptData',
             [
-                'i18n_panel_title' => esc_html__( 'Data for SEO promotion', 'altss' ),
+                'i18n_panel_title' => esc_html__( 'Data for SEO promotion', 'alternative-site-settings' ),
                 'i18n_title_label' => $meta_title,
-                'i18n_desc_label' => esc_html__( 'Article description', 'altss' ),
-                'i18n_ogimage_label' => esc_html__( 'og:image', 'altss' ),
-                'i18n_ogimage_res_label' => esc_html__( 'Optimal resolution 600x315 pixels', 'altss' ),
-                'i18n_replace_image_label' => esc_html__( 'Replace image', 'altss' ),
-                'i18n_select_image_label' => esc_html__( 'Select an image', 'altss' ),
-                'i18n_delete_image_label' => esc_html__( 'Delete', 'altss' ),
+                'i18n_desc_label' => esc_html__( 'Article description', 'alternative-site-settings' ),
+                'i18n_ogimage_label' => esc_html__( 'og:image', 'alternative-site-settings' ),
+                'i18n_ogimage_res_label' => esc_html__( 'Optimal resolution 600x315 pixels', 'alternative-site-settings' ),
+                'i18n_replace_image_label' => esc_html__( 'Replace image', 'alternative-site-settings' ),
+                'i18n_select_image_label' => esc_html__( 'Select an image', 'alternative-site-settings' ),
+                'i18n_delete_image_label' => esc_html__( 'Delete', 'alternative-site-settings' ),
             ]
         );
 
@@ -88,7 +88,7 @@ function altss_extra_seo_metabox() {
 
 	add_meta_box(
 		'seo_meta_box',
-		__( "Data for SEO promotion", "altss" ),
+		__( "Data for SEO promotion", "alternative-site-settings" ),
 		'altss_seo_meta_box', 
 		[ 
 			'page', 
@@ -112,10 +112,10 @@ function altss_seo_meta_box( $post ){
     $type = $post->post_type;
     switch ( $type ) {
         case 'page':
-            $meta_title = __( "Page title text", "altss" );
+            $meta_title = __( "Page title text", "alternative-site-settings" );
             break;
         case 'post':
-            $meta_title = __( "Post title text", "altss" );
+            $meta_title = __( "Post title text", "alternative-site-settings" );
             break;
     }
 
@@ -135,11 +135,11 @@ function altss_seo_meta_box( $post ){
 	<p><?php echo esc_html( $meta_title ); ?> (meta tag title):
 		<input type="text" name="_seo_meta_title" style="width:100%;" value="<?php echo esc_html( $title_val ); ?>" />
 	</p>
-	<p><?php esc_html_e( "Article description", "altss" ); ?> (meta tag description):
+	<p><?php esc_html_e( "Article description", "alternative-site-settings" ); ?> (meta tag description):
 		<textarea name="_seo_meta_description" style="width:100%;height:100px;"><?php echo esc_textarea( $description_val ); ?></textarea>
 	</p>
-    <p><?php esc_html_e( 'og:image', 'altss' ); ?><br />
-       <?php esc_html_e( 'Optimal resolution 600x315 pixels', 'altss' ); ?><br />
+    <p><?php esc_html_e( 'og:image', 'alternative-site-settings' ); ?><br />
+       <?php esc_html_e( 'Optimal resolution 600x315 pixels', 'alternative-site-settings' ); ?><br />
         <?php 
             altss_include_uploadscript();
             altss_image_uploader_field( '_seo_meta_og_image', esc_url( $og_image_val ) );

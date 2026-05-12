@@ -15,6 +15,8 @@ The plugin contains the following functionality:
 * Editing basic settings, such as the site name and description, meta tags (title and description) for the homepage, og:image for the homepage, copyright information, and additional text fields for the header and footer.
 * Editing meta tags (title and description) for pages and posts, and og:image for pages and posts.
 * Post duplication functionality.
+* Expanded bulk action functionality for standard and custom posts.
+* Admin Tags.
 * Cookie banner with the ability to customize the design and text.
 * Connecting Google Tag and Yandex.Metrica analytics scripts based on user selection via the cookie banner.
 * Fields for the contact information section, which is typically located at the bottom of the landing page or in the footer. The contact section can also include a map via a third-party plugin shortcode or embed a static image with an office location map. * Five pre-defined user post types: "News," "Promotions," "Documents," "Books," and "Videos." Each post type is disabled by default.
@@ -26,6 +28,11 @@ The plugin contains the following functionality:
 Attention! The plugin is focused on working with classic themes.
 
 ## Changelog
+
+### 1.3.0
+New functionality has been added for bulk post actions: adding/detaching tags, adding to and deleting from categories. You can also now bulk mark posts as drafts or for approval.
+The text domain has also been changed from "altss" to "alternative-site-settings", which meets the requirements.
+Minor inaccuracies in the code have been fixed.
 
 ### 1.2.2
 Fixed an issue with the display of the "Data for SEO promotion" metabox depending on the position of the "check the box to enable META & SEO functionality" checkbox.
@@ -112,6 +119,10 @@ are overwritten, so you can also set your own review styles unique to each theme
 
 > Do not forget to check on the checkbox on the first settings tab!
 
+
+### Why might Admin Tags be needed?
+> Admin tags can be very useful when managing a blog with a large number of posts or when building a catalog with multiple pages for service notes.
+However, their usefulness is only evident when it's possible to apply a tag to multiple posts at once, i.e., through "bulk actions," so this functionality was introduced along with admin tags.
 
 
 ### Does the plugin use its own hooks?
@@ -209,5 +220,17 @@ For example, a plugin for connecting the Yandex Maps widget is already available
 
 ### Output Loadable footer section in the footer of the Twenty Seventeen block theme.
 ![New onboarding wizard to help you get started.](.wordpress-org/screenshot-18.png)
+
+
+### Admin Panel -> Posts with Admin Tags.
+![New onboarding wizard to help you get started.](.wordpress-org/screenshot-19.png)
+
+
+### Admin Panel -> Adding/detaching tags boxes.
+![New onboarding wizard to help you get started.](.wordpress-org/screenshot-20.png)
+
+
+### Admin Panel -> Adding to and deleting from categories boxes.
+![New onboarding wizard to help you get started.](.wordpress-org/screenshot-21.png)
 
 

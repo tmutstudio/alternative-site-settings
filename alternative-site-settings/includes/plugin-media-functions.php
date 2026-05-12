@@ -1,4 +1,5 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 function altss_remove_site_icon_setting( $wp_customize ){
     $wp_customize->remove_setting( 'custom_logo' );

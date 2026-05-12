@@ -33,7 +33,7 @@ if ( 'reviews_page' === altss_current_page() && !isset( $_GET['action'] ) ){
 function altss_reviews_page_add_options() {
 	$option = 'per_page';
 	$args = array(
-			'label' => esc_html__( "Reviews per page", "altss" ),
+			'label' => esc_html__( "Reviews per page", "alternative-site-settings" ),
 			'default' => 10,
 			'option' => 'reviews_per_page'
 	);
@@ -47,7 +47,7 @@ function altss_reviews_render_list_table(){
 	$reviewsListTable->prepare_items();
     $reviewsListTable->views();
     echo '<form id="reviews-filter" method="post">';
-    $reviewsListTable->search_box( esc_html__( "Search by text", "altss" ), 'search_id' );
+    $reviewsListTable->search_box( esc_html__( "Search by text", "alternative-site-settings" ), 'search_id' );
     $reviewsListTable->display(); 
     echo '</form>'; 
 }
@@ -77,11 +77,11 @@ function altss_reviews_page_html() {
 
     ?>
     <div class="altss-setting-page-wrapper">
-	<h2 class="altss-admin-page-head"><?php esc_html_e( "REVIEWS", "altss" ); ?></h2>
+	<h2 class="altss-admin-page-head"><?php esc_html_e( "REVIEWS", "alternative-site-settings" ); ?></h2>
 	<?php
     if( isset( $altss_settings_options['disable_reviews'] ) ) {
         wp_admin_notice(
-                esc_html__( 'At the moment, the review page is deactivated!', 'altss' ),
+                esc_html__( 'At the moment, the review page is deactivated!', 'alternative-site-settings' ),
                 [
                     'type'               => 'warning',
                     'id'                 => 'reviews-disabled',
@@ -112,30 +112,30 @@ function altss_reviews_page_html() {
                 
                 $review_data = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$prefix}altss_reviews WHERE review_id=%d", $review_id ) );
                 ?>
-            <a href="<?php echo esc_url( $back_to_list_link ); ?>" class="altss-icon altss-adm-icon-allproducts"><?php esc_html_e( "Back to the list of reviews", "altss" ); ?></a>
-            <h1><?php esc_html_e( "Reply to review", "altss" ); ?></h1>
+            <a href="<?php echo esc_url( $back_to_list_link ); ?>" class="altss-icon altss-adm-icon-allproducts"><?php esc_html_e( "Back to the list of reviews", "alternative-site-settings" ); ?></a>
+            <h1><?php esc_html_e( "Reply to review", "alternative-site-settings" ); ?></h1>
             <form action="<?php echo esc_url( admin_url('admin-post.php') ); ?>" method="post">
                 <input type="hidden" name="action" value="review-response-update" />
                 <input type="hidden" name="review_id" value="<?php echo esc_attr( $review_id ); ?>" />
                 <div class="altss-review-text-over">
                     <div class="altss-review-author-items-over">
-                        <div class="altss-review-author-item-left"><?php esc_html_e( "Author's name", "altss" ); ?>:</div>
+                        <div class="altss-review-author-item-left"><?php esc_html_e( "Author's name", "alternative-site-settings" ); ?>:</div>
                         <div class="altss-review-author-item-right"><?php echo esc_html( $review_data->review_author_name );?></div>
                     </div>
                     <div class="altss-review-author-items-over">
-                        <div class="altss-review-author-item-left"><?php esc_html_e( "Author's city", "altss" ); ?>:</div>
+                        <div class="altss-review-author-item-left"><?php esc_html_e( "Author's city", "alternative-site-settings" ); ?>:</div>
                         <div class="altss-review-author-item-right"><?php echo esc_html( $review_data->review_author_location );?></div>
                     </div>
                     <div class="altss-review-author-items-over">
-                        <div class="altss-review-author-item-left"><?php esc_html_e( "Author's email", "altss" ); ?>:</div>
+                        <div class="altss-review-author-item-left"><?php esc_html_e( "Author's email", "alternative-site-settings" ); ?>:</div>
                         <div class="altss-review-author-item-right"><?php echo esc_html( $review_data->review_author_email );?></div>
                     </div>
                     <div class="altss-review-author-items-over">
-                        <div class="altss-review-author-item-left"><?php esc_html_e( "Author's IP", "altss" ); ?>:</div>
+                        <div class="altss-review-author-item-left"><?php esc_html_e( "Author's IP", "alternative-site-settings" ); ?>:</div>
                         <div class="altss-review-author-item-right"><?php echo esc_html( $review_data->review_author_ip );?></div>
                     </div>
                     <div class="altss-review-author-items-over">
-                        <div class="altss-review-author-item-left"><?php esc_html_e( "RATING", "altss" ); ?>:</div>
+                        <div class="altss-review-author-item-left"><?php esc_html_e( "RATING", "alternative-site-settings" ); ?>:</div>
                         <div class="altss-review-author-item-right">
                             
                             <?php 
@@ -148,7 +148,7 @@ function altss_reviews_page_html() {
                             ?>
                         </div>
                     </div>
-                    <div><?php esc_html_e( "Review text", "altss" ); ?>:</div>
+                    <div><?php esc_html_e( "Review text", "alternative-site-settings" ); ?>:</div>
                     <div class="altss-review-text"><?php echo esc_html( $review_data->review_text );?></div>
                 </div>
                 <div class="altss-review-respond-over">
@@ -169,7 +169,7 @@ function altss_reviews_page_html() {
                 case "start":///////////////////// START ACTION
                 delete_transient( 'thadm_admrevs_session' );
                 wp_enqueue_script('reviews-script', ALTSITESET_URL . '/admin/js/reviews-script.js', [], ALTSITESET__VERSION, true);
-                wp_set_script_translations( 'reviews-script', 'altss', ALTSITESET_LANG_DIR . '/js' );
+                wp_set_script_translations( 'reviews-script', 'alternative-site-settings', ALTSITESET_LANG_DIR . '/js' );
                 ?>
                 <?php altss_reviews_render_list_table();?>
                 <?php

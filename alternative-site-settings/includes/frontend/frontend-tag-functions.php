@@ -9,6 +9,8 @@ function altss_email_to_script( $email = '' ) {
 
     if( !empty( $email ) && preg_match( "/@/", $email ) ){
         $parts = explode( "@", $email );
+        //Safe: The $letters is result by the str_shuffle() function.
+        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
         echo '<script>var aeml' . $letters . ',beml' . $letters . ',apart' . $letters . '; aeml' . $letters . '="' . $parts[0] . '"; beml' . $letters . '="' . $parts[1] . '"; apart' . $letters . '="<a href=\""; document.write( apart' . $letters . ' + "mailto:" + aeml' . $letters . ' + "@" + beml' . $letters . ' + "\"><span class=\"dashicons dashicons-email-alt\"></span> "  + aeml' . $letters . ' + "@" + beml' . $letters . ' + "</a>");</script>';
     }
     else {
@@ -20,19 +22,19 @@ function altss_the_copyright() {
     $o = get_option( "copyright_info" );
     ?>
         <div id="copyright-site-info">
-            &copy <?php echo $o['start_year']; ?> — <?php echo date('Y'); ?>
-            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( htmlentities( $o['holder_text'] ) ); ?>" rel="home">
-            <?php echo htmlentities( $o['holder_text'] ); ?>
+            &copy <?php esc_html_e( $o['start_year'] . ' — ' . date('Y') ); ?>
+            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr(  $o['holder_text'] ); ?>" rel="home">
+            <?php echo esc_html( $o['holder_text'] ); ?>
             </a>
         </div>
         <div id="copyright-site-info-optional">
-            <?php echo $o['optional_text']; ?>
+            <?php echo esc_html( $o['optional_text'] ); ?>
         </div>
     <?php
 }
 
 function altss_phone_to_link_wi( $phone, $print = false ) {
-    $return = '<a href="tel:' . preg_replace( "/[^\d\+]/", "", $phone ) . '"><span class="dashicons dashicons-phone"></span> <span class="">' . $phone . '</span></a>';
+    $return = '<a href="tel:' . preg_replace( "/[^\d\+]/", "", $phone ) . '"><span class="dashicons dashicons-phone"></span> <span class="">' . esc_html( $phone ) . '</span></a>';
     if( $print ){
         echo $return;
     }
@@ -51,20 +53,20 @@ function altss_the_contact_phone_numbers( $data = '' ) {
             foreach  ($tel_ar as $val ) {
                 $tel = trim( $val );
                 echo '<div class="section-contacts-text-phone">'."\n";
-                echo altss_phone_to_link_wi( $tel );
+                altss_phone_to_link_wi( $tel, true );
                 echo "</div>\n";
             }
 
         }
         else {
             echo '<div class="section-contacts-text-phone">'."\n";
-            echo altss_phone_to_link_wi( $data );
+            altss_phone_to_link_wi( $data, true );
             echo "</div>\n";
         }
     }
     else{
         echo '<div class="section-contacts-text-phone">'."\n";
-        echo altss_phone_to_link_wi( $g_phone_number );
+        altss_phone_to_link_wi( $g_phone_number, true );
         echo "</div>\n";
     }
 }
@@ -76,14 +78,14 @@ function altss_the_contact_whatsapp( $data = '' ) {
             foreach  ($tel_ar as $val ) {
                 $tel = trim( $val );
                 echo '<div class="section-contacts-text-whatsapp">'."\n";
-                echo '<a href="https://wa.me/' . preg_replace( "/[^\d]/", "", $tel ) . '" class=""><span class="dashicons dashicons-whatsapp"></span> ' . $tel . '</a>';
+                echo '<a href="https://wa.me/' . preg_replace( "/[^\d]/", "", $tel ) . '" class=""><span class="dashicons dashicons-whatsapp"></span> ' . esc_html( $tel ) . '</a>';
                 echo "</div>\n";
             }
 
         }
         else {
             echo '<div class="section-contacts-text-whatsapp">'."\n";
-            echo '<a href="https://wa.me/' . preg_replace( "/[^\d]/", "", $data ) . '" class=""><span class="dashicons dashicons-whatsapp"></span> ' . $data . '</a>';
+            echo '<a href="https://wa.me/' . preg_replace( "/[^\d]/", "", $data ) . '" class=""><span class="dashicons dashicons-whatsapp"></span> ' . esc_html( $data ) . '</a>';
             echo "</div>\n";
         }
     }
@@ -101,14 +103,14 @@ function altss_the__contact_telegram( $data = '' ) {
             foreach  ($tel_ar as $val ) {
                 $tel = trim( $val );
                 echo '<div class="section-contacts-text-telegram">'."\n";
-                echo '<a href="https://t.me/' . preg_replace( "/[^a-z\d@\+_]/", "", $tel ) . '" class="">' . $svg_icon . ' ' . $tel . '</a>';
+                echo '<a href="https://t.me/' . preg_replace( "/[^a-z\d@\+_]/", "", $tel ) . '" class="">' . $svg_icon . ' ' . esc_html( $tel ) . '</a>';
                 echo "</div>\n";
             }
 
         }
         else {
             echo '<div class="section-contacts-text-telegram">'."\n";
-            echo '<a href="https://t.me/' . preg_replace( "/[^a-z\d@\+_]/", "", $data ) . '" class="">' . $svg_icon . ' ' . $data . '</a>';
+            echo '<a href="https://t.me/' . preg_replace( "/[^a-z\d@\+_]/", "", $data ) . '" class="">' . $svg_icon . ' ' . esc_html( $data ) . '</a>';
             echo "</div>\n";
         }
     }
@@ -125,13 +127,13 @@ function altss_the_contacts_block(){
         ?>
                 <div id="contacts" class="section-contacts-text-over">
                     <?php if( ! empty( $settings_options['contacts']['contacts_title'] ) ){?>
-                    <div class="section-contacts-text-title"><?php echo $settings_options['contacts']['contacts_title'] ?? ''; ?></div>
+                    <div class="section-contacts-text-title"><?php echo esc_html( $settings_options['contacts']['contacts_title'] ?? '' ); ?></div>
                     <?php } ?>
                     <?php altss_the_contact_phone_numbers( $settings_options['contacts']['contacts_phone'] ?? '' ); ?>
                     <?php altss_the_contact_whatsapp( $settings_options['contacts']['contacts_whatsapp'] ?? '' ); ?>
                     <?php altss_the__contact_telegram( $settings_options['contacts']['contacts_telegram'] ?? '' ); ?>
                     <div class="section-contacts-text-email"><?php altss_email_to_script( $settings_options['contacts']['contacts_email'] ?? '' ); ?></div>
-                    <div class="section-contacts-text-lacation"><?php echo $settings_options['contacts']['contacts_location'] ?? ''; ?></div>
+                    <div class="section-contacts-text-lacation"><?php echo esc_html( $settings_options['contacts']['contacts_location'] ?? '' ); ?></div>
                 </div>
                 <div class="section-contacts-yamap-over">
                     <?php altss_the_contact_section_map();?>

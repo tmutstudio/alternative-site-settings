@@ -4,12 +4,12 @@
  * Network: false
  * Plugin URI:  https://github.com/tmutstudio/alternative-site-settings
  * Description: Plugin for managing site settings, including feedback forms, photo gallery, reviews and contacts.
- * Version:     1.2.2
+ * Version:     1.3.0
  * Author:      tmutarakan-dev
  * Author URI:  https://github.com/tmutstudio
  * License:     GPLv2 or later
  * License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
- * Text Domain: altss
+ * Text Domain: alternative-site-settings
  * Domain Path: /languages
  */
 
@@ -25,12 +25,12 @@ define( 'ALTSITESET_ADMIN_DIR' , ALTSITESET_DIR . "/admin" );
 define( 'ALTSITESET_CLASSES_DIR' , ALTSITESET_DIR . "/classes" );
 define( 'ALTSITESET_LANG_DIR' , ALTSITESET_DIR . "/languages" );
 
-define( 'ALTSITESET__VERSION', '1.2.0' );
+define( 'ALTSITESET__VERSION', '1.3.0' );
 
 define( 'ALTSITESET_CFORMS_AMOUNT', 10 );
 
 add_action( 'plugins_loaded', function(){
-	load_plugin_textdomain( 'altss', false, dirname( plugin_basename(__FILE__) ) . '/languages' );
+	load_plugin_textdomain( 'alternative-site-settings', false, dirname( plugin_basename(__FILE__) ) . '/languages' );
 } );
 
 
@@ -124,7 +124,7 @@ function altss_settings_add_reviews_post_record(){
         'post_name'      => 'reviews',
         'post_parent'    => 0,
         'post_status'    => 'publish',
-        'post_title'     => esc_html__( "Reviews", "altss" ),
+        'post_title'     => esc_html__( "Reviews", "alternative-site-settings" ),
         'post_type'      => 'page',
     ); 
     $post_id = wp_insert_post( wp_slash( $post_data ) );  
@@ -160,7 +160,11 @@ $altss_settings_options = get_option( "altss_settings_options" );
 if( isset( $altss_settings_options['disable_all_comments'] ) ){
     $disable_all_comments = new ALTSS_Disable_ALL_Comments();
 }
+if( isset( $altss_settings_options['admin_tags_enable'] ) ){
+    ALTSS_Admin_Tags::init();
+}
 
+ALTSS_Post_List_Table_Ext::init();
 
 include_once ALTSITESET_INCLUDES_DIR.'/post-metaboxes.php';
 include_once ALTSITESET_INCLUDES_DIR.'/custom-types-register.php';
@@ -217,7 +221,7 @@ function altss_styles_for_adminpanel(){
 add_filter( 'display_post_states', 'altss_special_page_mark', 10, 2 );
 function altss_special_page_mark( $post_states, $post ){
 	if( isset( $post->post_type ) && $post->post_type === 'page' && $post->post_name === 'reviews' ){
-        $post_states[] = esc_html__( "Page for the &laquo;Reviews&raquo; section", "altss" );
+        $post_states[] = esc_html__( "Page for the &laquo;Reviews&raquo; section", "alternative-site-settings" );
 	}
 
 	return $post_states;

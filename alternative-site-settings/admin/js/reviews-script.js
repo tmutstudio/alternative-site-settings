@@ -8,8 +8,8 @@ jQuery(document).ready(function($) {
         let inner = [];
         let classes1 = [];
         let classes2 = [];
-       inner['hide'] = ['show', wp.i18n.__( 'Publish a review', 'altss' ), wp.i18n.__( 'hidden', 'altss' )];
-        inner['show'] = ['hide', wp.i18n.__( 'Hide review', 'altss' ), wp.i18n.__( 'published', 'altss' )];
+       inner['hide'] = ['show', wp.i18n.__( 'Publish a review', 'alternative-site-settings' ), wp.i18n.__( 'hidden', 'alternative-site-settings' )];
+        inner['show'] = ['hide', wp.i18n.__( 'Hide review', 'alternative-site-settings' ), wp.i18n.__( 'published', 'alternative-site-settings' )];
         classes1['show'] = 'color-green';
         classes1['hide'] = 'color-brown';
         classes2['show'] = 'color-brown';
@@ -26,7 +26,7 @@ jQuery(document).ready(function($) {
 	                },
                 error: function(jqXHR, exception)
                 {
-                    $('#ajax_message').fadeIn(400).html("<span style=\"color:red\">" + wp.i18n.__( 'Error!', 'altss' ) + "</span>").fadeOut(2000);
+                    $('#ajax_message').fadeIn(400).html("<span style=\"color:red\">" + wp.i18n.__( 'Error!', 'alternative-site-settings' ) + "</span>").fadeOut(2000);
                     console.log(jqXHR.status);
                 },
                 success: function()
@@ -41,7 +41,7 @@ jQuery(document).ready(function($) {
                     else{
                         $('#optional-upload-'+id).removeClass('nopublic-bg');
                     }
-                    $('#ajax_message').fadeIn(400).html("<span style=\"color:green\">" + wp.i18n.__( 'Information updated!', 'altss' ) + "</span>").fadeOut(2000);
+                    $('#ajax_message').fadeIn(400).html("<span style=\"color:green\">" + wp.i18n.__( 'Information updated!', 'alternative-site-settings' ) + "</span>").fadeOut(2000);
                 }
             });
 
@@ -61,7 +61,7 @@ jQuery(document).ready(function($) {
             txtover.hide();
             shorttext[id] = txtdiv.html();
             txtdiv.html(fulltext);
-            morespan.html( wp.i18n.__( 'collapse text', 'altss' ) );
+            morespan.html( wp.i18n.__( 'collapse text', 'alternative-site-settings' ) );
             morespan.data('more', 0);
             txtover.slideDown('slow');
         }
@@ -72,7 +72,7 @@ jQuery(document).ready(function($) {
             });
             
             morespan.data('more', 1);
-            morespan.html(' . . . ' + wp.i18n.__( 'expand text', 'altss' ) );
+            morespan.html(' . . . ' + wp.i18n.__( 'expand text', 'alternative-site-settings' ) );
         }
     });
     $( ".trash span, .restore span, .delete span" ).click(function(){

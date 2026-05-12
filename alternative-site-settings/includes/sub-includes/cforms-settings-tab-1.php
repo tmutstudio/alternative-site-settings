@@ -5,8 +5,8 @@ settings_fields( 'altss_settings_cforms_options_' . $tab );
 
                         ?>
                     <div class="cfitms-top-btn-over">
-                        <div class="cfitms-sliddown-button"><?php esc_html_e( "expand all", "altss" ); ?></div>
-                        <div class="cfitms-slidup-button"><?php esc_html_e( "collapse all", "altss" ); ?></div>
+                        <div class="cfitms-sliddown-button"><?php esc_html_e( "expand all", "alternative-site-settings" ); ?></div>
+                        <div class="cfitms-slidup-button"><?php esc_html_e( "collapse all", "alternative-site-settings" ); ?></div>
                     </div>
                     <div class="site-settings-cform-all-items-over">
 
@@ -35,20 +35,20 @@ settings_fields( 'altss_settings_cforms_options_' . $tab );
         if ( current_user_can('manage_options')) {
             ?>
                     <div class="site-settings-cform-item-over">
-                        <div class="site-settings-cform-item-title" title="<?php esc_html_e( "expand", "altss" ); ?>">
+                        <div class="site-settings-cform-item-title" title="<?php esc_html_e( "expand", "alternative-site-settings" ); ?>">
                             <span class="dashicons dashicons-insert cfitms-toggle" data-key="<?php echo esc_attr( $i ); ?>"></span>
-                            <span><?php esc_html_e( "Form", "altss" ); ?></span> <span class="section-number">#<?php echo esc_html( $i ); ?></span> <span>( <?php echo esc_html( $$formTitle ); ?> )</span>
+                            <span><?php esc_html_e( "Form", "alternative-site-settings" ); ?></span> <span class="section-number">#<?php echo esc_html( $i ); ?></span> <span>( <?php echo esc_html( $$formTitle ); ?> )</span>
                         </div>
                         <div class="site-settings-cform-item-wrapp" id="cform-item-<?php echo esc_attr( $i ); ?>">
                             <div class="site-settings-cform-setfield">
-                                <label><?php esc_html_e( "Form title", "altss" );?>:</label>
+                                <label><?php esc_html_e( "Form title", "alternative-site-settings" );?>:</label>
                                 <input type="text" value="<?php echo esc_attr( $$formTitle );?>" name="<?php echo esc_attr( $formTitle );?>" />
                             </div>
                             <div class="site-settings-cform-setfield">
-                                <label><?php esc_html_e( "Form description", "altss" );?>:</label>
+                                <label><?php esc_html_e( "Form description", "alternative-site-settings" );?>:</label>
                                 <?php altss_add_editior_field($formDesc, wp_unslash($$formDesc), 3); ?>
                             </div>
-                            <div class="site-settings-cform-fields-title"><?php esc_html_e( "Set of form fields", "altss" );?>: <span class="site-settings-cform-fields-select" data-area="<?php echo esc_attr( $i ); ?>"><span class="dashicons dashicons-forms"></span> -- <span><?php esc_html_e( "select", "altss" );?></span></span></div>
+                            <div class="site-settings-cform-fields-title"><?php esc_html_e( "Set of form fields", "alternative-site-settings" );?>: <span class="site-settings-cform-fields-select" data-area="<?php echo esc_attr( $i ); ?>"><span class="dashicons dashicons-forms"></span> -- <span><?php esc_html_e( "select", "alternative-site-settings" );?></span></span></div>
                             <ul class="site-settings-cform-fields-area" id="cform_ul_<?php echo esc_attr( $i ); ?>">
                                 <?php
                                    if (is_array($$formFields)) {
@@ -59,7 +59,7 @@ settings_fields( 'altss_settings_cforms_options_' . $tab );
                                             <div> 
                                                 <label><?php echo esc_html( $FORM_FIELDS[$key]['label'] );?></label>
                                                 <input type="checkbox" id="f<?php echo esc_attr( $i );?>_cb_<?php echo esc_attr( $key );?>"
-                                                name="altss_settings_cforms_options_reqfields_<?php echo esc_attr( $i );?>[<?php echo esc_attr( $key );?>]" value="1" title="<?php esc_attr_e( "make required", "altss" );?>"
+                                                name="altss_settings_cforms_options_reqfields_<?php echo esc_attr( $i );?>[<?php echo esc_attr( $key );?>]" value="1" title="<?php esc_attr_e( "make required", "alternative-site-settings" );?>"
                                                 <?php echo(isset($$formReqFields[$key]) ? " checked" : ""); ?> />
                                             </div>
                                         </li>
@@ -69,27 +69,27 @@ settings_fields( 'altss_settings_cforms_options_' . $tab );
             ?>
                             </ul>
                             <div class="site-settings-cform-setfield">
-                                <label><?php esc_html_e( "Recipient's main email", "altss" );?>:</label>
+                                <label><?php esc_html_e( "Recipient's main email", "alternative-site-settings" );?>:</label>
                                 <input type="email" value="<?php echo esc_attr( $$formFirstEmail );?>" name="<?php echo esc_attr( $formFirstEmail );?>" />
                             </div>
                             <div class="site-settings-cform-setfield">
-                                <label><?php esc_html_e( "Additional recipient email", "altss" );?>:</label>
+                                <label><?php esc_html_e( "Additional recipient email", "alternative-site-settings" );?>:</label>
                                 <input type="email" value="<?php echo esc_attr( $$formSecondEmail );?>" name="<?php echo esc_attr( $formSecondEmail );?>" />
                             </div>
                             <div class="site-settings-cform-setfield">
-                                <label><?php esc_html_e( "Submit button text", "altss" );?>:</label>
+                                <label><?php esc_html_e( "Submit button text", "alternative-site-settings" );?>:</label>
                                 <input type="text" value="<?php echo esc_attr( ( '' != $$formSubmitBtnText ? $$formSubmitBtnText : esc_attr__( "Submit" ) ) );?>" name="<?php echo esc_attr( $formSubmitBtnText );?>" />
                             </div>
                             <div class="site-settings-cform-setfield">
                                 <label for="<?php echo esc_attr( $formTitleShow );?>">
                                 <input type="checkbox" value="1" id="<?php echo esc_attr( $formTitleShow );?>" name="<?php echo esc_attr( $formTitleShow );?>"<?php checked($$formTitleShow, 1);?> />
-                                - <?php esc_html_e( "display form title", "altss" );?>
+                                - <?php esc_html_e( "display form title", "alternative-site-settings" );?>
                                 </label>
                             </div>
                             <div class="site-settings-cform-setfield">
                                 <label for="<?php echo esc_attr( $formDescShow );?>">
                                 <input type="checkbox" value="1" id="<?php echo esc_attr( $formDescShow );?>" name="<?php echo esc_attr( $formDescShow );?>"<?php checked($$formDescShow, 1);?> />
-                                - <?php esc_html_e( "display form description", "altss" );?>
+                                - <?php esc_html_e( "display form description", "alternative-site-settings" );?>
                                 </label>
                             </div>
             <?php
@@ -101,16 +101,16 @@ settings_fields( 'altss_settings_cforms_options_' . $tab );
         }
         else {
             ?>
-            <h4><?php esc_html_e( "Form", "altss" ); ?> #<?php echo esc_html( $i );?>: «<?php echo esc_html( $$formTitle );?>»</h4>
+            <h4><?php esc_html_e( "Form", "alternative-site-settings" ); ?> #<?php echo esc_html( $i );?>: «<?php echo esc_html( $$formTitle );?>»</h4>
             <?php
         }
     }
 ?>    
                 </div>
                 <div class="site-settings-cform-set-wrapp">
-                    <div class="site-settings-cform-set-item-title"><?php esc_html_e( "ID of the form's popup container", "altss" );?></div>
+                    <div class="site-settings-cform-set-item-title"><?php esc_html_e( "ID of the form's popup container", "alternative-site-settings" );?></div>
                     <div class="site-settings-cform-setfield">
-                        <label><?php esc_html_e( "default", "altss" );?>: <strong>popup-container-form-wrapper</strong></label>
+                        <label><?php esc_html_e( "default", "alternative-site-settings" );?>: <strong>popup-container-form-wrapper</strong></label>
                         <input type="text" value="<?php echo esc_attr( get_option( 'altss_settings_cforms_container_id' ) );?>" name="altss_settings_cforms_container_id" />
                     </div>
                 </div>

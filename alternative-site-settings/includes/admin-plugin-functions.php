@@ -15,6 +15,11 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 function altss_add_editior_field( $textarea_name, $content='', $rows=20, $mode='full', $body_class='', $media_buttons = 1, $height = 0 ){
     $editor_id = preg_replace( "/[\[\]]/", "_", $textarea_name );
     if ( str_ends_with( $editor_id, '_' ) ) $editor_id = substr( $editor_id, 0, -1 );
+    $mce_buttons = [];
+    $mce_buttons_2 = [];
+    $mce_buttons_3 = [];
+    $mce_plugins = '';
+    $quicktags = 0;
     if( 'full' === $mode ){
         $mce_plugins = 'fullscreen image link media charmap hr lists colorpicker compat3x directionality paste tabfocus textcolor wordpress wpautoresize wpdialogs wpeditimage wpemoji wpgallery wplink  wptextpattern wpview';
 
@@ -88,7 +93,7 @@ function altss_add_editior_field( $textarea_name, $content='', $rows=20, $mode='
             'quicktags'     => $quicktags,
             'drag_drop_upload' => false
     ) );                                
-}/////////////********************* END OF FUNCTION *************************/
+}////*** END OF FUNCTION ***/
 
 
 
@@ -116,7 +121,7 @@ function altss_add_onoff_switch( $name, $value, $saved_value, $label_text, $data
     <?php
 
 
-}/////////////********************* END OF FUNCTION *************************/
+}////*** END OF FUNCTION ***/
 
 
 
@@ -148,7 +153,7 @@ function altss_trim_words( $text, $num_words = 55 ) {
         
 
 	return array( $text, $more );
-}/////////////********************* END OF FUNCTION *************************/
+}////*** END OF FUNCTION ***/
 
 
 
@@ -166,7 +171,7 @@ if (is_array($tab_titles)) {
 	</nav>
     <?php
 }
-}/////////////********************* END OF FUNCTION *************************/
+}////*** END OF FUNCTION ***/
 
 function altss_post_revisions_clear(){ ////////////// post revisions clear function
     global $wpdb;
@@ -181,7 +186,7 @@ function altss_post_revisions_clear(){ ////////////// post revisions clear funct
     else{
         return false;
     }
-}/////////////********************* END OF FUNCTION *************************/
+}////*** END OF FUNCTION ***/
 
 function altss_isPunycode( $value ){
     if ( false === ( 'ASCII' === mb_detect_encoding($value, 'ASCII', true ) ) ) {
@@ -189,7 +194,7 @@ function altss_isPunycode( $value ){
     }
 
     return (0 === mb_stripos($value, 'xn--', 0, 'UTF-8'));
-}/////////////********************* END OF FUNCTION *************************/
+}////*** END OF FUNCTION ***/
 
 function altss_isPunycodeDomain( $domain ){
         $hasPunycode = false;
@@ -201,7 +206,7 @@ function altss_isPunycodeDomain( $domain ){
         }
 
         return $hasPunycode;
-}/////////////********************* END OF FUNCTION *************************/
+}////*** END OF FUNCTION ***/
 
 
 function altss_siteDomain2latinUpperSlug(){
@@ -214,7 +219,7 @@ function altss_siteDomain2latinUpperSlug(){
     }
 
     return strtoupper( $domain );
-}/////////////********************* END OF FUNCTION *************************/
+}////*** END OF FUNCTION ***/
 
 function altss_cyrtolat_slug( $slug ) {
 
@@ -274,7 +279,7 @@ function altss_cyrtolat_slug( $slug ) {
 
         return $slug;
         
-}/////////////********************* END OF FUNCTION *************************/
+}////*** END OF FUNCTION ***/
 
 
 
@@ -311,7 +316,7 @@ function altss_view_cfs_record() {
         <?php if( $verify_nonce ){ ?>
         <h3><?php
         /* translators: %s: search title */
-         echo sprintf( esc_html__( "Message from the form: %s", "altss" ), esc_html( $cfs_row->form_title ) ); 
+         echo sprintf( esc_html__( "Message from the form: %s", "alternative-site-settings" ), esc_html( $cfs_row->form_title ) ); 
          ?></h3>
         <div>
             <table>
@@ -320,8 +325,8 @@ function altss_view_cfs_record() {
                     <td class="cfs-record-td-right"><?php echo esc_attr( $id ); ?></td>
                 </tr>
                 <tr>
-                    <td class="cfs-record-td-left"><?php esc_html_e( "Sending time", "altss" ); ?>:</td>
-                    <td class="cfs-record-td-right"><?php echo esc_html( Date( __( "Y-m-d H:i", "altss" ), $cfs_row->create_time ) ); ?></td>
+                    <td class="cfs-record-td-left"><?php esc_html_e( "Sending time", "alternative-site-settings" ); ?>:</td>
+                    <td class="cfs-record-td-right"><?php echo esc_html( Date( __( "Y-m-d H:i", "alternative-site-settings" ), $cfs_row->create_time ) ); ?></td>
                 </tr>
                 <tr>
                     <td colspan="2" class="cfs-record-td-spacer"></td>
@@ -348,26 +353,26 @@ function altss_view_cfs_record() {
                     <td colspan="2" class="cfs-record-td-spacer"></td>
                 </tr>
                 <tr>
-                    <td class="cfs-record-td-left"><?php esc_html_e( "Sender IP", "altss" ); ?>:</td>
+                    <td class="cfs-record-td-left"><?php esc_html_e( "Sender IP", "alternative-site-settings" ); ?>:</td>
                     <td class="cfs-record-td-right"><?php echo esc_html( $cfs_row->ip ); ?></td>
                 </tr>
             </table>
         </div>
         <?php if ( current_user_can( 'manage_options' ) ) {?>
-        <div class="view-cfs-record-actions"><span id="view-cfs-record-actions-delite-span" data-id="<?php echo esc_attr( $id ); ?>" data-p="<?php echo esc_attr( $p ); ?>" data-nonce="<?php echo esc_attr( wp_create_nonce( "cfs_record_remove" ) ); ?>"><?php esc_html_e( "delete", "altss" ); ?></span></div>
+        <div class="view-cfs-record-actions"><span id="view-cfs-record-actions-delite-span" data-id="<?php echo esc_attr( $id ); ?>" data-p="<?php echo esc_attr( $p ); ?>" data-nonce="<?php echo esc_attr( wp_create_nonce( "cfs_record_remove" ) ); ?>"><?php esc_html_e( "delete", "alternative-site-settings" ); ?></span></div>
         <?php }
         }
         else {
             ?>
             <div class="notice notice-error is-dismissible" style="margin: 50px 0;">
-                <p><?php esc_html_e( 'WP nonce faled' , "altss" ); ?></p>
+                <p><?php esc_html_e( 'WP nonce faled' , "alternative-site-settings" ); ?></p>
             </div>
             <?php
         } ?>
     </div>
     <?php
     die();
-}
+}////*** END OF FUNCTION ***/
 
 add_action( 'admin_post_cfs_record_remove', 'altss_cfs_record_remove' );
 function altss_cfs_record_remove() {
@@ -395,7 +400,7 @@ function altss_cfs_record_remove() {
     header( "Location: $redirect", true, 302 );
 
     die();
-}
+}////*** END OF FUNCTION ***/
 
 
 
@@ -405,10 +410,10 @@ function altss_cfs_record_remove() {
 /********************** ACTION FOR REVIEW PUBLIC ************************/
 add_action( 'wp_ajax_review-public', 'altss_review_public__ajax_callback' );
 
-function altss_review_public__ajax_callback( $args = NULL ){ //////// ***** FUNCTION FOR REVIEW PUBLIC *****
+function altss_review_public__ajax_callback( $args = null ){ //////// ***** FUNCTION FOR REVIEW PUBLIC *****
         global $wpdb;
         $t = "{$wpdb->prefix}altss_reviews";
-        if( NULL == $args ){
+        if( null == $args ){
             $args = [];
             if( wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_wpnonce'] ) ), "review_public" ) ){
                 if( !isset( $_POST['act'] ) ) die( 'Error!' );
@@ -429,17 +434,24 @@ function altss_review_public__ajax_callback( $args = NULL ){ //////// ***** FUNC
         
         $wpdb->query( $wpdb->prepare( "UPDATE {$t} SET review_status=%d WHERE review_id=%d", $status, $id ) );
         if( $ajaxmode ) die();
-}/////////////********************* END OF FUNCTION *************************/
+}////*** END OF FUNCTION ***/
+
+
+
+add_action( 'wp_ajax_altss_get_categories_list', 'altss_get_categories_list_ajax' );
+function altss_get_categories_list_ajax() {
+    ALTSS_Post_List_Table_Ext::render_categories();
+}
 
 
 
 /********************** ACTION FOR TRASH RESTORE REVIEW ************************/
 add_action( 'admin_post_review_trash_restore', 'altss_review_trash_restore' );
 
-function altss_review_trash_restore( $args = NULL ){ //////// ***** FUNCTION FOR TRASH RESTORE REVIEW *****
+function altss_review_trash_restore( $args = null ){ //////// ***** FUNCTION FOR TRASH RESTORE REVIEW *****
         global $wpdb;
         $t = "{$wpdb->prefix}altss_reviews";
-        if( NULL == $args ){
+        if( null == $args ){
             $args = [];
             if( wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_wpnonce'] ) ), "review_trash" ) ){
                 if( !isset( $args['id'] ) ) die( 'Error!' );
@@ -474,18 +486,18 @@ function altss_review_trash_restore( $args = NULL ){ //////// ***** FUNCTION FOR
             header( "Location: $redirect", true, 302 );
             die();
         }
-}/////////////********************* END OF FUNCTION *************************/
+}////*** END OF FUNCTION ***/
 
 
 
 function altss_get_current_url(){
     return ( is_ssl() ? 'https' : 'http' ) . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-}
+}////*** END OF FUNCTION ***/
 
 function altss_current_page(){
-    $page = ( isset( $_GET['page'] ) ) ? sanitize_text_field( $_GET['page'] ) : NULL;
+    $page = ( isset( $_GET['page'] ) ) ? sanitize_text_field( $_GET['page'] ) : null;
     return $page;
-}
+}////*** END OF FUNCTION ***/
 
 
 
@@ -495,7 +507,7 @@ function altss_text_field_clean( $var ) {
 	} else {
 		return is_scalar( $var ) ? sanitize_text_field( $var ) : null;
 	}
-}
+}////*** END OF FUNCTION ***/
 
 
 function altss_kses_post_clean( $var ) {
@@ -504,7 +516,7 @@ function altss_kses_post_clean( $var ) {
 	} else {
 		return is_scalar( $var ) ? wp_kses_post( $var ) : null;
 	}
-}
+}////*** END OF FUNCTION ***/
 
 
 

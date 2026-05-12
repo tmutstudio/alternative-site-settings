@@ -37,22 +37,22 @@ function altss_settings_start_page_html(){
 
 	wp_localize_script( 'settings-script', 'ssData',
 		array(
-			'confirmResetColors' => esc_html__( 'Are you sure you want to reset color settings to default values?', 'altss' ),
+			'confirmResetColors' => esc_html__( 'Are you sure you want to reset color settings to default values?', 'alternative-site-settings' ),
 		)
 	);
     
 ?>
 <div class="site-settings-page-wrapper">
-    <h2 class="site-settings-admin-page-head"><?php esc_html_e( "Start page for site settings", "altss" ); ?></h2> 
+    <h2 class="site-settings-admin-page-head"><?php esc_html_e( "Start page for site settings", "alternative-site-settings" ); ?></h2> 
 	
    
     <div id="welcome-panel" class="thadm-welcome-panel">
     <?php
             $tab_title = [
-                0 => esc_html__( "Main settings", "altss" ),
-                1 => esc_html__( "Custom records", "altss" ),
-                2 => esc_html__( "Text blocks", "altss" ),
-                3 => esc_html__( "Cookie Banner", "altss" )
+                0 => esc_html__( "Main settings", "alternative-site-settings" ),
+                1 => esc_html__( "Custom records", "alternative-site-settings" ),
+                2 => esc_html__( "Text blocks", "alternative-site-settings" ),
+                3 => esc_html__( "Cookie Banner", "alternative-site-settings" )
             ];
             altss_navtabs( $tab_title, $tab ); 
             ?>

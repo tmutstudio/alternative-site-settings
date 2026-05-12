@@ -32,26 +32,26 @@ function altss_cfajax_action_callback() {
 		$fieldSettings = get_option( "altss_settings_cforms_options_field_{$key}" );
 		if ( empty( $val ) && $req && 'accept' !== $key ) {
             /* translators: %s: search label */
-			$err_message[$key] = sprintf( wp_kses( __( "The <strong>%s</strong> field is not filled in.", "altss" ), $allowed_strong_html ), $fieldSettings['label'] );
+			$err_message[$key] = sprintf( wp_kses( __( "The <strong>%s</strong> field is not filled in.", "alternative-site-settings" ), $allowed_strong_html ), $fieldSettings['label'] );
 		}
         elseif( ! isset( $cfdata['accept'] ) ){
-            $err_message['accept'] = esc_html__( "Confirm your agreement with the privacy policy.", "altss" );
+            $err_message['accept'] = esc_html__( "Confirm your agreement with the privacy policy.", "alternative-site-settings" );
         }
         elseif ( !empty( $val ) && 'accept' !== $key ) {
 			if( 'email' === $key && ! preg_match( '/^[[:alnum:]][a-z0-9_.-]*@[a-z0-9.-]+\.[a-z]{2,4}$/i', $val ) ){
-				$err_message[$key] = esc_html__( "The email address was entered incorrectly.", "altss" );
+				$err_message[$key] = esc_html__( "The email address was entered incorrectly.", "alternative-site-settings" );
 			}
 			elseif( 'phone' === $key && preg_match( '/[^\d\-\(\)\s+]/i', $val ) ){
-				$err_message[$key] = esc_html__( "Unnecessary characters have been entered in the phone number.", "altss" );
+				$err_message[$key] = esc_html__( "Unnecessary characters have been entered in the phone number.", "alternative-site-settings" );
 			}
 			elseif( 'phone' === $key && 7 > preg_match_all( "/[0-9]/", $val )  ){
-				$err_message[$key] = esc_html__( "The phone number does not have enough digits.", "altss" );
+				$err_message[$key] = esc_html__( "The phone number does not have enough digits.", "alternative-site-settings" );
 			}
 			elseif( 'textarea' != $FORM_FIELDS[$key]['type'] && 40 < strlen( $val )  ){
-				$err_message[$key] = esc_html__( "Too many characters entered.", "altss" );
+				$err_message[$key] = esc_html__( "Too many characters entered.", "alternative-site-settings" );
 			}
 			elseif( 'textarea' === $FORM_FIELDS[$key]['type'] && 300 < strlen( $val )  ){
-				$err_message[$key] = esc_html__( "There are too many characters entered in the message.", "altss" );
+				$err_message[$key] = esc_html__( "There are too many characters entered in the message.", "alternative-site-settings" );
 			}
 			else{
 				$cfdata[$key] = 'textarea' === $key ? sanitize_textarea_field( $val ) : sanitize_text_field( $val );
@@ -95,7 +95,7 @@ function altss_cfajax_action_callback() {
 			$wpdb->insert( $t2, [ 
 				'sending_id' => $insert_id,
 				'field' => $key,
-				'value' => empty( $additional_settings['allowed_fields'][$key] ) ? esc_html__( 'saving not allowed', 'altss' ) : $val,
+				'value' => empty( $additional_settings['allowed_fields'][$key] ) ? esc_html__( 'saving not allowed', 'alternative-site-settings' ) : $val,
 				'position' => $pos,
 				] );
 
@@ -120,16 +120,16 @@ function altss_cfajax_action_callback() {
 		if( $res ){
 			$to_adm_mail_body = "<html><head></head><body>\n";
             /* translators: %s: search title, %d: search id */
-			$to_adm_mail_body .= "<h3>" . sprintf( esc_html__( 'Message from the form &laquo;%1$s, ID: %2$d&raquo;', "altss" ), $res->form_title, $insert_id ) . "</h3>
-			<p>" . esc_html__( "Form fields", "altss" ) . ":</p>
+			$to_adm_mail_body .= "<h3>" . sprintf( esc_html__( 'Message from the form &laquo;%1$s, ID: %2$d&raquo;', "alternative-site-settings" ), $res->form_title, $insert_id ) . "</h3>
+			<p>" . esc_html__( "Form fields", "alternative-site-settings" ) . ":</p>
 			{$fields_value_html}
 			<p>&nbsp;</p>
-			<p>" . esc_html__( "Sent from IP address", "altss" ) . ": {$res->ip}</p>
+			<p>" . esc_html__( "Sent from IP address", "alternative-site-settings" ) . ": {$res->ip}</p>
 			<p>User Agent: {$res->user_agent}</p>
-			<p>" . esc_html__( "Sending time", "altss" ) . ": " . Date( "d.m.Y H:i", $res->create_time ) . "</p>
+			<p>" . esc_html__( "Sending time", "alternative-site-settings" ) . ": " . Date( "d.m.Y H:i", $res->create_time ) . "</p>
 			</body></html>";
             /* translators: %s: search title, %d: search id */
-			$subject = preg_replace( ["/&laquo;/", "/&raquo;/"], ["«", "»"], sprintf( esc_html__( 'Notification of receipt of message ID: %1$d from the &laquo;%2$s&raquo; form', "altss" ), $insert_id, $res->form_title ) );
+			$subject = preg_replace( ["/&laquo;/", "/&raquo;/"], ["«", "»"], sprintf( esc_html__( 'Notification of receipt of message ID: %1$d from the &laquo;%2$s&raquo; form', "alternative-site-settings" ), $insert_id, $res->form_title ) );
 
 			$headers = array(
 				'From: ' . get_bloginfo() . ' <info@' .  $_SERVER["SERVER_NAME"] . '>',
@@ -148,10 +148,10 @@ function altss_cfajax_action_callback() {
 
 
         if( $success ){
-            wp_send_json_success( wp_kses( __( "Thank you!<br>Your message has been sent.", "altss" ), [ 'br' => [] ] ) );
+            wp_send_json_success( wp_kses( __( "Thank you!<br>Your message has been sent.", "alternative-site-settings" ), [ 'br' => [] ] ) );
         }
         else {
-            wp_send_json_error( [ "mail_error" => wp_kses( __( "An error occurred!<br>Message sending failed.", "altss" ), [ 'br' => [] ] ) ] );
+            wp_send_json_error( [ "mail_error" => wp_kses( __( "An error occurred!<br>Message sending failed.", "alternative-site-settings" ), [ 'br' => [] ] ) ] );
         }
 		
 	}

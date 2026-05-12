@@ -44,7 +44,7 @@ function altss_cform_settings_page_html(){
     wp_enqueue_script( 'jquery-ui-sortable' );
     wp_enqueue_script( 'altss-fields-sortable-script', ALTSITESET_URL . '/admin/js/fields-sortable-script.js', [], ALTSITESET__VERSION, true );
     wp_enqueue_script( 'altss-cforms-script', ALTSITESET_URL . '/admin/js/cforms.js', [], ALTSITESET__VERSION, true );
-    wp_set_script_translations( 'altss-cforms-script', 'altss', ALTSITESET_LANG_DIR . '/js' );
+    wp_set_script_translations( 'altss-cforms-script', 'alternative-site-settings', ALTSITESET_LANG_DIR . '/js' );
         
     $tab = isset( $_GET['tab'] ) ? intval( $_GET['tab'] )  : 0;
 
@@ -53,15 +53,15 @@ function altss_cform_settings_page_html(){
     
 ?>
 <div class="nkt-settings-page-wrapper">
-    <h2 class="nkt-settings-admin-page-head"><?php esc_html_e( "Contact Forms Settings Page", "altss" ); ?></h2> 
+    <h2 class="nkt-settings-admin-page-head"><?php esc_html_e( "Contact Forms Settings Page", "alternative-site-settings" ); ?></h2> 
    
     <div id="welcome-panel" class="thadm-welcome-panel">
             <?php
             $tab_title = [
-                0 => esc_html__( "Messages from forms", "altss" ),
-                1 => esc_html__( "Form sets", "altss" ),
-                2 => esc_html__( "Forms fields", "altss" ),
-                3 => esc_html__( "Additional settings", "altss" )
+                0 => esc_html__( "Messages from forms", "alternative-site-settings" ),
+                1 => esc_html__( "Form sets", "alternative-site-settings" ),
+                2 => esc_html__( "Forms fields", "alternative-site-settings" ),
+                3 => esc_html__( "Additional settings", "alternative-site-settings" )
             ];
             altss_navtabs( $tab_title, $tab ); 
             ?>
@@ -96,7 +96,7 @@ function altss_cform_settings_page_html(){
 <div class="popup-show-bg" id="popup_show_bg">
     <div class="popup-container">
         <div class="popup__close">
-            <button type="button" class="popup-close-button" aria-label="<?php esc_attr_e( "Close dialog", "altss" ); ?>">
+            <button type="button" class="popup-close-button" aria-label="<?php esc_attr_e( "Close dialog", "alternative-site-settings" ); ?>">
                 <svg role="presentation" class="popup__close-icon" width="23px" height="23px" viewBox="0 0 23 23"
                     version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <g stroke="none" stroke-width="1" fill="#fff" fill-rule="evenodd">

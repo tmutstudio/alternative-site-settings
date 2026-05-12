@@ -12,7 +12,7 @@ jQuery(function($){
 	});
 
     $('.remove_image_button').click(function(){
-		var r = confirm( wp.i18n.__( 'Are you sure?', 'altss' ) );
+		var r = confirm( wp.i18n.__( 'Are you sure?', 'alternative-site-settings' ) );
 		if (r == true) {
 			var src = $(this).parent().prev().attr('data-src');
 			$(this).parent().prev().attr('src', src);

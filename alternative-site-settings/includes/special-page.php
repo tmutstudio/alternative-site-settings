@@ -1,4 +1,6 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 add_action( 'admin_init', function() {
     
     register_setting( 'altss_uninstall_options', 'altss_uninstall_data_enable', 'altss_text_field_clean' );
@@ -17,21 +19,21 @@ function altss_special_settings_page_html(){
 
     ?>
 <div class="site-settings-page-wrapper">
-    <h2 class="site-settings-admin-page-head"><?php esc_html_e( "Specialized settings and tools page", "altss" ); ?></h2> 
+    <h2 class="site-settings-admin-page-head"><?php esc_html_e( "Specialized settings and tools page", "alternative-site-settings" ); ?></h2> 
 
     <div id="welcome-panel" class="thadm-welcome-panel">    
         <div class="site-settings-template-wrapp">
             <div class="site-settings-options-gr-wrap">
                 <dl class="site-settings-specialized-dl">
-                    <dt><span><?php esc_html_e( "Clearing revisions in the posts table", "altss" ); ?></span></dt>
+                    <dt><span><?php esc_html_e( "Clearing revisions in the posts table", "alternative-site-settings" ); ?></span></dt>
                     <dd>
         <?php 
             if( isset( $_POST['revisions_clear'] )){
                 if( wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'rrr55rds' ) && "kfujr674urf7" === $_POST['revisions_clear'] && altss_post_revisions_clear() ){
-                    echo "<p style='color: green;'>" . esc_html__( "Post table revisions have been cleared!", "altss" ) . "</p>";
+                    echo "<p style='color: green;'>" . esc_html__( "Post table revisions have been cleared!", "alternative-site-settings" ) . "</p>";
                 }
                 else{
-                    echo "<p style='color: darkred;'>" . esc_html__( "The request returned a null result.", "altss" ) . "</p>";
+                    echo "<p style='color: darkred;'>" . esc_html__( "The request returned a null result.", "alternative-site-settings" ) . "</p>";
                 }
             }
         ?>
@@ -39,7 +41,7 @@ function altss_special_settings_page_html(){
                             <?php wp_nonce_field("rrr55rds", "nonce"); ?>
                             <input type="hidden" name="revisions_clear" value="kfujr674urf7"  />
                             <div class="site-settings-template-item-wrapp">
-                                <input type="submit" value="<?php esc_html_e( "Clear post revisions", "altss" ); ?>" />
+                                <input type="submit" value="<?php esc_html_e( "Clear post revisions", "alternative-site-settings" ); ?>" />
                             </div>
                         </form>
                     </dd>
@@ -47,28 +49,29 @@ function altss_special_settings_page_html(){
                 <form action="options.php" method="POST">
                     <?php settings_fields( 'altss_uninstall_options' ); ?>
                     <dl class="site-settings-specialized-dl">
-                        <dt><span><?php esc_html_e( "Removing the plugin", "altss" ); ?></span></dt>
+                        <dt><span><?php esc_html_e( "Removing the plugin", "alternative-site-settings" ); ?></span></dt>
                         <dd>
                             <p style="margin-bottom: 20px;">
-                                <?php esc_html_e( "When you remove this plugin, what do you want to do with the settings, data, and custom posts you create using this plugin?", "altss" ); ?>
+                                <?php esc_html_e( "When you remove this plugin, what do you want to do with the settings, data, and custom posts you create using this plugin?", "alternative-site-settings" ); ?>
                             </p>
                             <div class="customize-control-radio">
-                                <label><input type="radio" name="altss_uninstall_data_enable" value="false"<?php checked( $altss_uninstall_enable, "false" ); ?>> <span><?php esc_html_e( 'Save all data', 'altss' ); ?></span></label>
-                                <label><input type="radio" class="darkred-radio" name="altss_uninstall_data_enable" value="true"<?php checked( $altss_uninstall_enable, "true" ); ?>> <span><?php esc_html_e( 'Selective data deletion', 'altss' ); ?></span></label>
+                                <label><input type="radio" name="altss_uninstall_data_enable" value="false"<?php checked( $altss_uninstall_enable, "false" ); ?>> <span><?php esc_html_e( 'Save all data', 'alternative-site-settings' ); ?></span></label>
+                                <label><input type="radio" class="darkred-radio" name="altss_uninstall_data_enable" value="true"<?php checked( $altss_uninstall_enable, "true" ); ?>> <span><?php esc_html_e( 'Selective data deletion', 'alternative-site-settings' ); ?></span></label>
                             </div>
                             <dl id="data-items-area" <?php echo ( 'true' !== $altss_uninstall_enable ? 'style="display: none;"' : "" ); ?>>
                                 <dd style="border-left: 2px solid #ddd; padding-left: 10px;">
                                     <?php 
-                                    altss_add_onoff_switch( 'altss_uninstall_data_items[main_settings]', 1, $altss_uninstall_items['main_settings'] ?? '', __( "Delete all Main settings", "altss" ), '', 'darkred-oos' );
-                                    altss_add_onoff_switch( 'altss_uninstall_data_items[ctype_settings]', 1, $altss_uninstall_items['ctype_settings'] ?? '', __( "Delete all Custom type posts settings", "altss" ), '', 'darkred-oos' );
-                                    altss_add_onoff_switch( 'altss_uninstall_data_items[text_blocks]', 1, $altss_uninstall_items['text_blocks'] ?? '', __( "Delete all text block data", "altss" ), '', 'darkred-oos' );
-                                    altss_add_onoff_switch( 'altss_uninstall_data_items[cookie_banner]', 1, $altss_uninstall_items['cookie_banner'] ?? '', __( "Delete all Cookie Banner settings", "altss" ), '', 'darkred-oos' );
+                                    altss_add_onoff_switch( 'altss_uninstall_data_items[main_settings]', 1, $altss_uninstall_items['main_settings'] ?? '', __( "Delete all Main settings", "alternative-site-settings" ), '', 'darkred-oos' );
+                                    altss_add_onoff_switch( 'altss_uninstall_data_items[ctype_settings]', 1, $altss_uninstall_items['ctype_settings'] ?? '', __( "Delete all Custom type posts settings", "alternative-site-settings" ), '', 'darkred-oos' );
+                                    altss_add_onoff_switch( 'altss_uninstall_data_items[admin_post_tags]', 1, $altss_uninstall_items['admin_post_tags'] ?? '', __( "Delete Admin Tags for Blog Posts (post_type: post)", "alternative-site-settings" ), '', 'darkred-oos' );
+                                    altss_add_onoff_switch( 'altss_uninstall_data_items[text_blocks]', 1, $altss_uninstall_items['text_blocks'] ?? '', __( "Delete all text block data", "alternative-site-settings" ), '', 'darkred-oos' );
+                                    altss_add_onoff_switch( 'altss_uninstall_data_items[cookie_banner]', 1, $altss_uninstall_items['cookie_banner'] ?? '', __( "Delete all Cookie Banner settings", "alternative-site-settings" ), '', 'darkred-oos' );
                                     echo "\n<br>\n";
-                                    altss_add_onoff_switch( 'altss_uninstall_data_items[cforms]', 1, $altss_uninstall_items['cforms'] ?? '', __( "Delete all contact form data and settings", "altss" ), '', 'darkred-oos' );
-                                    altss_add_onoff_switch( 'altss_uninstall_data_items[reviews]', 1, $altss_uninstall_items['reviews'] ?? '', __( "Delete all data containing reviews left", "altss" ), '', 'darkred-oos' );
+                                    altss_add_onoff_switch( 'altss_uninstall_data_items[cforms]', 1, $altss_uninstall_items['cforms'] ?? '', __( "Delete all contact form data and settings", "alternative-site-settings" ), '', 'darkred-oos' );
+                                    altss_add_onoff_switch( 'altss_uninstall_data_items[reviews]', 1, $altss_uninstall_items['reviews'] ?? '', __( "Delete all data containing reviews left", "alternative-site-settings" ), '', 'darkred-oos' );
                                     echo "\n<br>\n";
                                     foreach ( $CUSTOM_TYPES as $key => $rec_data ) {
-                                    altss_add_onoff_switch( 'altss_uninstall_data_items[custom_type_' . $key . ']', 1, $altss_uninstall_items['custom_type_' . $key] ?? '', __( "Delete all custom posts of type", "altss" ) . ' «' . $rec_data['label'] . '»', '', 'darkred-oos' );
+                                    altss_add_onoff_switch( 'altss_uninstall_data_items[custom_type_' . $key . ']', 1, $altss_uninstall_items['custom_type_' . $key] ?? '', __( "Delete all custom posts of type", "alternative-site-settings" ) . ' «' . $rec_data['label'] . '»', '', 'darkred-oos' );
 
                                     } 
                                     ?>

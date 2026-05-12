@@ -26,7 +26,7 @@ function formbody(actionurl, redirect, mess ){
 '        <input name="site-reviews[_referer]" type="hidden" value="'+redirect+'">'+"\n"+
 '        <input id="site-reviews-rating" name="site-reviews[rating]" type="hidden" value="--">'+"\n"+
 '        <div class="reviews-field reviews-field-rating" data-field="rating">'+"\n"+
-'            <label class="reviews-label reviews-label-rating" for="site-reviews-rating"><span>' + wp.i18n.__('Please rate', 'altss') + '</span></label>'+"\n"+
+'            <label class="reviews-label reviews-label-rating" for="site-reviews-rating"><span>' + wp.i18n.__('Please rate', 'alternative-site-settings') + '</span></label>'+"\n"+
 '            <span class="mh-star-rating mh-star-rating--ltr" data-star-rating="">'+"\n"+
 '                <span class="mh-star-rating--stars">'+"\n"+
 '                    <span data-index="0" data-value="1" class="reviews-star-empty"></span>'+"\n"+
@@ -39,8 +39,8 @@ function formbody(actionurl, redirect, mess ){
 '            <div class="reviews-field-error" style="display: none;"></div>'+"\n"+
 '        </div>'+"\n"+
 '        <div class="reviews-field reviews-field-textarea" data-field="content">'+"\n"+
-'            <label class="reviews-label reviews-label-textarea" for="site-reviews-content"><span>' + wp.i18n.__('Your review', 'altss') + '</span></label>'+"\n"+
-'            <textarea class="reviews-textarea" id="site-reviews-content" name="site-reviews[content]" placeholder="' + wp.i18n.__('Your review', 'altss') + '" rows="5" required=""></textarea>'+"\n"+
+'            <label class="reviews-label reviews-label-textarea" for="site-reviews-content"><span>' + wp.i18n.__('Your review', 'alternative-site-settings') + '</span></label>'+"\n"+
+'            <textarea class="reviews-textarea" id="site-reviews-content" name="site-reviews[content]" placeholder="' + wp.i18n.__('Your review', 'alternative-site-settings') + '" rows="5" required=""></textarea>'+"\n"+
 '            <div class="reviews-field-error"></div>'+"\n"+
 '        </div>'+"\n";
     if( '' != mess ){
@@ -51,26 +51,26 @@ function formbody(actionurl, redirect, mess ){
     else{
         formcode += 
 '        <div class="reviews-field reviews-field-text" data-field="name">'+"\n"+
-'            <label class="reviews-label reviews-label-text" for="site-reviews-name"><span>' + wp.i18n.__('Your name', 'altss') + '</span></label>'+"\n"+
-'            <input class="reviews-input reviews-input-text" id="site-reviews-name" name="site-reviews[name]" type="text" placeholder="' + wp.i18n.__('Your name', 'altss') + '" required="" value="">'+"\n"+
+'            <label class="reviews-label reviews-label-text" for="site-reviews-name"><span>' + wp.i18n.__('Your name', 'alternative-site-settings') + '</span></label>'+"\n"+
+'            <input class="reviews-input reviews-input-text" id="site-reviews-name" name="site-reviews[name]" type="text" placeholder="' + wp.i18n.__('Your name', 'alternative-site-settings') + '" required="" value="">'+"\n"+
 '            <div class="reviews-field-error"></div>'+"\n"+
 '        </div>'+"\n"+
 '        <div class="reviews-field reviews-field-email" data-field="email">'+"\n"+
-'            <label class="reviews-label reviews-label-email" for="site-reviews-email"><span>' + wp.i18n.__('Your email', 'altss') + '</span></label>'+"\n"+
-'            <input class="reviews-input reviews-input-email" id="site-reviews-email" name="site-reviews[email]" type="email" placeholder="' + wp.i18n.__('Your email', 'altss') + '" required="required" value="">'+"\n"+
+'            <label class="reviews-label reviews-label-email" for="site-reviews-email"><span>' + wp.i18n.__('Your email', 'alternative-site-settings') + '</span></label>'+"\n"+
+'            <input class="reviews-input reviews-input-email" id="site-reviews-email" name="site-reviews[email]" type="email" placeholder="' + wp.i18n.__('Your email', 'alternative-site-settings') + '" required="required" value="">'+"\n"+
 '            <div class="reviews-field-error"></div>'+"\n"+
 '        </div>'+"\n";
     }
 
 formcode +='        <div class="reviews-field reviews-field-text" data-field="location">'+"\n"+
-'            <label class="reviews-label reviews-label-text" for="site-reviews-location"><span>' + wp.i18n.__('Your city', 'altss') + '</span></label>'+"\n"+
-'            <input class="reviews-input reviews-input-text" id="site-reviews-location" name="site-reviews[location]" type="text" placeholder="' + wp.i18n.__('Your city', 'altss') + '" required="" value="">'+"\n"+
+'            <label class="reviews-label reviews-label-text" for="site-reviews-location"><span>' + wp.i18n.__('Your city', 'alternative-site-settings') + '</span></label>'+"\n"+
+'            <input class="reviews-input reviews-input-text" id="site-reviews-location" name="site-reviews[location]" type="text" placeholder="' + wp.i18n.__('Your city', 'alternative-site-settings') + '" required="" value="">'+"\n"+
 '            <div class="reviews-field-error"></div>'+"\n"+
 '        </div>'+"\n"+ 
 '        <div class="reviews-field reviews-field-terms" data-field="terms">'+"\n"+
 '                <span class="mh-terms-cb-over">'+"\n"+
 '                     <input class="reviews-input-toggle" id="site-reviews-terms" name="site-reviews[terms]" type="checkbox" value="1" required="">'+"\n"+
-'                     - <label for="site-reviews-terms-1">' + wp.i18n.__('I consent to the processing of my personal data specified in this form, and this review is based on my experience and expresses my personal opinion.', 'altss') + '</label>'+"\n"+
+'                     - <label for="site-reviews-terms-1">' + wp.i18n.__('I consent to the processing of my personal data specified in this form, and this review is based on my experience and expresses my personal opinion.', 'alternative-site-settings') + '</label>'+"\n"+
 '                </span>'+"\n"+
 '            <div class="reviews-field-error"></div>'+"\n"+
 '        </div>'+"\n"+
@@ -78,7 +78,7 @@ formcode +='        <div class="reviews-field reviews-field-text" data-field="lo
 '        <div data-field="submit-button">'+"\n"+
 '            <button type="button" class="reviews-button button btn btn-primary">'+"\n"+
 '                <span class="reviews-button-loading"></span>'+"\n"+
-'                <span class="reviews-button-text" data-text="' + wp.i18n.__('Submit a review', 'altss') + '">' + wp.i18n.__('Submit a review', 'altss') + '</span>'+"\n"+
+'                <span class="reviews-button-text" data-text="' + wp.i18n.__('Submit a review', 'alternative-site-settings') + '">' + wp.i18n.__('Submit a review', 'alternative-site-settings') + '</span>'+"\n"+
 '            </button>'+"\n"+
 '        </div>'+"\n"+
 '</form>'+"\n";
@@ -94,8 +94,8 @@ function mailValidate( val ){
 function validateFields(){
     var substop = false;
     var Fields = ['rating', 'content', 'name', 'email', 'location', 'terms'];
-    var rftxt = wp.i18n.__('required field', 'altss');
-    var err_email = wp.i18n.__('Invalid email format', 'altss');
+    var rftxt = wp.i18n.__('required field', 'alternative-site-settings');
+    var err_email = wp.i18n.__('Invalid email format', 'alternative-site-settings');
     for( i = 0; i < 6; i++ ){
         if( jQuery( 'div' ).is('.reviews-field[data-field="' + Fields[i] + '"]') ){
             thispar = jQuery('.reviews-field[data-field="' + Fields[i] + '"]');

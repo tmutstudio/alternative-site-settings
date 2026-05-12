@@ -1,4 +1,5 @@
 <?php
+/** @var object $wpdb */
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 $t_1 = $wpdb->prefix . 'altss_cform_sendings';
@@ -25,7 +26,7 @@ $record_remove_error = get_transient( 'cfs_record_remove_error' );
                     <p><?php echo sprintf( 
                         wp_kses( 
                             /* translators: %d: search id */
-                            __( 'Entry with <strong>ID: %d</strong> has been deleted!', "altss" ),
+                            __( 'Entry with <strong>ID: %d</strong> has been deleted!', "alternative-site-settings" ),
                             [ 'strong' => [] ]
                         ),
                         esc_attr( $record_removed_id ) ); ?>
@@ -34,21 +35,21 @@ $record_remove_error = get_transient( 'cfs_record_remove_error' );
             <?php }
             elseif( false !== $record_remove_error ){?>
                 <div class="notice notice-error is-dismissible" style="margin: 50px 0;">
-                    <p><?php esc_html_e( 'WP nonce faled', "altss" ); ?></p>
+                    <p><?php esc_html_e( 'WP nonce faled', "alternative-site-settings" ); ?></p>
                 </div>
             <?php }
             delete_transient( 'cfs_record_removed_id' );
 
             if( $cfs_res ){
                 /* translators: %1$d: search page, %2$d: search Total records count */?>
-                <p><?php echo sprintf( esc_html__( 'Page: %1$d | Total records: %2$d', "altss" ), esc_attr( $page ), esc_attr( $fs_count ) ); ?></p>
+                <p><?php echo sprintf( esc_html__( 'Page: %1$d | Total records: %2$d', "alternative-site-settings" ), esc_attr( $page ), esc_attr( $fs_count ) ); ?></p>
                 <table class="sendings-table">
                 <tr>
                     <th style="width: 5%">ID</th>
-                    <th style="width: 15%"><?php esc_html_e( "Sending date", "altss" ); ?></th>
-                    <th style="width: 20%"><?php esc_html_e( "Form title", "altss" ); ?></th>
-                    <th style="width: 20%"><?php esc_html_e( "IP address", "altss" ); ?></th>
-                    <th style="width: 10%"><?php esc_html_e( "Status", "altss" ); ?></th>
+                    <th style="width: 15%"><?php esc_html_e( "Sending date", "alternative-site-settings" ); ?></th>
+                    <th style="width: 20%"><?php esc_html_e( "Form title", "alternative-site-settings" ); ?></th>
+                    <th style="width: 20%"><?php esc_html_e( "IP address", "alternative-site-settings" ); ?></th>
+                    <th style="width: 10%"><?php esc_html_e( "Status", "alternative-site-settings" ); ?></th>
                 </tr>
                 <?php
             foreach( $cfs_res as $val ) {
@@ -56,7 +57,7 @@ $record_remove_error = get_transient( 'cfs_record_remove_error' );
                     ?>
                     <tr class="tr-color-<?php echo esc_attr( $val->form_id ); ?>">
                         <td><span class="fs-link" data-id="<?php echo esc_attr( $val->id ); ?>"><?php echo esc_html( $val->id ); ?></span></td>
-                        <td><?php echo esc_html( Date( __( "Y-m-d H:i", "altss" ), $val->create_time ) ); ?></td>
+                        <td><?php echo esc_html( Date( __( "Y-m-d H:i", "alternative-site-settings" ), $val->create_time ) ); ?></td>
                         <td><span class="fs-link" data-id="<?php echo esc_attr( $val->id ); ?>" data-p="<?php echo esc_attr( $pdata ); ?>" data-nonce="<?php echo esc_attr( wp_create_nonce( "cfs_record_view" ) ); ?>"><?php echo esc_html( $val->form_title ); ?></span></td>
                         <td><?php echo esc_html( $val->ip ); ?></td>
                         <td><?php echo esc_html( $val->status ); ?></td>
@@ -77,12 +78,13 @@ $record_remove_error = get_transient( 'cfs_record_remove_error' );
                         }
                         
                     }
+                    // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                     echo '<div class="sendings-pagination">' . implode( " | ", $plink_ar ) . '</div>';
                 }
         }
         else {
             ?>
-            <div class=""><?php esc_html_e( "No messages found.", "altss" ); ?></div>
+            <div class=""><?php esc_html_e( "No messages found.", "alternative-site-settings" ); ?></div>
             <?php
         }
 

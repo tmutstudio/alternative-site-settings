@@ -90,7 +90,7 @@ function altss_cform_generator( $id, $button_selector = '#popup-open-button', $s
      );
     $privacy_policy_page_id = $altss_settings_options['privacy_policy_page'] ?? ( get_option( 'altss_settings_cforms_privacy_policy_page' ) ?? 0 ); //For compatibility
     /* translators: %s: search url */
-    $form_accept_text = sprintf( wp_kses( __( "I consent to the processing of my personal data in accordance with the <a href=\"%s\" target=\"_blank\">privacy policy</a> of this website.", "altss" ), $allowed_link_html ), esc_url( get_page_link( $privacy_policy_page_id ) ) );
+    $form_accept_text = sprintf( wp_kses( __( "I consent to the processing of my personal data in accordance with the <a href=\"%s\" target=\"_blank\">privacy policy</a> of this website.", "alternative-site-settings" ), $allowed_link_html ), esc_url( get_page_link( $privacy_policy_page_id ) ) );
     $popup_container_form_wrapper = get_option( 'altss_settings_cforms_container_id' );
     $container_selector = $popup_container_form_wrapper ? '#' . $popup_container_form_wrapper : '#popup-container-form-wrapper';
 
@@ -193,7 +193,7 @@ add_action( 'wp_head', function()   {
 add_shortcode( 'ass_cform_button', 'altss_cformbtn_shortcode' );
 function altss_cformbtn_shortcode( $atts ){
     $atts = shortcode_atts( array(
-		'title' => esc_html__( "form button", "altss" ),
+		'title' => esc_html__( "form button", "alternative-site-settings" ),
 		'class' => 'cform-button-over',
 		'id' => 'cform-scode-btn',
 		'cfid' => 0
@@ -216,7 +216,7 @@ function altss_cform_shortcode( $atts ){
 add_shortcode( 'ass_cookie_consent', 'altss_cookie_consent_button' );
 function altss_cookie_consent_button( $atts ){
     $atts = shortcode_atts( array(
-		'title' => __( 'Change cookie consent', 'altss' ),
+		'title' => __( 'Change cookie consent', 'alternative-site-settings' ),
 	), $atts );
     return '<div class="cookie-banner-buttons" style="justify-content: flex-start;">
         <button class="cookie-banner-decline-button" data-set="show-banner">' . esc_html( $atts['title'] ) . '</button>
@@ -298,7 +298,7 @@ if( is_dir( get_theme_root() . "/" . get_stylesheet() . "/assets" ) ){
                 $__Version,
                 true
             );
-            wp_set_script_translations( 'cform-script', 'altss', ALTSITESET_LANG_DIR . '/js' );
+            wp_set_script_translations( 'cform-script', 'alternative-site-settings', ALTSITESET_LANG_DIR . '/js' );
         }
         if( is_file( $js_theme_dir . "reviews-form.js" ) ){
             wp_enqueue_script(
@@ -308,7 +308,7 @@ if( is_dir( get_theme_root() . "/" . get_stylesheet() . "/assets" ) ){
                 $__Version,
                 true
             );
-            wp_set_script_translations( 'reviews-form-script', 'altss', ALTSITESET_LANG_DIR . '/js' );
+            wp_set_script_translations( 'reviews-form-script', 'alternative-site-settings', ALTSITESET_LANG_DIR . '/js' );
         }
         if( is_file( $js_theme_dir . "cookie-banner.js" ) ){
             wp_enqueue_script(
@@ -318,7 +318,7 @@ if( is_dir( get_theme_root() . "/" . get_stylesheet() . "/assets" ) ){
                 $__Version,
                 true
             );
-            wp_set_script_translations( 'cookie-banner-script', 'altss', ALTSITESET_LANG_DIR . '/js' );
+            wp_set_script_translations( 'cookie-banner-script', 'alternative-site-settings', ALTSITESET_LANG_DIR . '/js' );
         }
 
     } );
@@ -330,7 +330,7 @@ if( is_dir( get_theme_root() . "/" . get_stylesheet() . "/assets" ) ){
     <div class="popup-container">
         <div class="popup-container-wrapper">
             <div class="popup__close">
-                <button type="button" class="popup-close-button" aria-label="<?php esc_html_e( "Close dialog", "altss"); ?>">
+                <button type="button" class="popup-close-button" aria-label="<?php esc_html_e( "Close dialog", "alternative-site-settings"); ?>">
                     <svg role="presentation" class="popup__close-icon" width="28px" height="28px" viewBox="0 0 23 23"
                         version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                         <g stroke="none" stroke-width="1" fill="" fill-rule="evenodd">
@@ -432,10 +432,10 @@ function altss_reviews_page_shortcode( $atts ){
         set_transient( 'altss_reviews_session', $altss_reviews_session);
         $return .=  '
         <div class="mh-review-send-mess">
-            ' . esc_html__( "Thank you! Your review has been added and sent for review.", "altss" ) . '
+            ' . esc_html__( "Thank you! Your review has been added and sent for review.", "alternative-site-settings" ) . '
         </div>
         <p style="text-align: center;">
-            <a href="/reviews/">' . esc_html__( "back to reviews", "altss" ) . '</a>
+            <a href="/reviews/">' . esc_html__( "back to reviews", "alternative-site-settings" ) . '</a>
         </p>
         ';
     }
@@ -447,8 +447,8 @@ function altss_reviews_page_shortcode( $atts ){
             $n = $all_pages + 1;
             $links = [];
             for( $i=1; $i<$n; $i++ ){
-                if( $i != $p ) $links[] = '<a href="/reviews/page/' . $i . '/">' . esc_html__( "page", "altss" ) . ' <strong>' . $i . '</strong></a>';
-                else $links[] = '<span class="">' . esc_html__( "page", "altss" ) . ' <strong>' . $i . '</strong></span>';
+                if( $i != $p ) $links[] = '<a href="/reviews/page/' . $i . '/">' . esc_html__( "page", "alternative-site-settings" ) . ' <strong>' . $i . '</strong></a>';
+                else $links[] = '<span class="">' . esc_html__( "page", "alternative-site-settings" ) . ' <strong>' . $i . '</strong></span>';
             }
             $liksstr = implode( " | ", $links );
             $pagination_links = '<div class="mh-reviews-pagination-over">' . $liksstr . '</div>';
@@ -471,8 +471,8 @@ function altss_reviews_page_shortcode( $atts ){
             $return .=  '
             <div class="mh-review-item-over">
                 <div class="mh-review-item-rating">' . $stars . '</div>
-                <div class="mh-review-item-author"><strong>' . $v->review_author_name . '</strong> ' . esc_html__( "from", "altss" ) . ' ' . $v->review_author_location . '</div>
-                <div class="mh-review-item-date">' . mysql2date( esc_html__( "Y-m-d H:i", "altss" ), $v->review_create_date ) . '</div>
+                <div class="mh-review-item-author"><strong>' . $v->review_author_name . '</strong> ' . esc_html__( "from", "alternative-site-settings" ) . ' ' . $v->review_author_location . '</div>
+                <div class="mh-review-item-date">' . mysql2date( esc_html__( "Y-m-d H:i", "alternative-site-settings" ), $v->review_create_date ) . '</div>
                 <div class="mh-review-item-text">' . wp_unslash(wpautop($v->review_text)) . '</div>
                 <div class="mh-review-item-response">' . $v->review_response_text . '</div>
             </div>
@@ -492,18 +492,18 @@ function altss_reviews_page_shortcode( $atts ){
             
         <div id="mess-for-user" style="display: none;">
             <p>
-                ' . esc_html__( "You are logged in under the username:", "altss" ) . ' <span class="reviews-nick-span">' . $user_nick . '</span>
+                ' . esc_html__( "You are logged in under the username:", "alternative-site-settings" ) . ' <span class="reviews-nick-span">' . $user_nick . '</span>
                 ';
                 if ( '' != $user_name ){
                     $return .=  '
-                    ' . esc_html__( "with name:", "altss" ) . ' <span class="reviews-nick-span">' . $user_name . '</span>
+                    ' . esc_html__( "with name:", "alternative-site-settings" ) . ' <span class="reviews-nick-span">' . $user_name . '</span>
                     ';
                 }
             $return .=  "
             </p>
             <p>\n";
                 /* translators: %s: search url */
-            $return .=  '            ' . sprintf( wp_kses( __( "Your review will be left on behalf of this user. If you want to leave a review with other data (name, e-mail), you need to <a href='%s'>log out</a>", "altss" ), $allowed_link_html ), esc_url( wp_logout_url( '/reviews/' ) ) ) . '
+            $return .=  '            ' . sprintf( wp_kses( __( "Your review will be left on behalf of this user. If you want to leave a review with other data (name, e-mail), you need to <a href='%s'>log out</a>", "alternative-site-settings" ), $allowed_link_html ), esc_url( wp_logout_url( '/reviews/' ) ) ) . '
             </p>
         </div>
         ';
