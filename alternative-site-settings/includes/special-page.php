@@ -15,7 +15,23 @@ function altss_special_settings_page_html(){
     $altss_uninstall_enable = get_option( "altss_uninstall_data_enable", 'false' );
     $altss_uninstall_items = get_option( "altss_uninstall_data_items" );
 
+    //For compatibility with version 1.3.0
+    if( empty( $altss_uninstall_items['admin_tags']['post'] ) && ! empty( $altss_uninstall_items['admin_post_tags'] )) {
+        $altss_uninstall_items['admin_tags']['post'] = 1;
+    }//For compatibility with version 1.3.0
+
     include ALTSITESET_INCLUDES_DIR.'/data-vars/custom-type-vars.php';
+
+    $POST_TYPES = [
+        'page' => 'page',
+        'post' => 'post',
+        ];
+    $gpt_args = [
+        'public'   => true,
+        '_builtin' => false
+        ];
+    $POST_TYPES = array_merge( $POST_TYPES, get_post_types( $gpt_args, 'names' ) );
+
 
     ?>
 <div class="site-settings-page-wrapper">
@@ -41,7 +57,7 @@ function altss_special_settings_page_html(){
                             <?php wp_nonce_field("rrr55rds", "nonce"); ?>
                             <input type="hidden" name="revisions_clear" value="kfujr674urf7"  />
                             <div class="site-settings-template-item-wrapp">
-                                <input type="submit" value="<?php esc_html_e( "Clear post revisions", "alternative-site-settings" ); ?>" />
+                                <input type="submit" class="button" value="<?php esc_html_e( "Clear post revisions", "alternative-site-settings" ); ?>" />
                             </div>
                         </form>
                     </dd>
@@ -54,7 +70,7 @@ function altss_special_settings_page_html(){
                             <p style="margin-bottom: 20px;">
                                 <?php esc_html_e( "When you remove this plugin, what do you want to do with the settings, data, and custom posts you create using this plugin?", "alternative-site-settings" ); ?>
                             </p>
-                            <div class="customize-control-radio">
+                            <div class="altss-customize-control-radio">
                                 <label><input type="radio" name="altss_uninstall_data_enable" value="false"<?php checked( $altss_uninstall_enable, "false" ); ?>> <span><?php esc_html_e( 'Save all data', 'alternative-site-settings' ); ?></span></label>
                                 <label><input type="radio" class="darkred-radio" name="altss_uninstall_data_enable" value="true"<?php checked( $altss_uninstall_enable, "true" ); ?>> <span><?php esc_html_e( 'Selective data deletion', 'alternative-site-settings' ); ?></span></label>
                             </div>
@@ -63,16 +79,21 @@ function altss_special_settings_page_html(){
                                     <?php 
                                     altss_add_onoff_switch( 'altss_uninstall_data_items[main_settings]', 1, $altss_uninstall_items['main_settings'] ?? '', __( "Delete all Main settings", "alternative-site-settings" ), '', 'darkred-oos' );
                                     altss_add_onoff_switch( 'altss_uninstall_data_items[ctype_settings]', 1, $altss_uninstall_items['ctype_settings'] ?? '', __( "Delete all Custom type posts settings", "alternative-site-settings" ), '', 'darkred-oos' );
-                                    altss_add_onoff_switch( 'altss_uninstall_data_items[admin_post_tags]', 1, $altss_uninstall_items['admin_post_tags'] ?? '', __( "Delete Admin Tags for Blog Posts (post_type: post)", "alternative-site-settings" ), '', 'darkred-oos' );
                                     altss_add_onoff_switch( 'altss_uninstall_data_items[text_blocks]', 1, $altss_uninstall_items['text_blocks'] ?? '', __( "Delete all text block data", "alternative-site-settings" ), '', 'darkred-oos' );
                                     altss_add_onoff_switch( 'altss_uninstall_data_items[cookie_banner]', 1, $altss_uninstall_items['cookie_banner'] ?? '', __( "Delete all Cookie Banner settings", "alternative-site-settings" ), '', 'darkred-oos' );
                                     echo "\n<br>\n";
                                     altss_add_onoff_switch( 'altss_uninstall_data_items[cforms]', 1, $altss_uninstall_items['cforms'] ?? '', __( "Delete all contact form data and settings", "alternative-site-settings" ), '', 'darkred-oos' );
                                     altss_add_onoff_switch( 'altss_uninstall_data_items[reviews]', 1, $altss_uninstall_items['reviews'] ?? '', __( "Delete all data containing reviews left", "alternative-site-settings" ), '', 'darkred-oos' );
                                     echo "\n<br>\n";
+                                    foreach ( $POST_TYPES as $type => $data ) {
+                                        if( key_exists( $type, $CUSTOM_TYPES ) ) continue;
+                                        $post_type_obj = get_post_type_object( $type );
+                                        $type_mark = ' ( ' . $post_type_obj->labels->name . ' )';
+                                        altss_add_onoff_switch( 'altss_uninstall_data_items[admin_tags][' . $type . ']', 1, $altss_uninstall_items['admin_tags'][$type] ?? '', __( "Delete Admin Tags for a post type", "alternative-site-settings" ) . ' «' . $type . $type_mark . '»', '', 'darkred-oos' );
+                                    } 
+                                    echo "\n<br>\n";
                                     foreach ( $CUSTOM_TYPES as $key => $rec_data ) {
-                                    altss_add_onoff_switch( 'altss_uninstall_data_items[custom_type_' . $key . ']', 1, $altss_uninstall_items['custom_type_' . $key] ?? '', __( "Delete all custom posts of type", "alternative-site-settings" ) . ' «' . $rec_data['label'] . '»', '', 'darkred-oos' );
-
+                                        altss_add_onoff_switch( 'altss_uninstall_data_items[custom_type_' . $key . ']', 1, $altss_uninstall_items['custom_type_' . $key] ?? '', __( "Delete all custom posts of type", "alternative-site-settings" ) . ' «' . $rec_data['label'] . '»', '', 'darkred-oos' );
                                     } 
                                     ?>
                                 </dd>

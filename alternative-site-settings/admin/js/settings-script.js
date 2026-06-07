@@ -25,7 +25,7 @@ jQuery(document).ready(function($) {
             $( '#data-items-area' ).hide();
         }
     });
-    $( '.options-analytics .onoffswitch-checkbox, .options-seo-and-meta-over .onoffswitch-checkbox' ).change(function(){
+    $( '.options-analytics .altss-onoffswitch-checkbox, .options-seo-and-meta-over .altss-onoffswitch-checkbox' ).change(function(){
         var item = $(this).data('item');
         var isChecked = $(this).is(':checked');
         if( isChecked ){
@@ -35,7 +35,7 @@ jQuery(document).ready(function($) {
             $( '#' + item + '-area' ).slideUp();
         }
     });
-    $( '.cookie-items-area .onoffswitch-checkbox' ).change(function(){
+    $( '.cookie-items-area .altss-onoffswitch-checkbox' ).change(function(){
         var item = $(this).data('item');
         var isChecked = $(this).is(':checked');
         if( isChecked ){
@@ -75,4 +75,14 @@ jQuery(document).ready(function($) {
         }
     });
     $('.iris_color').wpColorPicker( cpOptions );
+
+    $( '.eba-post-type-settings > div.altss-onoffswitch-over .altss-onoffswitch-checkbox' ).change(function(){
+        let sibDiv = $(this).parents('.altss-onoffswitch-over').siblings('div');
+        if( $(this).is(':checked') ){
+            sibDiv.slideDown();
+        }
+        else {
+            sibDiv.slideUp();
+        }
+    });
 });

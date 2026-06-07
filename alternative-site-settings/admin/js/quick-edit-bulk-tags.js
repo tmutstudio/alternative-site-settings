@@ -5,9 +5,11 @@ jQuery(
         $('#bulk-action-selector-top, #bulk-action-selector-bottom').change(function () {
             var current = $(this);
             var currentParrent = current.parents('.actions');
+            var postType = altss_quick_edit_bt.post_type;
             $('#wpbody-content').find('.tag-cat-area-over').remove();
             var area = $('<div class="tag-cat-area-over"></div>').html($('#tag-cat-bulk-action-extra-area-over').html());
             if('add_tags' === current.val() ||'detach_tags' === current.val() ) {
+                var admTagsEnable = altss_quick_edit_bt.adm_tags_enable;
                 var pos = 'bulk-action-selector-top' === current.attr('id') ? 'top' : 'bottom';
                 var label = $('<div class="tag-bulk-action-title" style="color: ' + ('add_tags' === current.val() ? 'green' : 'darkred') + ';">' + 
                 ('add_tags' === current.val() ? altss_quick_edit_bt.i18n_adding_tags : altss_quick_edit_bt.i18n_detaching_tags)
@@ -24,8 +26,12 @@ jQuery(
                 area.find('.tag-bulk-action-fields-over').css({
                     'display': 'block',
                 }).prepend(label);
+                if( 'page' === postType || ! admTagsEnable ) {
+                    if( ! admTagsEnable ) area.find('input[name="tag_type"]:last').prop('checked', true);
+                    area.find('input[name="tag_type"]').parent().parent().hide();
+                }
 
-                area.find('.input-tags').autocomplete({
+                area.find('.eba-input-tags').autocomplete({
                     source: function(request, response) {
                         var term = $.trim(request.term);
                         var lastComma = term.lastIndexOf(',');
@@ -141,7 +147,7 @@ jQuery(
         $(document).on( 'click', '#bulk-action-categories-list', function(){
             let area = $(this).siblings('.cat-bulk-action-area');
             let mode = $(this).attr('data-mode');
-            $(".popup-container").css( {'width': '100%', 'max-width': '96vw', 'height': '90vh', 'padding-top': '10px'} );
+            $(".popup-container").css( {'width': '100%', 'max-width': '80vw', 'max-height': '90vh', 'padding-top': '10px'} );
             $("#popup_show_bg").show();
             $("#popup-form-wrapper").html(
                 '<div class="popup-mess">'+

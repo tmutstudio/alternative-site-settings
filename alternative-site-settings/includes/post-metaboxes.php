@@ -3,7 +3,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 add_action('rest_api_init', function() {
     global $post;
-    $type = $post->post_type;
+    if( ! empty( $post ) ) {
+        $type = $post->post_type;
         register_post_meta( $type, '_seo_meta_title', [
             'show_in_rest' => true,
             'single' => true,
@@ -24,6 +25,7 @@ add_action('rest_api_init', function() {
             'type' => 'string',
             'auth_callback' => '__return_true'
         ]);
+    }
 
 
 } );

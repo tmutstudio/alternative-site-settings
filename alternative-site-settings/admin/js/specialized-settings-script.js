@@ -7,8 +7,8 @@ jQuery(document).ready(function($) {
             $( '#data-items-area' ).hide();
         }
     });
-    $( '.onoffswitch-left input[type="checkbox"]' ).change(function(){
-        var textLabel = $(this).closest('.onoffswitch-over').find('.onoffswitch-label-text');
+    $( '.altss-onoffswitch-left input[type="checkbox"]' ).change(function(){
+        var textLabel = $(this).closest('.altss-onoffswitch-over').find('.altss-onoffswitch-label-text');
         if( $(this).is(':checked') ){
             textLabel.addClass('darkred-oos');
         }
@@ -16,7 +16,7 @@ jQuery(document).ready(function($) {
             textLabel.removeClass('darkred-oos');
         }
     });
-    $( '.onoffswitch-left input[type="checkbox"]' ).each((i,e)=>{
-        if( $(e).is(':checked') ) $(e).closest('.onoffswitch-over').find('.onoffswitch-label-text').addClass('darkred-oos');
+    $( '.altss-onoffswitch-left input[type="checkbox"]' ).each((i,e)=>{
+        if( $(e).is(':checked') ) $(e).closest('.altss-onoffswitch-over').find('.altss-onoffswitch-label-text').addClass('darkred-oos');
     });
  });

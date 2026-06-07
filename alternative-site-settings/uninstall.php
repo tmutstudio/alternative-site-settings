@@ -109,7 +109,13 @@ function altss__delete_custom_posts() {
         }
     }
 
-    if ( ! empty( $altss_uninstall_data_items[ 'admin_post_tags' ] ) ) {
+
+    if ( ! empty( $altss_uninstall_data_items[ 'admin_tags' ] ) ) {
+        foreach( $altss_uninstall_data_items[ 'admin_tags' ] as $t => $v ) {
+            $taxonomies[] = 'adm_' . $t . '_tag';
+        }
+    }
+    if ( empty( $altss_uninstall_data_items[ 'admin_tags' ]['post'] ) && ! empty( $altss_uninstall_data_items[ 'admin_post_tags' ] ) ) {
         $taxonomies[] = 'adm_post_tag';
     }
 

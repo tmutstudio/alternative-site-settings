@@ -10,7 +10,6 @@ jQuery(document).ready(function($) {
                 sort.push($(this).data('id'));
                 i++;
             });
-            console.log(sort);
         }
     });
 });

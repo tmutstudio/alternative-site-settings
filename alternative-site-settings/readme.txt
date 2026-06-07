@@ -1,9 +1,9 @@
 === Alternative Site Settings ===
 Tags: settings, custom records, duplicate post, cookie banner, contact forms
 Requires at least: 6.0
-Tested up to: 6.9.4
-Stable tag: 1.3.0
-Requires PHP: 7.2
+Tested up to: 7.0
+Stable tag: 1.3.1
+Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,6 +34,10 @@ The plugin includes the following features:
 Attention! Please note: Some plugin features are designed to work exclusively with classic themes.
 
 == Changelog ==
+
+= 1.3.1 =
+The structure and logic of Bulk Actions settings have been redesigned: extension activation and admin tag activation are now performed separately for each post type. The ability to activate admin tags for pages (post_type: page) has also been introduced.
+Attention!!! If you have upgraded to this version from version 1.3.0, please be sure to check the Extra Bulk Actions and Admin Tags settings for each public post type.
 
 = 1.3.0 =
 New functionality has been added for bulk post actions: adding/detaching tags, adding to and deleting from categories. You can also now bulk mark posts as drafts or for approval.

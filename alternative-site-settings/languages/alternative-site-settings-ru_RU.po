@@ -118,6 +118,9 @@ msgstr "Добавить видео"
 msgid "Add videos category"
 msgstr "Добавить категорию видео"
 
+msgid "Adding Admin tags"
+msgstr "Добавление Админ-тэгов"
+
 msgid "Adding tags"
 msgstr "Добавление тэгов"
 
@@ -520,6 +523,9 @@ msgstr "Удалить"
 msgid "Delete Admin Tags for Blog Posts (post_type: post)"
 msgstr "Удалить Админ-тэги для записей блога (post_type: post)"
 
+msgid "Delete Admin Tags for a post type"
+msgstr "Удалить Админ-теги для записей типа"
+
 msgid "Delete all Admin Tags"
 msgstr "Удалить все Админ-тэги"
 
@@ -555,6 +561,9 @@ msgstr "Поле для тега Description"
 
 msgid "Detach tags"
 msgstr "Убрать теги"
+
+msgid "Detaching Admin tags"
+msgstr "Отсоединение Админ-тэгов"
 
 msgid "Detaching tags"
 msgstr "Отсоединение тэгов"
@@ -646,6 +655,9 @@ msgstr "Редактирование"
 msgid "Email address"
 msgstr "Электронный адрес"
 
+msgid "Enable Admin Tags for posts of this type"
+msgstr "Активировать Админ-тэги для записей данного типа"
+
 msgid "Enable cookie category"
 msgstr "Включить категорию cookie"
 
@@ -675,6 +687,9 @@ msgstr "Введите ваш номер телефона"
 
 msgid "Entry with <strong>ID: %d</strong> has been deleted!"
 msgstr "Запись с <strong>ID: %d</strong> удалена!"
+
+msgid "Extra Bulk Actions for Post Types"
+msgstr "Extra Bulk Actions для типов записей"
 
 msgid "Field"
 msgstr "Поле"
@@ -1174,6 +1189,9 @@ msgstr "Настройки"
 msgid "Settings dialog box title text"
 msgstr "Текст заголовка диалогового окна настроек"
 
+msgid "Settings for post type"
+msgstr "Настройки для записи типа"
+
 msgid "Short description"
 msgstr "Краткое описание"
 
@@ -1350,6 +1368,9 @@ msgstr "Обновить категорию акций"
 
 msgid "Update videos category"
 msgstr "Обновить категорию видео"
+
+msgid "Use plugin for this type of posts"
+msgstr "Использовать плагин для записей этого типа"
 
 msgid "Video"
 msgstr "Видео"

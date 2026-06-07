@@ -5,17 +5,17 @@
 	line-height: 28px;
 }
 
-.onoffswitch-label-text{
+.altss-onoffswitch-label-text{
 	display: inline-block;
     width: calc(100% - 52px);
 }
-.onoffswitch_label{
+.altss-onoffswitch_label{
 	display: inline-block;
     vertical-align: top;
     margin-top: -1px;
 }
 
-.onoffswitch-over {
+.altss-onoffswitch-over {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -24,7 +24,7 @@
     margin: 0 0 10px 0;
 }
 
-.onoffswitch {
+.altss-onoffswitch {
 	position: relative;
 	width: 40px;
 	margin-right: 5px;
@@ -35,7 +35,7 @@
 	-ms-user-select: none;
 }
 
-.onoffswitch-left {
+.altss-onoffswitch-left {
 	position: relative;
 	width: 40px;
 	margin-right: 5px;
@@ -45,11 +45,11 @@
 	-ms-user-select: none;
 }
 
-.onoffswitch-checkbox {
+.altss-onoffswitch-checkbox {
 	display: none!important;
 }
 
-.onoffswitch-label {
+.altss-onoffswitch-label {
 	display: block;
 	overflow: hidden;
 	cursor: pointer;
@@ -62,7 +62,7 @@
 	transition: background-color 0.2s ease-in;
 }
 
-.onoffswitch-label:before {
+.altss-onoffswitch-label:before {
 	content: "";
 	display: block;
 	width: 16px;
@@ -77,32 +77,32 @@
 	transition: all 0.2s ease-in 0s;
 }
 
-.onoffswitch-checkbox:checked + .onoffswitch-label {
+.altss-onoffswitch-checkbox:checked + .altss-onoffswitch-label {
 	background-color: #78a2c5;
 }
-.onoffswitch-checkbox:checked + .onoffswitch-label.darkred-oos {
+.altss-onoffswitch-checkbox:checked + .altss-onoffswitch-label.darkred-oos {
 	background-color: darkred !important;
 }
 
-.onoffswitch-checkbox:checked + .onoffswitch-label,
-.onoffswitch-checkbox:checked + .onoffswitch-label:before {
+.altss-onoffswitch-checkbox:checked + .altss-onoffswitch-label,
+.altss-onoffswitch-checkbox:checked + .altss-onoffswitch-label:before {
 	border-color: #6c86a1;
 }
-.onoffswitch-checkbox:checked + .onoffswitch-label.darkred-oos,
-.onoffswitch-checkbox:checked + .onoffswitch-label.darkred-oos:before {
+.altss-onoffswitch-checkbox:checked + .altss-onoffswitch-label.darkred-oos,
+.altss-onoffswitch-checkbox:checked + .altss-onoffswitch-label.darkred-oos:before {
 	border-color: darkred !important;
 }
 
-.onoffswitch-checkbox:checked + .onoffswitch-label:before {
+.altss-onoffswitch-checkbox:checked + .altss-onoffswitch-label:before {
 	right: 0;
 }
 
-.onoffswitch-label-text.darkred-oos {
+.altss-onoffswitch-label-text.darkred-oos {
 	color: darkred !important;
 }
 
 
-.customize-control-radio {
+.altss-customize-control-radio {
     margin:0;
     display:flex;
     flex-direction: column;
@@ -111,7 +111,7 @@
     font-size: 12pt;
   }
 
-.customize-control-radio input[type=radio] {
+.altss-customize-control-radio input[type=radio] {
     width: 24px;
     height: 24px;
     aspect-ratio: 1;
@@ -129,37 +129,37 @@
     font-size: inherit;
     transition: .3s;
 }
-.customize-control-radio input[type=radio]:checked {
+.altss-customize-control-radio input[type=radio]:checked {
     border-color: #3c7784;
     background-size: 100% 100%;
 }
-.customize-control-radio .darkred-radio:checked {
+.altss-customize-control-radio .darkred-radio:checked {
     border-color: darkred !important;
     background: 
        radial-gradient(farthest-side,darkred 64%,#0000) 
        50%/0 0 no-repeat content-box;
 }
-.customize-control-radio input[type=radio]:checked::before {
+.altss-customize-control-radio input[type=radio]:checked::before {
     content: none;
 }
 
-.customize-control-radio input[type=radio]:disabled {
+.altss-customize-control-radio input[type=radio]:disabled {
     background: 
         linear-gradient(#939393 0 0) 
         50%/100% 20% no-repeat content-box;
     opacity: .5;
     cursor: not-allowed;
 }
-.customize-control-radio input[type=radio]:checked + span {
+.altss-customize-control-radio input[type=radio]:checked + span {
     color: #3c7784;
     font-weight: 600;
 }
-.customize-control-radio .darkred-radio:checked + span {
+.altss-customize-control-radio .darkred-radio:checked + span {
     color: darkred !important;
 }
 
 @media print {
-.customize-control-radio input[type=radio] {
+.altss-customize-control-radio input[type=radio] {
     -webkit-appearance: auto;
     -moz-appearance: auto;
     appearance: auto;
@@ -167,7 +167,7 @@
 }
 }
 
-.customize-control-radio label {
+.altss-customize-control-radio label {
 display:inline-flex;
 align-items:center;
 gap:10px;

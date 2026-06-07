@@ -27,11 +27,9 @@ jQuery(document).ready(function($) {
                 error: function(jqXHR, exception)
                 {
                     $('#ajax_message').fadeIn(400).html("<span style=\"color:red\">" + wp.i18n.__( 'Error!', 'alternative-site-settings' ) + "</span>").fadeOut(2000);
-                    console.log(jqXHR.status);
                 },
                 success: function()
                 {
-                    console.log(act+':'+slink.html());
                     slink.data('act', inner[act][0]);
                     slink.html(inner[act][1]).removeClass(classes1[act]).addClass(classes2[act]);
                     $('#review-status-'+id).html(inner[act][2]).removeClass(classes2[act]).addClass(classes1[act]);

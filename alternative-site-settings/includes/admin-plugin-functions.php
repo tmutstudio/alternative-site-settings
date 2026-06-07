@@ -111,12 +111,12 @@ function altss_add_onoff_switch( $name, $value, $saved_value, $label_text, $data
     if ( str_ends_with( $switch_id, '_' ) ) $switch_id = substr( $switch_id, 0, -1 );
     ?>
     
-    <div class="onoffswitch-over">
-        <div class="onoffswitch-left">
-            <input type="checkbox" id="<?php echo esc_attr( $switch_id ); ?>" name="<?php echo esc_attr( $name ); ?>" class="onoffswitch-checkbox" data-item="<?php echo esc_attr( $data_item ); ?>" value="<?php echo esc_attr( $value ); ?>"<?php checked( $saved_value, $value); ?> />
-            <label class="onoffswitch-label<?php echo esc_attr( ! empty( $oos_label_add_class ) ? ' ' . $oos_label_add_class : '' ); ?>" for="<?php echo esc_attr( $switch_id ); ?>"></label>
+    <div class="altss-onoffswitch-over">
+        <div class="altss-onoffswitch-left">
+            <input type="checkbox" id="<?php echo esc_attr( $switch_id ); ?>" name="<?php echo esc_attr( $name ); ?>" class="altss-onoffswitch-checkbox" data-item="<?php echo esc_attr( $data_item ); ?>" value="<?php echo esc_attr( $value ); ?>"<?php checked( $saved_value, $value); ?> />
+            <label class="altss-onoffswitch-label<?php echo esc_attr( ! empty( $oos_label_add_class ) ? ' ' . $oos_label_add_class : '' ); ?>" for="<?php echo esc_attr( $switch_id ); ?>"></label>
         </div>
-        <label class="onoffswitch-label-text" for="<?php echo esc_attr( $switch_id ); ?>">-  <?php echo esc_html( $label_text ); ?></label>
+        <label class="altss-onoffswitch-label-text" for="<?php echo esc_attr( $switch_id ); ?>">-  <?php echo esc_html( $label_text ); ?></label>
     </div>
     <?php
 

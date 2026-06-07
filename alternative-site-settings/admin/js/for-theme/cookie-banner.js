@@ -21,7 +21,6 @@ function cbSetCookie($, btnSet) {
             if('accept_all' === btnSet) $(e).prop( 'checked', true );
             if($(e).is( ':checked' )) value = value + '|' + $(e).val();
         });
-        console.log($('input[name^="cookie_banner_customize["]'));
     }
     var days = cbsData.cookieConsentDays;
     var expires = "";

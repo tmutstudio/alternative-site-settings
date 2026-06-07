@@ -41,9 +41,6 @@ jQuery(document).ready(function($) {
                     '<div><label>' + cformFields[item.value] + '</label>' +
                     '<input type="checkbox" id="f' + area + '_cb_' + item.value + '" name="altss_settings_cforms_options_reqfields_' + area + '[' + item.value + ']" value="1" title="' + wp.i18n.__('make required', 'alternative-site-settings') + '"' + item.attributes.data.value + ' /></div></li>'
             );
-            console.dir(item);
-            console.log(item.attributes.data.value);
-            console.log(item.value);
         });
 
         $("#popup_show_bg").hide();

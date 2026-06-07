@@ -6,25 +6,19 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  */
 final class ALTSS_Post_List_Table_Ext {
 	/**
-	 * ALTSS Settings array.
+	 * EXTRABA Settings array.
 	 *
 	 * @var array
 	 */
 	protected static $settings = [];
 
 	/**
-	 * Custom Recs  array.
+	 * Allowed types  array.
 	 *
 	 * @var array
 	 */
-	protected static $custom_recs = [];
+	protected static $allowed_types = [];
 
-	/**
-	 * Custom Recs Settings array.
-	 *
-	 * @var array
-	 */
-	protected static $custom_recs_settings = [];
 
 	/**
 	 * Current post type.
@@ -36,9 +30,22 @@ final class ALTSS_Post_List_Table_Ext {
 	public static function init(){
         global $altss_settings_options;
         self::$settings = $altss_settings_options;
-        self::$custom_recs = get_option( "altss_settings_options_custom_recs" );
-        self::$custom_recs = is_array( self::$custom_recs ) ? self::$custom_recs : [];
-        self::$custom_recs_settings = get_option( "altss_settings_options_custom_recs_settings" );
+        $all_types = $altss_settings_options['eba_post_types'] ?? [];
+
+        foreach( $all_types as $type => $set ) {
+            if( ! empty( $set['enable'] ) ) self::$allowed_types[$type] = $set;
+        }
+
+        //For compatibility with version 1.3.0
+        if( empty( self::$allowed_types && ! empty( self::$settings['admin_tags_enable'] ) ) ) { 
+            self::$allowed_types['post'] = [ 'enable' => 1, 'adm_tags_enable' => 1 ];
+            self::$allowed_types['news'] = [ 'enable' => 1, 'adm_tags_enable' => 1 ];
+            self::$allowed_types['promotions'] = [ 'enable' => 1, 'adm_tags_enable' => 1 ];
+            self::$allowed_types['books'] = [ 'enable' => 1, 'adm_tags_enable' => 1 ];
+            self::$allowed_types['docs'] = [ 'enable' => 1, 'adm_tags_enable' => 1 ];
+            self::$allowed_types['videos'] = [ 'enable' => 1, 'adm_tags_enable' => 1 ];
+        } //For compatibility with version 1.3.0
+        
 		add_action( 'current_screen', [ __CLASS__, 'hooks' ], 30 );
 		//add_action( 'load-edit.php', [ __CLASS__, 'hooks' ], 30 );
 	}
@@ -46,13 +53,14 @@ final class ALTSS_Post_List_Table_Ext {
 	public static function hooks(){
         global $typenow;
         self::$current_type = $typenow;
-        if( ! key_exists( $typenow, self::$custom_recs ) && $typenow !== 'post'  ) return;
+        if( ! key_exists( $typenow, self::$allowed_types )  ) return;
 
         self::enqueue_scripts();
 
         add_action( 'bulk_actions-edit-' . $typenow, [ __CLASS__, 'define_bulk_actions' ], 30 );
         add_action( 'restrict_manage_posts', [ __CLASS__, 'render_filters' ] );
         add_action( 'manage_' . $typenow . '_posts_custom_column', [ __CLASS__, 'render_columns' ], 10, 2 );
+        add_action( 'admin_head', [ __CLASS__, 'header_includes' ], 10 );
         add_action( 'admin_footer', [ __CLASS__, 'footer_includes' ], 10 );
         add_filter( 'handle_bulk_actions-edit-' . $typenow, [ __CLASS__, 'handle_bulk_actions' ], 30, 3 );
         add_filter( 'manage_' . $typenow . '_posts_columns', [ __CLASS__, 'manage_columns' ], 30, 3 );
@@ -60,17 +68,20 @@ final class ALTSS_Post_List_Table_Ext {
 
 
 	public static function enqueue_scripts(){
+        $i18n_adding_tags = 'page' === self::$current_type ? __( 'Adding Admin tags', 'alternative-site-settings' ) : __( 'Adding tags', 'alternative-site-settings' );
+        $i18n_detaching_tags = 'page' === self::$current_type ? __( 'Detaching Admin tags', 'alternative-site-settings' ) : __( 'Detaching tags', 'alternative-site-settings' );
         wp_enqueue_script( 'altss_quick-edit-bulk-tags', ALTSITESET_URL . '/admin/js/quick-edit-bulk-tags.js', array( 'jquery' ), ALTSITESET__VERSION, true );
         $params = array(
             'i18n_apply'                    => __( 'Apply' ),
             'i18n_to_cats_mark_categories'  => __( 'Please check the required categories to add to your posts', 'alternative-site-settings' ),
             'i18n_from_cats_mark_categories'=> __( 'Please check the required categories to unlink from posts', 'alternative-site-settings' ),
             'i18n_err_category_list'        => __( 'Something went wrong while creating the category list!', 'alternative-site-settings' ),
-            'i18n_adding_tags'              => __( 'Adding tags', 'alternative-site-settings' ),
-            'i18n_detaching_tags'           => __( 'Detaching tags', 'alternative-site-settings' ),
+            'i18n_adding_tags'              => $i18n_adding_tags,
+            'i18n_detaching_tags'           => $i18n_detaching_tags,
             'i18n_to_cats'                  => __( 'Place in categories', 'alternative-site-settings' ),
             'i18n_from_cats'                => __( 'Remove from categories', 'alternative-site-settings' ),
             'post_type'                     => self::$current_type,
+            'adm_tags_enable'               => ! empty( self::$allowed_types[self::$current_type]['adm_tags_enable'] ),
             'ajax_url'                      => admin_url( 'admin-ajax.php' ),
             'bulk_cat_nonce'                => wp_create_nonce( 'get_categories_list' ),
             'images_dir_url'                => ALTSITESET_URL .  '/admin/images',
@@ -78,6 +89,24 @@ final class ALTSS_Post_List_Table_Ext {
 
         wp_localize_script( 'altss_quick-edit-bulk-tags', 'altss_quick_edit_bt', $params );
     }
+
+
+	public static function header_includes(){
+        echo '<style>
+                .ui-autocomplete {
+                    padding: 0;
+                    margin: 0;
+                    list-style: none;
+                    position: absolute;
+                    z-index: 10000;
+                    border: 1px solid #4f94d4;
+                    box-shadow: 0 1px 2px rgba(79,148,212,.8);
+                    background-color: #fff;
+                }
+            </style>';
+
+    }
+
 
 
 	public static function footer_includes(){
@@ -89,6 +118,11 @@ final class ALTSS_Post_List_Table_Ext {
         include ALTSITESET_CLASSES_DIR . '/views/html-tag-cat-bulk-action-extra-area.php';
     }
 
+
+
+
+
+
 	/**
 	 * Define bulk actions.
 	 *
@@ -96,8 +130,9 @@ final class ALTSS_Post_List_Table_Ext {
 	 * @return array
 	 */
 	public static function define_bulk_actions( $actions ) {
+        $post_type = self::$current_type;
 		$actions       = array();
-		$post_type_obj = get_post_type_object( 'post' );
+		$post_type_obj = get_post_type_object( $post_type );
         $is_trash = isset( $_REQUEST['post_status'] ) && 'trash' === $_REQUEST['post_status'];
         $is_pending = isset( $_REQUEST['post_status'] ) && 'pending' === $_REQUEST['post_status'];
         $is_draft = isset( $_REQUEST['post_status'] ) && 'draft' === $_REQUEST['post_status'];
@@ -113,8 +148,10 @@ final class ALTSS_Post_List_Table_Ext {
 				if ( ! $is_draft ) $actions['draft'] = __( 'Draft' );
                 $actions['add_tags'] = __( 'Add tags', 'alternative-site-settings' );
                 $actions['detach_tags'] = __( 'Detach tags', 'alternative-site-settings' );
-                $actions['to_cats'] = __( 'Place in categories', 'alternative-site-settings' );
-                $actions['from_cats'] = __( 'Remove from categories', 'alternative-site-settings' );
+                if( 'page' !== $post_type ) {
+                    $actions['to_cats'] = __( 'Place in categories', 'alternative-site-settings' );
+                    $actions['from_cats'] = __( 'Remove from categories', 'alternative-site-settings' );
+                }
 			}
 		}
 
@@ -256,7 +293,7 @@ final class ALTSS_Post_List_Table_Ext {
 	 */
 	protected static function render_custom_cat_filter() {
         $type = self::$current_type;
-        if( 'post' === $type ) return;
+        if( in_array( $type, [ 'page', 'post', 'product' ] )  ) return;
 
         $current_cat_slug = isset( $_GET[$type . '_cat'] ) ? sanitize_text_field( wp_unslash( $_GET[$type . '_cat'] ) ) : false; // WPCS: input var ok, CSRF ok.
         wp_dropdown_categories(
@@ -281,8 +318,8 @@ final class ALTSS_Post_List_Table_Ext {
 	 * 
 	 */
 	protected static function render_adm_posts_tag_filter() {
-        if( empty( self::$settings['admin_tags_enable'] ) ) return;
         $type = self::$current_type;
+        if( empty( self::$allowed_types[$type]['adm_tags_enable'] ) ) return;
         $current_tag_slug = isset( $_GET['adm_' . $type . '_tag'] ) ? sanitize_text_field( wp_unslash( $_GET['adm_' . $type . '_tag'] ) ) : false; // WPCS: input var ok, CSRF ok.
         wp_dropdown_categories(
             array(
@@ -307,6 +344,7 @@ final class ALTSS_Post_List_Table_Ext {
 	 */
 	protected static function render_posts_tag_filter() {
         $type = self::$current_type;
+        if( in_array( $type, [ 'page', 'product' ] )  ) return;
         $tag_key = 'post' === $type ? 'tag' : $type . '_tag';
 		$tags_count = (int) wp_count_terms( $type . '_tag' );
         $current_tag_slug = isset( $_GET[$tag_key] ) ? sanitize_text_field( wp_unslash( $_GET[$tag_key] ) ) : false; // WPCS: input var ok, CSRF ok.
@@ -349,17 +387,22 @@ final class ALTSS_Post_List_Table_Ext {
 	public static function manage_columns( $columns ) {
         $post_type = self::$current_type;
         $tags_col_name = esc_attr__( 'Tags', 'alternative-site-settings' );
-        if( 'post' === $post_type ) {
-            unset( $columns['tags'] );
+        unset( $columns['tags'] );
+        if( in_array( $post_type, [ 'post', 'product' ] ) ) {
             $tags_col_name = esc_attr__( 'Tags' );
+        }
+        else if( in_array( $post_type, [ 'page', 'product' ] ) ) {
+            $tags_col_name = esc_attr__( 'Admin tags', 'alternative-site-settings' );
         }
         $new_columns = [];
         
         foreach( $columns as $key => $val ){
-            if( ( key_exists( $key, $columns ) && 'comments' === $key ) || 'date' === $key ) {
+            if( 'product_tag' === $key ||'comments' === $key || 'date' === $key ) {
                 $new_columns[$post_type . '_tags'] = $tags_col_name;
             }
-            $new_columns[$key] = $val;
+            if( 'product_tag' !== $key ) {
+                $new_columns[$key] = $val;
+            }
         }
         
         return $new_columns;
@@ -374,8 +417,8 @@ final class ALTSS_Post_List_Table_Ext {
 	 * @param int    $post_id Post ID being shown.
 	 */
 	public static function render_columns( $column, $post_id ) {
-
-		if ( $column ===  self::$current_type . '_tags' ) {
+        $type = self::$current_type;
+		if ( $column ===  $type . '_tags' ) {
 			self::{"render_tags_column"}();
 		}
 	}
@@ -385,29 +428,32 @@ final class ALTSS_Post_List_Table_Ext {
 	 */
 	protected static function render_tags_column() {
 		global $post;
-        $tag_key = 'post' === $post->post_type ? 'tag' : $post->post_type . '_tag';
-		$terms = get_the_terms( $post->ID, $post->post_type . '_tag' );
-        $public_tags_name = 'post' === $post->post_type ? __( 'Tags' ) : __( 'Public tags', 'alternative-site-settings');
-        echo '<div>';
-        if( ! empty( self::$settings['admin_tags_enable'] ) ) {
-            echo '<span class="">' . esc_html__( $public_tags_name ) . ': </span>';
+        if( ! in_array( $post->post_type, [ 'page' ] ) ) {
+            $tag_key = 'post' === $post->post_type ? 'tag' : $post->post_type . '_tag';
+            $terms = get_the_terms( $post->ID, $post->post_type . '_tag' );
+            $public_tags_name = in_array( $post->post_type, [ 'post', 'product' ] ) ? __( 'Tags' ) : __( 'Public tags', 'alternative-site-settings');
+            echo '<div>';
+            if( ! empty( self::$allowed_types[$post->post_type]['adm_tags_enable'] ) ) {
+                echo '<span class="">' . esc_html( $public_tags_name ) . ': </span>';
+            }
+            if ( ! $terms ) {
+                echo '<span class="na">&ndash;</span>';
+            } else {
+                $termlist = array();
+                foreach ( $terms as $term ) {
+                    $termlist[] = '<a href="' . esc_url( admin_url( 'edit.php?' . $tag_key . '=' . $term->slug . '&post_type=' . $post->post_type ) ) . ' ">' . esc_html( $term->name ) . '</a>';
+                }
+
+                echo wp_kses_post( implode( ', ', $termlist ) );
+            }
+            echo "</div>\n";
         }
-		if ( ! $terms ) {
-			echo '<span class="na">&ndash;</span>';
-		} else {
-			$termlist = array();
-			foreach ( $terms as $term ) {
-				$termlist[] = '<a href="' . esc_url( admin_url( 'edit.php?' . $tag_key . '=' . $term->slug . '&post_type=' . $post->post_type ) ) . ' ">' . esc_html( $term->name ) . '</a>';
-			}
 
-			echo wp_kses_post( implode( ', ', $termlist ) );
-		}
-        echo "</div>\n";
-
-        if( empty( self::$settings['admin_tags_enable'] ) ) return;
+        if( empty( self::$allowed_types[$post->post_type]['adm_tags_enable'] ) ) return;
 
 		$adm_terms = get_the_terms( $post->ID, 'adm_' . $post->post_type . '_tag' );
-        echo '<div><span class="">' . esc_html__( 'Admin tags', 'alternative-site-settings') . ': </span>';
+        if( ! in_array( $post->post_type, [ 'page' ] ) ) echo '<div><span class="">' . esc_html__( 'Admin tags', 'alternative-site-settings') . ': </span>';
+        else echo '<div>';
 		if ( ! $adm_terms ) {
 			echo '<span class="na">&ndash;</span>';
 		} else {

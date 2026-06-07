@@ -6,6 +6,27 @@ settings_fields( 'altss_settings_options' );
 altss_include_uploadscript();
 $altss_settings_options = get_option( "altss_settings_options" );
 
+//For compatibility with version 1.3.0
+if( empty( $altss_settings_options['eba_post_types'] ) && ! empty( $altss_settings_options['admin_tags_enable'] )) {
+    $altss_settings_options['eba_post_types']['post'] = [ 'enable' => 1, 'adm_tags_enable' => 1 ];
+    $altss_settings_options['eba_post_types']['news'] = [ 'enable' => 1, 'adm_tags_enable' => 1 ];
+    $altss_settings_options['eba_post_types']['promotions'] = [ 'enable' => 1, 'adm_tags_enable' => 1 ];
+    $altss_settings_options['eba_post_types']['books'] = [ 'enable' => 1, 'adm_tags_enable' => 1 ];
+    $altss_settings_options['eba_post_types']['docs'] = [ 'enable' => 1, 'adm_tags_enable' => 1 ];
+    $altss_settings_options['eba_post_types']['videos'] = [ 'enable' => 1, 'adm_tags_enable' => 1 ];
+}//For compatibility with version 1.3.0
+
+$POST_TYPES = [
+    'page' => 'page',
+    'post' => 'post',
+    ];
+$gpt_args = [
+    'public'   => true,
+    '_builtin' => false
+    ];
+$POST_TYPES = array_merge( $POST_TYPES, get_post_types( $gpt_args, 'names' ) );
+
+
                         ?>
                         <div class="site-settings-tab-header-div"><?php esc_html_e( "Main site settings:", "alternative-site-settings" ); ?></div>
                         <div class="site-settings-options-gr-wrap">
@@ -69,10 +90,6 @@ $altss_settings_options = get_option( "altss_settings_options" );
                                 <dt><p><?php esc_html_e( "Post duplication functionality", "alternative-site-settings" ); ?>:</p></dt>
                                 <dd>
                                     <?php altss_add_onoff_switch( 'altss_settings_options[duplicate_post_enable]', 1, $altss_settings_options['duplicate_post_enable'] ?? '', __( "check the box to enable the duplicate post functionality", "alternative-site-settings" ) ); ?>
-                                </dd>
-                                <dt><p><?php esc_html_e( "Admin tags", "alternative-site-settings" ); ?>:</p></dt>
-                                <dd>
-                                    <?php altss_add_onoff_switch( 'altss_settings_options[admin_tags_enable]', 1, $altss_settings_options['admin_tags_enable'] ?? '', __( "check the box to enable Admin Tags", "alternative-site-settings" ) ); ?>
                                 </dd>
                                 <dt><p><?php esc_html_e( "Collapse the admin bar on the front end", "alternative-site-settings" ); ?>:</p></dt>
                                 <dd>
@@ -160,6 +177,33 @@ $altss_settings_options = get_option( "altss_settings_options" );
                                     </div>
                                 </dd>
                             </dl>
+                        </div>
+                        <?php
+                            submit_button();
+                        ?>
+                        <div class="site-settings-options-gr-wrap">
+                            <p class="site-settings-options-gr-title"><?php esc_html_e( "Extra Bulk Actions for Post Types", "alternative-site-settings" ); ?>:</p>
+                            <?php
+                            if( ! empty( $POST_TYPES ) ) {
+                                foreach ( $POST_TYPES as $type ) {
+                                    $post_type_obj = get_post_type_object( $type );
+                                    $type_mark = ' ( ' . $post_type_obj->labels->name . ' )';
+                                    ?>
+                                    <dl class="eba-settings-dl-sub">
+                                        <dt><span><?php echo wp_kses_post( __( "Settings for post type", "alternative-site-settings" ) . ': <span>' . $type . $type_mark . '</span>' ); ?></span></dt>
+                                        <dd class="eba-post-type-settings">
+                                        <?php
+                                            altss_add_onoff_switch( 'altss_settings_options[eba_post_types][' . $type . '][enable]', 1, $altss_settings_options['eba_post_types'][$type]['enable'] ?? '', __( "Use plugin for this type of posts", "alternative-site-settings" ) );
+                                            echo '<div' . ( empty( $altss_settings_options['eba_post_types'][$type]['enable'] ) ? ' style="display: none;"' : '' ) . ">\n";
+                                            altss_add_onoff_switch( 'altss_settings_options[eba_post_types][' . $type . '][adm_tags_enable]', 1, $altss_settings_options['eba_post_types'][$type]['adm_tags_enable'] ?? '', __( "Enable Admin Tags for posts of this type", "alternative-site-settings" ) );
+                                            echo "</div>\n";
+                                        ?>
+                                        </dd>
+                                    </dl>
+                            <?php
+                                }
+                            }
+                            ?>
                         </div>
                         <?php
                             submit_button();

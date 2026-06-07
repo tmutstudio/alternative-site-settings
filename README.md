@@ -29,6 +29,10 @@ Attention! The plugin is focused on working with classic themes.
 
 ## Changelog
 
+### 1.3.1
+The structure and logic of Bulk Actions settings have been redesigned: extension activation and admin tag activation are now performed separately for each post type. The ability to activate admin tags for pages (post_type: page) has also been introduced.
+Attention!!! If you have upgraded to this version from version 1.3.0, please be sure to check the Extra Bulk Actions and Admin Tags settings for each public post type.
+
 ### 1.3.0
 New functionality has been added for bulk post actions: adding/detaching tags, adding to and deleting from categories. You can also now bulk mark posts as drafts or for approval.
 The text domain has also been changed from "altss" to "alternative-site-settings", which meets the requirements.

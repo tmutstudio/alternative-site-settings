@@ -43,7 +43,7 @@ defined( 'ABSPATH' ) || exit;
                 <p>
                     <label class="">
                         <?php esc_html_e( 'tags, separated by commas', 'alternative-site-settings' ); ?>:<br />
-                        <textarea name="tag_names" class="input-tags"></textarea>
+                        <textarea name="tag_names" class="eba-input-tags"></textarea>
                     </label>
                 </p>
             </div>
@@ -54,7 +54,7 @@ defined( 'ABSPATH' ) || exit;
                 <input type="hidden" name="cat_type" value="<?php echo esc_attr( $cat_type ); ?>" />
             </div>
             <div class="cat-bulk-action-btn-over">
-                <?php submit_button( esc_html__( 'Apply' ), 'action', '', false, [ 'id' => "doaction3" ] ); ?>
+                <?php submit_button( esc_html__( 'Apply' ), 'action', 'bulk_action', false, [ 'id' => "doaction3" ] ); ?>
             </div>
         </div>
     </div>
